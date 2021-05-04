@@ -1,0 +1,37 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Gruntz/Navigation/NavigationTest.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Gruntz/Navigation/Navigation.cs" Line="104" Column="55" />
+      <File FileName="Assets/Scripts/Gruntz/Navigation/IOccupiedPosition.cs" Line="8" Column="20" />
+      <File FileName="Assets/Scripts/Gruntz/Navigation/MoveRequest.cs" Line="12" Column="33" />
+      <File FileName="Assets/Scripts/Gruntz/Navigation/Map.cs" Line="23" Column="48" />
+      <File FileName="Assets/Scripts/Gruntz/Navigation/NavigationTest.cs" Line="6" Column="6" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="GruntzClone" expanded="True">
+            <Node name="Assembly-CSharp" expanded="True">
+              <Node name="Assets" expanded="True">
+                <Node name="Scripts" expanded="True">
+                  <Node name="Base" expanded="True" />
+                  <Node name="Gruntz" expanded="True">
+                    <Node name="Navigation" expanded="True">
+                      <Node name="NavigationTest.cs" selected="True" />
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
