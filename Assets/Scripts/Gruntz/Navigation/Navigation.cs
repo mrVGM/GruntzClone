@@ -7,11 +7,10 @@ namespace Gruntz.Navigation
 {
     public class Navigation : IOrderedUpdate
     {
-        private struct OccupiedPosition : IOccupiedPosition
+        private struct TravelSegmentInfo : ITravelSegmentInfo
         {
-            public bool IsValid => true;
-
             public Vector3 Pos { get; set; }
+            public Vector3 StartPos { get; set; }
         }
 
         public const float Eps = 0.000001f;
@@ -34,24 +33,24 @@ namespace Gruntz.Navigation
 
         private Map map = new Map();
 
-        private HashSet<Vector3> occupiedPositions { get; } = new HashSet<Vector3>();
+        private HashSet<ITravelSegmentInfo> travelSegments { get; } = new HashSet<ITravelSegmentInfo>();
 
         private void CalculateMoves()
         {
             float dt = Time.deltaTime;
-            occupiedPositions.Clear();
+            travelSegments.Clear();
             moveRequests.Sort((x, y) => {
-                if (x.OccupiedPosition == null)
+                if (x.TravelSegmentInfo == null)
                 {
-                    return y.OccupiedPosition == null ? 0 : 1;
+                    return y.TravelSegmentInfo == null ? 0 : 1;
                 }
-                if (y.OccupiedPosition == null) 
+                if (y.TravelSegmentInfo == null) 
                 {
-                    return x.OccupiedPosition == null ? 0 : -1;
+                    return x.TravelSegmentInfo == null ? 0 : -1;
                 }
 
-                Vector3 offsetX = x.OccupiedPosition.Pos - x.CurrentPos;
-                Vector3 offsetY = y.OccupiedPosition.Pos - y.CurrentPos;
+                Vector3 offsetX = x.TravelSegmentInfo.Pos - x.CurrentPos;
+                Vector3 offsetY = y.TravelSegmentInfo.Pos - y.CurrentPos;
 
                 bool isXInPlace = offsetX.sqrMagnitude < Eps;
                 bool isYInPlace = offsetY.sqrMagnitude < Eps;
@@ -69,26 +68,17 @@ namespace Gruntz.Navigation
             });
             foreach (var request in moveRequests)
             {
-                var res = CalculateMove(request, dt * request.MoveSpeed, occupiedPositions);
-                occupiedPositions.Add(res.OccupiedPosition.Pos);
+                var res = CalculateMove(request, dt * request.MoveSpeed, travelSegments);
+                travelSegments.Add(res.TravelSegmentInfo);
                 request.MoveResultCallback(res);
             }
             moveRequests.Clear();
         }
 
-        private MoveRequestResult CalculateMove(MoveRequest request, float distance, IEnumerable<Vector3> occupied)
+        private MoveRequestResult CalculateMove(MoveRequest request, float distance, IEnumerable<ITravelSegmentInfo> travels)
         {
-            Vector3 currentTargetPos = request.OccupiedPosition != null ? request.OccupiedPosition.Pos : request.CurrentPos;
-
-            if (distance < Eps)
-            {
-                return new MoveRequestResult
-                {
-                    PositionToMove = request.CurrentPos,
-                    Direction = Vector3.zero,
-                    OccupiedPosition = new OccupiedPosition { Pos = request.CurrentPos }
-                };
-            }
+            Vector3 currentTargetPos = request.TravelSegmentInfo != null ? request.TravelSegmentInfo.Pos : request.CurrentPos;
+            Vector3 currentTravelStart = request.TravelSegmentInfo != null ? request.TravelSegmentInfo.StartPos : request.CurrentPos;
 
             var offset = request.TargetPos - request.CurrentPos;
             if (offset.sqrMagnitude <= Eps)
@@ -97,21 +87,39 @@ namespace Gruntz.Navigation
                 {
                     PositionToMove = request.TargetPos, 
                     Direction = Vector3.zero, 
-                    OccupiedPosition = new OccupiedPosition { Pos = request.TargetPos }
+                    TravelSegmentInfo = new TravelSegmentInfo { Pos = request.TargetPos, StartPos = request.TargetPos }
                 };
             }
 
             if ((currentTargetPos - request.CurrentPos).sqrMagnitude <= Eps) 
             {
+                bool areCrossing(Vector3 v1, Vector3 v2, Vector3 w1, Vector3 w2)
+                {
+                    Vector3 cross1 = Vector3.Cross(v2 - v1, w1 - v1);
+                    Vector3 cross2 = Vector3.Cross(v2 - v1, w2 - v1);
+
+                    if (Vector3.Dot(cross1, cross2) >= 0) { return false; }
+
+                    cross1 = Vector3.Cross(w2 - w1, v1 - w1);
+                    cross2 = Vector3.Cross(w2 - w1, v2 - w1);
+
+                    if (Vector3.Dot(cross1, cross2) >= 0) { return false; }
+
+                    return true;
+                }
                 var step = map.GetPossibleMoves(currentTargetPos)
-                    .OrderBy(x => occupied.Contains(x) ? float.PositiveInfinity : map.MoveCost(x, request.TargetPos)).FirstOrDefault();
+                    .OrderBy(x => {
+                        if (travels.Any(y => (y.Pos - x).sqrMagnitude < Eps)) { return float.PositiveInfinity; }
+                        if (travels.Any(y => areCrossing(y.StartPos, y.Pos, x, currentTargetPos))) { return float.PositiveInfinity; }
+                        return map.MoveCost(x, request.TargetPos); 
+                    }).FirstOrDefault();
                 if ((step - currentTargetPos).sqrMagnitude <= Eps) 
                 {
                     return new MoveRequestResult
                     {
                         PositionToMove = currentTargetPos,
                         Direction = Vector3.zero,
-                        OccupiedPosition = new OccupiedPosition { Pos = step }
+                        TravelSegmentInfo = new TravelSegmentInfo { Pos = step, StartPos = step }
                     };
                 }
                 if ((step - currentTargetPos).sqrMagnitude < distance * distance)
@@ -121,9 +129,9 @@ namespace Gruntz.Navigation
                         CurrentPos = step,
                         TargetPos = request.TargetPos,
                         MoveSpeed = request.MoveSpeed,
-                        OccupiedPosition = new OccupiedPosition { Pos = step },
+                        TravelSegmentInfo = new TravelSegmentInfo { Pos = step, StartPos = step },
                         MoveResultCallback = request.MoveResultCallback
-                    }, distanceLeft, occupied);
+                    }, distanceLeft, travels);
                 }
 
                 return CalculateMove(new MoveRequest
@@ -132,9 +140,9 @@ namespace Gruntz.Navigation
                     TargetPos = request.TargetPos,
                     MoveSpeed = request.MoveSpeed,
                     CurrentDirection = (step - currentTargetPos).normalized,
-                    OccupiedPosition = new OccupiedPosition { Pos = step },
+                    TravelSegmentInfo = new TravelSegmentInfo { Pos = step, StartPos = currentTargetPos},
                     MoveResultCallback = request.MoveResultCallback
-                }, distance, occupied);
+                }, distance, travels);
             }
 
             if ((request.CurrentPos - currentTargetPos).sqrMagnitude < distance * distance) 
@@ -145,25 +153,23 @@ namespace Gruntz.Navigation
                     CurrentPos = currentTargetPos,
                     TargetPos = request.TargetPos,
                     MoveSpeed = request.MoveSpeed,
-                    OccupiedPosition = new OccupiedPosition { Pos = currentTargetPos },
+                    TravelSegmentInfo = new TravelSegmentInfo { Pos = currentTargetPos, StartPos = currentTargetPos },
                     MoveResultCallback = request.MoveResultCallback
-                }, distanceLeft, occupied);
+                }, distanceLeft, travels);
             }
 
-            Vector3 direction = currentTargetPos - request.CurrentPos;
-            direction.Normalize();
-            Vector3 pos = request.CurrentPos + distance * direction;
-            var closestPositions = GetEnclosingPositions(pos);
-            Vector3 closest = closestPositions.OrderBy(x => (pos - x).sqrMagnitude).FirstOrDefault();
-            if ((pos - closest).sqrMagnitude < Eps) 
+            Vector3 dirToCurrentTarget = currentTargetPos - request.CurrentPos;
+            dirToCurrentTarget.Normalize();
+            Vector3 pos = request.CurrentPos + distance * dirToCurrentTarget;
+            if ((pos - currentTargetPos).sqrMagnitude < Eps)
             {
-                pos = closest;
+                pos = currentTargetPos;
             }
             return new MoveRequestResult
             {
                 PositionToMove = pos,
-                Direction = direction,
-                OccupiedPosition = new OccupiedPosition { Pos = currentTargetPos }
+                Direction = dirToCurrentTarget,
+                TravelSegmentInfo = new TravelSegmentInfo { Pos = currentTargetPos, StartPos = currentTravelStart }
             };
         }
 
@@ -174,39 +180,8 @@ namespace Gruntz.Navigation
 
         public Navigation()
         {
-            var mainUpdater = Game.Instance.GetComponent<MainUpdater>();
+            var mainUpdater = Game.Instance.MainUpdater;
             mainUpdater.RegisterUpdatable(this);
-        }
-
-        IEnumerable<Vector3> GetEnclosingPositions(Vector3 pos)
-        {
-            float floorX = Mathf.Floor(pos.x) + 0.5f;
-            while (floorX <= pos.x) { floorX += 1; }
-            while (floorX > pos.x) { floorX -= 1; }
-
-            float floorZ = Mathf.Floor(pos.z) + 0.5f;
-            while (floorZ <= pos.z) { floorZ += 1; }
-            while (floorZ > pos.z) { floorZ -= 1; }
-
-
-            Vector3 floor = floorX * Vector3.right + floorZ * Vector3.forward;
-            yield return floor;
-            yield return floor + Vector3.right;
-            yield return floor + Vector3.right + Vector3.forward;
-            yield return floor + Vector3.forward;
-        }
-
-        private Vector3 GetCurrentTargetPos(MoveRequest request)
-        {
-            if (request.CurrentDirection.sqrMagnitude < Eps)
-            {
-                return request.CurrentPos;
-            }
-
-            var enc = GetEnclosingPositions(request.CurrentPos);
-            var positions = GetEnclosingPositions(request.CurrentPos).Where(x => Vector3.Dot(x - request.CurrentPos, request.CurrentDirection) > 0);
-            positions = positions.Where(x => Vector3.Cross(x - request.CurrentPos, request.CurrentDirection).sqrMagnitude < Eps);
-            return positions.FirstOrDefault();
         }
     }
 }

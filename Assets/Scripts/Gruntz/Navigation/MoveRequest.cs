@@ -9,7 +9,7 @@ namespace Gruntz.Navigation
         public Vector3 CurrentDirection;
         public Vector3 TargetPos;
         public float MoveSpeed;
-        public IOccupiedPosition OccupiedPosition;
+        public ITravelSegmentInfo TravelSegmentInfo;
         public Action<MoveRequestResult> MoveResultCallback;
     }
 
@@ -17,6 +17,6 @@ namespace Gruntz.Navigation
     {
         public Vector3 PositionToMove;
         public Vector3 Direction;
-        public IOccupiedPosition OccupiedPosition;
+        public ITravelSegmentInfo TravelSegmentInfo;
     }
 }

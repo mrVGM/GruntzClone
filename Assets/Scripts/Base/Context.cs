@@ -22,5 +22,9 @@ namespace Base
             runtimeIntances[def] = res;
             return res;
         }
+        public void ClearContext()
+        {
+            runtimeIntances.Clear();
+        }
     }
 }

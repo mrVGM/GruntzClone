@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace Gruntz.Navigation
 {
-    public interface IOccupiedPosition
+    public interface ITravelSegmentInfo
     {
-        bool IsValid { get; }
         Vector3 Pos { get; }
+        Vector3 StartPos { get; }
     }
 }
