@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gruntz.UserInteraction
 {
-    public class ProcessContext : MonoBehaviour
+    public class ProcessContext
     {
         private Dictionary<ProcessContextTagDef, object> context = new Dictionary<ProcessContextTagDef, object>();
         public void PutItem(ProcessContextTagDef tag, object item)

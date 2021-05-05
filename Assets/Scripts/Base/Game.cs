@@ -13,6 +13,7 @@ namespace Base
         public GameObject LoadingCurtain;
         public MainUpdater MainUpdater => GetComponent<MainUpdater>();
         public Context Context => GetComponent<Context>();
+        public Camera Camera;
 
         private LevelDef currentLevel;
 

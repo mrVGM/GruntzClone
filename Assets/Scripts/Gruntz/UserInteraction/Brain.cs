@@ -21,8 +21,9 @@ namespace Gruntz.UserInteraction
         {
             var running = activeProcesses.Where(x => !x.IsFinished);
             var sortedProcesses = running.OrderBy(x => x.Priority).ToList();
+            activeProcesses.Clear();
 
-            foreach(var process in running)
+            foreach(var process in sortedProcesses)
             {
                 process.DoUpdate();
                 activeProcesses.Add(process);

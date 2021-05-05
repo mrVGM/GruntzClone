@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c40fecb6bf7eec8509735401518e37fb, type: 3}
-  m_Name: PuzzleLevel
+  m_Script: {fileID: 11500000, guid: ad6f78d2dd086b5b19a9c05da3cb620d, type: 3}
+  m_Name: PointedObjectsTagDef
   m_EditorClassIdentifier: 
-  SceneIds: 0200000003000000
