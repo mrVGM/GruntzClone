@@ -1,7 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Base/Game.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Gruntz/UserInteraction/Loop.cs">
     <Files>
-      <File FileName="Assets/Scripts/Base/Game.cs" Line="98" Column="74" />
+      <File FileName="Assets/Scripts/Base/Context.cs" Line="19" Column="29" />
+      <File FileName="Assets/Scripts/Gruntz/Navigation/NavigationDef.cs" Line="12" Column="2" />
+      <File FileName="Assets/Scripts/Gruntz/Navigation/Navigation.cs" Line="182" Column="10" />
+      <File FileName="Assets/Scripts/Gruntz/UserInteraction/Brain.cs" Line="34" Column="42" />
+      <File FileName="Assets/Scripts/Gruntz/UserInteraction/BrainDef.cs" Line="7" Column="30" />
+      <File FileName="Assets/Scripts/Gruntz/Navigation/NavAgentDef.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Gruntz/UserInteraction/Process.cs" Line="28" Column="23" />
+      <File FileName="Assets/Scripts/Gruntz/UserInteraction/RunParallel.cs" Line="28" Column="18" />
+      <File FileName="Assets/Scripts/Gruntz/UserInteraction/Pipe.cs" Line="8" Column="18" />
+      <File FileName="Assets/Scripts/Gruntz/UserInteraction/Loop.cs" Line="11" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,11 +19,12 @@
             <Node name="Assembly-CSharp" expanded="True">
               <Node name="Assets" expanded="True">
                 <Node name="Scripts" expanded="True">
-                  <Node name="Base" expanded="True">
-                    <Node name="Game.cs" selected="True" />
-                  </Node>
+                  <Node name="Base" expanded="True" />
                   <Node name="Gruntz" expanded="True">
                     <Node name="Navigation" expanded="True" />
+                    <Node name="UserInteraction" expanded="True">
+                      <Node name="Loop.cs" selected="True" />
+                    </Node>
                   </Node>
                 </Node>
               </Node>

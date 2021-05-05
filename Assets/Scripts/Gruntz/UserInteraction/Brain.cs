@@ -1,0 +1,47 @@
+using System.Collections.Generic;
+using System.Linq;
+using Base;
+
+namespace Gruntz.UserInteraction
+{
+    public class Brain : IOrderedUpdate, IContextObject
+    {
+        private List<Process> activeProcesses = new List<Process>();
+
+        public ExecutionOrderTagDef OrderTagDef 
+        {
+            get
+            {
+                var game = Game.Instance;
+                return game.DefRepositoryDef.AllDefs.OfType<UserInteractionExecutionOrderTagDef>().FirstOrDefault();
+            }
+        }
+
+        public void DoUpdate()
+        {
+            var running = activeProcesses.Where(x => !x.IsFinished);
+            var sortedProcesses = running.OrderBy(x => x.Priority).ToList();
+
+            foreach(var process in running)
+            {
+                process.DoUpdate();
+                activeProcesses.Add(process);
+            }
+        }
+
+        public void AddProcess(Process process)
+        {
+            activeProcesses.Add(process);
+        }
+
+        public void DisposeObject()
+        {
+            Game.Instance.MainUpdater.UnRegisterUpdatable(this);
+        }
+
+        public Brain()
+        {
+            Game.Instance.MainUpdater.RegisterUpdatable(this);
+        }
+    }
+}

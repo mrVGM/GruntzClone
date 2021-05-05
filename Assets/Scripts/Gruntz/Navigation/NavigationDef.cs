@@ -4,7 +4,7 @@ namespace Gruntz.Navigation
 {
     public class NavigationDef : Def, IRuntimeInstance
     {
-        public object CreateRuntimeInstance() 
+        public IContextObject CreateRuntimeInstance() 
         {
             return new Navigation();
         }

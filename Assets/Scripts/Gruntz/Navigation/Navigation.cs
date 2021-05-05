@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Gruntz.Navigation
 {
-    public class Navigation : IOrderedUpdate
+    public class Navigation : IOrderedUpdate, IContextObject
     {
         private struct TravelSegmentInfo : ITravelSegmentInfo
         {
@@ -176,6 +176,10 @@ namespace Gruntz.Navigation
         public void DoUpdate()
         {
             CalculateMoves();
+        }
+
+        public void DisposeObject()
+        {
         }
 
         public Navigation()

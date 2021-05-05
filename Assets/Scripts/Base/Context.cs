@@ -5,10 +5,10 @@ namespace Base
 {
     public class Context : MonoBehaviour
     {
-        private Dictionary<Def, object> runtimeIntances { get; } = new Dictionary<Def, object>();
-        public object GetRuntimeObject(Def def)
+        private Dictionary<Def, IContextObject> runtimeIntances { get; } = new Dictionary<Def, IContextObject>();
+        public IContextObject GetRuntimeObject(Def def)
         {
-            object res = null;
+            IContextObject res = null;
             if (runtimeIntances.TryGetValue(def, out res)) 
             {
                 return res;
@@ -24,6 +24,10 @@ namespace Base
         }
         public void ClearContext()
         {
+            foreach (var pair in runtimeIntances)
+            {
+                pair.Value.DisposeObject();
+            }
             runtimeIntances.Clear();
         }
     }
