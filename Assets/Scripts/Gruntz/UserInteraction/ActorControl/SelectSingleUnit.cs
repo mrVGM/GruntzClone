@@ -7,10 +7,10 @@ using Utils;
 
 namespace Gruntz.UserInteraction.ActorControl
 {
-    public class HoverPositionOnTheGround : Process
+    public class SelectSingleUnit : Process
     {
         public MessagesBoxTagDef HitResultsMessageTag;
-        public GameObject GroundSelectionMarker;
+        public GameObject UnitSelectionMarker;
 
         bool isRunning = false;
 
@@ -18,13 +18,14 @@ namespace Gruntz.UserInteraction.ActorControl
 
         public override void DoUpdate()
         {
+
             if (!isTermninated)
             {
                 isRunning = true;
             }
             else
             {
-                GroundSelectionMarker.SetActive(false);
+                UnitSelectionMarker.SetActive(false);
                 isRunning = false;
                 return;
             }
@@ -34,20 +35,16 @@ namespace Gruntz.UserInteraction.ActorControl
             var messageSystemTag = game.DefRepositoryDef.AllDefs.OfType<MessagesSystemDef>().FirstOrDefault();
             var messagesSystem = game.Context.GetRuntimeObject(messageSystemTag) as MessagesSystem;
             var hits = messagesSystem.GetMessages(HitResultsMessageTag).FirstOrDefault().Data as IEnumerable<RaycastHit>;
-            var floorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == UnityLayers.Floor);
-            if (floorHit.collider == null) 
+            var unitHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == UnityLayers.UnitSelection);
+            if (unitHit.collider == null) 
             {
-                GroundSelectionMarker.SetActive(false);
+                UnitSelectionMarker.SetActive(false);
                 return;
             }
 
-            Vector3 pos = floorHit.point;
-            Vector3 center = 0.5f * Vector3.right + 0.5f * Vector3.forward;
-            pos -= center;
-            pos.x = Mathf.Round(pos.x);
-            pos.z = Mathf.Round(pos.z);
-            pos += center;
-            GroundSelectionMarker.transform.position = pos;
+            var actor = unitHit.collider.GetComponentInParent<Actor>();
+            UnitSelectionMarker.SetActive(true);
+            UnitSelectionMarker.transform.position = actor.transform.position;
         }
     }
 }

@@ -777,3 +777,418 @@ System memory in use after: 106,1 MB.
 Unloading 40 unused Assets to reduce memory usage. Loaded Objects now: 2993.
 Total: 7,590849 ms (FindLiveObjects: 0,398960 ms CreateObjectMapping: 0,271626 ms MarkObjects: 4,569714 ms  DeleteObjects: 2,348765 ms)
 
+========================================================================
+Received Import Request.
+  Time since last request: 10906,762316 seconds.
+  path: Assets/Scripts/Gruntz/PuzzleLevel1.cs
+  artifactKey: Guid(fbb802268d786b5e1a382569c3376360) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Gruntz/PuzzleLevel1.cs using Guid(fbb802268d786b5e1a382569c3376360) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc9ad439780c61b96dec3874c374c242') in 0,005524 seconds
+  Import took 0,011241 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21,415138 seconds.
+  path: Assets/Scripts/Gruntz/Actor.cs
+  artifactKey: Guid(fbb802268d786b5e1a382569c3376360) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Gruntz/Actor.cs using Guid(fbb802268d786b5e1a382569c3376360) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c871d3dca2b70d7bd699156531d54f67') in 0,001057 seconds
+  Import took 0,007473 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001212 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0,43 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,934 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,44 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 2388 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108,0 MB.
+System memory in use after: 106,2 MB.
+
+Unloading 40 unused Assets to reduce memory usage. Loaded Objects now: 2997.
+Total: 6,465451 ms (FindLiveObjects: 0,363895 ms CreateObjectMapping: 0,139732 ms MarkObjects: 3,722963 ms  DeleteObjects: 2,237098 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 144,911752 seconds.
+  path: Assets/Scripts/Gruntz/Actor.cs
+  artifactKey: Guid(fbb802268d786b5e1a382569c3376360) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Gruntz/Actor.cs using Guid(fbb802268d786b5e1a382569c3376360) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17134bed6e8e71205b1b99e8ef9aeab9') in 0,007295 seconds
+  Import took 0,015376 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 27,750991 seconds.
+  path: Assets/Scenes/PuzzleLevel.unity
+  artifactKey: Guid(4e01298f31b23a03bbef4010f780fd99) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/PuzzleLevel.unity using Guid(4e01298f31b23a03bbef4010f780fd99) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb394aaf45e9f9a60f6584d2cebf0f4e') in 0,008075 seconds
+  Import took 0,012883 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 964,331281 seconds.
+  path: ProjectSettings/TagManager.asset
+  artifactKey: Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing ProjectSettings/TagManager.asset using Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67c98e9e549c558f0a05b862d619da18') in 0,001757 seconds
+  Import took 0,006292 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 47,596405 seconds.
+  path: Assets/Art/Actor.prefab
+  artifactKey: Guid(d61f9c19cceda511ba93bdf1dd2afd01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art/Actor.prefab using Guid(d61f9c19cceda511ba93bdf1dd2afd01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e02bc8f1212a602de976e0266a50df8b') in 0,192384 seconds
+  Import took 0,197607 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 264,773163 seconds.
+  path: Assets/Scripts/Gruntz/UserInteraction/ActorControl/HoverPositionOnTheGround.cs
+  artifactKey: Guid(80c9a5cb25949b5fa8f1668b2e48550d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Gruntz/UserInteraction/ActorControl/HoverPositionOnTheGround.cs using Guid(80c9a5cb25949b5fa8f1668b2e48550d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3835ec0374b48a2c5fb3757d5fe920a') in 0,000864 seconds
+  Import took 0,005392 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,029874 seconds.
+  path: Assets/Scripts/Gruntz/UserInteraction/ActorControl/HoverPositionOnTheGround.cs
+  artifactKey: Guid(80c9a5cb25949b5fa8f1668b2e48550d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Gruntz/UserInteraction/ActorControl/HoverPositionOnTheGround.cs using Guid(80c9a5cb25949b5fa8f1668b2e48550d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3835ec0374b48a2c5fb3757d5fe920a') in 0,000814 seconds
+  Import took 0,005422 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3,191148 seconds.
+  path: Assets/Scripts/Gruntz/UserInteraction/ActorControl/HoverPositionOnTheGround1.cs
+  artifactKey: Guid(7dd2e63a357ba0c259bc5b529f5a6c30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Gruntz/UserInteraction/ActorControl/HoverPositionOnTheGround1.cs using Guid(7dd2e63a357ba0c259bc5b529f5a6c30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f33f92eed529994451bfb1616ba6264') in 0,001699 seconds
+  Import took 0,008885 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 20,833973 seconds.
+  path: Assets/Scripts/Gruntz/UserInteraction/ActorControl/HoverUnit.cs
+  artifactKey: Guid(7dd2e63a357ba0c259bc5b529f5a6c30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Gruntz/UserInteraction/ActorControl/HoverUnit.cs using Guid(7dd2e63a357ba0c259bc5b529f5a6c30) Importer(815301076,1909f56bfc062723c751e8b465ee728b) ./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformIma -> (artifact id: '83d214614611ada600d09c72c821cf65') in 0,001010 seconds
+  Import took 0,007426 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 57,140223 seconds.
+  path: Assets/Scripts/Gruntz/UserInteraction/ActorControl/HoverUnit.cs
+  artifactKey: Guid(7dd2e63a357ba0c259bc5b529f5a6c30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Gruntz/UserInteraction/ActorControl/HoverUnit.cs using Guid(7dd2e63a357ba0c259bc5b529f5a6c30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4808811b1cf7295568803b9ae90169cd') in 0,000691 seconds
+  Import took 0,005212 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 129,858279 seconds.
+  path: Assets/Scripts/Gruntz/UserInteraction/ActorControl/HoverUnit.cs
+  artifactKey: Guid(7dd2e63a357ba0c259bc5b529f5a6c30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Gruntz/UserInteraction/ActorControl/HoverUnit.cs using Guid(7dd2e63a357ba0c259bc5b529f5a6c30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b6874cb9cdf9f7a778c5093a7171723') in 0,000864 seconds
+  Import took 0,005700 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001200 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0,54 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,960 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,54 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 2389 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108,2 MB.
+System memory in use after: 106,5 MB.
+
+Unloading 40 unused Assets to reduce memory usage. Loaded Objects now: 3039.
+Total: 5,128128 ms (FindLiveObjects: 0,309495 ms CreateObjectMapping: 0,103606 ms MarkObjects: 2,916100 ms  DeleteObjects: 1,797580 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 4215,759021 seconds.
+  path: Assets/Scenes/PuzzleLevelUI.unity
+  artifactKey: Guid(7ff893f06a3aba419a99d4e2d4354ea4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/PuzzleLevelUI.unity using Guid(7ff893f06a3aba419a99d4e2d4354ea4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5dd99eb605e921ffde6c5e81f2de5d77') in 0,011218 seconds
+  Import took 0,016146 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001275 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0,48 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,929 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,45 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 2388 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108,1 MB.
+System memory in use after: 106,3 MB.
+
+Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 3042.
+Total: 8,637163 ms (FindLiveObjects: 0,377774 ms CreateObjectMapping: 0,126512 ms MarkObjects: 5,707025 ms  DeleteObjects: 2,423547 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001158 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0,44 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,985 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,47 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 2388 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108,2 MB.
+System memory in use after: 106,4 MB.
+
+Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 3045.
+Total: 4,686707 ms (FindLiveObjects: 0,306671 ms CreateObjectMapping: 0,107055 ms MarkObjects: 2,647921 ms  DeleteObjects: 1,623539 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 464,471710 seconds.
+  path: Assets/Scenes/PuzzleLevelUI.unity
+  artifactKey: Guid(7ff893f06a3aba419a99d4e2d4354ea4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/PuzzleLevelUI.unity using Guid(7ff893f06a3aba419a99d4e2d4354ea4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbf9bdb10d6b5e74bf92a0e55e236536') in 0,011205 seconds
+  Import took 0,015992 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001203 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0,43 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1,021 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,43 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 2388 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108,2 MB.
+System memory in use after: 106,4 MB.
+
+Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 3048.
+Total: 5,225137 ms (FindLiveObjects: 0,336920 ms CreateObjectMapping: 0,117775 ms MarkObjects: 3,025927 ms  DeleteObjects: 1,742860 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001630 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0,44 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,956 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,47 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 2388 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108,2 MB.
+System memory in use after: 106,4 MB.
+
+Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 3051.
+Total: 5,138616 ms (FindLiveObjects: 0,379427 ms CreateObjectMapping: 0,124034 ms MarkObjects: 2,920034 ms  DeleteObjects: 1,712753 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001122 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0,42 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,977 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,44 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 2388 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108,2 MB.
+System memory in use after: 106,5 MB.
+
+Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 3054.
+Total: 7,974782 ms (FindLiveObjects: 0,581785 ms CreateObjectMapping: 0,252814 ms MarkObjects: 5,272935 ms  DeleteObjects: 1,864949 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 352,428999 seconds.
+  path: ProjectSettings/TagManager.asset
+  artifactKey: Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing ProjectSettings/TagManager.asset using Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b2263074cc9ddc82db8fee3fa582595') in 0,012201 seconds
+  Import took 0,016963 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,015808 seconds.
+  path: ProjectSettings/TagManager.asset
+  artifactKey: Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing ProjectSettings/TagManager.asset using Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b2263074cc9ddc82db8fee3fa582595') in 0,001182 seconds
+  Import took 0,006850 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001200 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0,42 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,957 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,46 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 2388 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108,1 MB.
+System memory in use after: 106,4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 3057.
+Total: 4,966353 ms (FindLiveObjects: 0,321423 ms CreateObjectMapping: 0,129068 ms MarkObjects: 2,849828 ms  DeleteObjects: 1,664731 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001246 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0,42 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,953 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,47 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 2388 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108,2 MB.
+System memory in use after: 106,5 MB.
+
+Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 3060.
+Total: 4,816475 ms (FindLiveObjects: 0,343515 ms CreateObjectMapping: 0,123860 ms MarkObjects: 2,671876 ms  DeleteObjects: 1,675735 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001858 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0,43 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,943 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,43 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 2389 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108,2 MB.
+System memory in use after: 106,5 MB.
+
+Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 3064.
+Total: 4,946201 ms (FindLiveObjects: 0,320042 ms CreateObjectMapping: 0,104229 ms MarkObjects: 2,757838 ms  DeleteObjects: 1,762454 ms)
+
