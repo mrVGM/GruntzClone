@@ -11,7 +11,7 @@ namespace Gruntz.UserInteraction
         private bool terminated = false;
         private bool finished = false;
 
-        private ProcessContext context;
+        protected ProcessContext context { get; private set; }
         private IEnumerator<object> crt;
         void IProcess.StartProcess(ProcessContext processContext)
         {

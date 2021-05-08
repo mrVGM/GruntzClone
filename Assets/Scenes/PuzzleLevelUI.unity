@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd2e63a357ba0c259bc5b529f5a6c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Priority: 0
+  m_Priority: 1
   HitResultsMessageTag: {fileID: 11400000, guid: d41060e2515a58b87afb171318b9611a, type: 2}
   UnitSelectionMarker: {fileID: 1783528498}
 --- !u!1 &895992406
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7f20eb92895b38da054ef23b53560b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Priority: 0
+  m_Priority: 2
 --- !u!4 &895992408
 Transform:
   m_ObjectHideFlags: 0
@@ -404,6 +404,7 @@ Transform:
   m_Children:
   - {fileID: 1529791679}
   - {fileID: 856715142}
+  - {fileID: 2043748573}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -656,3 +657,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2043748572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2043748573}
+  - component: {fileID: 2043748574}
+  m_Layer: 0
+  m_Name: SelectSingleUnit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2043748573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043748572}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 895992408}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2043748574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043748572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9492f05c282413b45970844f89df92e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Priority: 1
+  HitResultsMessageTag: {fileID: 11400000, guid: d41060e2515a58b87afb171318b9611a, type: 2}
+  SelectedActorsTag: {fileID: 11400000, guid: a9b2daba292157448bcd837138c348cc, type: 2}
