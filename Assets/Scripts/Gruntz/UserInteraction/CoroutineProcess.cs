@@ -40,6 +40,19 @@ namespace Gruntz.UserInteraction
 
         bool IProcess.IsFinished => finished;
 
+        public ProcessIDTagDef ID
+        {
+            get
+            {
+                var taggedObject = GetComponent<TaggedObject>();
+                if (taggedObject == null)
+                {
+                    return null;
+                }
+                return taggedObject.Tag as ProcessIDTagDef;
+            }
+        }
+
         protected abstract IEnumerator<object> Crt();
         protected abstract IEnumerator<object> FinishCrt();
 

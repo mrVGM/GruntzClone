@@ -31,6 +31,19 @@ namespace Gruntz.UserInteraction
 
         public int Priority => m_Priority;
 
+        public ProcessIDTagDef ID
+        {
+            get
+            {
+                var taggedObject = GetComponent<TaggedObject>();
+                if (taggedObject == null)
+                {
+                    return null;
+                }
+                return taggedObject.Tag as ProcessIDTagDef;
+            }
+        }
+
         public void DoUpdate()
         {
             if (GetChildProcess(curProcess).IsFinished)

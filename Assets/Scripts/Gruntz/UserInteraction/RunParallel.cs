@@ -8,6 +8,7 @@ namespace Gruntz.UserInteraction
     public class RunParallel : MonoBehaviour, IProcess
     {
         public int m_Priority;
+        public ProcessIDTagDef[] WatchForTermination;
         IEnumerable<IProcess> childProcesses
         {
             get
@@ -23,8 +24,27 @@ namespace Gruntz.UserInteraction
 
         public int Priority => m_Priority;
 
+        public ProcessIDTagDef ID
+        {
+            get
+            {
+                var taggedObject = GetComponent<TaggedObject>();
+                if (taggedObject == null)
+                {
+                    return null;
+                }
+                return taggedObject.Tag as ProcessIDTagDef;
+            }
+        }
+
         public void DoUpdate()
         {
+            var finishedProcesses = childProcesses.Where(x => x.IsFinished);
+            var finishedProcessesIDs = finishedProcesses.Select(x => x.ID).Where(x => x != null);
+            if (WatchForTermination.Intersect(finishedProcessesIDs).Any())
+            {
+                TerminateProcess();
+            }
         }
 
         public void StartProcess(ProcessContext processContext)
@@ -33,6 +53,11 @@ namespace Gruntz.UserInteraction
             {
                 process.StartProcess(processContext);
             }
+
+            var game = Game.Instance;
+            var brainDef = game.DefRepositoryDef.AllDefs.OfType<BrainDef>().FirstOrDefault();
+            var brain = game.Context.GetRuntimeObject(brainDef) as Brain;
+            brain.AddProcess(this);
         }
 
         public void TerminateProcess()
