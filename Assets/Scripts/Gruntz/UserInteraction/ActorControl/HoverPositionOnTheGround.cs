@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Base;
-using Base.MessagesSystem;
 using UnityEngine;
 using Utils;
 
@@ -9,21 +7,16 @@ namespace Gruntz.UserInteraction.ActorControl
 {
     public class HoverPositionOnTheGround : CoroutineProcess
     {
-        public MessagesBoxTagDef HitResultsMessageTag;
+        public ProcessContextTagDef HitResultsTag;
         public GameObject GroundSelectionMarker;
 
         protected override IEnumerator<object> Crt()
         {
             GroundSelectionMarker.SetActive(true);
 
-            var game = Game.Instance;
-
-            var messageSystemTag = game.DefRepositoryDef.AllDefs.OfType<MessagesSystemDef>().FirstOrDefault();
-            var messagesSystem = game.Context.GetRuntimeObject(messageSystemTag) as MessagesSystem;
-
             while (true)
             {
-                var hits = messagesSystem.GetMessages(HitResultsMessageTag).FirstOrDefault().Data as IEnumerable<RaycastHit>;
+                var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
                 var floorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == UnityLayers.Floor);
 
                 if (floorHit.collider == null)

@@ -60,5 +60,13 @@ namespace Base.MessagesSystem
             }
             return list;
         }
+
+        public static MessagesSystem GetMessagesSystemFromContext()
+        {
+            var game = Game.Instance;
+            var messagesSystemDef = game.DefRepositoryDef.AllDefs.OfType<MessagesSystemDef>().FirstOrDefault();
+            var messagesSystem = game.Context.GetRuntimeObject(messagesSystemDef) as MessagesSystem;
+            return messagesSystem;
+        }
     }
 }

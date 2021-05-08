@@ -9,12 +9,26 @@ namespace Gruntz.UserInteraction.ActorControl
 {
     public class HoverUnit : CoroutineProcess
     {
-        public MessagesBoxTagDef HitResultsMessageTag;
+        public ProcessContextTagDef HitResultsTag;
         public GameObject UnitSelectionMarker;
+        public ProcessContextTagDef DoingSelectionTagDef;
 
         public void DoUpdate(MessagesSystem messagesSystem)
         {
-            var hits = messagesSystem.GetMessages(HitResultsMessageTag).FirstOrDefault().Data as IEnumerable<RaycastHit>;
+            bool doingSelection = false;
+            object contextItem = context.GetItem(DoingSelectionTagDef);
+            if (contextItem != null)
+            {
+                doingSelection = (bool) contextItem;
+            }
+
+            if (doingSelection)
+            {
+                UnitSelectionMarker.SetActive(false);
+                return;
+            }
+
+            var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
             var unitHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == UnityLayers.UnitSelection);
             if (unitHit.collider == null)
             {

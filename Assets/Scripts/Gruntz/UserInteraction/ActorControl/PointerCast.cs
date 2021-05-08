@@ -8,11 +8,11 @@ namespace Gruntz.UserInteraction.ActorControl
 {
     public class PointerCast : CoroutineProcess
     {
-        public MessagesBoxTagDef HitResultsMessageTag;
+        public ProcessContextTagDef HitResultsTag;
 
         private RaycastHit[] hits = new RaycastHit[100];
 
-        public void DoUpdate(MessagesSystem messagesSystem)
+        private void UpdateHits()
         {
             var cam = Game.Instance.Camera;
             var cursorRay = cam.ScreenPointToRay(Input.mousePosition);
@@ -20,18 +20,14 @@ namespace Gruntz.UserInteraction.ActorControl
             int numOfHits = Physics.RaycastNonAlloc(cursorRay, hits);
             var realHits = hits.Take(numOfHits);
 
-            messagesSystem.SendMessage(HitResultsMessageTag, this, realHits);
+            context.PutItem(HitResultsTag, realHits);
         }
 
         protected override IEnumerator<object> Crt()
         {
-            var game = Game.Instance;
-            var messageSystemTag = game.DefRepositoryDef.AllDefs.OfType<MessagesSystemDef>().FirstOrDefault();
-            var messagesSystem = game.Context.GetRuntimeObject(messageSystemTag) as MessagesSystem;
-
             while (true)
             {
-                DoUpdate(messagesSystem);
+                UpdateHits();
                 yield return null;
             }
         }
