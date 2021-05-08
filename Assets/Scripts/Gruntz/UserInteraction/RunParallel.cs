@@ -1,44 +1,45 @@
+using Base;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Gruntz.UserInteraction
 {
-    public class RunParallel : Process
+    public class RunParallel : MonoBehaviour, IProcess
     {
-        public Process[] TerminateOn;
-
-        IEnumerable<Process> childProcesses
+        public int m_Priority;
+        IEnumerable<IProcess> childProcesses
         {
             get
             {
                 for (int i = 0; i < transform.childCount; ++i)
                 {
-                    yield return transform.GetChild(i).GetComponent<Process>();
+                    yield return transform.GetChild(i).GetComponent<IProcess>();
                 }
             }
         }
 
-        public override bool IsFinished => childProcesses.All(x => x.IsFinished);
+        public bool IsFinished => childProcesses.All(x => x.IsFinished);
 
-        public override void DoUpdate()
+        public int Priority => m_Priority;
+
+        public void DoUpdate()
         {
-            if (justScheduled)
+        }
+
+        public void StartProcess(ProcessContext processContext)
+        {
+            foreach (var process in childProcesses)
             {
-                foreach (var process in childProcesses)
-                {
-                    process.StartProcess(context);
-                }
+                process.StartProcess(processContext);
             }
-            if (TerminateOn.Any(x => x.IsFinished))
+        }
+
+        public void TerminateProcess()
+        {
+            foreach (var process in childProcesses)
             {
-                TerminateProcess();
-            }
-            if (isTermninated)
-            {
-                foreach (var process in childProcesses)
-                {
-                    process.TerminateProcess();
-                }
+                process.TerminateProcess();
             }
         }
     }

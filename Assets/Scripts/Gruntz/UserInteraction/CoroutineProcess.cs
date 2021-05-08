@@ -1,0 +1,63 @@
+using Base;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+namespace Gruntz.UserInteraction
+{
+    public abstract class CoroutineProcess : MonoBehaviour, IProcess
+    {
+        public int m_Priority;
+        private bool terminated = false;
+        private bool finished = false;
+
+        private ProcessContext context;
+        private IEnumerator<object> crt;
+        void IProcess.StartProcess(ProcessContext processContext)
+        {
+            finished = false;
+            terminated = false;
+            context = processContext;
+            crt = CombinedCrt();
+
+            var game = Game.Instance;
+            var brainDef = game.DefRepositoryDef.AllDefs.OfType<BrainDef>().FirstOrDefault();
+            var brain = game.Context.GetRuntimeObject(brainDef) as Brain;
+            brain.AddProcess(this);
+        }
+
+        void IProcess.TerminateProcess()
+        {
+            terminated = true;
+        }
+
+        void IProcess.DoUpdate()
+        {
+            crt.MoveNext();
+        }
+
+        int IProcess.Priority => m_Priority;
+
+        bool IProcess.IsFinished => finished;
+
+        protected abstract IEnumerator<object> Crt();
+        protected abstract IEnumerator<object> FinishCrt();
+
+        private IEnumerator<object> CombinedCrt()
+        {
+            var crt = Crt();
+
+            while (!terminated && crt.MoveNext())
+            {
+                yield return null;
+            }
+
+            var finishCrt = FinishCrt();
+            while (finishCrt.MoveNext())
+            {
+                yield return null;
+            }
+            finished = true;
+        }
+    }
+}

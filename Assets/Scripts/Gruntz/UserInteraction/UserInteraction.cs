@@ -4,11 +4,12 @@ namespace Gruntz.UserInteraction
 {
     public class UserInteraction : MonoBehaviour
     {
-        public Process InitialProcess;
+        public GameObject InitialProcessGO;
         public void Init()
         {
             var context = new ProcessContext();
-            InitialProcess.StartProcess(context);
+            var initialProcess = InitialProcessGO.GetComponent<IProcess>();
+            initialProcess.StartProcess(context);
         }
     }
 }

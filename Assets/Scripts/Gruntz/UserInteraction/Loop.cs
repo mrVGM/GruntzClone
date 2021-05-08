@@ -1,34 +1,54 @@
+using Base;
+using System.Linq;
+using UnityEngine;
+
 namespace Gruntz.UserInteraction
 {
-    public class Loop : Process
+    public class Loop : MonoBehaviour, IProcess
     {
-        private Process childProcess => transform.GetChild(0).GetComponent<Process>();
+        public int m_Priority;
+        private ProcessContext context;
+        private bool terminated = false;
 
-        public override bool IsFinished 
+        private IProcess childProcess => transform.GetChild(0).GetComponent<IProcess>();
+
+        public bool IsFinished
         {
             get 
             {
-                if (!isTermninated) { return false; }
+                if (!terminated)
+                {
+                    return false;
+                }
                 return childProcess.IsFinished;
             }
         }
 
-        public override void DoUpdate()
+        public int Priority => m_Priority;
+
+        public void DoUpdate()
         {
-            if (justScheduled)
-            {
-                Init();
-                return;
-            }
-            if (!isTermninated && childProcess.IsFinished) 
+            if (!terminated && childProcess.IsFinished) 
             {
                 childProcess.StartProcess(context);
             }
         }
 
-        private void Init()
+        public void StartProcess(ProcessContext processContext)
         {
+            terminated = false;
+            context = processContext;
             childProcess.StartProcess(context);
+
+            var game = Game.Instance;
+            var brainDef = game.DefRepositoryDef.AllDefs.OfType<BrainDef>().FirstOrDefault();
+            var brain = game.Context.GetRuntimeObject(brainDef) as Brain;
+            brain.AddProcess(this);
+        }
+
+        public void TerminateProcess()
+        {
+            terminated = true;
         }
     }
 }

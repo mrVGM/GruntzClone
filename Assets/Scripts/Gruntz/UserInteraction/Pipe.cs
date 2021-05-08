@@ -1,20 +1,27 @@
+using Base;
+using System.Linq;
+using UnityEngine;
+
 namespace Gruntz.UserInteraction
 {
-    public class Pipe : Process
+    public class Pipe : MonoBehaviour, IProcess
     {
+        public int m_Priority;
+        private ProcessContext context;
         int childProcessesCount => transform.childCount;
-        Process GetChildProcess(int index)
+        IProcess GetChildProcess(int index)
         {
-            return transform.GetChild(index).GetComponent<Process>();
+            return transform.GetChild(index).GetComponent<IProcess>();
         }
 
         int curProcess = 0;
+        bool terminated = false;
 
-        public override bool IsFinished 
+        public bool IsFinished
         {
             get 
             {
-                if (isTermninated)
+                if (terminated)
                 {
                     return GetChildProcess(curProcess).IsFinished;
                 }
@@ -22,13 +29,10 @@ namespace Gruntz.UserInteraction
             }
         }
 
-        public override void DoUpdate()
-        {
-            if (justScheduled)
-            {
-                Init();
-            }
+        public int Priority => m_Priority;
 
+        public void DoUpdate()
+        {
             if (GetChildProcess(curProcess).IsFinished)
             {
                 if (curProcess < childProcessesCount - 1)
@@ -39,10 +43,24 @@ namespace Gruntz.UserInteraction
             }
         }
 
-        private void Init()
+        public void StartProcess(ProcessContext processContext)
         {
             curProcess = 0;
-            GetChildProcess(curProcess).StartProcess(context);
+            terminated = false;
+            context = processContext;
+            var initialProcess = GetChildProcess(curProcess);
+            initialProcess.StartProcess(context);
+
+            var game = Game.Instance;
+            var brainDef = game.DefRepositoryDef.AllDefs.OfType<BrainDef>().FirstOrDefault();
+            var brain = game.Context.GetRuntimeObject(brainDef) as Brain;
+            brain.AddProcess(this);
+        }
+
+        public void TerminateProcess()
+        {
+            var cur = GetChildProcess(curProcess);
+            cur.TerminateProcess();
         }
     }
 }

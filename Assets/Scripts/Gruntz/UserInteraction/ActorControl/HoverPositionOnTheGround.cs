@@ -7,47 +7,48 @@ using Utils;
 
 namespace Gruntz.UserInteraction.ActorControl
 {
-    public class HoverPositionOnTheGround : Process
+    public class HoverPositionOnTheGround : CoroutineProcess
     {
         public MessagesBoxTagDef HitResultsMessageTag;
         public GameObject GroundSelectionMarker;
 
-        bool isRunning = false;
-
-        public override bool IsFinished => isTermninated && !isRunning;
-
-        public override void DoUpdate()
+        protected override IEnumerator<object> Crt()
         {
-            if (!isTermninated)
-            {
-                isRunning = true;
-            }
-            else
-            {
-                GroundSelectionMarker.SetActive(false);
-                isRunning = false;
-                return;
-            }
+            GroundSelectionMarker.SetActive(true);
 
             var game = Game.Instance;
 
             var messageSystemTag = game.DefRepositoryDef.AllDefs.OfType<MessagesSystemDef>().FirstOrDefault();
             var messagesSystem = game.Context.GetRuntimeObject(messageSystemTag) as MessagesSystem;
-            var hits = messagesSystem.GetMessages(HitResultsMessageTag).FirstOrDefault().Data as IEnumerable<RaycastHit>;
-            var floorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == UnityLayers.Floor);
-            if (floorHit.collider == null) 
-            {
-                GroundSelectionMarker.SetActive(false);
-                return;
-            }
 
-            Vector3 pos = floorHit.point;
-            Vector3 center = 0.5f * Vector3.right + 0.5f * Vector3.forward;
-            pos -= center;
-            pos.x = Mathf.Round(pos.x);
-            pos.z = Mathf.Round(pos.z);
-            pos += center;
-            GroundSelectionMarker.transform.position = pos;
+            while (true)
+            {
+                var hits = messagesSystem.GetMessages(HitResultsMessageTag).FirstOrDefault().Data as IEnumerable<RaycastHit>;
+                var floorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == UnityLayers.Floor);
+
+                if (floorHit.collider == null)
+                {
+                    GroundSelectionMarker.SetActive(false);
+                    yield return null;
+                    continue;
+                }
+
+                Vector3 pos = floorHit.point;
+                Vector3 center = 0.5f * Vector3.right + 0.5f * Vector3.forward;
+                pos -= center;
+                pos.x = Mathf.Round(pos.x);
+                pos.z = Mathf.Round(pos.z);
+                pos += center;
+                GroundSelectionMarker.transform.position = pos;
+
+                yield return null;
+            }
+        }
+
+        protected override IEnumerator<object> FinishCrt()
+        {
+            GroundSelectionMarker.SetActive(false);
+            yield break;
         }
     }
 }

@@ -7,35 +7,16 @@ using Utils;
 
 namespace Gruntz.UserInteraction.ActorControl
 {
-    public class HoverUnit : Process
+    public class HoverUnit : CoroutineProcess
     {
         public MessagesBoxTagDef HitResultsMessageTag;
         public GameObject UnitSelectionMarker;
 
-        bool isRunning = false;
-
-        public override bool IsFinished => isTermninated && !isRunning;
-
-        public override void DoUpdate()
+        public void DoUpdate(MessagesSystem messagesSystem)
         {
-            if (!isTermninated)
-            {
-                isRunning = true;
-            }
-            else
-            {
-                UnitSelectionMarker.SetActive(false);
-                isRunning = false;
-                return;
-            }
-
-            var game = Game.Instance;
-
-            var messageSystemTag = game.DefRepositoryDef.AllDefs.OfType<MessagesSystemDef>().FirstOrDefault();
-            var messagesSystem = game.Context.GetRuntimeObject(messageSystemTag) as MessagesSystem;
             var hits = messagesSystem.GetMessages(HitResultsMessageTag).FirstOrDefault().Data as IEnumerable<RaycastHit>;
             var unitHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == UnityLayers.UnitSelection);
-            if (unitHit.collider == null) 
+            if (unitHit.collider == null)
             {
                 UnitSelectionMarker.SetActive(false);
                 return;
@@ -44,6 +25,25 @@ namespace Gruntz.UserInteraction.ActorControl
             var actor = unitHit.collider.GetComponentInParent<Actor>();
             UnitSelectionMarker.SetActive(true);
             UnitSelectionMarker.transform.position = actor.transform.position;
+        }
+
+        protected override IEnumerator<object> Crt()
+        {
+            var game = Game.Instance;
+            var messageSystemTag = game.DefRepositoryDef.AllDefs.OfType<MessagesSystemDef>().FirstOrDefault();
+            var messagesSystem = game.Context.GetRuntimeObject(messageSystemTag) as MessagesSystem;
+
+            while (true)
+            {
+                DoUpdate(messagesSystem);
+                yield return null;
+            }
+        }
+
+        protected override IEnumerator<object> FinishCrt()
+        {
+            UnitSelectionMarker.SetActive(false);
+            yield break;
         }
     }
 }

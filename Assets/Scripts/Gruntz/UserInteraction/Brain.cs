@@ -6,7 +6,7 @@ namespace Gruntz.UserInteraction
 {
     public class Brain : IOrderedUpdate, IContextObject
     {
-        private List<Process> activeProcesses = new List<Process>();
+        private List<IProcess> activeProcesses = new List<IProcess>();
 
         public ExecutionOrderTagDef OrderTagDef 
         {
@@ -30,7 +30,7 @@ namespace Gruntz.UserInteraction
             }
         }
 
-        public void AddProcess(Process process)
+        public void AddProcess(IProcess process)
         {
             activeProcesses.Add(process);
         }
