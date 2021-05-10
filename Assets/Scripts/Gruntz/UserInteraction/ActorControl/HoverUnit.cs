@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Base;
-using Base.MessagesSystem;
+using Gruntz.Actors;
 using UnityEngine;
 using Utils;
 
@@ -10,11 +9,13 @@ namespace Gruntz.UserInteraction.ActorControl
     public class HoverUnit : CoroutineProcess
     {
         public ProcessContextTagDef HitResultsTag;
+        public ProcessContextTagDef SelectedActorsTag;
         public GameObject UnitSelectionMarker;
         public ProcessContextTagDef DoingSelectionTagDef;
 
-        public void DoUpdate(MessagesSystem messagesSystem)
+        public void UpdateMarkers()
         {
+            UnitSelectionMarker.transform.position = 1000 * Vector3.down;
             bool doingSelection = false;
             object contextItem = context.GetItem(DoingSelectionTagDef);
             if (contextItem != null)
@@ -24,7 +25,6 @@ namespace Gruntz.UserInteraction.ActorControl
 
             if (doingSelection)
             {
-                UnitSelectionMarker.SetActive(false);
                 return;
             }
 
@@ -32,31 +32,31 @@ namespace Gruntz.UserInteraction.ActorControl
             var unitHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == UnityLayers.UnitSelection);
             if (unitHit.collider == null)
             {
-                UnitSelectionMarker.SetActive(false);
                 return;
             }
 
             var actor = unitHit.collider.GetComponentInParent<Actor>();
-            UnitSelectionMarker.SetActive(true);
+
+            var selectedActors = context.GetItem(SelectedActorsTag) as IEnumerable<Actor>;
+            if (selectedActors != null && selectedActors.Contains(actor))
+            {
+                return;
+            }
             UnitSelectionMarker.transform.position = actor.transform.position;
         }
 
         protected override IEnumerator<object> Crt()
         {
-            var game = Game.Instance;
-            var messageSystemTag = game.DefRepositoryDef.AllDefs.OfType<MessagesSystemDef>().FirstOrDefault();
-            var messagesSystem = game.Context.GetRuntimeObject(messageSystemTag) as MessagesSystem;
-
             while (true)
             {
-                DoUpdate(messagesSystem);
+                UpdateMarkers();
                 yield return null;
             }
         }
 
         protected override IEnumerator<object> FinishCrt()
         {
-            UnitSelectionMarker.SetActive(false);
+            UnitSelectionMarker.transform.position = 1000 * Vector3.down;
             yield break;
         }
     }

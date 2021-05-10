@@ -1,3 +1,5 @@
+using Base;
+using Gruntz.Actors;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,7 +10,62 @@ namespace Gruntz.UserInteraction.ActorControl
     public class HoverPositionOnTheGround : CoroutineProcess
     {
         public ProcessContextTagDef HitResultsTag;
+        public ProcessContextTagDef SelectedActorsTag;
+        public ProcessContextTagDef DoingSelectionTag;
         public GameObject GroundSelectionMarker;
+
+        void UpdateMarker()
+        {
+            GroundSelectionMarker.transform.position = 1000 * Vector3.down;
+
+            var obj = context.GetItem(DoingSelectionTag);
+            bool isDoingSelection = false;
+            if (obj != null)
+            {
+                isDoingSelection = (bool)obj;
+            }
+
+            if (isDoingSelection)
+            {
+                return;
+            }
+
+            var selectedActors = context.GetItem(SelectedActorsTag) as IEnumerable<Actor>;
+            if (selectedActors == null || !selectedActors.Any())
+            {
+                return;
+            }
+            var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
+            if (hits.Count() > 1)
+            {
+                return;
+            }
+            var floorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == UnityLayers.Floor);
+
+            if (floorHit.collider == null)
+            {
+                return;
+            }
+
+            Vector3 pos = floorHit.point;
+            Vector3 center = 0.5f * Vector3.right + 0.5f * Vector3.forward;
+            pos -= center;
+            pos.x = Mathf.Round(pos.x);
+            pos.z = Mathf.Round(pos.z);
+            pos += center;
+
+            var game = Game.Instance;
+            var actorManagerDef = game.DefRepositoryDef.AllDefs.OfType<ActorManagerDef>().FirstOrDefault();
+            var actorManager = game.Context.GetRuntimeObject(actorManagerDef) as ActorManager;
+
+            var actors = actorManager.Actors;
+            if (actors.Any(x => (x.transform.position - pos).sqrMagnitude <= 0.25f))
+            {
+                return;
+            }
+
+            GroundSelectionMarker.transform.position = pos;
+        }
 
         protected override IEnumerator<object> Crt()
         {
@@ -16,31 +73,14 @@ namespace Gruntz.UserInteraction.ActorControl
 
             while (true)
             {
-                var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
-                var floorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == UnityLayers.Floor);
-
-                if (floorHit.collider == null)
-                {
-                    GroundSelectionMarker.SetActive(false);
-                    yield return null;
-                    continue;
-                }
-
-                Vector3 pos = floorHit.point;
-                Vector3 center = 0.5f * Vector3.right + 0.5f * Vector3.forward;
-                pos -= center;
-                pos.x = Mathf.Round(pos.x);
-                pos.z = Mathf.Round(pos.z);
-                pos += center;
-                GroundSelectionMarker.transform.position = pos;
-
+                UpdateMarker();
                 yield return null;
             }
         }
 
         protected override IEnumerator<object> FinishCrt()
         {
-            GroundSelectionMarker.SetActive(false);
+            GroundSelectionMarker.transform.position = 1000 * Vector3.down;
             yield break;
         }
     }

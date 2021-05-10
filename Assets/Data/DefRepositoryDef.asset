@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DefRepositoryDef
   m_EditorClassIdentifier: 
   AllDefs:
+  - {fileID: 11400000, guid: bcab043b40d47034796725a58ee9b2cb, type: 2}
   - {fileID: 11400000, guid: 76b95885b7733280db57d6de83429eb9, type: 2}
   - {fileID: 11400000}
   - {fileID: 11400000, guid: 99b5293dfe9c079a8ba23415b96bc9de, type: 2}
@@ -25,7 +26,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 07a5939de009cb492ae5eb1c606c08ab, type: 2}
   - {fileID: 11400000, guid: af78689ae52d998718ffa42f01f9a1b7, type: 2}
   - {fileID: 11400000, guid: 0367c2086414e92a8b980df5610cfb89, type: 2}
+  - {fileID: 11400000, guid: 2345e1da218ac4c4f8843a775122f559, type: 2}
   - {fileID: 11400000, guid: d41060e2515a58b87afb171318b9611a, type: 2}
   - {fileID: 11400000, guid: a9b2daba292157448bcd837138c348cc, type: 2}
   - {fileID: 11400000, guid: a52f73849b0e4a640882dd06675fa46a, type: 2}
+  - {fileID: 11400000, guid: ab27e18835707934a9e0fd0da084b14c, type: 2}
   - {fileID: 11400000, guid: 10c8bc65ce9f6a63695a044f6e35163a, type: 2}
+  - {fileID: 11400000, guid: f6db9d06083b4c140aa3da8373935fef, type: 2}
