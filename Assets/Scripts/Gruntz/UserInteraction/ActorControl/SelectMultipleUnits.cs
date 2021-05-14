@@ -66,9 +66,14 @@ namespace Gruntz.UserInteraction.ActorControl
                 return actors;
             }
 
-            var game = Game.Instance;
+            var initialPositionObject = context.GetItem(InitialPositionTagDef);
+            if (initialPositionObject == null)
+            {
+                yield break;
+            }
 
-            Vector3 firstPoint = (Vector3) context.GetItem(InitialPositionTagDef);
+            var game = Game.Instance;
+            Vector3 firstPoint = (Vector3) initialPositionObject;
             Vector3 secondPoint = getFloorPoint();
 
             while (Input.GetAxis("Select") > 0)

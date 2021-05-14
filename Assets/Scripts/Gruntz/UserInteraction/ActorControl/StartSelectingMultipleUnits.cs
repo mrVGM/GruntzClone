@@ -20,6 +20,8 @@ namespace Gruntz.UserInteraction.ActorControl
 
         protected override IEnumerator<object> Crt()
         {
+            context.PutItem(SelectionInitialPositionTag, null);
+
             Vector3 getFloorPoint()
             {
                 var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
@@ -61,6 +63,7 @@ namespace Gruntz.UserInteraction.ActorControl
 
             while (true)
             {
+                context.PutItem(SelectionInitialPositionTag, null);
                 var detect = detectCrt();
                 detect.MoveNext();
                 while (detect.Current == State.Undetermined)
