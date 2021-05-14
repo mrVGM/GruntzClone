@@ -1,5 +1,4 @@
 using Base;
-using Base.MessagesSystem;
 using Gruntz.Actors;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +11,7 @@ namespace Gruntz.UserInteraction.ActorControl
     {
         public ProcessContextTagDef HitResultsTag;
         public ProcessContextTagDef SelectedActorsTag;
-        public ProcessContextTagDef DoingSelectionTag;
+        public ProcessContextTagDef InitialPositionTagDef;
 
         public RectTransform SelectionRectangle;
         public Transform UnitSelectionMarkersContainer;
@@ -47,7 +46,6 @@ namespace Gruntz.UserInteraction.ActorControl
         {
             Vector3 getFloorPoint()
             {
-                var mesasgesSystem = MessagesSystem.GetMessagesSystemFromContext();
                 var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
                 var floorHit = hits.First(x => x.collider.gameObject.layer == UnityLayers.Floor);
                 Vector3 floorPoint = floorHit.point;
@@ -68,18 +66,10 @@ namespace Gruntz.UserInteraction.ActorControl
                 return actors;
             }
 
-            
-
             var game = Game.Instance;
-            while (Input.GetAxis("Select") <= 0) 
-            {
-                yield return null;
-            }
 
-            context.PutItem(DoingSelectionTag, true);
-
-            Vector3 firstPoint = getFloorPoint();
-            Vector3 secondPoint = firstPoint;
+            Vector3 firstPoint = (Vector3) context.GetItem(InitialPositionTagDef);
+            Vector3 secondPoint = getFloorPoint();
 
             while (Input.GetAxis("Select") > 0)
             {
@@ -132,7 +122,6 @@ namespace Gruntz.UserInteraction.ActorControl
         {
             SelectionRectangle.gameObject.SetActive(false);
             DisableSelectionMarkers();
-            context.PutItem(DoingSelectionTag, false);
             yield break;
         }
     }

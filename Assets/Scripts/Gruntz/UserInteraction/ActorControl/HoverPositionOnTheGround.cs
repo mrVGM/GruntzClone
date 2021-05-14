@@ -11,24 +11,11 @@ namespace Gruntz.UserInteraction.ActorControl
     {
         public ProcessContextTagDef HitResultsTag;
         public ProcessContextTagDef SelectedActorsTag;
-        public ProcessContextTagDef DoingSelectionTag;
         public GameObject GroundSelectionMarker;
 
         void UpdateMarker()
         {
             GroundSelectionMarker.transform.position = 1000 * Vector3.down;
-
-            var obj = context.GetItem(DoingSelectionTag);
-            bool isDoingSelection = false;
-            if (obj != null)
-            {
-                isDoingSelection = (bool)obj;
-            }
-
-            if (isDoingSelection)
-            {
-                return;
-            }
 
             var selectedActors = context.GetItem(SelectedActorsTag) as IEnumerable<Actor>;
             if (selectedActors == null || !selectedActors.Any())

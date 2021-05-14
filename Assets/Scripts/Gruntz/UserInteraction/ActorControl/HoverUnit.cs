@@ -11,22 +11,10 @@ namespace Gruntz.UserInteraction.ActorControl
         public ProcessContextTagDef HitResultsTag;
         public ProcessContextTagDef SelectedActorsTag;
         public GameObject UnitSelectionMarker;
-        public ProcessContextTagDef DoingSelectionTagDef;
 
         public void UpdateMarkers()
         {
             UnitSelectionMarker.transform.position = 1000 * Vector3.down;
-            bool doingSelection = false;
-            object contextItem = context.GetItem(DoingSelectionTagDef);
-            if (contextItem != null)
-            {
-                doingSelection = (bool) contextItem;
-            }
-
-            if (doingSelection)
-            {
-                return;
-            }
 
             var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
             var unitHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == UnityLayers.UnitSelection);

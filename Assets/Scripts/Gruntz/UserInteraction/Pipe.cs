@@ -25,7 +25,10 @@ namespace Gruntz.UserInteraction
                 {
                     return GetChildProcess(curProcess).IsFinished;
                 }
-                return GetChildProcess(childProcessesCount - 1).IsFinished;
+                if (curProcess != childProcessesCount - 1) {
+                    return false;
+                }
+                return GetChildProcess(curProcess).IsFinished;
             }
         }
 

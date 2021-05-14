@@ -39,7 +39,12 @@ namespace Gruntz.UserInteraction
         }
         public void DoUpdate()
         {
-            if (!terminated && childProcess.IsFinished) 
+            if (terminated)
+            {
+                childProcess.TerminateProcess();
+                return;
+            }
+            if (childProcess.IsFinished) 
             {
                 childProcess.StartProcess(context);
             }

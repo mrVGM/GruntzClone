@@ -26,7 +26,10 @@ namespace Gruntz.UserInteraction
             foreach(var process in sortedProcesses)
             {
                 process.DoUpdate();
-                activeProcesses.Add(process);
+                if (!process.IsFinished)
+                {
+                    activeProcesses.Add(process);
+                }
             }
         }
 

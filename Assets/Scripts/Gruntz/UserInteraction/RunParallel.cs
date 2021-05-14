@@ -39,6 +39,7 @@ namespace Gruntz.UserInteraction
 
         public void DoUpdate()
         {
+            string name = gameObject.name;
             var finishedProcesses = childProcesses.Where(x => x.IsFinished);
             var finishedProcessesIDs = finishedProcesses.Select(x => x.ID).Where(x => x != null);
             if (WatchForTermination.Intersect(finishedProcessesIDs).Any())

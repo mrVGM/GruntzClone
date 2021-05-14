@@ -7,7 +7,6 @@ namespace Gruntz.UserInteraction.ActorControl
     public class HighlightSelectedUnits : CoroutineProcess
     {
         public ProcessContextTagDef SelectedActorsTag;
-        public ProcessContextTagDef DoingSelectionTag;
         public Transform UnitSelectionMarkersContainer;
 
         GameObject GetSelectionMarker()
@@ -40,18 +39,6 @@ namespace Gruntz.UserInteraction.ActorControl
             DisableMarkers();
             var selected = context.GetItem(SelectedActorsTag) as IEnumerable<Actor>;
             if (selected == null)
-            {
-                return;
-            }
-
-            bool isDoingSelection = false;
-            var obj = context.GetItem(DoingSelectionTag);
-            if (obj != null)
-            {
-                isDoingSelection = (bool)obj;
-            }
-
-            if (isDoingSelection)
             {
                 return;
             }
