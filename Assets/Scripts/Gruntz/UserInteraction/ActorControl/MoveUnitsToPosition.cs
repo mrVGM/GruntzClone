@@ -1,5 +1,7 @@
 using Base;
+using Base.MessagesSystem;
 using Gruntz.Actors;
+using Gruntz.UserInteraction.UnitController;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -12,6 +14,7 @@ namespace Gruntz.UserInteraction.ActorControl
     {
         public ProcessContextTagDef HitResultsTag;
         public ProcessContextTagDef SelectedActorsTag;
+        public MessagesBoxTagDef MessagesBoxTag;
 
         public GameObject Marker;
 
@@ -47,6 +50,18 @@ namespace Gruntz.UserInteraction.ActorControl
 
             var marker = Instantiate(Marker);
             marker.transform.position = pos;
+
+            var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
+            var moveToPositionIntruction = new MoveToPosition { Position = pos };
+            foreach (var actor in selected)
+            {
+                messagesSystem.SendMessage(MessagesBoxTag, this, new UnitControllerInstruction
+                {
+                    Unit = actor,
+                    Executable = moveToPositionIntruction,
+                });
+            }
+
             while (Input.GetAxis("Move") > 0)
             {
                 yield return null;

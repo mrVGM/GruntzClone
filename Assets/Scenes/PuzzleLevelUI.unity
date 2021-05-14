@@ -2096,6 +2096,7 @@ MonoBehaviour:
   m_Priority: 1
   HitResultsTag: {fileID: 11400000, guid: d41060e2515a58b87afb171318b9611a, type: 2}
   SelectedActorsTag: {fileID: 11400000, guid: a9b2daba292157448bcd837138c348cc, type: 2}
+  MessagesBoxTag: {fileID: 11400000, guid: 2345e1da218ac4c4f8843a775122f559, type: 2}
   Marker: {fileID: 2521633320105053716, guid: a91fa0f1f40bf9440b7a1e2e2f812dbf, type: 3}
 --- !u!1 &2019475266
 GameObject:

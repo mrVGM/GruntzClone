@@ -14,6 +14,10 @@ namespace Gruntz.Actors
         }
         public void DisposeObject()
         {
+            foreach (var actor in actors)
+            {
+                actor.Deinit();
+            }
         }
     }
 }

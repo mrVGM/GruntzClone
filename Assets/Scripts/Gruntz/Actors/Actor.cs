@@ -32,6 +32,8 @@ namespace Gruntz.Actors
         }
         public void Deinit()
         {
+            var game = Game.Instance;
+            game.MainUpdater.UnRegisterUpdatable(NavAgent);
         }
     }
 }
