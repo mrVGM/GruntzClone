@@ -22,7 +22,10 @@ namespace Gruntz.UserInteraction.ActorControl
                 {
                     return null;
                 }
-                return actorHit.collider.GetComponentInParent<Actor>();
+                var actorComponent = actorHit.collider.GetComponentInParent<ActorComponent>();
+                var actorManager = ActorManager.GetActorManagerFromContext();
+                var actor = actorManager.Actors.FirstOrDefault(x => x.ActorComponent == actorComponent);
+                return actor;
             }
 
             var game = Game.Instance;

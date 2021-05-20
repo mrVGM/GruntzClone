@@ -23,14 +23,16 @@ namespace Gruntz.UserInteraction.ActorControl
                 return;
             }
 
-            var actor = unitHit.collider.GetComponentInParent<Actor>();
+            var actorComponent = unitHit.collider.GetComponentInParent<ActorComponent>();
+            var actorManager = ActorManager.GetActorManagerFromContext();
+            var actor = actorManager.Actors.FirstOrDefault(x => x.ActorComponent == actorComponent);
 
             var selectedActors = context.GetItem(SelectedActorsTag) as IEnumerable<Actor>;
             if (selectedActors != null && selectedActors.Contains(actor))
             {
                 return;
             }
-            UnitSelectionMarker.transform.position = actor.transform.position;
+            UnitSelectionMarker.transform.position = actor.Pos;
         }
 
         protected override IEnumerator<object> Crt()

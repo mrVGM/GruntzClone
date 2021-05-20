@@ -46,7 +46,7 @@ namespace Gruntz.UserInteraction.ActorControl
             foreach (var actor in selected)
             {
                 var go = GetSelectionMarker();
-                go.transform.position = actor.transform.position;
+                go.transform.position = actor.Pos;
             }
         }
 

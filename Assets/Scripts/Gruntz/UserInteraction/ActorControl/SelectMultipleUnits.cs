@@ -62,7 +62,9 @@ namespace Gruntz.UserInteraction.ActorControl
                 var hits = Physics.OverlapBox(0.5f * (point1 + point2), 0.5f * size)
                     .Where(x => x.gameObject.layer == UnityLayers.UnitSelection);
 
-                var actors = hits.Select(x => x.GetComponentInParent<Actor>()).ToList();
+                var actorComponents = hits.Select(x => x.GetComponentInParent<ActorComponent>()).ToList();
+                var actorManager = ActorManager.GetActorManagerFromContext();
+                var actors = actorManager.Actors.Where(x => actorComponents.Contains(x.ActorComponent));
                 return actors;
             }
 
@@ -113,7 +115,7 @@ namespace Gruntz.UserInteraction.ActorControl
                 foreach (var actor in actorsInSelection)
                 {
                     var marker = GetSelectionMarker();
-                    marker.transform.position = actor.transform.position;
+                    marker.transform.position = actor.Pos;
                 }
 
                 yield return null;

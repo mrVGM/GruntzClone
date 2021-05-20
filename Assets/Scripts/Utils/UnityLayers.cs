@@ -6,5 +6,6 @@ namespace Utils
     {
         public static int Floor = LayerMask.NameToLayer("Floor");
         public static int UnitSelection = LayerMask.NameToLayer("UnitSelection");
+        public static int UnitObstacle = LayerMask.NameToLayer("UnitObstacle");
     }
 }

@@ -1,5 +1,6 @@
 using Base;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Gruntz.Actors
 {
@@ -10,7 +11,6 @@ namespace Gruntz.Actors
         public void AddActor(Actor actor)
         {
             actors.Add(actor);
-            actor.Init();
         }
         public void DisposeObject()
         {
@@ -18,6 +18,14 @@ namespace Gruntz.Actors
             {
                 actor.Deinit();
             }
+        }
+
+        public static ActorManager GetActorManagerFromContext()
+        {
+            var game = Game.Instance;
+            var actorManagerDef = game.DefRepositoryDef.AllDefs.OfType<ActorManagerDef>().First();
+            var actorManager = game.Context.GetRuntimeObject(actorManagerDef) as ActorManager;
+            return actorManager;
         }
     }
 }

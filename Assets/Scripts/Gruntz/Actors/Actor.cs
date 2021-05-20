@@ -5,35 +5,43 @@ using UnityEngine;
 
 namespace Gruntz.Actors
 {
-    public class Actor : MonoBehaviour
+    public class Actor
     {
-        public UnitControllerDef UnitControllerDef;
+        ActorData _actorData;
         private UnitController unitController;
+        public ActorComponent ActorComponent { get; private set; }
         public UnitController UnitController
         {
             get
             {
                 if (unitController == null)
                 {
-                    unitController = new UnitController(this, UnitControllerDef);
+                    unitController = new UnitController(this, _actorData.UnitControllerDef);
                     var game = Game.Instance;
                     game.MainUpdater.RegisterUpdatable(unitController);
                 }
                 return unitController;
             }
         }
-        public NavAgent NavAgent => GetComponent<NavAgent>();
-        
-        public void Init()
+
+        public Vector3 Pos => ActorComponent.GetComponent<NavAgent>().ActorVisuals.position;
+
+        public Actor(ActorComponent actorComponent, ActorData actorData)
         {
+            _actorData = actorData;
+            ActorComponent = actorComponent;
+            ActorComponent.ActorData = _actorData;
             var game = Game.Instance;
-            game.MainUpdater.RegisterUpdatable(NavAgent);
+
+            var navAgent = ActorComponent.GetComponent<NavAgent>();
+            game.MainUpdater.RegisterUpdatable(navAgent);
             var controller = UnitController;
         }
         public void Deinit()
         {
             var game = Game.Instance;
-            game.MainUpdater.UnRegisterUpdatable(NavAgent);
+            var navAgent = ActorComponent.GetComponent<NavAgent>();
+            game.MainUpdater.UnRegisterUpdatable(navAgent);
         }
     }
 }

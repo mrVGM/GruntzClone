@@ -1,4 +1,5 @@
 using Gruntz.Actors;
+using Gruntz.Navigation;
 using UnityEngine;
 
 namespace Gruntz.UserInteraction.UnitController
@@ -8,7 +9,7 @@ namespace Gruntz.UserInteraction.UnitController
         public Vector3 Position;
         void IUnitExecutable.Execute(Actor actor)
         {
-            actor.NavAgent.Target = Position;
+            actor.ActorComponent.GetComponent<NavAgent>().Target = Position;
         }
     }
 }

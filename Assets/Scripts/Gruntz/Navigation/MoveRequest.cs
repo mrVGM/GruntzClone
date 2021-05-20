@@ -6,7 +6,6 @@ namespace Gruntz.Navigation
     public struct MoveRequest
     {
         public Vector3 CurrentPos;
-        public Vector3 CurrentDirection;
         public Vector3 TargetPos;
         public float MoveSpeed;
         public ITravelSegmentInfo TravelSegmentInfo;

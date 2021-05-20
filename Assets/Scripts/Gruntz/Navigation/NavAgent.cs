@@ -6,11 +6,41 @@ namespace Gruntz.Navigation
 {
     public class NavAgent : MonoBehaviour, IOrderedUpdate
     {
+        private class TravelSegmentInfo : ITravelSegmentInfo
+        {
+            public NavAgent _navAgent;
+            public TravelSegmentInfo(NavAgent navAgent)
+            {
+                _navAgent = navAgent;
+            }
+
+            public Vector3 EndPos => _navAgent.NavObstacle.transform.position;
+
+            public Vector3 StartPos => _navAgent.LocalTravelStartPoint.position;
+        }
+
         public Vector3 Target;
-        public ITravelSegmentInfo TravelSegmentInfo;
+
+        public Collider NavObstacle;
+        public Transform LocalTravelStartPoint;
+
+        public Transform ActorVisuals;
 
         public NavAgentDef NavAgentDef;
         private NavAgentDef.NavAgentStats navStats = null;
+
+        private TravelSegmentInfo _travelSegmentInfo;
+        private TravelSegmentInfo travelSegmentInfo
+        {
+            get
+            {
+                if (_travelSegmentInfo == null)
+                {
+                    _travelSegmentInfo = new TravelSegmentInfo(this);
+                }
+                return _travelSegmentInfo;
+            }
+        }
 
         public NavAgentDef.NavAgentStats NavStats => navStats ?? NavAgentDef.NavStats;
 
@@ -33,11 +63,10 @@ namespace Gruntz.Navigation
 
             var request = new MoveRequest
             {
-                CurrentPos = transform.position,
-                CurrentDirection = transform.rotation * Vector3.forward,
+                CurrentPos = ActorVisuals.position,
                 TargetPos = Target,
                 MoveSpeed = NavStats.Speed,
-                TravelSegmentInfo = TravelSegmentInfo,
+                TravelSegmentInfo = new TravelSegmentInfo(this),
                 MoveResultCallback = Move
             };
 
@@ -46,17 +75,21 @@ namespace Gruntz.Navigation
 
         public void Init()
         {
+            NavObstacle.transform.position = ActorVisuals.position;
+            LocalTravelStartPoint.position = ActorVisuals.position;
             var game = Game.Instance;
             game.MainUpdater.RegisterUpdatable(this);
         }
 
         private void Move(MoveRequestResult moveRequestResult) 
         {
-            transform.position = moveRequestResult.PositionToMove;
-            TravelSegmentInfo = moveRequestResult.TravelSegmentInfo;
-            if (moveRequestResult.Direction.sqrMagnitude > Navigation.Eps)
+            ActorVisuals.position = moveRequestResult.PositionToMove;
+            NavObstacle.transform.position = moveRequestResult.TravelSegmentInfo.EndPos;
+            LocalTravelStartPoint.position = moveRequestResult.TravelSegmentInfo.StartPos;
+
+            if (!Navigation.AreVectorsTheSame(moveRequestResult.Direction, Vector3.zero))
             {
-                transform.rotation = Quaternion.LookRotation(moveRequestResult.Direction);
+                ActorVisuals.rotation = Quaternion.LookRotation(moveRequestResult.Direction);
             }
         }
     }
