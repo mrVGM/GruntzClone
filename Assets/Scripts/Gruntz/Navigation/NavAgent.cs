@@ -1,10 +1,11 @@
 using System.Linq;
 using Base;
+using Gruntz.Actors;
 using UnityEngine;
 
 namespace Gruntz.Navigation
 {
-    public class NavAgent : MonoBehaviour, IOrderedUpdate
+    public class NavAgent : IActorComponent, IOrderedUpdate
     {
         private class TravelSegmentInfo : ITravelSegmentInfo
         {
@@ -14,20 +15,13 @@ namespace Gruntz.Navigation
                 _navAgent = navAgent;
             }
 
-            public Vector3 EndPos => _navAgent.NavObstacle.transform.position;
+            public Vector3 EndPos => _navAgent._navAgentBehaviour.NavObstacle.transform.position;
 
-            public Vector3 StartPos => _navAgent.LocalTravelStartPoint.position;
+            public Vector3 StartPos => _navAgent._navAgentBehaviour.LocalTravelStartPoint.position;
         }
 
-        public Vector3 Target;
-
-        public Collider NavObstacle;
-        public Transform LocalTravelStartPoint;
-
-        public Transform ActorVisuals;
-
-        public NavAgentDef NavAgentDef;
-        private NavAgentDef.NavAgentStats navStats = null;
+        private NavAgentData _navAgentData;
+        private NavAgentBehaviour _navAgentBehaviour;
 
         private TravelSegmentInfo _travelSegmentInfo;
         private TravelSegmentInfo travelSegmentInfo
@@ -42,8 +36,6 @@ namespace Gruntz.Navigation
             }
         }
 
-        public NavAgentDef.NavAgentStats NavStats => navStats ?? NavAgentDef.NavStats;
-
         public ExecutionOrderTagDef OrderTagDef 
         {
             get
@@ -54,6 +46,20 @@ namespace Gruntz.Navigation
             }
         }
 
+        public Vector3 Pos => _navAgentBehaviour.ActorVisuals.position;
+        public Vector3 Target
+        {
+            set
+            {
+                _navAgentData.Target = value;
+            }
+        }
+
+        public NavAgent(NavAgentData navAgentData, NavAgentBehaviour navAgentBehaviour)
+        {
+            _navAgentData = navAgentData;
+            _navAgentBehaviour = navAgentBehaviour;
+        }
         public void DoUpdate()
         {
             var game = Game.Instance;
@@ -63,9 +69,9 @@ namespace Gruntz.Navigation
 
             var request = new MoveRequest
             {
-                CurrentPos = ActorVisuals.position,
-                TargetPos = Target,
-                MoveSpeed = NavStats.Speed,
+                CurrentPos = _navAgentBehaviour.ActorVisuals.position,
+                TargetPos = _navAgentData.Target,
+                MoveSpeed = _navAgentData.Speed,
                 TravelSegmentInfo = new TravelSegmentInfo(this),
                 MoveResultCallback = Move
             };
@@ -75,22 +81,28 @@ namespace Gruntz.Navigation
 
         public void Init()
         {
-            NavObstacle.transform.position = ActorVisuals.position;
-            LocalTravelStartPoint.position = ActorVisuals.position;
+            _navAgentBehaviour.NavObstacle.transform.position = _navAgentBehaviour.ActorVisuals.position;
+            _navAgentBehaviour.LocalTravelStartPoint.position = _navAgentBehaviour.ActorVisuals.position;
             var game = Game.Instance;
             game.MainUpdater.RegisterUpdatable(this);
         }
 
         private void Move(MoveRequestResult moveRequestResult) 
         {
-            ActorVisuals.position = moveRequestResult.PositionToMove;
-            NavObstacle.transform.position = moveRequestResult.TravelSegmentInfo.EndPos;
-            LocalTravelStartPoint.position = moveRequestResult.TravelSegmentInfo.StartPos;
+            _navAgentBehaviour.ActorVisuals.position = moveRequestResult.PositionToMove;
+            _navAgentBehaviour.NavObstacle.transform.position = moveRequestResult.TravelSegmentInfo.EndPos;
+            _navAgentBehaviour.LocalTravelStartPoint.position = moveRequestResult.TravelSegmentInfo.StartPos;
 
             if (!Navigation.AreVectorsTheSame(moveRequestResult.Direction, Vector3.zero))
             {
-                ActorVisuals.rotation = Quaternion.LookRotation(moveRequestResult.Direction);
+                _navAgentBehaviour.ActorVisuals.rotation = Quaternion.LookRotation(moveRequestResult.Direction);
             }
+        }
+
+        public void DeInit()
+        {
+            var game = Game.Instance;
+            game.MainUpdater.UnRegisterUpdatable(this);
         }
     }
 }

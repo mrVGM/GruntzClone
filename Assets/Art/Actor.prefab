@@ -288,6 +288,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActorData:
     UnitControllerDef: {fileID: 11400000, guid: f6db9d06083b4c140aa3da8373935fef, type: 2}
+    ActorComponents:
+    - {fileID: 11400000, guid: d28ca2df11065d948b285a5c6e7d6305, type: 2}
+    - {fileID: 11400000, guid: f6db9d06083b4c140aa3da8373935fef, type: 2}
 --- !u!114 &7142232958175899915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,14 +300,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1208721304552655344}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32554b02863f9b5c1a9499ed9bacf588, type: 3}
+  m_Script: {fileID: 11500000, guid: 9796dfef9d8e7b343bfa92771534eb5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {x: 0.5, y: 0, z: 0.5}
   NavObstacle: {fileID: 4490628991298603342}
   LocalTravelStartPoint: {fileID: 5170859279962618179}
   ActorVisuals: {fileID: 1208721304764976329}
-  NavAgentDef: {fileID: 11400000, guid: cd28e15b7960d5dc7a4fd3d0cfaa7f67, type: 2}
 --- !u!1 &1208721304764976334
 GameObject:
   m_ObjectHideFlags: 0

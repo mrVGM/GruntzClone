@@ -7,5 +7,6 @@ namespace Gruntz.Actors
     public class ActorData
     {
         public UnitControllerDef UnitControllerDef;
+        public ActorComponentDef[] ActorComponents;
     }
 }

@@ -9,7 +9,7 @@ namespace Gruntz.UserInteraction.UnitController
         public Vector3 Position;
         void IUnitExecutable.Execute(Actor actor)
         {
-            actor.ActorComponent.GetComponent<NavAgent>().Target = Position;
+            actor.GetComponent<NavAgent>().Target = Position;
         }
     }
 }

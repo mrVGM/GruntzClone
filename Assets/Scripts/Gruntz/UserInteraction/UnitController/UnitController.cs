@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Gruntz.UserInteraction.UnitController
 {
-    public class UnitController : IOrderedUpdate
+    public class UnitController : IOrderedUpdate, IActorComponent
     {
         private MessagesBoxTagDef MessagesBox { get; }
         public Actor Unit { get; }
@@ -21,6 +21,18 @@ namespace Gruntz.UserInteraction.UnitController
             {
                 instruction.Executable.Execute(Unit);
             }
+        }
+
+        public void Init()
+        {
+            var game = Game.Instance;
+            game.MainUpdater.RegisterUpdatable(this);
+        }
+
+        public void DeInit()
+        {
+            var game = Game.Instance;
+            game.MainUpdater.UnRegisterUpdatable(this);
         }
 
         public UnitController(Actor unit, UnitControllerDef unitControllerDef)
