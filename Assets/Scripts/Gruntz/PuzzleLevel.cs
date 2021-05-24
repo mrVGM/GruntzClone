@@ -10,11 +10,10 @@ namespace Gruntz
         public Transform ActorContainer;
         public void LevelLoaded()
         {
-            var actorComponents = ActorContainer.GetComponentsInChildren<ActorComponent>();
-            foreach (var actorComponent in actorComponents)
+            var actorDeployPoints = ActorContainer.GetComponentsInChildren<ActorDeployPoint>();
+            foreach (var deployPoint in actorDeployPoints)
             {
-                var actor = new Actor(actorComponent, actorComponent.ActorData);
-                actor.Init();
+                ActorDeployment.DeployActor(deployPoint.ActorData, deployPoint.transform.position);
             }
         }
     }

@@ -1,11 +1,20 @@
-using Gruntz.UserInteraction.UnitController;
 using System;
+using Base;
+using UnityEngine;
 
 namespace Gruntz.Actors
 {
     [Serializable]
     public class ActorData
     {
-        public ActorComponentDef[] ActorComponents;
+        [Serializable]
+        public class Components
+        {
+            public ActorComponentDef Component;
+            public ISerializedObjectData Data;
+        }
+
+        public ActorComponent ActorPrefab;
+        public Components[] ActorComponents;
     }
 }

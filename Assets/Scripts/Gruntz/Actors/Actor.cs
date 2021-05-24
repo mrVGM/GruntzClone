@@ -27,14 +27,20 @@ namespace Gruntz.Actors
             var actorManager = game.Context.GetRuntimeObject(actorManagerDef) as ActorManager;
             actorManager.AddActor(this);
 
-            foreach (var componentDef in _actorData.ActorComponents)
-            {
-                _components.Add(componentDef.CreateActorComponent(this));
-            }
+            var addedComponents = _actorData.ActorComponents.Select(x => {
+                var comp = x.Component.CreateActorComponent(this);
+                _components.Add(comp);
+                return new KeyValuePair<IActorComponent, ISerializedObjectData>(comp, x.Data);
+            }).ToList();
 
-            foreach (var component in _components)
+            foreach (var component in addedComponents)
             {
-                component.Init();
+                component.Key.Init();
+                var serializedObject = component.Key as ISerializedObject;
+                if (serializedObject != null && component.Value != null)
+                {
+                    serializedObject.Data = component.Value;
+                }
             }
         }
 

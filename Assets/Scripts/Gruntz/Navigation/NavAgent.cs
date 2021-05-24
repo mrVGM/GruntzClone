@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Gruntz.Navigation
 {
-    public class NavAgent : IActorComponent, IOrderedUpdate
+    public class NavAgent : IActorComponent, IOrderedUpdate, ISerializedObject
     {
         private class TravelSegmentInfo : ITravelSegmentInfo
         {
@@ -55,10 +55,23 @@ namespace Gruntz.Navigation
             }
         }
 
+        public ISerializedObjectData Data
+        {
+            get
+            {
+                return _navAgentData;
+            }
+            set
+            {
+                _navAgentData = value as NavAgentData;
+                SetObstacle();
+            }
+        }
+
         public NavAgent(NavAgentData navAgentData, NavAgentBehaviour navAgentBehaviour)
         {
-            _navAgentData = navAgentData;
             _navAgentBehaviour = navAgentBehaviour;
+            _navAgentData = navAgentData;
         }
         public void DoUpdate()
         {
@@ -81,10 +94,16 @@ namespace Gruntz.Navigation
 
         public void Init()
         {
-            _navAgentBehaviour.NavObstacle.transform.position = _navAgentBehaviour.ActorVisuals.position;
-            _navAgentBehaviour.LocalTravelStartPoint.position = _navAgentBehaviour.ActorVisuals.position;
+            SetObstacle();
             var game = Game.Instance;
             game.MainUpdater.RegisterUpdatable(this);
+        }
+
+        private void SetObstacle()
+        {
+            _navAgentBehaviour.ActorVisuals.position = _navAgentData.InitialPosition;
+            _navAgentBehaviour.NavObstacle.transform.position = _navAgentBehaviour.ActorVisuals.position;
+            _navAgentBehaviour.LocalTravelStartPoint.position = _navAgentBehaviour.ActorVisuals.position;
         }
 
         private void Move(MoveRequestResult moveRequestResult) 
