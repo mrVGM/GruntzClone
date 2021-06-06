@@ -9,7 +9,7 @@ namespace Base
         [Serializable]
         public class SerializedContextObject
         {
-            public IRuntimeInstance Def;
+            public Def Def;
             public ISerializedObjectData ContextObjectData;
         }
         public LevelDef Level;

@@ -1,3 +1,4 @@
+using Base;
 using Gruntz.Actors;
 using Gruntz.Navigation;
 using System.Collections.Generic;
@@ -13,6 +14,19 @@ namespace Gruntz
         public Transform ActorDeployPoints;
         public void LevelLoaded()
         {
+            var savedGameHolder = SavedGameHolder.GetSavedGameHolderFromGame();
+            if (savedGameHolder.SavedGame != null)
+            {
+                var game = Game.Instance;
+                foreach (var pair in savedGameHolder.SavedGame.SerializedContextObjects)
+                {
+                    var contextObject = game.Context.GetRuntimeObject(pair.Def);
+                    var serializedObject = contextObject as ISerializedObject;
+                    serializedObject.Data = pair.ContextObjectData;
+                }
+                return;
+            }
+
             var actorDeployPoints = ActorDeployPoints.GetComponentsInChildren<ActorDeployPoint>();
             var deployDatas = new List<ActorData>();
 

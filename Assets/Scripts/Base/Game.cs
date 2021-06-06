@@ -12,16 +12,17 @@ namespace Base
         public DefRepositoryDef DefRepositoryDef;
         public GameObject LoadingCurtain;
         public MainUpdater MainUpdater => GetComponent<MainUpdater>();
+        public SavesManager SavesManager => GetComponent<SavesManager>();
         public Context Context => GetComponent<Context>();
         public Camera Camera;
 
-        private LevelDef currentLevel;
+        public LevelDef currentLevel { get; private set; }
 
         void Awake()
         {
             Instance = this;
             var initialLevel = DefRepositoryDef.AllDefs.OfType<InitialLevelDef>().FirstOrDefault();
-            LoadLevel(initialLevel);
+            LoadLevel(initialLevel, () => { });
         }
 
         private void LoadLevelScenes(LevelDef levelDef, Action<IEnumerable<Scene>> levelLoaded)
@@ -69,6 +70,7 @@ namespace Base
                     return;
                 }
 
+
                 void sceneUnloaded(Scene scene)
                 {
                     --index;
@@ -76,24 +78,30 @@ namespace Base
                     SceneManager.sceneUnloaded -= sceneUnloaded;
                 }
                 SceneManager.sceneUnloaded += sceneUnloaded;
-                SceneManager.UnloadSceneAsync(currentLevel.SceneIds[index]);
+
+                int sceneID = currentLevel.SceneIds[index];
+                SceneManager.UnloadSceneAsync(sceneID);
             }
 
             unloadSingleScene();
         }
 
-        public void LoadLevel(LevelDef levelDef)
+        public void LoadLevel(LevelDef levelDef, Action levelLoaded)
         {
             LoadingCurtain.SetActive(true);
+            Context.ClearContext();
             UnloadLevelScenes(() => {
-
                 IEnumerator<object> loadCrt()
                 {
                     yield return new WaitForSeconds(0);
                     LoadLevelScenes(levelDef, (loadedScenes) =>
                     {
+                        SceneManager.SetActiveScene(loadedScenes.First());
                         LoadingCurtain.SetActive(false);
                         Context.ClearContext();
+
+                        levelLoaded();
+
                         foreach (var scene in loadedScenes)
                         {
                             var rootObjects = scene.GetRootGameObjects();

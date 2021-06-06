@@ -2,7 +2,7 @@ using System;
 
 namespace Base
 {
-    public class SavedGameHolderDef : IRuntimeInstance
+    public class SavedGameHolderDef : Def, IRuntimeInstance
     {
         public IContextObject CreateRuntimeInstance()
         {

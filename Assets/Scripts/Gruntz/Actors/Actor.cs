@@ -9,7 +9,7 @@ namespace Gruntz.Actors
     public class Actor : ISerializedObject
     {
         ActorData _actorData;
-        List<IActorComponent> _components { get; } = new List<IActorComponent>();
+        Dictionary<ActorComponentDef, IActorComponent> _components { get; } = new Dictionary<ActorComponentDef, IActorComponent>();
         public ActorComponent ActorComponent { get; private set; }
         
         public Vector3 Pos => GetComponent<NavAgent>().Pos;
@@ -18,6 +18,15 @@ namespace Gruntz.Actors
         {
             get
             {
+                foreach (var component in _actorData.ActorComponents)
+                {
+                    var comp = GetComponent(component.Component);
+                    var serializedObject = comp as ISerializedObject;
+                    if (serializedObject != null)
+                    {
+                        component.Data = serializedObject.Data;
+                    }
+                }
                 return _actorData;
             }
             set
@@ -41,7 +50,7 @@ namespace Gruntz.Actors
 
             var addedComponents = _actorData.ActorComponents.Select(x => {
                 var comp = x.Component.CreateActorComponent(this);
-                _components.Add(comp);
+                _components[x.Component] = comp;
                 return new KeyValuePair<IActorComponent, ISerializedObjectData>(comp, x.Data);
             }).ToList();
 
@@ -60,13 +69,18 @@ namespace Gruntz.Actors
         {
             foreach (var component in _components)
             {
-                component.DeInit();
+                component.Value.DeInit();
             }
         }
 
         public T GetComponent<T>() where T : IActorComponent
         {
-            return _components.OfType<T>().FirstOrDefault();
+            return _components.Values.OfType<T>().FirstOrDefault();
+        }
+
+        public IActorComponent GetComponent(ActorComponentDef actorComponentDef)
+        {
+            return _components[actorComponentDef];
         }
     }
 }

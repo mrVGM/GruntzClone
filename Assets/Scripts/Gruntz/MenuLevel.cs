@@ -9,7 +9,7 @@ namespace Gruntz
         public void LoadPuzzleLevel()
         {
             var game = Game.Instance;
-            game.LoadLevel(PuzzleLevelDef);
+            game.LoadLevel(PuzzleLevelDef, () => { });
         }
     }
 }

@@ -59,6 +59,7 @@ namespace Gruntz.Navigation
         {
             get
             {
+                _navAgentData.InitialPosition = Pos;
                 return _navAgentData;
             }
             set

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace Base
 {
@@ -7,6 +8,13 @@ namespace Base
         public SavedGame SavedGame;
         public void DisposeObject()
         {
+        }
+
+        public static SavedGameHolder GetSavedGameHolderFromGame()
+        {
+            var game = Game.Instance;
+            var savedGameHolderDef = game.DefRepositoryDef.AllDefs.OfType<SavedGameHolderDef>().First();
+            return game.Context.GetRuntimeObject(savedGameHolderDef) as SavedGameHolder;
         }
     }
 }

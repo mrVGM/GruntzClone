@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Base.SavedGame;
 
 namespace Base
 {
@@ -29,6 +30,19 @@ namespace Base
                 pair.Value.DisposeObject();
             }
             runtimeIntances.Clear();
+        }
+
+        public IEnumerable<SerializedContextObject> GetSerializedContextObjects()
+        {
+            foreach (var pair in runtimeIntances)
+            {
+                var serializedObject = pair.Value as ISerializedObject;
+
+                if (serializedObject != null)
+                {
+                    yield return new SerializedContextObject { Def = pair.Key, ContextObjectData = serializedObject.Data };
+                }
+            }
         }
     }
 }
