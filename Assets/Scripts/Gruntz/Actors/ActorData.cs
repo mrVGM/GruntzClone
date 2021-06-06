@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Gruntz.Actors
 {
     [Serializable]
-    public class ActorData
+    public class ActorData : ISerializedObjectData
     {
         [Serializable]
         public class Components

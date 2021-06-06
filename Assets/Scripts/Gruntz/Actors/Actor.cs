@@ -6,13 +6,25 @@ using UnityEngine;
 
 namespace Gruntz.Actors
 {
-    public class Actor
+    public class Actor : ISerializedObject
     {
         ActorData _actorData;
         List<IActorComponent> _components { get; } = new List<IActorComponent>();
         public ActorComponent ActorComponent { get; private set; }
         
         public Vector3 Pos => GetComponent<NavAgent>().Pos;
+
+        public ISerializedObjectData Data
+        {
+            get
+            {
+                return _actorData;
+            }
+            set
+            {
+                _actorData = value as ActorData;
+            }
+        }
 
         public Actor(ActorComponent actorComponent, ActorData actorData)
         {
