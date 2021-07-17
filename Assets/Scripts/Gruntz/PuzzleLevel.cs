@@ -32,7 +32,11 @@ namespace Gruntz
 
             foreach (var deployPoint in actorDeployPoints)
             {
-                var actorData = deployPoint.ActorData;
+                var actorData = new ActorData {
+                    ActorDef = deployPoint.ActorDeployDef.ActorDef.ToDefRef<ActorDef>(),
+                    ActorComponents = deployPoint.ActorDeployDef.ActorComponents
+                    .Select(x => new ActorData.Components { _component = x.ToDefRef<ActorComponentDef>() }).ToArray()
+                };
                 var navComponent = actorData.ActorComponents.First(x => x.Component is NavAgentComponentDef);
                 var navComponentDef = navComponent.Component as NavAgentComponentDef;
                 NavAgentData navData = null;

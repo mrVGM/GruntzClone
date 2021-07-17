@@ -10,7 +10,7 @@ namespace Base
             var allDefPaths = AssetDatabase.FindAssets("t:Def").Select(x => AssetDatabase.GUIDToAssetPath(x));
             var allDefs = allDefPaths.Select(x => AssetDatabase.LoadAssetAtPath<Def>(x));
             var defRepo = allDefs.OfType<DefRepositoryDef>().FirstOrDefault();
-            defRepo.AllDefs = allDefs.ToArray();
+            defRepo.UpdateDefs(allDefs);
             EditorUtility.SetDirty(defRepo);
             return paths;
         }

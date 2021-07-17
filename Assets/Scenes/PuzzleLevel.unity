@@ -303,11 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fb7c03e14ea4c6a8bb506fbdc39085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActorData:
-    ActorPrefab: {fileID: 4948506617712170278, guid: d61f9c19cceda511ba93bdf1dd2afd01, type: 3}
-    ActorComponents:
-    - Component: {fileID: 11400000, guid: d28ca2df11065d948b285a5c6e7d6305, type: 2}
-    - Component: {fileID: 11400000, guid: f6db9d06083b4c140aa3da8373935fef, type: 2}
+  ActorDeployDef: {fileID: 11400000, guid: 9d25624a41989714fbd9b849668dc3d6, type: 2}
 --- !u!1 &1589893789
 GameObject:
   m_ObjectHideFlags: 0

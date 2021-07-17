@@ -9,10 +9,10 @@ namespace Base
         [Serializable]
         public class SerializedContextObject
         {
-            public Def Def;
+            public DefRef<Def> Def;
             public ISerializedObjectData ContextObjectData;
         }
-        public LevelDef Level;
+        public DefRef<LevelDef> Level;
         public List<SerializedContextObject> SerializedContextObjects;
     }
 }

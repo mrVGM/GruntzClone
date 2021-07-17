@@ -45,7 +45,7 @@ namespace Gruntz.Actors
         {
             var game = Game.Instance;
             var actorManagerDef = game.DefRepositoryDef.AllDefs.OfType<ActorManagerDef>().FirstOrDefault();
-            var actorManager = game.Context.GetRuntimeObject(actorManagerDef) as ActorManager;
+            var actorManager = (ActorManager)game.Context.GetRuntimeObject(actorManagerDef);
             actorManager.AddActor(this);
 
             var addedComponents = _actorData.ActorComponents.Select(x => {

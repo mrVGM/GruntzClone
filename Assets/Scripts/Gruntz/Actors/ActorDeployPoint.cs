@@ -4,6 +4,6 @@ namespace Gruntz.Actors
 {
     public class ActorDeployPoint : MonoBehaviour
     {
-        public ActorData ActorData;
+        public ActorDeployDef ActorDeployDef;
     }
 }

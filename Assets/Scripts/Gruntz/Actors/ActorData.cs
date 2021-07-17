@@ -1,6 +1,5 @@
 using System;
 using Base;
-using UnityEngine;
 
 namespace Gruntz.Actors
 {
@@ -10,11 +9,13 @@ namespace Gruntz.Actors
         [Serializable]
         public class Components
         {
-            public ActorComponentDef Component;
+            public DefRef<ActorComponentDef> _component;
+            public ActorComponentDef Component => _component;
             public ISerializedObjectData Data;
         }
 
-        public ActorComponent ActorPrefab;
+        public ActorComponent ActorPrefab => ((ActorDef)ActorDef).ActorPrefab;
+        public DefRef<ActorDef> ActorDef;
         public Components[] ActorComponents;
     }
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 namespace Base
@@ -11,7 +13,7 @@ namespace Base
         public class Save
         {
             public string SaveName;
-            public SavedGame SavedGame;
+            public byte[] SavedGame;
         }
 
         public List<Save> saves = new List<Save>();
@@ -22,24 +24,35 @@ namespace Base
             var game = Game.Instance;
             var savedGame = new SavedGame
             {
-                Level = game.currentLevel,
+                Level = game.currentLevel.ToDefRef<LevelDef>(),
                 SerializedContextObjects = game.Context.GetSerializedContextObjects().ToList(),
             };
-            var save = new Save
-            {
-                SaveName = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"),
-                SavedGame = savedGame
-            };
-            saves.Add(save);
+
+            var binaryFormatter = new BinaryFormatter();
+            using (var memSteam = new MemoryStream()) {
+                binaryFormatter.Serialize(memSteam, savedGame);
+                var save = new Save
+                {
+                    SaveName = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"),
+                    SavedGame = memSteam.GetBuffer(),
+                };
+                saves.Add(save);
+            }
         }
 
         public void LoadSave(Save save)
         {
             var game = Game.Instance;
-            game.LoadLevel(save.SavedGame.Level, () => {
-                var savedGameHolder = SavedGameHolder.GetSavedGameHolderFromGame();
-                savedGameHolder.SavedGame = save.SavedGame;
-            });
+            var binaryFormatter = new BinaryFormatter();
+            using (var memStream = new MemoryStream(save.SavedGame))
+            {
+                var savedGame = binaryFormatter.Deserialize(memStream) as SavedGame;
+                game.LoadLevel(savedGame.Level, () =>
+                {
+                    var savedGameHolder = SavedGameHolder.GetSavedGameHolderFromGame();
+                    savedGameHolder.SavedGame = savedGame;
+                });
+            }
         }
     }
 }

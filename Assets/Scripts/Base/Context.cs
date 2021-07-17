@@ -40,7 +40,7 @@ namespace Base
 
                 if (serializedObject != null)
                 {
-                    yield return new SerializedContextObject { Def = pair.Key, ContextObjectData = serializedObject.Data };
+                    yield return new SerializedContextObject { Def = pair.Key.ToDefRef<Def>(), ContextObjectData = serializedObject.Data };
                 }
             }
         }

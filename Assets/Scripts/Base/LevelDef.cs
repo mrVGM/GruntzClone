@@ -1,3 +1,5 @@
+using System;
+
 namespace Base
 {
     public class LevelDef : Def
