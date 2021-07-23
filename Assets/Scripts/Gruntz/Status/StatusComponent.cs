@@ -1,5 +1,6 @@
 using Base;
 using Gruntz.Actors;
+using Gruntz.Puzzle;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,7 +8,25 @@ namespace Gruntz.Status
 {
     public class StatusComponent : IActorComponent, ISerializedObject
     {
+        public class StatusGameplayEvent : GameplayEvent
+        {
+            public enum Operation
+            {
+                Added,
+                Removed
+            }
+            public Operation OperationExecuted;
+            public Actor Actor;
+            public Status Status;
+        }
+
+        private Actor _actor;
         private List<Status> _statuses = new List<Status>();
+
+        public StatusComponent(Actor actor)
+        {
+            _actor = actor;
+        }
 
         public ISerializedObjectData Data
         {
@@ -15,6 +34,11 @@ namespace Gruntz.Status
             set
             {
                 _statuses.Clear();
+                while (_statuses.Any())
+                {
+                    var status = _statuses.First();
+                    RemoveStatus(status);
+                }
                 var statusComponentData = value as StatusComponentData;
                 foreach (var statusData in statusComponentData.StatusDatas)
                 {
@@ -35,11 +59,24 @@ namespace Gruntz.Status
         public void AddStatus(Status status)
         {
             _statuses.Add(status);
+            var gameplayManager = GameplayManager.GetActorManagerFromContext();
+            gameplayManager.HandleGameplayEvent(new StatusGameplayEvent { 
+                OperationExecuted = StatusGameplayEvent.Operation.Added,
+                Actor = _actor,
+                Status = status
+            });
         }
 
         public void RemoveStatus(Status status)
         {
             _statuses.Remove(status);
+            var gameplayManager = GameplayManager.GetActorManagerFromContext();
+            gameplayManager.HandleGameplayEvent(new StatusGameplayEvent
+            {
+                OperationExecuted = StatusGameplayEvent.Operation.Removed,
+                Actor = _actor,
+                Status = status
+            });
         }
     }
 }

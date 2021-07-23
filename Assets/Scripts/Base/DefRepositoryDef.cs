@@ -19,6 +19,11 @@ namespace Base
 
         public IEnumerable<Def> AllDefs => DefsWithId.Select(x => x.Def);
 
+        internal object OfType<T>()
+        {
+            throw new NotImplementedException();
+        }
+
         private void RegisterDef(Def def)
         {
             if (!DefsWithId.Any(x => x.Def == def))

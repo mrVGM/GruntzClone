@@ -8,7 +8,7 @@ namespace Gruntz.Status
         public StatusDef[] InitialStatuses;
         public override IActorComponent CreateActorComponent(Actor actor)
         {
-            var statusComponent = new StatusComponent();
+            var statusComponent = new StatusComponent(actor);
             foreach (var statusDef in InitialStatuses)
             {
                 var status = statusDef.Data.CreateStatus();
