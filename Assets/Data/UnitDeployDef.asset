@@ -16,3 +16,4 @@ MonoBehaviour:
   ActorComponents:
   - {fileID: 11400000, guid: d28ca2df11065d948b285a5c6e7d6305, type: 2}
   - {fileID: 11400000, guid: f6db9d06083b4c140aa3da8373935fef, type: 2}
+  - {fileID: 11400000, guid: 428bd8dcfb949d849a285a21d01b1796, type: 2}
