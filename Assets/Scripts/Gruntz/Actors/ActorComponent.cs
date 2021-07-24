@@ -4,6 +4,6 @@ namespace Gruntz.Actors
 {
     public class ActorComponent : MonoBehaviour
     {
-        public ActorData ActorData;
+        public ActorData ActorData { get; set; }
     }
 }
