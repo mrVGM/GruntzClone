@@ -12,7 +12,19 @@ namespace Gruntz.Actors
         Dictionary<ActorComponentDef, IActorComponent> _components { get; } = new Dictionary<ActorComponentDef, IActorComponent>();
         public ActorComponent ActorComponent { get; private set; }
         
-        public Vector3 Pos => GetComponent<NavAgent>().Pos;
+        public Vector3 Pos
+        {
+            get
+            {
+                var navAgent = GetComponent<NavAgent>();
+                if (navAgent != null)
+                {
+                    return navAgent.Pos;
+                }
+
+                return ActorComponent.transform.position;
+            }
+        }
 
         public ISerializedObjectData Data
         {

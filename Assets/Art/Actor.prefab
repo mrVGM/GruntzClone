@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 7142232958175899915}
   m_Layer: 0
   m_Name: Actor
-  m_TagString: Untagged
+  m_TagString: NeedsSceneID
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,11 +286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6678a5ad876508149852fd364562bd11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActorData:
-    UnitControllerDef: {fileID: 11400000, guid: f6db9d06083b4c140aa3da8373935fef, type: 2}
-    ActorComponents:
-    - {fileID: 11400000, guid: d28ca2df11065d948b285a5c6e7d6305, type: 2}
-    - {fileID: 11400000, guid: f6db9d06083b4c140aa3da8373935fef, type: 2}
 --- !u!114 &7142232958175899915
 MonoBehaviour:
   m_ObjectHideFlags: 0
