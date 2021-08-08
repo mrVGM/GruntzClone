@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81a1361c028b0ad43b61b1ec0d59d279, type: 3}
-  m_Name: GameplayManagerDef
+  m_Script: {fileID: 11500000, guid: ad6f78d2dd086b5b19a9c05da3cb620d, type: 3}
+  m_Name: ArrowInstructionsTagDef
   m_EditorClassIdentifier: 
-  Handlers:
-  - {fileID: 11400000, guid: f5438061bed40c52dbf82738128f5f17, type: 2}

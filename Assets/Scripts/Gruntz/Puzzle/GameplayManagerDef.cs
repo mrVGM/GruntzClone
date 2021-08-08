@@ -4,9 +4,11 @@ namespace Gruntz.Puzzle
 {
     public class GameplayManagerDef : Def, IRuntimeInstance
     {
+        public GameplayEventHandlerDef[] Handlers;
+
         public IContextObject CreateRuntimeInstance()
         {
-            return new GameplayManager();
+            return new GameplayManager(this);
         }
     }
 }

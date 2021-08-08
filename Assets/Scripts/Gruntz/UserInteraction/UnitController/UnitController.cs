@@ -7,7 +7,7 @@ namespace Gruntz.UserInteraction.UnitController
 {
     public class UnitController : IOrderedUpdate, IActorComponent
     {
-        private MessagesBoxTagDef MessagesBox { get; }
+        public MessagesBoxTagDef MessagesBox { get; set; }
         public Actor Unit { get; }
 
         private ExecutionOrderTagDef orderTagDef { get; }

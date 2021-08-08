@@ -1,4 +1,5 @@
 using Base;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Gruntz.Puzzle
@@ -15,14 +16,19 @@ namespace Gruntz.Puzzle
             }
         }
 
-        public GameplayManager()
+        private GameplayManagerDef _gameplayManagerDef;
+        private List<GameplayEvent> _eventsCollected = new List<GameplayEvent>();
+
+        public GameplayManager(GameplayManagerDef gameplayManagerDef)
         {
+            _gameplayManagerDef = gameplayManagerDef;
             var game = Game.Instance;
             game.MainUpdater.RegisterUpdatable(this);
         }
 
         public void HandleGameplayEvent(GameplayEvent gameplayEvent)
         {
+            _eventsCollected.Add(gameplayEvent);
         }
 
         public void DisposeObject()
@@ -40,9 +46,21 @@ namespace Gruntz.Puzzle
             return gameplayManager;
         }
 
+        private void ProcessGameplayEvents()
+        {
+            var handlers = _gameplayManagerDef.Handlers.Where(x => x.GetPriority(_eventsCollected) >= 0)
+                            .OrderByDescending(x => x.GetPriority(_eventsCollected));
+
+            foreach (var handler in handlers)
+            {
+                handler.HandleEvents(_eventsCollected);
+            }
+        }
+
         public void DoUpdate()
         {
-
+            ProcessGameplayEvents();
+            _eventsCollected.Clear();
         }
     }
 }
