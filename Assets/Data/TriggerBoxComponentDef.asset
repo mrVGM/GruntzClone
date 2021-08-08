@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469478a6da8a5f44d9b8c17983ef50ee, type: 3}
   m_Name: TriggerBoxComponentDef
   m_EditorClassIdentifier: 
-  StatusDef: {fileID: 11400000, guid: 5833e1b9e3cc88543bef2ca834fb654e, type: 2}
+  StatusActionDef: {fileID: 11400000, guid: 7c619a1deae9a10be82cfc2abd1c0e90, type: 2}

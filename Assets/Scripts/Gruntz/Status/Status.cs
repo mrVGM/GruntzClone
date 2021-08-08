@@ -1,5 +1,4 @@
 using Base;
-using Gruntz.Actors;
 
 namespace Gruntz.Status
 {

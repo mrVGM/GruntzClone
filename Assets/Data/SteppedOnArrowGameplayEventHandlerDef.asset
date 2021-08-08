@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f787225c3b2833ffa88e6f993e3b9e1e, type: 3}
   m_Name: SteppedOnArrowGameplayEventHandlerDef
   m_EditorClassIdentifier: 
-  SteppedOnArrowStatus: {fileID: 11400000, guid: 5833e1b9e3cc88543bef2ca834fb654e, type: 2}
+  SteppedOnArrowStatus: {fileID: 11400000, guid: 319a7113f1ea182ac89c194b601a294d, type: 2}
   UnitControllerChannelTagDef: {fileID: 11400000, guid: 6b6b05b12ca6c8e2a97ab966a495032d, type: 2}

@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03d68fe567e423849857a9ecfa84c51f, type: 3}
-  m_Name: ArrowUnitDeployDef
+  m_Script: {fileID: 11500000, guid: 4513336f331010379856b02587467d2e, type: 3}
+  m_Name: ArrowStatusDef
   m_EditorClassIdentifier: 
-  ActorDef: {fileID: 0}
-  ActorComponents:
-  - {fileID: 11400000, guid: 1c7599c81566495c9b31f9ffba008b12, type: 2}

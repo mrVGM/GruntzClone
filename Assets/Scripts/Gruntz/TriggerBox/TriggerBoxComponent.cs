@@ -35,12 +35,12 @@ namespace Gruntz
             }
             var actor = actorProxy.Actor;
             var statusComponent = actor.GetComponent<StatusComponent>();
-            var status = statusComponent.GetStatus(TriggerBoxComponentDef.StatusDef);
+            var status = statusComponent.GetStatus(TriggerBoxComponentDef.StatusActionDef.StatusDef);
             if (status != null)
             {
                 return;
             }
-            status = TriggerBoxComponentDef.StatusDef.Data.CreateStatus();
+            status = TriggerBoxComponentDef.StatusActionDef.GetStatus(Actor, actor);
             statusComponent.AddStatus(status);
         }
         public void TriggerExited(Collider collider)
@@ -52,7 +52,7 @@ namespace Gruntz
             }
             var actor = actorProxy.Actor;
             var statusComponent = actor.GetComponent<StatusComponent>();
-            var status = statusComponent.GetStatus(TriggerBoxComponentDef.StatusDef);
+            var status = statusComponent.GetStatus(TriggerBoxComponentDef.StatusActionDef.StatusDef);
             statusComponent.RemoveStatus(status);
         }
     }
