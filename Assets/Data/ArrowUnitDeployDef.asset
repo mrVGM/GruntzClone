@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActorDef: {fileID: 0}
   ActorComponents:
-  - {fileID: 11400000, guid: 428bd8dcfb949d849a285a21d01b1796, type: 2}
+  - {fileID: 11400000, guid: c4a46a41cd9e462499277b374b76703d, type: 2}

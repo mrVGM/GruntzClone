@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a9588a205dec2948b96656ccd4535af, type: 3}
-  m_Name: UnitStatusComponentDef
+  m_Script: {fileID: 11500000, guid: 469478a6da8a5f44d9b8c17983ef50ee, type: 3}
+  m_Name: TriggerBoxComponentDef
   m_EditorClassIdentifier: 
-  InitialStatuses: []
+  StatusDef: {fileID: 11400000, guid: 5833e1b9e3cc88543bef2ca834fb654e, type: 2}

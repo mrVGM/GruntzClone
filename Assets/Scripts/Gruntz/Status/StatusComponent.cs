@@ -78,5 +78,10 @@ namespace Gruntz.Status
                 Status = status
             });
         }
+
+        public Status GetStatus(StatusDef statusDef)
+        {
+            return _statuses.FirstOrDefault(x => x.StatusDef == statusDef);
+        }
     }
 }

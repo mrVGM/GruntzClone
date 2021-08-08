@@ -23,6 +23,7 @@ namespace Gruntz.UserInteraction.ActorControl
                 return;
             }
             var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
+            hits = hits.Where(x => !x.collider.isTrigger);
             if (hits.Count() > 1)
             {
                 return;
