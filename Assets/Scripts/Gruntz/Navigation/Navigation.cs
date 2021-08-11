@@ -135,7 +135,7 @@ namespace Gruntz.Navigation
         }
         private void CalculateMoves()
         {
-            float dt = Time.deltaTime;
+            float dt = Time.fixedDeltaTime;
             CalculateMoves(moveRequests, dt);
             moveRequests.Clear();
         }

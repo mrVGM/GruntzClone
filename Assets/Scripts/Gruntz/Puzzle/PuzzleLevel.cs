@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using static Base.MainUpdaterLock;
 
 namespace Gruntz.Puzzle
 {
@@ -14,9 +15,23 @@ namespace Gruntz.Puzzle
     {
         public SceneIDs SceneIDs;
         public Transform ActorDeployPoints;
+
+        List<ILock> _locks;
         public void LevelLoaded()
         {
             var game = Game.Instance;
+            _locks = new List<ILock>();
+            var orderTagDef = game.DefRepositoryDef.AllDefs.OfType<LevelLoadedOrderTagDef>().First();
+            foreach (var tag in game.MainUpdater.ExecutionOrder)
+            {
+                if (tag == orderTagDef)
+                {
+                    continue;
+                }
+                var l = game.MainUpdater.MainUpdaterLock.TryLock(tag);
+                _locks.Add(l);
+            }
+
             var sceneIDsHolder = SceneIDsHolder.GetSceneIDsHolderFromContext();
             sceneIDsHolder.SceneIDs = SceneIDs;
 
@@ -73,6 +88,11 @@ namespace Gruntz.Puzzle
 
             var actorManager = ActorManager.GetActorManagerFromContext();
             actorManager.Data = actorManagerData;
+
+            foreach (var l in _locks)
+            {
+                game.MainUpdater.MainUpdaterLock.Unlock(l);
+            }
         }
     }
 }
