@@ -17,21 +17,10 @@ namespace Gruntz.Puzzle
         public Transform ActorDeployPoints;
 
         List<ILock> _locks;
-        public void LevelLoaded()
+
+        private void SetupActorManager()
         {
             var game = Game.Instance;
-            _locks = new List<ILock>();
-            var orderTagDef = game.DefRepositoryDef.AllDefs.OfType<LevelLoadedOrderTagDef>().First();
-            foreach (var tag in game.MainUpdater.ExecutionOrder)
-            {
-                if (tag == orderTagDef)
-                {
-                    continue;
-                }
-                var l = game.MainUpdater.MainUpdaterLock.TryLock(tag);
-                _locks.Add(l);
-            }
-
             var sceneIDsHolder = SceneIDsHolder.GetSceneIDsHolderFromContext();
             sceneIDsHolder.SceneIDs = SceneIDs;
 
@@ -61,7 +50,8 @@ namespace Gruntz.Puzzle
                     var data = new SceneIDComponentData { ID = SceneIDs.SceneObjectIDs.FirstOrDefault(x => x.GameObject == deployPoint.ActorComponent.gameObject).ID };
                     actorComponents = actorComponents.Prepend(new ActorData.Components { _component = sceneIDComponentDef.ToDefRef<ActorComponentDef>(), Data = data });
                 }
-                var actorData = new ActorData {
+                var actorData = new ActorData
+                {
                     ActorDef = (deployPoint.ActorDeployDef.ActorDef != null) ? deployPoint.ActorDeployDef.ActorDef.ToDefRef<ActorDef>() : default(DefRef<ActorDef>),
                     ActorComponents = actorComponents.ToArray()
                 };
@@ -88,6 +78,23 @@ namespace Gruntz.Puzzle
 
             var actorManager = ActorManager.GetActorManagerFromContext();
             actorManager.Data = actorManagerData;
+        }
+        public void LevelLoaded()
+        {
+            var game = Game.Instance;
+            _locks = new List<ILock>();
+            var orderTagDef = game.DefRepositoryDef.AllDefs.OfType<LevelLoadedOrderTagDef>().First();
+            foreach (var tag in game.MainUpdater.ExecutionOrder)
+            {
+                if (tag == orderTagDef)
+                {
+                    continue;
+                }
+                var l = game.MainUpdater.MainUpdaterLock.TryLock(tag);
+                _locks.Add(l);
+            }
+
+            SetupActorManager();
 
             foreach (var l in _locks)
             {

@@ -49,7 +49,7 @@ namespace Gruntz.Puzzle
             return gameplayManager;
         }
 
-        private void ProcessGameplayEvents()
+        private void ProcessGameplayEvents(IEnumerable<GameplayEvent> gameplayEvents)
         {
             IEnumerable<IActionNode> findActionNodes(Transform root)
             {
@@ -58,7 +58,7 @@ namespace Gruntz.Puzzle
                     yield return actionNode;
                 }
                 var filterNode = root.GetComponent<IFilterNode>();
-                if (filterNode != null && filterNode.Filter(_eventsCollected))
+                if (filterNode != null && filterNode.Filter(gameplayEvents))
                 {
                     int childCount = root.childCount;
                     for (int i = 0; i < childCount; ++i)
@@ -76,15 +76,18 @@ namespace Gruntz.Puzzle
             var actionNodes = findActionNodes(_gameplayManagerDef.DecisionTree);
             foreach (var node in actionNodes)
             {
-                node.ExecuteAction(_eventsCollected);
+                node.ExecuteAction(gameplayEvents);
             }
         }
 
         public void DoUpdate()
         {
-            ProcessGameplayEvents();
-
-            _eventsCollected.Clear();
+            while (_eventsCollected.Any())
+            {
+                var eventsCache = _eventsCollected.ToList();
+                _eventsCollected.Clear();
+                ProcessGameplayEvents(eventsCache);
+            }
         }
     }
 }

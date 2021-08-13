@@ -14,7 +14,8 @@ namespace Gruntz.Puzzle.Gameplay
         {
             var interestingEvents = gameplayEvents.OfType<StatusGameplayEvent>()
                 .Where(x => x.OperationExecuted == StatusGameplayEvent.Operation.Added
-                            && x.Status.StatusDef == StatusAdded);
+                            && x.Status.StatusDef == StatusAdded
+                            && x.Actor.GetComponent<StatusComponent>().GetStatus(StatusAdded) != null);
 
             foreach (var eventOfInterest in interestingEvents)
             {
@@ -24,6 +25,8 @@ namespace Gruntz.Puzzle.Gameplay
 
                 var navAgent = actor.GetComponent<NavAgent>();
                 navAgent.Target = 1000.0f * (actorComponent.transform.rotation * Vector3.forward) + actor.Pos;
+
+                eventOfInterest.Actor.GetComponent<StatusComponent>().RemoveStatus(eventOfInterest.Status);
             }
         }
     }
