@@ -23,7 +23,7 @@ namespace Gruntz.Puzzle.Gameplay
                 var actorComponent = actor.ActorComponent;
 
                 var navAgent = actor.GetComponent<NavAgent>();
-                navAgent.Target = 1000.0f * (actorComponent.transform.rotation * Vector3.right) + actor.Pos;
+                navAgent.Target = 1000.0f * (actorComponent.transform.rotation * Vector3.forward) + actor.Pos;
             }
         }
     }

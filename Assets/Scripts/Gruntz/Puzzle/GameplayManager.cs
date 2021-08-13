@@ -76,22 +76,12 @@ namespace Gruntz.Puzzle
             var actionNodes = findActionNodes(_gameplayManagerDef.DecisionTree);
             foreach (var node in actionNodes)
             {
-                Debug.Log($"{(node as MonoBehaviour).name}");
                 node.ExecuteAction(_eventsCollected);
             }
         }
 
         public void DoUpdate()
         {
-            if (_eventsCollected.Count > 0)
-            {
-                Debug.Log($"==========================");
-                foreach (var x in _eventsCollected)
-                {
-                    Debug.Log($"{(x as StatusGameplayEvent).Status.StatusDef}");
-                }
-                Debug.Log($"==========================");
-            }
             ProcessGameplayEvents();
 
             _eventsCollected.Clear();

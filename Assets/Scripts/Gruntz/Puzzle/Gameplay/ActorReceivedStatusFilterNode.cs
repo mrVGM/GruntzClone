@@ -12,21 +12,25 @@ namespace Gruntz.Puzzle.Gameplay
         public StatusDef StatusDef;
         public bool Filter(IEnumerable<GameplayEvent> gameplayEvents)
         {
-            var statusEvent = gameplayEvents.OfType<StatusGameplayEvent>().FirstOrDefault();
-            if (statusEvent == null)
+            bool isInteresting(StatusGameplayEvent statusEvent)
             {
-                return false;
+                if (statusEvent == null)
+                {
+                    return false;
+                }
+                var statusComponent = statusEvent.Actor.GetComponent<StatusComponent>();
+                if (statusComponent.GetStatus(ActorStatus) == null)
+                {
+                    return false;
+                }
+                if (statusEvent.Status.StatusDef != StatusDef)
+                {
+                    return false;
+                }
+                return true;
             }
-            var statusComponent = statusEvent.Actor.GetComponent<StatusComponent>();
-            if (statusComponent.GetStatus(ActorStatus) == null)
-            {
-                return false;
-            }
-            if (statusEvent.Status.StatusDef != StatusDef)
-            {
-                return false;
-            }
-            return true;
+
+            return gameplayEvents.OfType<StatusGameplayEvent>().Any(isInteresting);
         }
     }
 }

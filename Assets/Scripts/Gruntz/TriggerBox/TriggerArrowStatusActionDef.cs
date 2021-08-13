@@ -11,10 +11,14 @@ namespace Gruntz
         {
             var arrowStatusData = ArrowStatusDef.Data as ArrowStatusData;
             var destinationBehaviour = source.ActorComponent.GetComponent<ArrowDestinationBehaviour>();
-            var previousUnitControllerChannel = target.GetComponent<UnitController>().MessagesBox;
+            var unitController = target.GetComponent<UnitController>();
+            if (unitController != null)
+            {
+                var previousUnitControllerChannel = target.GetComponent<UnitController>().MessagesBox;
+                arrowStatusData.PreviousUnitControllerChannel = previousUnitControllerChannel.ToDefRef<MessagesBoxTagDef>();
+            }
             arrowStatusData.Destination = destinationBehaviour.Destination.position;
             arrowStatusData.Anchor = source.Pos;
-            arrowStatusData.PreviousUnitControllerChannel = previousUnitControllerChannel.ToDefRef<MessagesBoxTagDef>();
             return arrowStatusData.CreateStatus();
         }
     }
