@@ -11,5 +11,6 @@ namespace Gruntz
     {
         public DefRef<MessagesBoxTagDef> PreviousUnitControllerChannel;
         public SerializedVector3 Destination;
+        public SerializedVector3 Anchor;
     }
 }

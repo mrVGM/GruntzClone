@@ -3,6 +3,7 @@ using Gruntz.Actors;
 using Gruntz.Puzzle;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Gruntz.Status
 {
@@ -60,6 +61,7 @@ namespace Gruntz.Status
         {
             _statuses.Add(status);
             var gameplayManager = GameplayManager.GetActorManagerFromContext();
+            Debug.Log($"{_actor.ActorComponent.name} : {status.StatusDef.name}", status.StatusDef);
             gameplayManager.HandleGameplayEvent(new StatusGameplayEvent { 
                 OperationExecuted = StatusGameplayEvent.Operation.Added,
                 Actor = _actor,

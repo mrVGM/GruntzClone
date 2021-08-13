@@ -17,7 +17,7 @@ namespace Gruntz.UserInteraction.ActorControl
             Actor getActor()
             {
                 var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
-                var actorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == UnityLayers.UnitSelection);
+                var actorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == LayerMask.NameToLayer(UnityLayers.UnitSelection));
                 if (actorHit.collider == null)
                 {
                     return null;

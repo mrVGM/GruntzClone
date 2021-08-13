@@ -25,7 +25,7 @@ namespace Gruntz.UserInteraction.ActorControl
             Vector3 getFloorPoint()
             {
                 var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
-                var floorHit = hits.First(x => x.collider.gameObject.layer == UnityLayers.Floor);
+                var floorHit = hits.First(x => x.collider.gameObject.layer == LayerMask.NameToLayer(UnityLayers.Floor));
                 Vector3 floorPoint = floorHit.point;
                 return floorPoint;
             }

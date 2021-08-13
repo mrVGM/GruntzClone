@@ -9,7 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81a1361c028b0ad43b61b1ec0d59d279, type: 3}
-  m_Name: GameplayManagerDef
+  m_Script: {fileID: 11500000, guid: d84b7128d33110f4081d8d58f5a27bdf, type: 3}
+  m_Name: BallNavAgentComponentDef
   m_EditorClassIdentifier: 
-  DecisionTree: {fileID: 2917014555062253673, guid: 0a2d57a55f04f9541ba995275e9f82a1, type: 3}
+  NavAgentData:
+    ObstacleLayers: []
+    InitialPosition:
+      x: 0
+      y: 0
+      z: 0
+    Target:
+      x: 0.5
+      y: 0
+      z: 0.5
+    Speed: 5

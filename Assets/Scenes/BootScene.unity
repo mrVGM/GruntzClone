@@ -300,6 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659b1f532190baa38865140365a2f417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FixedDelta: 0.01
   ExecutionOrder:
   - {fileID: 11400000, guid: 71ee0b1945c2eb650a80846e4f0ffc2f, type: 2}
   - {fileID: 11400000, guid: 0367c2086414e92a8b980df5610cfb89, type: 2}

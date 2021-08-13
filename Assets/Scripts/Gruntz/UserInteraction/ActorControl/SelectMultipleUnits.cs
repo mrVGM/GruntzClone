@@ -47,7 +47,7 @@ namespace Gruntz.UserInteraction.ActorControl
             Vector3 getFloorPoint()
             {
                 var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
-                var floorHit = hits.First(x => x.collider.gameObject.layer == UnityLayers.Floor);
+                var floorHit = hits.First(x => x.collider.gameObject.layer == LayerMask.NameToLayer(UnityLayers.Floor));
                 Vector3 floorPoint = floorHit.point;
                 return floorPoint;
             }
@@ -60,7 +60,7 @@ namespace Gruntz.UserInteraction.ActorControl
                 size.y = 0.5f;
 
                 var hits = Physics.OverlapBox(0.5f * (point1 + point2), 0.5f * size)
-                    .Where(x => x.gameObject.layer == UnityLayers.UnitSelection);
+                    .Where(x => x.gameObject.layer == LayerMask.NameToLayer(UnityLayers.UnitSelection));
 
                 var actorComponents = hits.Select(x => x.GetComponentInParent<ActorComponent>()).ToList();
                 var actorManager = ActorManager.GetActorManagerFromContext();

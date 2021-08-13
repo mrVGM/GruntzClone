@@ -13,5 +13,14 @@ MonoBehaviour:
   m_Name: NavAgentComponentDef
   m_EditorClassIdentifier: 
   NavAgentData:
-    Target: {x: 0.5, y: 0, z: 0.5}
+    ObstacleLayers:
+    - UnitObstacle
+    InitialPosition:
+      x: 0
+      y: 0
+      z: 0
+    Target:
+      x: 0.5
+      y: 0
+      z: 0.5
     Speed: 5

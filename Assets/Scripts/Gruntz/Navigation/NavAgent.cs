@@ -83,6 +83,7 @@ namespace Gruntz.Navigation
 
             var request = new MoveRequest
             {
+                Obstacles = _navAgentData.Obstacles,
                 CurrentPos = _navAgentBehaviour.ActorVisuals.position,
                 TargetPos = _navAgentData.Target,
                 MoveSpeed = _navAgentData.Speed,

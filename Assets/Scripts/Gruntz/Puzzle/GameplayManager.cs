@@ -1,6 +1,9 @@
 using Base;
+using Gruntz.Puzzle.Gameplay;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using static Gruntz.Status.StatusComponent;
 
 namespace Gruntz.Puzzle
 {
@@ -48,18 +51,49 @@ namespace Gruntz.Puzzle
 
         private void ProcessGameplayEvents()
         {
-            var handlers = _gameplayManagerDef.Handlers.Where(x => x.GetPriority(_eventsCollected) >= 0)
-                            .OrderByDescending(x => x.GetPriority(_eventsCollected));
-
-            foreach (var handler in handlers)
+            IEnumerable<IActionNode> findActionNodes(Transform root)
             {
-                handler.HandleEvents(_eventsCollected);
+                var actionNode = root.GetComponent<IActionNode>();
+                if (actionNode != null) {
+                    yield return actionNode;
+                }
+                var filterNode = root.GetComponent<IFilterNode>();
+                if (filterNode != null && filterNode.Filter(_eventsCollected))
+                {
+                    int childCount = root.childCount;
+                    for (int i = 0; i < childCount; ++i)
+                    {
+                        var curChild = root.GetChild(i);
+                        var res = findActionNodes(curChild);
+                        foreach (var node in res)
+                        {
+                            yield return node;
+                        }
+                    }
+                }
+            }
+
+            var actionNodes = findActionNodes(_gameplayManagerDef.DecisionTree);
+            foreach (var node in actionNodes)
+            {
+                Debug.Log($"{(node as MonoBehaviour).name}");
+                node.ExecuteAction(_eventsCollected);
             }
         }
 
         public void DoUpdate()
         {
+            if (_eventsCollected.Count > 0)
+            {
+                Debug.Log($"==========================");
+                foreach (var x in _eventsCollected)
+                {
+                    Debug.Log($"{(x as StatusGameplayEvent).Status.StatusDef}");
+                }
+                Debug.Log($"==========================");
+            }
             ProcessGameplayEvents();
+
             _eventsCollected.Clear();
         }
     }

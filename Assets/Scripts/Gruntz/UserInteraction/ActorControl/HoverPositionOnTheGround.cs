@@ -28,7 +28,7 @@ namespace Gruntz.UserInteraction.ActorControl
             {
                 return;
             }
-            var floorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == UnityLayers.Floor);
+            var floorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == LayerMask.NameToLayer(UnityLayers.Floor));
 
             if (floorHit.collider == null)
             {

@@ -17,7 +17,7 @@ namespace Gruntz.UserInteraction.ActorControl
             UnitSelectionMarker.transform.position = 1000 * Vector3.down;
 
             var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
-            var unitHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == UnityLayers.UnitSelection);
+            var unitHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == LayerMask.NameToLayer(UnityLayers.UnitSelection));
             if (unitHit.collider == null)
             {
                 return;

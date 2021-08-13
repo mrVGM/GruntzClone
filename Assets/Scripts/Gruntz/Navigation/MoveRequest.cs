@@ -5,6 +5,7 @@ namespace Gruntz.Navigation
 {
     public struct MoveRequest
     {
+        public LayerMask Obstacles;
         public Vector3 CurrentPos;
         public Vector3 TargetPos;
         public float MoveSpeed;

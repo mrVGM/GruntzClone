@@ -58,7 +58,7 @@ namespace Gruntz.Navigation
             if (AreVectorsTheSame(moveRequest.CurrentPos, moveRequest.TravelSegmentInfo.EndPos))
             {
                 Vector3 currentPos = moveRequest.TravelSegmentInfo.EndPos;
-                var possibleSteps = map.GetPossibleMoves(currentPos);
+                var possibleSteps = map.GetPossibleMoves(currentPos, moveRequest.Obstacles);
                 var bestStep = possibleSteps.OrderBy(x => {
                     var currentTravelSegment = new TravelSegmentInfo { StartPos = moveRequest.TravelSegmentInfo.StartPos, EndPos = x };
                     if (travelSegments.Any(y => !TravelSegmentInfoUtils.AreCompatible(currentTravelSegment, y)))
@@ -84,6 +84,7 @@ namespace Gruntz.Navigation
                 {
                     var moveReq = new MoveRequest
                     {
+                        Obstacles = moveRequest.Obstacles,
                         CurrentPos = bestStep,
                         MoveSpeed = moveRequest.MoveSpeed,
                         TargetPos = moveRequest.TargetPos,
@@ -112,6 +113,7 @@ namespace Gruntz.Navigation
                 {
                     var moveReq = new MoveRequest
                     {
+                        Obstacles = moveRequest.Obstacles,
                         CurrentPos = immediateTarget,
                         MoveSpeed = moveRequest.MoveSpeed,
                         TargetPos = moveRequest.TargetPos,

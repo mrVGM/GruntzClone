@@ -1,11 +1,11 @@
 using Base;
+using UnityEngine;
 
 namespace Gruntz.Puzzle
 {
     public class GameplayManagerDef : Def, IRuntimeInstance
     {
-        public GameplayEventHandlerDef[] Handlers;
-
+        public Transform DecisionTree;
         public IContextObject CreateRuntimeInstance()
         {
             return new GameplayManager(this);

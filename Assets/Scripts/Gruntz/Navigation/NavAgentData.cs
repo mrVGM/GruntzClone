@@ -8,6 +8,8 @@ namespace Gruntz.Navigation
     [Serializable]
     public class NavAgentData : ISerializedObjectData
     {
+        public string[] ObstacleLayers;
+        public LayerMask Obstacles => LayerMask.GetMask(ObstacleLayers);
         public SerializedVector3 InitialPosition;
         public SerializedVector3 Target;
         public float Speed;

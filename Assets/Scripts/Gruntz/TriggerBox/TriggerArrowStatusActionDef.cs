@@ -13,6 +13,7 @@ namespace Gruntz
             var destinationBehaviour = source.ActorComponent.GetComponent<ArrowDestinationBehaviour>();
             var previousUnitControllerChannel = target.GetComponent<UnitController>().MessagesBox;
             arrowStatusData.Destination = destinationBehaviour.Destination.position;
+            arrowStatusData.Anchor = source.Pos;
             arrowStatusData.PreviousUnitControllerChannel = previousUnitControllerChannel.ToDefRef<MessagesBoxTagDef>();
             return arrowStatusData.CreateStatus();
         }

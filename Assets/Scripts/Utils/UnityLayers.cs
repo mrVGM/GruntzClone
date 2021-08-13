@@ -4,8 +4,8 @@ namespace Utils
 {
     public static class UnityLayers
     {
-        public static int Floor = LayerMask.NameToLayer("Floor");
-        public static int UnitSelection = LayerMask.NameToLayer("UnitSelection");
-        public static int UnitObstacle = LayerMask.NameToLayer("UnitObstacle");
+        public static string Floor = "Floor";
+        public static string UnitSelection = "UnitSelection";
+        public static string UnitObstacle = "UnitObstacle";
     }
 }

@@ -18,7 +18,7 @@ namespace Gruntz.Navigation
             yield return pos + Vector3.back + Vector3.right;
         }
 
-        public IEnumerable<Vector3> GetPossibleMoves(Vector3 pos)
+        public IEnumerable<Vector3> GetPossibleMoves(Vector3 pos, LayerMask layerMask)
         {
             yield return pos;
 
@@ -27,7 +27,7 @@ namespace Gruntz.Navigation
             foreach (var potentialMove in potentialMoves)
             {
                 var ray = new Ray(potentialMove + Vector3.up, Vector3.down);
-                if (Physics.Raycast(ray, 1, UnityLayers.UnitObstacle))
+                if (Physics.Raycast(ray, 1, layerMask))
                 {
                     continue;
                 }
