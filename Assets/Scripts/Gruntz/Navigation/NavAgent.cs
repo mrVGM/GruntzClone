@@ -60,6 +60,8 @@ namespace Gruntz.Navigation
             get
             {
                 _navAgentData.InitialPosition = Pos;
+                _navAgentData.TravelSegmentStart = _navAgentBehaviour.LocalTravelStartPoint.position;
+                _navAgentData.TravelSegmentEnd = _navAgentBehaviour.NavObstacle.transform.position;
                 return _navAgentData;
             }
             set
@@ -104,8 +106,8 @@ namespace Gruntz.Navigation
         private void SetObstacle()
         {
             _navAgentBehaviour.ActorVisuals.position = _navAgentData.InitialPosition;
-            _navAgentBehaviour.NavObstacle.transform.position = _navAgentBehaviour.ActorVisuals.position;
-            _navAgentBehaviour.LocalTravelStartPoint.position = _navAgentBehaviour.ActorVisuals.position;
+            _navAgentBehaviour.NavObstacle.transform.position = _navAgentData.TravelSegmentEnd;
+            _navAgentBehaviour.LocalTravelStartPoint.position = _navAgentData.TravelSegmentStart;
         }
 
         private void Move(MoveRequestResult moveRequestResult) 

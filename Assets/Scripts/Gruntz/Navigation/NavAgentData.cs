@@ -12,6 +12,8 @@ namespace Gruntz.Navigation
         public LayerMask Obstacles => LayerMask.GetMask(ObstacleLayers);
         public SerializedVector3 InitialPosition;
         public SerializedVector3 Target;
+        public SerializedVector3 TravelSegmentStart;
+        public SerializedVector3 TravelSegmentEnd;
         public float Speed;
     }
 }
