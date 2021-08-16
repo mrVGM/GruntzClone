@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Vasil\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Vasil\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_GruntzClone.-737913044.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Vasil\dev\Unity\GruntzClone" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Base" t="Include">
+            <e p="ConsolePrelude.cs" t="Include" />
+            <e p="Context.cs" t="Include" />
+            <e p="Def.cs" t="Include" />
+            <e p="DefRepositoryDef.cs" t="Include" />
+            <e p="ExecutionOrderTagDef.cs" t="Include" />
+            <e p="Game.cs" t="Include" />
+            <e p="IContextObject.cs" t="Include" />
+            <e p="InitialLevelDef.cs" t="Include" />
+            <e p="IOrderedUpdate.cs" t="Include" />
+            <e p="IRuntimeInstance.cs" t="Include" />
+            <e p="ISerializedObject.cs" t="Include" />
+            <e p="ISerializedObjectData.cs" t="Include" />
+            <e p="LevelDef.cs" t="Include" />
+            <e p="LevelInit.cs" t="Include" />
+            <e p="LevelLoadedOrderTagDef.cs" t="Include" />
+            <e p="MainUpdater.cs" t="Include" />
+            <e p="MessagesSystem" t="Include">
+              <e p="MessagesBoxTagDef.cs" t="Include" />
+              <e p="MessagesSystem.cs" t="Include" />
+              <e p="MessagesSystemDef.cs" t="Include" />
+              <e p="MessagesSystemExecutionOrderTagDef.cs" t="Include" />
+            </e>
+            <e p="SaveAssetsProcessor.cs" t="Include" />
+            <e p="SavedGame.cs" t="Include" />
+            <e p="SavedGameHolder.cs" t="Include" />
+            <e p="SavedGameHolderDef.cs" t="Include" />
+            <e p="SaveSceneProcessor.cs" t="Include" />
+            <e p="SavesManager.cs" t="Include" />
+            <e p="SceneIDs.cs" t="Include" />
+            <e p="SceneIDsDef.cs" t="Include" />
+            <e p="SceneIDsHolder.cs" t="Include" />
+            <e p="TagDef.cs" t="Include" />
+            <e p="TaggedObject.cs" t="Include" />
+          </e>
+          <e p="Gruntz" t="Include">
+            <e p="Actors" t="Include">
+              <e p="Actor.cs" t="Include" />
+              <e p="ActorComponent.cs" t="Include" />
+              <e p="ActorComponentDef.cs" t="Include" />
+              <e p="ActorData.cs" t="Include" />
+              <e p="ActorDef.cs" t="Include" />
+              <e p="ActorDeployDef.cs" t="Include" />
+              <e p="ActorDeployment.cs" t="Include" />
+              <e p="ActorDeployPoint.cs" t="Include" />
+              <e p="ActorManager.cs" t="Include" />
+              <e p="ActorManagerData.cs" t="Include" />
+              <e p="ActorManagerDef.cs" t="Include" />
+              <e p="ActorProxy.cs" t="Include" />
+              <e p="IActorComponent.cs" t="Include" />
+            </e>
+            <e p="MenuLevel.cs" t="Include" />
+            <e p="Navigation" t="Include">
+              <e p="ITravelSegmentInfo.cs" t="Include" />
+              <e p="Map.cs" t="Include" />
+              <e p="MoveRequest.cs" t="Include" />
+              <e p="NavAgent.cs" t="Include" />
+              <e p="NavAgentBehaviour.cs" t="Include" />
+              <e p="NavAgentComponentDef.cs" t="Include" />
+              <e p="NavAgentData.cs" t="Include" />
+              <e p="Navigation.cs" t="Include" />
+              <e p="NavigationDef.cs" t="Include" />
+              <e p="NavigationExecutionOrderTagDef.cs" t="Include" />
+              <e p="NavigationRequestOrderTagDef.cs" t="Include" />
+            </e>
+            <e p="Puzzle" t="Include">
+              <e p="Gameplay" t="Include">
+                <e p="ActorReceivedStatusFilterNode.cs" t="Include" />
+                <e p="IActionNode.cs" t="Include" />
+                <e p="IFilterNode.cs" t="Include" />
+                <e p="RedirectActorActionNode.cs" t="Include" />
+                <e p="RedirectBallActorActionNode.cs" t="Include" />
+                <e p="SetInitialDestinationActionNode.cs" t="Include" />
+                <e p="TrueFilterNode.cs" t="Include" />
+              </e>
+              <e p="GameplayEvent.cs" t="Include" />
+              <e p="GameplayEventHandlerDef.cs" t="Include" />
+              <e p="GameplayManager.cs" t="Include" />
+              <e p="GameplayManagerDef.cs" t="Include" />
+              <e p="GameplayManagerExecutionOrderTag.cs" t="Include" />
+              <e p="PuzzleLevel.cs" t="Include" />
+            </e>
+            <e p="SceneID" t="Include">
+              <e p="SceneIDComponent.cs" t="Include" />
+              <e p="SceneIDComponentData.cs" t="Include" />
+              <e p="SceneIDComponentDef.cs" t="Include" />
+            </e>
+            <e p="Status" t="Include">
+              <e p="Status.cs" t="Include" />
+              <e p="StatusComponent.cs" t="Include" />
+              <e p="StatusComponentData.cs" t="Include" />
+              <e p="StatusComponentDef.cs" t="Include" />
+              <e p="StatusData.cs" t="Include" />
+              <e p="StatusDef.cs" t="Include" />
+            </e>
+            <e p="TriggerBox" t="Include">
+              <e p="ArrowDestinationBehaviour.cs" t="Include" />
+              <e p="ArrowStatusData.cs" t="Include" />
+              <e p="ArrowStatusDef.cs" t="Include" />
+              <e p="TriggerArrowStatusActionDef.cs" t="Include" />
+              <e p="TriggerBoxBehaviour.cs" t="Include" />
+              <e p="TriggerBoxComponent.cs" t="Include" />
+              <e p="TriggerBoxComponentDef.cs" t="Include" />
+              <e p="TriggerStatusActionDef.cs" t="Include" />
+            </e>
+            <e p="UserInteraction" t="Include">
+              <e p="ActorControl" t="Include">
+                <e p="HighlightSelectedUnits.cs" t="Include" />
+                <e p="HoverPositionOnTheGround.cs" t="Include" />
+                <e p="HoverUnit.cs" t="Include" />
+                <e p="MoveUnitsToPosition.cs" t="Include" />
+                <e p="PointerCast.cs" t="Include" />
+                <e p="SelectMultipleUnits.cs" t="Include" />
+                <e p="SelectSingleUnit.cs" t="Include" />
+                <e p="StartSelectingMultipleUnits.cs" t="Include" />
+              </e>
+              <e p="Brain.cs" t="Include" />
+              <e p="BrainDef.cs" t="Include" />
+              <e p="CoroutineProcess.cs" t="Include" />
+              <e p="IProcess.cs" t="Include" />
+              <e p="Loop.cs" t="Include" />
+              <e p="Pipe.cs" t="Include" />
+              <e p="ProcessContext.cs" t="Include" />
+              <e p="ProcessContextTagDef.cs" t="Include" />
+              <e p="ProcessIDTagDef.cs" t="Include" />
+              <e p="RunParallel.cs" t="Include" />
+              <e p="UnitController" t="Include">
+                <e p="IUnitExecutable.cs" t="Include" />
+                <e p="MoveToPosition.cs" t="Include" />
+                <e p="UnitController.cs" t="Include" />
+                <e p="UnitControllerDef.cs" t="Include" />
+                <e p="UnitControllerExecutionOrderTagDef.cs" t="Include" />
+                <e p="UnitControllerInstruction.cs" t="Include" />
+              </e>
+              <e p="UserInteraction.cs" t="Include" />
+              <e p="UserInteractionExecutionOrderTagDef.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Utils" t="Include">
+            <e p="DestroyAfterTime.cs" t="Include" />
+            <e p="MaterialColorPropertySetter.cs" t="Include" />
+            <e p="MaterialFloatPropertySetter.cs" t="Include" />
+            <e p="SerializedVector3.cs" t="Include" />
+            <e p="Test" t="Include">
+              <e p="SaveGame.cs" t="Include" />
+            </e>
+            <e p="UnityLayers.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="GruntzClone.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive">
+        <e p="com.vgm.interpreter" t="Include">
+          <e p="Editor" t="Include">
+            <e p="REPLWindow.cs" t="Include" />
+            <e p="Unity.c_sharp_interpreter.Editor.asmdef" t="Include" />
+          </e>
+          <e p="Runtime" t="Include">
+            <e p="ScriptingLanguage" t="Include">
+              <e p="BaseFunctions" t="Include">
+                <e p="CreateCoroutineFunction.cs" t="Include" />
+                <e p="CreateDelegateFunction.cs" t="Include" />
+                <e p="CreateObjectFunction.cs" t="Include" />
+                <e p="ForeachFunction.cs" t="Include" />
+                <e p="GetEventType.cs" t="Include" />
+                <e p="GetTypeFunction.cs" t="Include" />
+                <e p="GetTypeMembersFunction.cs" t="Include" />
+                <e p="LengthFunction.cs" t="Include" />
+                <e p="PrintFunction.cs" t="Include" />
+                <e p="RequireFunction.cs" t="Include" />
+                <e p="SubscribeToEventFunction.cs" t="Include" />
+                <e p="UnsubscribeFromEventFunction.cs" t="Include" />
+              </e>
+              <e p="GrammarTests" t="Include">
+                <e p="grammar.txt" t="Include" />
+              </e>
+              <e p="Interpreter" t="Include">
+                <e p="BlockProcessor.cs" t="Include" />
+                <e p="BooleanExpressionProcessor.cs" t="Include" />
+                <e p="ComparisonProcessor.cs" t="Include" />
+                <e p="DeclarationProcessor.cs" t="Include" />
+                <e p="DummyNodeProcessor.cs" t="Include" />
+                <e p="ExpressionNodeProcessor.cs" t="Include" />
+                <e p="Function.cs" t="Include" />
+                <e p="FunctionCallProcessor.cs" t="Include" />
+                <e p="FunctionDeclarationProcessor.cs" t="Include" />
+                <e p="GenericObject.cs" t="Include" />
+                <e p="IfProcessor.cs" t="Include" />
+                <e p="IFunction.cs" t="Include" />
+                <e p="Interpreter.cs" t="Include" />
+                <e p="IProgramNodeProcessor.cs" t="Include" />
+                <e p="NameProcessor.cs" t="Include" />
+                <e p="Number.cs" t="Include" />
+                <e p="NumberNodeProcessor.cs" t="Include" />
+                <e p="OperationGroupProcessor.cs" t="Include" />
+                <e p="OperationProcessor.cs" t="Include" />
+                <e p="Scope.cs" t="Include" />
+                <e p="Session.cs" t="Include" />
+                <e p="StringNodeProcessor.cs" t="Include" />
+                <e p="ValueNodeProcessor.cs" t="Include" />
+                <e p="WhileProcessor.cs" t="Include" />
+              </e>
+              <e p="Parser" t="Include">
+                <e p="AugmentedRule.cs" t="Include" />
+                <e p="Grammar.cs" t="Include" />
+                <e p="Parser.cs" t="Include" />
+                <e p="ParserState.cs" t="Include" />
+                <e p="ParserTable.cs" t="Include" />
+                <e p="ProgramNode.cs" t="Include" />
+                <e p="Rule.cs" t="Include" />
+              </e>
+              <e p="REPL" t="Include">
+                <e p="IConsoleOutput.cs" t="Include" />
+                <e p="MetaCommandAttribute.cs" t="Include" />
+                <e p="REPL.cs" t="Include" />
+              </e>
+              <e p="Tokenizer" t="Include">
+                <e p="BlankSpaceSkipTokenizer.cs" t="Include" />
+                <e p="CombinedTokenizer.cs" t="Include" />
+                <e p="CommentsTokenizer.cs" t="Include" />
+                <e p="IToken.cs" t="Include" />
+                <e p="ITokenizer.cs" t="Include" />
+                <e p="KeywordTokenizer.cs" t="Include" />
+                <e p="LineTokenizer.cs" t="Include" />
+                <e p="NameTokenizer.cs" t="Include" />
+                <e p="NewLineTokenizer.cs" t="Include" />
+                <e p="NumberTokenizer.cs" t="Include" />
+                <e p="StringTokenizer.cs" t="Include" />
+                <e p="TokenizerException.cs" t="Include" />
+                <e p="WordTokenizer.cs" t="Include" />
+              </e>
+              <e p="Utils.cs" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="ScriptsConsole.cs" t="Include" />
+              <e p="SessionHolder.cs" t="Include" />
+            </e>
+            <e p="Unity.c_sharp_interpreter.asmdef" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Temp\Bin" t="ExcludeRecursive" />
+      <e p="Unity.c_sharp_interpreter.csproj" t="IncludeRecursive" />
+      <e p="Unity.c_sharp_interpreter.Editor.csproj" t="IncludeRecursive" />
+    </e>
+  </component>
+</project>

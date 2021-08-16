@@ -18,6 +18,7 @@ namespace Gruntz.UserInteraction.ActorControl
             var cursorRay = cam.ScreenPointToRay(Input.mousePosition);
 
             int numOfHits = Physics.RaycastNonAlloc(cursorRay, hits);
+            
             var realHits = hits.Take(numOfHits);
 
             context.PutItem(HitResultsTag, realHits);

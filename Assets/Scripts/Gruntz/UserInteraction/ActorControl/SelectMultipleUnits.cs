@@ -64,8 +64,8 @@ namespace Gruntz.UserInteraction.ActorControl
 
                 var actorComponents = hits.Select(x => x.GetComponentInParent<ActorComponent>()).ToList();
                 var actorManager = ActorManager.GetActorManagerFromContext();
-                var actors = actorManager.Actors.Where(x => actorComponents.Contains(x.ActorComponent));
-                return actors;
+                var res = actorManager.Actors.Where(x => actorComponents.Contains(x.ActorComponent));
+                return res;
             }
 
             var initialPositionObject = context.GetItem(InitialPositionTagDef);
