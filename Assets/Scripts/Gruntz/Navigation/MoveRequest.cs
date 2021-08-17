@@ -9,6 +9,7 @@ namespace Gruntz.Navigation
         public Vector3 CurrentPos;
         public Vector3 TargetPos;
         public float MoveSpeed;
+        public bool CheckForSegmentInfoClashes;
         public ITravelSegmentInfo TravelSegmentInfo;
         public Action<MoveRequestResult> MoveResultCallback;
     }

@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 456629109358922170}
   - component: {fileID: 3803794250947726807}
   - component: {fileID: 8885929680473254187}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ActorFeet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

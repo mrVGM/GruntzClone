@@ -90,6 +90,7 @@ namespace Gruntz.Navigation
                 TargetPos = _navAgentData.Target,
                 MoveSpeed = _navAgentData.Speed,
                 TravelSegmentInfo = new TravelSegmentInfo(this),
+                CheckForSegmentInfoClashes = _navAgentData.CheckForSegmentInfoClashes,
                 MoveResultCallback = Move
             };
 

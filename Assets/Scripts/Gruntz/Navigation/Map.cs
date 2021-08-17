@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Utils;
 
@@ -8,16 +9,17 @@ namespace Gruntz.Navigation
     {
         private IEnumerable<Vector3> GetPotentialMoves(Vector3 pos)
         {
+            yield return pos + Vector3.back;
             yield return pos + Vector3.right;
             yield return pos + Vector3.right + Vector3.forward;
             yield return pos + Vector3.forward;
             yield return pos + Vector3.forward + Vector3.left;
             yield return pos + Vector3.left;
             yield return pos + Vector3.left + Vector3.back;
-            yield return pos + Vector3.back;
             yield return pos + Vector3.back + Vector3.right;
         }
 
+        
         public IEnumerable<Vector3> GetPossibleMoves(Vector3 pos, LayerMask layerMask)
         {
             yield return pos;
@@ -26,8 +28,11 @@ namespace Gruntz.Navigation
 
             foreach (var potentialMove in potentialMoves)
             {
-                var ray = new Ray(potentialMove + Vector3.up, Vector3.down);
-                if (Physics.Raycast(ray, 1, layerMask))
+                var offset = potentialMove - pos;
+                var ray = new Ray(pos, offset);
+                IEnumerable<RaycastHit> hits = Physics.SphereCastAll(ray, .2f, offset.magnitude, layerMask);
+                hits = hits.Where(x => !x.collider.bounds.Contains(pos));
+                if (hits.Any())
                 {
                     continue;
                 }

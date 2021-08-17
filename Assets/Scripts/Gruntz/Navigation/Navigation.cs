@@ -33,7 +33,7 @@ namespace Gruntz.Navigation
         {
             foreach (var moveRequest in moveRequests)
             {
-                var travelSegments = moveRequests.Select(x => x.TravelSegmentInfo).Where(x => x != moveRequest.TravelSegmentInfo);
+                var travelSegments = moveRequests.Where(x => x.CheckForSegmentInfoClashes).Select(x => x.TravelSegmentInfo).Where(x => x != moveRequest.TravelSegmentInfo);
                 float maxTravelDistance = dt * moveRequest.MoveSpeed;
 
                 var moveRequestResult = CalculateMove(moveRequest, travelSegments, maxTravelDistance);
@@ -58,13 +58,18 @@ namespace Gruntz.Navigation
             if (AreVectorsTheSame(moveRequest.CurrentPos, moveRequest.TravelSegmentInfo.EndPos))
             {
                 Vector3 currentPos = moveRequest.TravelSegmentInfo.EndPos;
-                var possibleSteps = map.GetPossibleMoves(currentPos, moveRequest.Obstacles);
+                var possibleSteps = map.GetPossibleMoves(currentPos, moveRequest.Obstacles).ToArray();
                 var bestStep = possibleSteps.OrderBy(x => {
-                    var currentTravelSegment = new TravelSegmentInfo { StartPos = moveRequest.TravelSegmentInfo.StartPos, EndPos = x };
-                    if (travelSegments.Any(y => !TravelSegmentInfoUtils.AreCompatible(currentTravelSegment, y)))
+                    if (moveRequest.CheckForSegmentInfoClashes)
                     {
-                        return float.PositiveInfinity;
+                        var currentTravelSegment = new TravelSegmentInfo
+                            {StartPos = moveRequest.TravelSegmentInfo.StartPos, EndPos = x};
+                        if (travelSegments.Any(y => !TravelSegmentInfoUtils.AreCompatible(currentTravelSegment, y)))
+                        {
+                            return float.PositiveInfinity;
+                        }
                     }
+
                     return map.MoveCost(x, moveRequest.TargetPos);
                 }).First();
 
@@ -89,6 +94,7 @@ namespace Gruntz.Navigation
                         MoveSpeed = moveRequest.MoveSpeed,
                         TargetPos = moveRequest.TargetPos,
                         TravelSegmentInfo = new TravelSegmentInfo { StartPos = bestStep, EndPos = bestStep },
+                        CheckForSegmentInfoClashes = moveRequest.CheckForSegmentInfoClashes,
                         MoveResultCallback = moveRequest.MoveResultCallback,
                     };
                     float dist = maxTravelDistance - (bestStep - currentPos).magnitude;
@@ -118,6 +124,7 @@ namespace Gruntz.Navigation
                         MoveSpeed = moveRequest.MoveSpeed,
                         TargetPos = moveRequest.TargetPos,
                         TravelSegmentInfo = new TravelSegmentInfo { StartPos = immediateTarget, EndPos = immediateTarget },
+                        CheckForSegmentInfoClashes = moveRequest.CheckForSegmentInfoClashes,
                         MoveResultCallback = moveRequest.MoveResultCallback,
                     };
                     float dist = maxTravelDistance - (moveRequest.CurrentPos - immediateTarget).magnitude;

@@ -22,4 +22,13 @@ MonoBehaviour:
       x: 0.5
       y: 0
       z: 0.5
+    TravelSegmentStart:
+      x: 0
+      y: 0
+      z: 0
+    TravelSegmentEnd:
+      x: 0
+      y: 0
+      z: 0
+    CheckForSegmentInfoClashes: 0
     Speed: 5

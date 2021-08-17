@@ -14,6 +14,7 @@ namespace Gruntz.Navigation
         public SerializedVector3 Target;
         public SerializedVector3 TravelSegmentStart;
         public SerializedVector3 TravelSegmentEnd;
+        public bool CheckForSegmentInfoClashes = true;
         public float Speed;
     }
 }
