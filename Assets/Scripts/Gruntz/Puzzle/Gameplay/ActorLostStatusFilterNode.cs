@@ -6,7 +6,7 @@ using static Gruntz.Status.StatusComponent;
 
 namespace Gruntz.Puzzle.Gameplay
 {
-    public class ActorReceivedStatusFilterNode : MonoBehaviour, IFilterNode
+    public class ActorLostStatusFilterNode : MonoBehaviour, IFilterNode
     {
         public StatusDef ActorStatus;
         public StatusDef StatusDef;
@@ -19,7 +19,7 @@ namespace Gruntz.Puzzle.Gameplay
                     return false;
                 }
 
-                if (statusEvent.OperationExecuted != StatusGameplayEvent.Operation.Added)
+                if (statusEvent.OperationExecuted != StatusGameplayEvent.Operation.Removed)
                 {
                     return false;
                 }
