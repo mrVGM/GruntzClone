@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a9588a205dec2948b96656ccd4535af, type: 3}
-  m_Name: UnitStatusComponentDef
+  m_Script: {fileID: 11500000, guid: f40273f6b39506441a8ea01f8d4ae647, type: 3}
+  m_Name: ActorHealthStatusDef
   m_EditorClassIdentifier: 
-  InitialStatuses:
-  - {fileID: 11400000, guid: ef6970aceacb01e458f6d9697d1190df, type: 2}
-  - {fileID: 11400000, guid: f66cbe1667767b840aa0b0d97834e132, type: 2}
+  InitialHealth: 5
+  InitialMaxHealth: 10

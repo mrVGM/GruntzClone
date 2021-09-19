@@ -1,9 +1,9 @@
 using Base;
 using Gruntz.Actors;
 using Gruntz.Puzzle;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Gruntz.Status
 {
@@ -83,6 +83,11 @@ namespace Gruntz.Status
         public Status GetStatus(StatusDef statusDef)
         {
             return _statuses.FirstOrDefault(x => x.StatusDef == statusDef);
+        }
+
+        public IEnumerable<Status> GetStatuses(Func<Status, bool> predicate)
+        {
+            return _statuses.Where(predicate);
         }
     }
 }
