@@ -50,6 +50,7 @@ namespace Gruntz.Navigation
                     PositionToMove = moveRequest.TargetPos,
                     Direction = Vector3.zero,
                     TravelSegmentInfo = new TravelSegmentInfo { StartPos = moveRequest.TargetPos, EndPos = moveRequest.TargetPos },
+                    TouchedPositions = new[] { moveRequest.TargetPos }
                 };
 
                 return moveRequestResult;
@@ -79,7 +80,8 @@ namespace Gruntz.Navigation
                     {
                         PositionToMove = currentPos,
                         Direction = Vector3.zero,
-                        TravelSegmentInfo = new TravelSegmentInfo { StartPos = currentPos, EndPos = currentPos }
+                        TravelSegmentInfo = new TravelSegmentInfo { StartPos = currentPos, EndPos = currentPos },
+                        TouchedPositions = new[] { currentPos }
                     };
                     return moveRequestResult;
                 }
@@ -98,7 +100,12 @@ namespace Gruntz.Navigation
                         MoveResultCallback = moveRequest.MoveResultCallback,
                     };
                     float dist = maxTravelDistance - (bestStep - currentPos).magnitude;
-                    return CalculateMove(moveReq, travelSegments, dist);
+                    var res = CalculateMove(moveReq, travelSegments, dist);
+                    if (res.TouchedPositions == null) {
+                        res.TouchedPositions = new Vector3[0];
+                    }
+                    res.TouchedPositions = res.TouchedPositions.Append(bestStep).ToArray();
+                    return res;
                 }
 
                 {
@@ -106,7 +113,8 @@ namespace Gruntz.Navigation
                     {
                         PositionToMove = currentPos + maxTravelDistance * dir,
                         Direction = dir,
-                        TravelSegmentInfo = new TravelSegmentInfo { StartPos = currentPos, EndPos = bestStep }
+                        TravelSegmentInfo = new TravelSegmentInfo { StartPos = currentPos, EndPos = bestStep },
+                        TouchedPositions = new[] { moveRequest.TravelSegmentInfo.EndPos },
                     };
                     return moveRequestResult;
                 }
@@ -128,7 +136,9 @@ namespace Gruntz.Navigation
                         MoveResultCallback = moveRequest.MoveResultCallback,
                     };
                     float dist = maxTravelDistance - (moveRequest.CurrentPos - immediateTarget).magnitude;
-                    return CalculateMove(moveReq, travelSegments, dist);
+                    var res = CalculateMove(moveReq, travelSegments, dist);
+
+                    return res;
                 }
 
                 {

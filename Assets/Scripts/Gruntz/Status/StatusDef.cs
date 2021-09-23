@@ -1,4 +1,5 @@
 using Base;
+using System;
 
 namespace Gruntz.Status
 {
@@ -10,6 +11,9 @@ namespace Gruntz.Status
             {
                 var statusData = StatusData;
                 statusData.StatusDef = ToDefRef<StatusDef>();
+                if (statusData.StatusId == null) {
+                    statusData.StatusId = Guid.NewGuid().ToString();
+                }
                 return statusData;
             }
         }

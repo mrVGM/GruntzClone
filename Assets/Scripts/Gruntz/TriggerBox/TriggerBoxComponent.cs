@@ -35,16 +35,14 @@ namespace Gruntz
             }
             var actor = actorProxy.Actor;
             var statusComponent = actor.GetComponent<StatusComponent>();
-            var status = statusComponent.GetStatus(TriggerBoxComponentDef.StatusActionDef.StatusDef);
-            if (status != null)
-            {
-                return;
-            }
-            status = TriggerBoxComponentDef.StatusActionDef.GetStatus(Actor, actor);
+            var status = TriggerBoxComponentDef.StatusActionDef.GetStatus(Actor, actor);
             statusComponent.AddStatus(status);
         }
         public void TriggerExited(Collider collider)
         {
+            if (!TriggerBoxComponentDef.RemoveStatus) {
+                return;
+            }
             var actorProxy = collider.GetComponent<ActorProxy>();
             if (actorProxy == null)
             {

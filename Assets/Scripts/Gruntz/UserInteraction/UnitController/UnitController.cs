@@ -1,13 +1,15 @@
 using Base;
 using Base.MessagesSystem;
 using Gruntz.Actors;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Gruntz.UserInteraction.UnitController
 {
     public class UnitController : IOrderedUpdate, IActorComponent
     {
-        public MessagesBoxTagDef MessagesBox { get; set; }
+        public List<MessagesBoxTagDef> MessageBoxTagStack = new List<MessagesBoxTagDef>();
+        public MessagesBoxTagDef MessagesBox => MessageBoxTagStack.LastOrDefault();
         public Actor Unit { get; }
 
         private ExecutionOrderTagDef orderTagDef { get; }
@@ -38,7 +40,7 @@ namespace Gruntz.UserInteraction.UnitController
         public UnitController(Actor unit, UnitControllerDef unitControllerDef)
         {
             Unit = unit;
-            MessagesBox = unitControllerDef.MessagesBoxTagDef;
+            MessageBoxTagStack.Add(unitControllerDef.MessagesBoxTagDef);
             orderTagDef = unitControllerDef.OrderTagDef;
         }
     }

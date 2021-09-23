@@ -8,7 +8,7 @@ namespace Gruntz
         {
             get
             {
-                var arrowStatusData = new ArrowStatusData { StatusDef = ToDefRef<StatusDef>() };
+                var arrowStatusData = new ArrowStatusData();
                 return arrowStatusData;
             }
         }

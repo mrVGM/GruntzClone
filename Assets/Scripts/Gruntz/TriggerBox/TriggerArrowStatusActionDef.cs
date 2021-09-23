@@ -1,6 +1,5 @@
 using Base.MessagesSystem;
 using Gruntz.Actors;
-using Gruntz.UserInteraction.UnitController;
 
 namespace Gruntz
 {
@@ -11,12 +10,6 @@ namespace Gruntz
         {
             var arrowStatusData = ArrowStatusDef.Data as ArrowStatusData;
             var destinationBehaviour = source.ActorComponent.GetComponent<ArrowDestinationBehaviour>();
-            var unitController = target.GetComponent<UnitController>();
-            if (unitController != null)
-            {
-                var previousUnitControllerChannel = target.GetComponent<UnitController>().MessagesBox;
-                arrowStatusData.PreviousUnitControllerChannel = previousUnitControllerChannel.ToDefRef<MessagesBoxTagDef>();
-            }
             arrowStatusData.Destination = destinationBehaviour.Destination.position;
             arrowStatusData.Anchor = source.Pos;
             return arrowStatusData.CreateStatus();

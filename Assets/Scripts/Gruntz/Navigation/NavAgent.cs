@@ -1,12 +1,18 @@
 using System.Linq;
 using Base;
 using Gruntz.Actors;
+using Gruntz.Puzzle;
 using UnityEngine;
 
 namespace Gruntz.Navigation
 {
     public class NavAgent : IActorComponent, IOrderedUpdate, ISerializedObject
     {
+        public class ActorTouchedPositionGameplayEvent : GameplayEvent
+        {
+            public Actor Actor;
+            public Vector3[] Positions;
+        }
         private class TravelSegmentInfo : ITravelSegmentInfo
         {
             public NavAgent _navAgent;
@@ -19,6 +25,8 @@ namespace Gruntz.Navigation
 
             public Vector3 StartPos => _navAgent._navAgentBehaviour.LocalTravelStartPoint.position;
         }
+
+        public Actor Actor { get; } 
 
         private NavAgentData _navAgentData;
         private NavAgentBehaviour _navAgentBehaviour;
@@ -71,10 +79,11 @@ namespace Gruntz.Navigation
             }
         }
 
-        public NavAgent(NavAgentData navAgentData, NavAgentBehaviour navAgentBehaviour)
+        public NavAgent(Actor actor, NavAgentData navAgentData, NavAgentBehaviour navAgentBehaviour)
         {
             _navAgentBehaviour = navAgentBehaviour;
             _navAgentData = navAgentData;
+            Actor = actor;
         }
         public void DoUpdate()
         {
@@ -121,6 +130,12 @@ namespace Gruntz.Navigation
             {
                 _navAgentBehaviour.ActorVisuals.rotation = Quaternion.LookRotation(moveRequestResult.Direction);
             }
+
+            var gameplayManager = GameplayManager.GetActorManagerFromContext();
+            gameplayManager.HandleGameplayEvent(new ActorTouchedPositionGameplayEvent {
+                Actor = Actor,
+                Positions = moveRequestResult.TouchedPositions
+            });
         }
 
         public void DeInit()

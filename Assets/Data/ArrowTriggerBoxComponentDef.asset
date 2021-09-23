@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ArrowTriggerBoxComponentDef
   m_EditorClassIdentifier: 
   StatusActionDef: {fileID: 11400000, guid: 58f60725c01ce8c769037357688ad8f5, type: 2}
+  RemoveStatus: 0

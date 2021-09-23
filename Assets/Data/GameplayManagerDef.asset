@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a1361c028b0ad43b61b1ec0d59d279, type: 3}
   m_Name: GameplayManagerDef
   m_EditorClassIdentifier: 
-  DecisionTree: {fileID: 2917014555062253673, guid: 0a2d57a55f04f9541ba995275e9f82a1, type: 3}
+  GameplayActionGenerators:
+  - {fileID: 11400000, guid: 73b86bab34f04c64aba2a57202b4788b, type: 2}
+  - {fileID: 11400000, guid: aa7722718c3051445af6a36749103017, type: 2}
+  - {fileID: 11400000, guid: aeb19ba1c03d1ce48911b957ac177f06, type: 2}
+  - {fileID: 11400000, guid: 4886e40f975a4f646b84f9acb889700e, type: 2}
+  - {fileID: 11400000, guid: 2af11fa018a7fc54abe78727fce244d8, type: 2}
+  - {fileID: 11400000, guid: f807a5466eb88524b813ed06991a7c9a, type: 2}

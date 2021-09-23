@@ -8,7 +8,7 @@ namespace Gruntz.Navigation
         public override IActorComponent CreateActorComponent(Actor actor)
         {
             var navAgentBehaviour = actor.ActorComponent.GetComponent<NavAgentBehaviour>();
-            var navAgent = new NavAgent(NavAgentData, navAgentBehaviour);
+            var navAgent = new NavAgent(actor, NavAgentData, navAgentBehaviour);
             return navAgent;
         }
     }

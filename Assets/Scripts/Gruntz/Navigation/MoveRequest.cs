@@ -19,5 +19,6 @@ namespace Gruntz.Navigation
         public Vector3 PositionToMove;
         public Vector3 Direction;
         public ITravelSegmentInfo TravelSegmentInfo;
+        public Vector3[] TouchedPositions;
     }
 }

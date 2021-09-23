@@ -4,6 +4,7 @@ using Gruntz.Puzzle;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Gruntz.Status
 {
@@ -61,6 +62,9 @@ namespace Gruntz.Status
         {
             _statuses.Add(status);
             var gameplayManager = GameplayManager.GetActorManagerFromContext();
+
+            Debug.Log($"Added: {status.StatusDef.name}, ActorPos: {_actor.Pos}, Number of Statuses: {_statuses.Count}, {_statuses.Select(x => x.StatusDef.name).Aggregate("", (x, y) => x + $" {y}")}");
+
             gameplayManager.HandleGameplayEvent(new StatusGameplayEvent { 
                 OperationExecuted = StatusGameplayEvent.Operation.Added,
                 Actor = _actor,
@@ -71,6 +75,9 @@ namespace Gruntz.Status
         public void RemoveStatus(Status status)
         {
             _statuses.Remove(status);
+
+            Debug.Log($"Removed: {status.StatusDef.name}, ActorPos: {_actor.Pos}, Number of Statuses: {_statuses.Count}, {_statuses.Select(x => x.StatusDef.name).Aggregate("", (x, y) => x + $" {y}")}");
+
             var gameplayManager = GameplayManager.GetActorManagerFromContext();
             gameplayManager.HandleGameplayEvent(new StatusGameplayEvent
             {

@@ -1,9 +1,6 @@
 using Base;
-using Gruntz.Puzzle.Gameplay;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
-using static Gruntz.Status.StatusComponent;
 
 namespace Gruntz.Puzzle
 {
@@ -49,34 +46,22 @@ namespace Gruntz.Puzzle
             return gameplayManager;
         }
 
-        private void ProcessGameplayEvents(IEnumerable<GameplayEvent> gameplayEvents)
+        IEnumerable<IGameplayAction> GenerateActions(IEnumerable<GameplayEvent> gameplayEvents)
         {
-            IEnumerable<IActionNode> findActionNodes(Transform root)
-            {
-                var actionNode = root.GetComponent<IActionNode>();
-                if (actionNode != null) {
-                    yield return actionNode;
-                }
-                var filterNode = root.GetComponent<IFilterNode>();
-                if (filterNode != null && filterNode.Filter(gameplayEvents))
-                {
-                    int childCount = root.childCount;
-                    for (int i = 0; i < childCount; ++i)
-                    {
-                        var curChild = root.GetChild(i);
-                        var res = findActionNodes(curChild);
-                        foreach (var node in res)
-                        {
-                            yield return node;
-                        }
-                    }
+            foreach (var actionGenerator in _gameplayManagerDef.GameplayActionGenerators) {
+                var actions = actionGenerator.GenerateActions(gameplayEvents);
+                foreach (var action in actions) {
+                    yield return action;
                 }
             }
+        }
 
-            var actionNodes = findActionNodes(_gameplayManagerDef.DecisionTree);
-            foreach (var node in actionNodes)
-            {
-                node.ExecuteAction(gameplayEvents);
+        private void ProcessGameplayEvents(IEnumerable<GameplayEvent> gameplayEvents)
+        {
+            var actions = GenerateActions(gameplayEvents);
+
+            foreach (var action in actions) {
+                action.Execute();
             }
         }
 

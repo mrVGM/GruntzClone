@@ -10,8 +10,7 @@ namespace Gruntz.Actors
         {
             get
             {
-                return new HealthStatusData { 
-                    StatusDef = ToDefRef<StatusDef>(),
+                return new HealthStatusData {
                     Health = InitialHealth,
                     MaxHealth = InitialMaxHealth
                 };
