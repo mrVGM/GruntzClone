@@ -499,6 +499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2032073709542253812}
   - component: {fileID: 3980455760033328173}
+  - component: {fileID: 457517696210793495}
   - component: {fileID: 2578242335437151158}
   - component: {fileID: 2927542351416650175}
   - component: {fileID: 2039587555110497607}
@@ -531,6 +532,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2636190780664467112}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &457517696210793495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2636190780664467112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec9924a6789dc44288271bddeda84ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2578242335437151158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,9 +596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5313335178195723325}
   - component: {fileID: 4866478485735253904}
-  - component: {fileID: 7836648758704984008}
   - component: {fileID: 3803794250947726807}
-  - component: {fileID: 5532232933833128845}
   - component: {fileID: 8598480732460110262}
   - component: {fileID: 8885929680473254187}
   m_Layer: 0
@@ -617,18 +628,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3513354020482872491}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &7836648758704984008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3513354020482872491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ec9924a6789dc44288271bddeda84ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3803794250947726807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,19 +641,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActorComponent: {fileID: 4948506617712170278}
---- !u!114 &5532232933833128845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3513354020482872491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bf3991c4f8ba6c4dbb87e89d7c410e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TriggerBoxComponentDef: {fileID: 11400000, guid: bb821dd0a6c1c684db497a54ba671aef, type: 2}
 --- !u!54 &8598480732460110262
 Rigidbody:
   m_ObjectHideFlags: 0

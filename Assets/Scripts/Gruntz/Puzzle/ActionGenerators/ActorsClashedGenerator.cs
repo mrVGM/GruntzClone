@@ -3,15 +3,12 @@ using Gruntz.Puzzle.Actions;
 using Gruntz.Status;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
-using static Gruntz.Status.StatusComponent;
 
 namespace Gruntz.Puzzle.ActionGenarators
 {
     public class ActorsClashedGenerator : GameplayActionGenerator
     {
-        public StatusDef BallActor;
-        public StatusDef Actor;
+        public StatusDef[] Hardness;
         public override IEnumerable<IGameplayAction> GenerateActions(IEnumerable<GameplayEvent> gameplayEvents)
         {
             var actorsClashedGameplayEvents = gameplayEvents.OfType<ActorsClashedGameplayEvent>();
@@ -24,8 +21,6 @@ namespace Gruntz.Puzzle.ActionGenarators
 
             foreach (var actorsClashedEvent in actorsClashedGameplayEvents) {
                 if (uniqueClashes.Any(x => {
-                    
-
                     bool different = actorsCollection(actorsClashedEvent).Except(actorsCollection(x)).Any();
                     return !different;
                 })) {
@@ -36,18 +31,22 @@ namespace Gruntz.Puzzle.ActionGenarators
             }
             foreach (var clash in uniqueClashes) {
                 var actors = actorsCollection(clash);
-                var ballActor = actors.FirstOrDefault(x => {
-                    var statusComponent = x.GetComponent<StatusComponent>();
-                    return statusComponent.GetStatus(BallActor) != null;
-                });
-                var regualActor = actors.FirstOrDefault(x => {
-                    var statusComponent = x.GetComponent<StatusComponent>();
-                    return statusComponent.GetStatus(Actor) != null;
-                });
 
-                if (ballActor != null && regualActor != null) {
-                    yield return new KillActorAction { Actor = regualActor };
+                int hardness(Actor actor) {
+                    var statusComponent = actor.GetComponent<StatusComponent>();
+                    if (statusComponent == null) {
+                        return 200000;
+                    }
+                    for (int i = Hardness.Length - 1; i >= 0; --i) {
+                        if (statusComponent.GetStatus(Hardness[i]) != null) {
+                            return i;
+                        }
+                    }
+                    return 100000;
                 }
+
+                var actorToKill = actorsCollection(clash).OrderBy(hardness).FirstOrDefault();
+                yield return new KillActorAction { Actor = actorToKill };
             }
         }
     }

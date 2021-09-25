@@ -1,4 +1,5 @@
 using Base;
+using Gruntz.Status;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,6 +21,17 @@ namespace Gruntz.Actors
                 var actorManagerData = value as ActorManagerData;
                 foreach (var actorData in actorManagerData.ActorDatas)
                 {
+                    var statusComponent = actorData.ActorComponents.FirstOrDefault(x => x.Component is StatusComponentDef);
+                    if (statusComponent != null) {
+                        var statusComponentData = statusComponent.Data as StatusComponentData;
+                        if (statusComponentData != null)  {
+                            var healthStatusData = statusComponentData.StatusDatas.OfType<HealthStatusData>().FirstOrDefault();
+                            if (healthStatusData != null && healthStatusData.Health <= 0) {
+                                continue;
+                            }
+                        }
+                    }
+
                     ActorDeployment.DeployActor(actorData);
                 }
             }

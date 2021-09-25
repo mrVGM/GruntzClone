@@ -63,8 +63,6 @@ namespace Gruntz.Status
             _statuses.Add(status);
             var gameplayManager = GameplayManager.GetActorManagerFromContext();
 
-            Debug.Log($"Added: {status.StatusDef.name}, ActorPos: {_actor.Pos}, Number of Statuses: {_statuses.Count}, {_statuses.Select(x => x.StatusDef.name).Aggregate("", (x, y) => x + $" {y}")}");
-
             gameplayManager.HandleGameplayEvent(new StatusGameplayEvent { 
                 OperationExecuted = StatusGameplayEvent.Operation.Added,
                 Actor = _actor,

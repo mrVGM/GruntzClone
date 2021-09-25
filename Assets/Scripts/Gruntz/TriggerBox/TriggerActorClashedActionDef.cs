@@ -11,6 +11,9 @@ namespace Gruntz
             if (otherCollider.GetComponent<ActorBody>() != null) {
                 var ownActor = ownCollider.GetComponent<ActorProxy>().Actor;
                 var otherActor = otherCollider.GetComponent<ActorProxy>().Actor;
+                if (ownActor == otherActor) {
+                    return;
+                }
                 var gameplayManager = GameplayManager.GetActorManagerFromContext();
                 gameplayManager.HandleGameplayEvent(new ActorsClashedGameplayEvent { Actor1 = ownActor, Actor2 = otherActor });
             }
