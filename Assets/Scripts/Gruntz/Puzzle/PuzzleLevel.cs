@@ -78,7 +78,9 @@ namespace Gruntz.Puzzle
             var actorManagerData = new ActorManagerData { ActorDatas = deployDatas };
 
             var actorManager = ActorManager.GetActorManagerFromContext();
+            actorManager.DeployActor = ActorDeployment.DeployActor;
             actorManager.Data = actorManagerData;
+            actorManager.DeployActor = null;
         }
         public void LevelLoaded()
         {

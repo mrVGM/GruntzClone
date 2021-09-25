@@ -1,6 +1,5 @@
-using Base;
-using Gruntz.Actors;
 using Gruntz.Status;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,7 +8,10 @@ namespace Base.Actors
     public class ActorManager : IContextObject, ISerializedObject
     {
         private List<Actor> actors { get; } = new List<Actor>();
+        public ActorManagerDef ActorManagerDef;
         public IEnumerable<Actor> Actors => actors;
+
+        public Func<ActorData, Actor> DeployActor;
 
         public ISerializedObjectData Data
         {
@@ -20,6 +22,7 @@ namespace Base.Actors
             set
             {
                 var actorManagerData = value as ActorManagerData;
+                
                 foreach (var actorData in actorManagerData.ActorDatas)
                 {
                     var statusComponent = actorData.ActorComponents.FirstOrDefault(x => x.Component is StatusComponentDef);
@@ -33,7 +36,7 @@ namespace Base.Actors
                         }
                     }
 
-                    ActorDeployment.DeployActor(actorData);
+                    DeployActor(actorData);
                 }
             }
         }
@@ -55,6 +58,7 @@ namespace Base.Actors
             var game = Game.Instance;
             var actorManagerDef = game.DefRepositoryDef.AllDefs.OfType<ActorManagerDef>().First();
             var actorManager = game.Context.GetRuntimeObject(actorManagerDef) as ActorManager;
+            actorManager.ActorManagerDef = actorManagerDef;
             return actorManager;
         }
     }

@@ -1,5 +1,3 @@
-using Base;
-
 namespace Base.Actors
 {
     public class ActorDef : Def

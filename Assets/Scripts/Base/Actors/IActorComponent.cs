@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Base.Actors
 {
     public interface IActorComponent

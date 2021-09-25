@@ -1,6 +1,3 @@
-using Base;
-using Gruntz;
-using Gruntz.Actors;
 using Gruntz.Navigation;
 using Gruntz.Status;
 using Gruntz.UserInteraction.UnitController;
@@ -102,6 +99,9 @@ namespace Base.Actors
         public void Die()
         {
             var statusComponent = GetComponent<StatusComponent>();
+            var actorManager = ActorManager.GetActorManagerFromContext();
+            statusComponent.AddStatus(actorManager.ActorManagerDef.DeadStatus.Data.CreateStatus());
+#if false
             var healthStatus = statusComponent.GetStatuses(x => x.StatusData is HealthStatusData).FirstOrDefault();
             if (healthStatus != null) {
                 var healthStatusData = healthStatus.StatusData as HealthStatusData;
@@ -122,7 +122,7 @@ namespace Base.Actors
             if (triggerBox != null) {
                 triggerBox.DeInit();
             }
-
+#endif
             ActorComponent.gameObject.SetActive(false);
         }
     }
