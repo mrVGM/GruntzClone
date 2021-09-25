@@ -1,3 +1,4 @@
+using Base.Actors;
 using UnityEngine;
 
 namespace Gruntz.Actors

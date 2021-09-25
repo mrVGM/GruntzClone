@@ -1,7 +1,7 @@
 using System;
 using Base;
 
-namespace Gruntz.Actors
+namespace Base.Actors
 {
     [Serializable]
     public class ActorData : ISerializedObjectData

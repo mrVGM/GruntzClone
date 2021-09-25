@@ -1,5 +1,4 @@
-using Base;
-using Gruntz.Actors;
+using Base.Actors;
 using Gruntz.Status;
 using UnityEngine;
 

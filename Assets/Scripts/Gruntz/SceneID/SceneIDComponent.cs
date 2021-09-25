@@ -1,5 +1,5 @@
 using Base;
-using Gruntz.Actors;
+using Base.Actors;
 
 namespace Gruntz.SceneID
 {

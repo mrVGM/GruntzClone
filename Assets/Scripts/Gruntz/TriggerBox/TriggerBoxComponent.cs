@@ -1,6 +1,4 @@
-using Gruntz.Actors;
-using Gruntz.Status;
-using System.Linq;
+using Base.Actors;
 using UnityEngine;
 
 namespace Gruntz

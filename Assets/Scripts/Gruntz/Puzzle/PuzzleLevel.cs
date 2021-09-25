@@ -1,4 +1,5 @@
 using Base;
+using Base.Actors;
 using Gruntz.Actors;
 using Gruntz.Navigation;
 using Gruntz.SceneID;

@@ -2,7 +2,7 @@ using Base;
 using System;
 using System.Collections.Generic;
 
-namespace Gruntz.Actors
+namespace Base.Actors
 {
     [Serializable]
     public class ActorManagerData : ISerializedObjectData

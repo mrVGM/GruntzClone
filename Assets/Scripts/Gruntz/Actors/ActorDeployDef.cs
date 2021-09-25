@@ -1,5 +1,6 @@
 using System;
 using Base;
+using Base.Actors;
 
 namespace Gruntz.Actors
 {

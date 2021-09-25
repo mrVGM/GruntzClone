@@ -1,6 +1,6 @@
 using Base;
 
-namespace Gruntz.Actors
+namespace Base.Actors
 {
     public class ActorDef : Def
     {

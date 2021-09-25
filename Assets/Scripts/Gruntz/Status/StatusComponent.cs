@@ -1,5 +1,5 @@
 using Base;
-using Gruntz.Actors;
+using Base.Actors;
 using Gruntz.Puzzle;
 using System;
 using System.Collections.Generic;

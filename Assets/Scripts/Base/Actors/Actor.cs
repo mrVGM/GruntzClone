@@ -1,4 +1,6 @@
 using Base;
+using Gruntz;
+using Gruntz.Actors;
 using Gruntz.Navigation;
 using Gruntz.Status;
 using Gruntz.UserInteraction.UnitController;
@@ -6,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Gruntz.Actors
+namespace Base.Actors
 {
     public class Actor : ISerializedObject
     {

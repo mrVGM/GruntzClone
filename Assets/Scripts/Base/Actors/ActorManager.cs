@@ -1,9 +1,10 @@
 using Base;
+using Gruntz.Actors;
 using Gruntz.Status;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Gruntz.Actors
+namespace Base.Actors
 {
     public class ActorManager : IContextObject, ISerializedObject
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Gruntz.Actors
+namespace Base.Actors
 {
     public class ActorComponent : MonoBehaviour
     {
