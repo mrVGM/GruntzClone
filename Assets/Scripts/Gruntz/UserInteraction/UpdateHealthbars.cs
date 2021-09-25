@@ -33,6 +33,10 @@ namespace Gruntz.UserInteraction
                     {
                         continue;
                     }
+                    var healthStatusData = healthStatus.StatusData as HealthStatusData;
+                    if (healthStatusData.Health <= 0) {
+                        continue;
+                    }
                     ++healthbarsUsed;
                     if (HealthbarsContainer.childCount < healthbarsUsed)
                     {
@@ -43,7 +47,6 @@ namespace Gruntz.UserInteraction
                     Vector3 screenPos = game.Camera.WorldToScreenPoint(actor.Pos) + (Vector3) HealthbarOffset;
                     healthbar.transform.position = screenPos;
                     healthbar.gameObject.SetActive(true);
-                    var healthStatusData = healthStatus.Data as HealthStatusData;
                     healthbar.Bar.localScale = new Vector3(healthStatusData.Health / healthStatusData.MaxHealth, 1.0f, 1.0f);
                 }
 

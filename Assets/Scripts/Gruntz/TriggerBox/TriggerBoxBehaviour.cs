@@ -5,6 +5,8 @@ namespace Gruntz
 {
     public class TriggerBoxBehaviour : MonoBehaviour
     {
+        public TriggerBoxComponentDef TriggerBoxComponentDef;
+
         public Action<Collider> TriggerEntered;
         public Action<Collider> TriggerExited;
         private void OnTriggerEnter(Collider other)

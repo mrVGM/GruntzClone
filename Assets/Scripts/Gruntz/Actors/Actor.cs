@@ -1,5 +1,7 @@
 using Base;
 using Gruntz.Navigation;
+using Gruntz.Status;
+using Gruntz.UserInteraction.UnitController;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -93,6 +95,33 @@ namespace Gruntz.Actors
         public IActorComponent GetComponent(ActorComponentDef actorComponentDef)
         {
             return _components[actorComponentDef];
+        }
+
+        public void Die()
+        {
+            var statusComponent = GetComponent<StatusComponent>();
+            var healthStatus = statusComponent.GetStatuses(x => x.StatusData is HealthStatusData).FirstOrDefault();
+            if (healthStatus != null) {
+                var healthStatusData = healthStatus.StatusData as HealthStatusData;
+                healthStatusData.Health = 0;
+            }
+
+            var navAgent = GetComponent<NavAgent>();
+            if (navAgent != null) {
+                navAgent.DeInit();
+            }
+
+            var unitController = GetComponent<UnitController>();
+            if (unitController != null) {
+                unitController.DeInit();
+            }
+
+            var triggerBox = GetComponent<TriggerBoxComponent>();
+            if (triggerBox != null) {
+                triggerBox.DeInit();
+            }
+
+            ActorComponent.gameObject.SetActive(false);
         }
     }
 }

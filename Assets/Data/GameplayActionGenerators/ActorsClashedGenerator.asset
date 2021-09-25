@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a4ab817c9fea4a1780f4596a152c30d, type: 3}
-  m_Name: TriggerArrowStatusActiontDef
+  m_Script: {fileID: 11500000, guid: f43243ec374098049889f46af6b30d26, type: 3}
+  m_Name: ActorsClashedGenerator
   m_EditorClassIdentifier: 
-  StatusDef: {fileID: 11400000, guid: 319a7113f1ea182ac89c194b601a294d, type: 2}
-  RemoveStatus: 0
+  BallActor: {fileID: 11400000, guid: b369f0a9db5183044a3530336c95ccbd, type: 2}
+  Actor: {fileID: 11400000, guid: ef6970aceacb01e458f6d9697d1190df, type: 2}

@@ -22,12 +22,13 @@ namespace Gruntz.Navigation
             }
         }
         public string[] ObstacleLayers;
-        public LayerMask Obstacles => LayerMask.GetMask(ObstacleLayers.Except(DisabledObstacleLayers).ToArray());
+        public IEnumerable<string> ObstacleNames => ObstacleLayers.Except(DisabledObstacleLayers);
+        public LayerMask Obstacles => LayerMask.GetMask(ObstacleNames.ToArray());
         public SerializedVector3 InitialPosition;
         public SerializedVector3 Target;
         public SerializedVector3 TravelSegmentStart;
         public SerializedVector3 TravelSegmentEnd;
-        public bool CheckForSegmentInfoClashes => DisabledObstacleLayers.Contains(UnityLayers.UnitObstacle);
+        public bool CheckForSegmentInfoClashes => ObstacleNames.Contains(UnityLayers.UnitObstacle);
         public float Speed;
     }
 }

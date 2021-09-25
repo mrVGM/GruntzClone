@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469478a6da8a5f44d9b8c17983ef50ee, type: 3}
   m_Name: ArrowTriggerBoxComponentDef
   m_EditorClassIdentifier: 
-  StatusActionDef: {fileID: 11400000, guid: 58f60725c01ce8c769037357688ad8f5, type: 2}
-  RemoveStatus: 0
+  TriggerBoxActionDef: {fileID: 11400000, guid: 58f60725c01ce8c769037357688ad8f5, type: 2}

@@ -1,14 +1,16 @@
 using Gruntz.Actors;
+using System.Linq;
 
 namespace Gruntz
 {
     public class TriggerBoxComponentDef : ActorComponentDef
     {
-        public TriggerStatusActionDef StatusActionDef;
-        public bool RemoveStatus = false;
+        public TriggerBoxActionDef TriggerBoxActionDef;
         public override IActorComponent CreateActorComponent(Actor actor)
         {
-            return new TriggerBoxComponent(this, actor);
+            var triggerBoxBehaviour = actor.ActorComponent
+                .GetComponentsInChildren<TriggerBoxBehaviour>().First(x => x.TriggerBoxComponentDef == this);
+            return new TriggerBoxComponent(triggerBoxBehaviour, TriggerBoxActionDef, actor);
         }
     }
 }
