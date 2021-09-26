@@ -24,6 +24,13 @@ namespace Gruntz
             var sceneIDsHolder = SceneIDsHolder.GetSceneIDsHolderFromContext();
             sceneIDsHolder.SceneIDs = SceneIDs;
 
+            var actorDeployPoints = ActorDeployPoints.GetComponentsInChildren<ActorDeployPoint>();
+            foreach (var dp in actorDeployPoints) {
+                if (dp.ActorComponent != null) {
+                    dp.ActorComponent.gameObject.SetActive(false);
+                }
+            }
+
             var actorManager = ActorManager.GetActorManagerFromContext();
             var savedGameHolder = SavedGameHolder.GetSavedGameHolderFromGame();
             if (savedGameHolder.SavedGame != null)
@@ -39,7 +46,6 @@ namespace Gruntz
                 return;
             }
 
-            var actorDeployPoints = ActorDeployPoints.GetComponentsInChildren<ActorDeployPoint>();
             var deployDatas = new List<ActorData>();
 
             foreach (var deployPoint in actorDeployPoints)
@@ -48,6 +54,7 @@ namespace Gruntz
                     .Select(x => new ActorData.Components { _component = x.ToDefRef<ActorComponentDef>() });
                 if (deployPoint.ActorComponent != null)
                 {
+                    deployPoint.ActorComponent.gameObject.SetActive(true);
                     var defRepo = game.DefRepositoryDef;
                     var sceneIDComponentDef = defRepo.AllDefs.OfType<SceneIDComponentDef>().FirstOrDefault();
                     var data = new SceneIDComponentData { ID = SceneIDs.SceneObjectIDs.FirstOrDefault(x => x.GameObject == deployPoint.ActorComponent.gameObject).ID };

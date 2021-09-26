@@ -74,6 +74,7 @@ namespace Base.Actors
                     serializedObject.Data = component.Value;
                 }
             }
+            ActorComponent.gameObject.SetActive(true);
         }
 
         public void Deinit()
