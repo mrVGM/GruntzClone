@@ -1,6 +1,6 @@
 using Base;
 using Gruntz.Actors;
-using Gruntz.Status;
+using Base.Status;
 using UnityEngine;
 
 namespace Gruntz

@@ -1,7 +1,6 @@
-using Base;
 using System;
 
-namespace Gruntz.Status
+namespace Base.Status
 {
     [Serializable]
     public class StatusData : ISerializedObjectData

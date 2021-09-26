@@ -1,6 +1,4 @@
-using Base;
-
-namespace Gruntz.Status
+namespace Base.Status
 {
     public class Status : ISerializedObject
     {

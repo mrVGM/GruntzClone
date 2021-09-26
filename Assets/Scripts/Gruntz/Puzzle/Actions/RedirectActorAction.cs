@@ -1,6 +1,6 @@
 using Base.Actors;
 using Base.Navigation;
-using Gruntz.Status;
+using Base.Status;
 using UnityEngine;
 
 namespace Gruntz.Puzzle.Actions
@@ -9,7 +9,7 @@ namespace Gruntz.Puzzle.Actions
     {
         public Actor Actor { get; set; }
         public Vector3 Destination;
-        public Status.Status[] StatusesToAdd;
+        public Status[] StatusesToAdd;
 
         public void Execute()
         {

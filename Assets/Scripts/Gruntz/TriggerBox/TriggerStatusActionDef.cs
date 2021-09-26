@@ -1,5 +1,5 @@
 using Base.Actors;
-using Gruntz.Status;
+using Base.Status;
 using UnityEngine;
 
 namespace Gruntz
@@ -8,7 +8,7 @@ namespace Gruntz
     {
         public StatusDef StatusDef;
         public bool RemoveStatus = true;
-        public virtual Status.Status GetStatus(Actor ownActor, Actor otherActor)
+        public virtual Status GetStatus(Actor ownActor, Actor otherActor)
         {
             return StatusDef.Data.CreateStatus();
         }

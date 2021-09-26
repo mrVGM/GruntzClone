@@ -1,8 +1,7 @@
-using Base;
 using System;
 using System.Collections.Generic;
 
-namespace Gruntz.Status
+namespace Base.Status
 {
     [Serializable]
     public class StatusComponentData : ISerializedObjectData

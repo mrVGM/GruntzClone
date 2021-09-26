@@ -1,6 +1,6 @@
 using Base.Actors;
 
-namespace Gruntz.Status
+namespace Base.Status
 {
     public class StatusComponentDef : ActorComponentDef
     {

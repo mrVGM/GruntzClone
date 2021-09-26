@@ -1,10 +1,10 @@
-using Gruntz.Status;
+using Base.Status;
 using System;
 
 namespace Gruntz.Puzzle.Statuses
 {
     [Serializable]
-    public class DisableNavObstaclesStatusDef : Status.StatusDef
+    public class DisableNavObstaclesStatusDef : StatusDef
     {
         public string[] DisabledObstacleLayers;
 

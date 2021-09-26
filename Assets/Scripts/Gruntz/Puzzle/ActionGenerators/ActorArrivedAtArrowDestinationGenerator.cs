@@ -1,6 +1,6 @@
 using Gruntz.Puzzle.Actions;
 using Gruntz.Puzzle.Statuses;
-using Gruntz.Status;
+using Base.Status;
 using System.Collections.Generic;
 using System.Linq;
 using static Base.Navigation.NavAgent;

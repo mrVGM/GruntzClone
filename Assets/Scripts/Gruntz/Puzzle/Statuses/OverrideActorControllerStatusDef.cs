@@ -1,5 +1,5 @@
 ﻿using Base.MessagesSystem;
-using Gruntz.Status;
+using Base.Status;
 
 namespace Gruntz.Puzzle.Statuses
 {

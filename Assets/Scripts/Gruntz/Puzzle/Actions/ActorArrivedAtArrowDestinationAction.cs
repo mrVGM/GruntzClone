@@ -1,13 +1,12 @@
 using Base.Actors;
-using Gruntz.Actors;
-using Gruntz.Status;
+using Base.Status;
 
 namespace Gruntz.Puzzle.Actions
 {
     public class ActorArrivedAtArrowDestinationAction : IGameplayAction
     {
         public Actor Actor { get; set; }
-        public Status.Status[] StatusesToRemove;
+        public Status[] StatusesToRemove;
 
         public void Execute()
         {

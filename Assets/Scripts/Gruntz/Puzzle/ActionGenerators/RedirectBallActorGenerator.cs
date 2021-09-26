@@ -1,9 +1,9 @@
 using Gruntz.Puzzle.Actions;
-using Gruntz.Status;
+using Base.Status;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static Gruntz.Status.StatusComponent;
+using static Base.Status.StatusComponent;
 
 namespace Gruntz.Puzzle.ActionGenarators
 {

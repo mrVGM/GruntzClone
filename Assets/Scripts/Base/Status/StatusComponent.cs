@@ -1,4 +1,3 @@
-using Base;
 using Base.Actors;
 using Gruntz.Puzzle;
 using System;
@@ -6,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Gruntz.Status
+namespace Base.Status
 {
     public class StatusComponent : IActorComponent, ISerializedObject
     {
