@@ -10,7 +10,7 @@ namespace Gruntz.Gameplay.ActionGenarators
 {
     public class ActorsClashedGenerator : GameplayActionGenerator
     {
-        public ActorDeployDef GraveDeployDef;
+        public ActorTemplateDef GraveDeployDef;
         public ActorInstanceHolderStatusDef ActorInstanceHolderStatusDef;
         public StatusDef[] Hardness;
         public override IEnumerable<IGameplayAction> GenerateActions(IEnumerable<GameplayEvent> gameplayEvents)

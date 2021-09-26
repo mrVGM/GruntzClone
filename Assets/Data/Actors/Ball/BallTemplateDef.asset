@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03d68fe567e423849857a9ecfa84c51f, type: 3}
-  m_Name: BallUnitDeployDef
+  m_Script: {fileID: 11500000, guid: c648027e19b0c3f42b708482fbb9ca0a, type: 3}
+  m_Name: BallTemplateDef
   m_EditorClassIdentifier: 
   ActorDef: {fileID: 11400000, guid: de6414070229c364a864eb211b490083, type: 2}
   ActorComponents:
   - {fileID: 11400000, guid: 4d43831ded47a0d45896b3661aa1ca03, type: 2}
   - {fileID: 11400000, guid: a3662042090851f44834197a3fc757de, type: 2}
+  Statuses: []
+  Weapon: {fileID: 0}
+  SpecialItem: {fileID: 0}

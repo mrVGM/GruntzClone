@@ -7,12 +7,12 @@ namespace Gruntz.TriggerBox
 {
     public class TriggerGiveItemActionDef : TriggerBoxActionDef
     {
-        public ItemDef Weapon;
-        public ItemDef SpecialItem;
         public override void TriggerEnter(Collider ownCollider, Collider otherCollider)
         {
             var ownActorProxy = ownCollider.GetComponent<ActorProxy>();
             var ownActor = ownActorProxy.Actor;
+
+            var ownEquipment = ownActor.GetComponent<EquipmentComponent>();
 
             var actorProxy = otherCollider.GetComponent<ActorProxy>();
             if (actorProxy == null) {
@@ -23,11 +23,11 @@ namespace Gruntz.TriggerBox
             if (equipmentComponent == null) {
                 return;
             }
-            if (Weapon != null) {
-                equipmentComponent.Weapon = Weapon;
+            if (ownEquipment.Weapon != null) {
+                equipmentComponent.Weapon = ownEquipment.Weapon;
             }
-            if (SpecialItem != null) {
-                equipmentComponent.SpecialItem = SpecialItem;
+            if (ownEquipment.SpecialItem != null) {
+                equipmentComponent.SpecialItem = ownEquipment.SpecialItem;
             }
 
             ownActor.Deinit();

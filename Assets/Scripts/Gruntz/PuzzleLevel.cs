@@ -46,11 +46,10 @@ namespace Gruntz
                 return;
             }
 
-            var deployDatas = new List<ActorData>();
-
+            var deployDatas = new Dictionary<ActorData, ActorTemplateDef>();
             foreach (var deployPoint in actorDeployPoints)
             {
-                var actorComponents = deployPoint.ActorDeployDef.ActorComponents
+                var actorComponents = deployPoint.ActorTempleteDef.ActorComponents
                     .Select(x => new ActorData.Components { _component = x.ToDefRef<ActorComponentDef>() });
                 if (deployPoint.ActorComponent != null)
                 {
@@ -62,7 +61,7 @@ namespace Gruntz
                 }
                 var actorData = new ActorData
                 {
-                    ActorDef = (deployPoint.ActorDeployDef.ActorDef != null) ? deployPoint.ActorDeployDef.ActorDef.ToDefRef<ActorDef>() : default(DefRef<ActorDef>),
+                    ActorDef = (deployPoint.ActorTempleteDef.ActorDef != null) ? deployPoint.ActorTempleteDef.ActorDef.ToDefRef<ActorDef>() : default(DefRef<ActorDef>),
                     ActorComponents = actorComponents.ToArray()
                 };
                 var navComponent = actorData.ActorComponents.FirstOrDefault(x => x.Component is NavAgentComponentDef);
@@ -82,11 +81,16 @@ namespace Gruntz
                     navData.Speed = navComponentDef.NavAgentData.Speed;
                     navComponent.Data = navData;
                 }
-                deployDatas.Add(actorData);
+                deployDatas[actorData] = deployPoint.ActorTempleteDef;
             }
-            var actorManagerData = new ActorManagerData { ActorDatas = deployDatas };
+            var actorManagerData = new ActorManagerData { ActorDatas = deployDatas.Keys.ToList() };
 
-            actorManager.DeployActor = ActorDeployment.DeployActor;
+            actorManager.DeployActor = x => {
+                var actor = ActorDeployment.DeployActor(x);
+                var template = deployDatas[actor.Data as ActorData];
+                template.ProcessActor(actor);
+                return actor;
+            };
             actorManager.Data = actorManagerData;
             actorManager.DeployActor = null;
         }

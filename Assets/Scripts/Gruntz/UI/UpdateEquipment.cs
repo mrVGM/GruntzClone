@@ -37,7 +37,7 @@ namespace Gruntz.UI
                 var specialItem = equipment.SpecialItem;
                 if (specialItem != null) {
                     SpecialItem.EquipmentIcon.sprite = specialItem.Icon;
-                    SpecialItem.gameObject.SetActive(false);
+                    SpecialItem.gameObject.SetActive(true);
                 }
 
                 yield return null;

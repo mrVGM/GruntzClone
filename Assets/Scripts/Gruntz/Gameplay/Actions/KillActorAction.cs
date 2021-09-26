@@ -9,7 +9,7 @@ namespace Gruntz.Gameplay.Actions
 {
     public class KillActorAction : IGameplayAction
     {
-        public ActorDeployDef GraveDef;
+        public ActorTemplateDef GraveDef;
         public ActorInstanceHolderStatusDef ActorHolderStatusDef;
         public Actor Actor { get; set; }
 
@@ -36,6 +36,7 @@ namespace Gruntz.Gameplay.Actions
                 ActorComponents = actorComponents.ToArray()
             };
             var graveActor = ActorDeployment.DeployActor(graveActorData);
+            GraveDef.ProcessActor(graveActor);
             graveActor.ActorComponent.transform.position = pos;
             statusComponent = graveActor.GetComponent<StatusComponent>();
             var actorInstanceStatusData = ActorHolderStatusDef.Data as ActorInstanceHolderStatusData;
