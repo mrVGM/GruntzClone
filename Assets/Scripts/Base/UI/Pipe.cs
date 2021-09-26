@@ -1,8 +1,7 @@
-using Base;
 using System.Linq;
 using UnityEngine;
 
-namespace Gruntz.UserInteraction
+namespace Base.UI
 {
     public class Pipe : MonoBehaviour, IProcess
     {

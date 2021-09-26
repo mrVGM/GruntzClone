@@ -3,6 +3,7 @@ using Gruntz.Actors;
 using Base.Status;
 using System.Collections.Generic;
 using System.Linq;
+using Base.UI;
 
 namespace Gruntz.UserInteraction.ActorControl
 {

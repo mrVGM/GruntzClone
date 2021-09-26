@@ -1,8 +1,7 @@
-using Base;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Gruntz.UserInteraction
+namespace Base.UI
 {
     public class UserInteractionExecutionOrderTagDef : ExecutionOrderTagDef
     {

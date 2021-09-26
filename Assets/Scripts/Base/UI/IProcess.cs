@@ -1,4 +1,4 @@
-namespace Gruntz.UserInteraction
+namespace Base.UI
 {
     public interface IProcess
     {

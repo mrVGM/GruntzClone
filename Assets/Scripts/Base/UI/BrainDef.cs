@@ -1,6 +1,4 @@
-using Base;
-
-namespace Gruntz.UserInteraction
+namespace Base.UI
 {
     public class BrainDef : Def, IRuntimeInstance
     {

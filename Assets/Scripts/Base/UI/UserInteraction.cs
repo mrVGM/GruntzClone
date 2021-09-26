@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Gruntz.UserInteraction
+namespace Base.UI
 {
     public class UserInteraction : MonoBehaviour
     {

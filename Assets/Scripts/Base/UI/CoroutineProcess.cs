@@ -1,9 +1,8 @@
-using Base;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Gruntz.UserInteraction
+namespace Base.UI
 {
     public abstract class CoroutineProcess : MonoBehaviour, IProcess
     {
