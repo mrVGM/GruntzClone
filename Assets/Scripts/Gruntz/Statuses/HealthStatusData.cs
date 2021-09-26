@@ -1,7 +1,7 @@
 using Base.Status;
 using System;
 
-namespace Gruntz.Actors
+namespace Gruntz.Statuses
 {
     [Serializable]
     public class HealthStatusData : StatusData

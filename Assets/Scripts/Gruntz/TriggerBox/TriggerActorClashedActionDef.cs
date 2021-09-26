@@ -3,7 +3,7 @@ using Gruntz.Actors;
 using Gruntz.Gameplay;
 using UnityEngine;
 
-namespace Gruntz
+namespace Gruntz.TriggerBox
 {
     public class TriggerActorClashedActionDef : TriggerBoxActionDef
     {

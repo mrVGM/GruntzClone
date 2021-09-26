@@ -1,9 +1,7 @@
 using Base;
-using Gruntz.Actors;
-using Base.Status;
 using UnityEngine;
 
-namespace Gruntz
+namespace Gruntz.TriggerBox
 {
     public abstract class TriggerBoxActionDef : Def
     {

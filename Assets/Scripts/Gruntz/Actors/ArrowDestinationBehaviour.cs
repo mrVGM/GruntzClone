@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Gruntz
+namespace Gruntz.Actors
 {
     public class ArrowDestinationBehaviour : MonoBehaviour
     {

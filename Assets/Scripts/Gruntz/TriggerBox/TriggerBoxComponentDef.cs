@@ -1,8 +1,7 @@
 using Base.Actors;
-using Gruntz.Actors;
 using System.Linq;
 
-namespace Gruntz
+namespace Gruntz.TriggerBox
 {
     public class TriggerBoxComponentDef : ActorComponentDef
     {

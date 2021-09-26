@@ -1,8 +1,9 @@
 using Base.Actors;
-using Base.MessagesSystem;
 using Base.Status;
+using Gruntz.Actors;
+using Gruntz.Statuses;
 
-namespace Gruntz
+namespace Gruntz.TriggerBox
 {
     public class TriggerArrowStatusActionDef : TriggerStatusActionDef
     {

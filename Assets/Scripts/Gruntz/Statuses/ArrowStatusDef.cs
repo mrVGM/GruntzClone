@@ -1,6 +1,6 @@
 using Base.Status;
 
-namespace Gruntz
+namespace Gruntz.Statuses
 {
     public class ArrowStatusDef : StatusDef
     {

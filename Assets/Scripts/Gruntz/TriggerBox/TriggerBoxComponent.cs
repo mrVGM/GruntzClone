@@ -1,7 +1,7 @@
 using Base.Actors;
 using UnityEngine;
 
-namespace Gruntz
+namespace Gruntz.TriggerBox
 {
     public class TriggerBoxComponent : IActorComponent
     {

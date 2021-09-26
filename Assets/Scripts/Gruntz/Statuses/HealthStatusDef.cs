@@ -1,6 +1,6 @@
 using Base.Status;
 
-namespace Gruntz.Actors
+namespace Gruntz.Statuses
 {
     public class HealthStatusDef : StatusDef
     {

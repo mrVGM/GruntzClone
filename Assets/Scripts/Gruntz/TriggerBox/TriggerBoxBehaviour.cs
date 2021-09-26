@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Gruntz
+namespace Gruntz.TriggerBox
 {
     public class TriggerBoxBehaviour : MonoBehaviour
     {
