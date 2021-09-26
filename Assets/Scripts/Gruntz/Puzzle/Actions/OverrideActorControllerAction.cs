@@ -1,7 +1,6 @@
 using Base.Actors;
 using Base.MessagesSystem;
-using Gruntz.Actors;
-using Gruntz.UserInteraction.UnitController;
+using Gruntz.UnitController;
 
 namespace Gruntz.Puzzle.Actions
 {
@@ -13,7 +12,7 @@ namespace Gruntz.Puzzle.Actions
 
         public void Execute()
         {
-            var unitController = Actor.GetComponent<UnitController>();
+            var unitController = Actor.GetComponent<UnitController.UnitController>();
             if (Restore) {
                 unitController.MessageBoxTagStack.Remove(MessagesBoxTagDef);
             }

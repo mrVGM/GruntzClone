@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Gruntz.UserInteraction
+namespace Gruntz.UI
 {
     public class Healthbar : MonoBehaviour
     {

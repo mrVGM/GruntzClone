@@ -1,6 +1,6 @@
 using Base.Actors;
 
-namespace Gruntz.UserInteraction.UnitController
+namespace Gruntz.UnitController
 {
     public interface IUnitExecutable
     {

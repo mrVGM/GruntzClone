@@ -6,7 +6,7 @@ using System.Linq;
 using UnityEngine;
 using Utils;
 
-namespace Gruntz.UserInteraction.ActorControl
+namespace Gruntz.UI.ActorControl
 {
     public class SelectMultipleUnits : CoroutineProcess
     {

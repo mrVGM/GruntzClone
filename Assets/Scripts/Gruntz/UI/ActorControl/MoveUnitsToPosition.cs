@@ -2,14 +2,13 @@ using Base;
 using Base.Actors;
 using Base.MessagesSystem;
 using Base.UI;
-using Gruntz.UserInteraction.UnitController;
+using Gruntz.UnitController;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 using Utils;
 
-namespace Gruntz.UserInteraction.ActorControl
+namespace Gruntz.UI.ActorControl
 {
     public class MoveUnitsToPosition : CoroutineProcess
     {

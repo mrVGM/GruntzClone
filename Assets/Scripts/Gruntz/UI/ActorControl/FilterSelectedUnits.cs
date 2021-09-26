@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Base.UI;
 
-namespace Gruntz.UserInteraction.ActorControl
+namespace Gruntz.UI.ActorControl
 {
     public class FilterSelectedUnits : CoroutineProcess
     {

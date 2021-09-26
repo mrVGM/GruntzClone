@@ -2,7 +2,7 @@ using Base;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Gruntz.UserInteraction.UnitController
+namespace Gruntz.UnitController
 {
     public class UnitControllerExecutionOrderTagDef : ExecutionOrderTagDef
     {

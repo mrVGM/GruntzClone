@@ -1,11 +1,10 @@
 using Base;
 using Base.Actors;
 using Base.MessagesSystem;
-using Gruntz.Actors;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Gruntz.UserInteraction.UnitController
+namespace Gruntz.UnitController
 {
     public class UnitController : IOrderedUpdate, IActorComponent
     {

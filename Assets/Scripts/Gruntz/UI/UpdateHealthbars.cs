@@ -7,7 +7,7 @@ using System.Linq;
 using UnityEngine;
 using Base.UI;
 
-namespace Gruntz.UserInteraction
+namespace Gruntz.UI
 {
     public class UpdateHealthbars : CoroutineProcess
     {

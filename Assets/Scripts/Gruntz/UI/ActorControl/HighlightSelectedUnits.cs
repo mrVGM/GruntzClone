@@ -3,7 +3,7 @@ using Base.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gruntz.UserInteraction.ActorControl
+namespace Gruntz.UI.ActorControl
 {
     public class HighlightSelectedUnits : CoroutineProcess
     {

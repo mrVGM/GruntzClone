@@ -1,13 +1,12 @@
 using Base;
 using Base.Actors;
 using Base.UI;
-using Gruntz.Actors;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Utils;
 
-namespace Gruntz.UserInteraction.ActorControl
+namespace Gruntz.UI.ActorControl
 {
     public class SelectSingleUnit : CoroutineProcess
     {
