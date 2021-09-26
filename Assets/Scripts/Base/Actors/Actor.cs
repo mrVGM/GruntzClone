@@ -1,6 +1,4 @@
 using Gruntz.Navigation;
-using Gruntz.Status;
-using Gruntz.UserInteraction.UnitController;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -84,6 +82,10 @@ namespace Base.Actors
             {
                 component.Value.DeInit();
             }
+            var actorManager = ActorManager.GetActorManagerFromContext();
+            actorManager.RemoveActor(this);
+            ActorComponent.gameObject.SetActive(false);
+            GameObject.Destroy(ActorComponent.gameObject);
         }
 
         public T GetComponent<T>() where T : IActorComponent
@@ -94,36 +96,6 @@ namespace Base.Actors
         public IActorComponent GetComponent(ActorComponentDef actorComponentDef)
         {
             return _components[actorComponentDef];
-        }
-
-        public void Die()
-        {
-            var statusComponent = GetComponent<StatusComponent>();
-            var actorManager = ActorManager.GetActorManagerFromContext();
-            statusComponent.AddStatus(actorManager.ActorManagerDef.DeadStatus.Data.CreateStatus());
-#if false
-            var healthStatus = statusComponent.GetStatuses(x => x.StatusData is HealthStatusData).FirstOrDefault();
-            if (healthStatus != null) {
-                var healthStatusData = healthStatus.StatusData as HealthStatusData;
-                healthStatusData.Health = 0;
-            }
-
-            var navAgent = GetComponent<NavAgent>();
-            if (navAgent != null) {
-                navAgent.DeInit();
-            }
-
-            var unitController = GetComponent<UnitController>();
-            if (unitController != null) {
-                unitController.DeInit();
-            }
-
-            var triggerBox = GetComponent<TriggerBoxComponent>();
-            if (triggerBox != null) {
-                triggerBox.DeInit();
-            }
-#endif
-            ActorComponent.gameObject.SetActive(false);
         }
     }
 }

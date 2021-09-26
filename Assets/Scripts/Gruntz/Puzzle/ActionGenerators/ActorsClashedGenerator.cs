@@ -1,5 +1,7 @@
 using Base.Actors;
+using Gruntz.Actors;
 using Gruntz.Puzzle.Actions;
+using Gruntz.Puzzle.Statuses;
 using Gruntz.Status;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +10,8 @@ namespace Gruntz.Puzzle.ActionGenarators
 {
     public class ActorsClashedGenerator : GameplayActionGenerator
     {
+        public ActorDeployDef GraveDeployDef;
+        public ActorInstanceHolderStatusDef ActorInstanceHolderStatusDef;
         public StatusDef[] Hardness;
         public override IEnumerable<IGameplayAction> GenerateActions(IEnumerable<GameplayEvent> gameplayEvents)
         {
@@ -46,7 +50,11 @@ namespace Gruntz.Puzzle.ActionGenarators
                 }
 
                 var actorToKill = actorsCollection(clash).OrderBy(hardness).FirstOrDefault();
-                yield return new KillActorAction { Actor = actorToKill };
+                yield return new KillActorAction {
+                    Actor = actorToKill,
+                    ActorHolderStatusDef = ActorInstanceHolderStatusDef,
+                    GraveDef = GraveDeployDef
+                };
             }
         }
     }

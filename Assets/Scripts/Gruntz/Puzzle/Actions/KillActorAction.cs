@@ -1,14 +1,18 @@
 using Base.Actors;
 using Gruntz.Actors;
 using Gruntz.Navigation;
+using Gruntz.Puzzle.Statuses;
 using Gruntz.Status;
 using Gruntz.UserInteraction.UnitController;
 using System.Linq;
+using UnityEngine;
 
 namespace Gruntz.Puzzle.Actions
 {
     public class KillActorAction : IGameplayAction
     {
+        public ActorDeployDef GraveDef;
+        public ActorInstanceHolderStatusDef ActorHolderStatusDef;
         public Actor Actor { get; set; }
 
         public void Execute()
@@ -21,23 +25,24 @@ namespace Gruntz.Puzzle.Actions
                 healthStatusData.Health = 0;
             }
 
-            var navAgent = Actor.GetComponent<NavAgent>();
-            if (navAgent != null)
-            {
-                navAgent.DeInit();
-            }
+            Vector3 pos = Actor.Pos;
+            var deadActorData = Actor.Data as ActorData;
+            Actor.Deinit();
 
-            var unitController = Actor.GetComponent<UnitController>();
-            if (unitController != null)
+            var actorComponents = GraveDef.ActorComponents
+                    .Select(x => new ActorData.Components { _component = x.ToDefRef<ActorComponentDef>() });
+            
+            var graveActorData = new ActorData
             {
-                unitController.DeInit();
-            }
-
-            var triggerBox = Actor.GetComponent<TriggerBoxComponent>();
-            if (triggerBox != null)
-            {
-                triggerBox.DeInit();
-            }
+                ActorDef = GraveDef.ActorDef.ToDefRef<ActorDef>(),
+                ActorComponents = actorComponents.ToArray()
+            };
+            var graveActor = ActorDeployment.DeployActor(graveActorData);
+            graveActor.ActorComponent.transform.position = pos;
+            statusComponent = graveActor.GetComponent<StatusComponent>();
+            var actorInstanceStatusData = ActorHolderStatusDef.Data as ActorInstanceHolderStatusData;
+            actorInstanceStatusData.ActorData = deadActorData;
+            statusComponent.AddStatus(actorInstanceStatusData.CreateStatus());
         }
     }
 }

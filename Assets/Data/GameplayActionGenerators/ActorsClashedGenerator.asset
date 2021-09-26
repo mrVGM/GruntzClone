@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43243ec374098049889f46af6b30d26, type: 3}
   m_Name: ActorsClashedGenerator
   m_EditorClassIdentifier: 
+  GraveDeployDef: {fileID: 11400000, guid: 65db8425e5f9682478d82c0af390c1ec, type: 2}
+  ActorInstanceHolderStatusDef: {fileID: 11400000, guid: c2a65b685ac5e0a49a378bd91bdb1eef, type: 2}
   Hardness:
   - {fileID: 11400000, guid: ef6970aceacb01e458f6d9697d1190df, type: 2}
   - {fileID: 11400000, guid: 319a7113f1ea182ac89c194b601a294d, type: 2}

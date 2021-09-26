@@ -25,15 +25,18 @@ namespace Gruntz.Puzzle
             var sceneIDsHolder = SceneIDsHolder.GetSceneIDsHolderFromContext();
             sceneIDsHolder.SceneIDs = SceneIDs;
 
+            var actorManager = ActorManager.GetActorManagerFromContext();
             var savedGameHolder = SavedGameHolder.GetSavedGameHolderFromGame();
             if (savedGameHolder.SavedGame != null)
             {
+                actorManager.DeployActor = ActorDeployment.DeployActor;
                 foreach (var pair in savedGameHolder.SavedGame.SerializedContextObjects)
                 {
                     var contextObject = game.Context.GetRuntimeObject(pair.Def);
                     var serializedObject = contextObject as ISerializedObject;
                     serializedObject.Data = pair.ContextObjectData;
                 }
+                actorManager.DeployActor = null;
                 return;
             }
 
@@ -77,7 +80,6 @@ namespace Gruntz.Puzzle
             }
             var actorManagerData = new ActorManagerData { ActorDatas = deployDatas };
 
-            var actorManager = ActorManager.GetActorManagerFromContext();
             actorManager.DeployActor = ActorDeployment.DeployActor;
             actorManager.Data = actorManagerData;
             actorManager.DeployActor = null;

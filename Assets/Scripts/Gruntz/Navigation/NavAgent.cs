@@ -27,7 +27,7 @@ namespace Gruntz.Navigation
             public Vector3 StartPos => _navAgent._navAgentBehaviour.LocalTravelStartPoint.position;
         }
 
-        public Actor Actor { get; } 
+        public Actor Actor { get; }
 
         private NavAgentData _navAgentData;
         private NavAgentBehaviour _navAgentBehaviour;
@@ -45,7 +45,7 @@ namespace Gruntz.Navigation
             }
         }
 
-        public ExecutionOrderTagDef OrderTagDef 
+        public ExecutionOrderTagDef OrderTagDef
         {
             get
             {
@@ -55,7 +55,8 @@ namespace Gruntz.Navigation
             }
         }
 
-        public Vector3 Pos => _navAgentBehaviour.ActorVisuals.position;
+        public Vector3 Pos =>_navAgentBehaviour.ActorVisuals.position;
+
         public Vector3 Target
         {
             set
