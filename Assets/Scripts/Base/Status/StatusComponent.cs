@@ -1,5 +1,5 @@
 using Base.Actors;
-using Gruntz.Puzzle;
+using Gruntz.Gameplay;
 using System;
 using System.Collections.Generic;
 using System.Linq;

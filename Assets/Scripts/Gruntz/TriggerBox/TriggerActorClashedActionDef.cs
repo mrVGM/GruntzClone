@@ -1,6 +1,6 @@
 using Base.Actors;
 using Gruntz.Actors;
-using Gruntz.Puzzle;
+using Gruntz.Gameplay;
 using UnityEngine;
 
 namespace Gruntz

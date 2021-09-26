@@ -1,6 +1,6 @@
 using System.Linq;
 using Base.Actors;
-using Gruntz.Puzzle;
+using Gruntz.Gameplay;
 using UnityEngine;
 
 namespace Base.Navigation
