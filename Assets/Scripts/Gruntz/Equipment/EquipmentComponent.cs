@@ -51,7 +51,7 @@ namespace Gruntz.Equipment
             }
         }
 
-        public ItemDef AuxItem
+        public ItemDef SpecialItem
         {
             get
             {

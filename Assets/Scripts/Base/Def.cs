@@ -20,6 +20,9 @@ namespace Base
         private T def;
         public static implicit operator T(DefRef<T> defRef)
         {
+            if (defRef.Equals(default(DefRef<T>))) {
+                return null;
+            }
             if (defRef.def != null)
             {
                 return defRef.def;
