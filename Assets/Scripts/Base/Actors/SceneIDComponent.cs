@@ -1,7 +1,4 @@
-using Base;
-using Base.Actors;
-
-namespace Gruntz.SceneID
+namespace Base.Actors
 {
     public class SceneIDComponent : IActorComponent, ISerializedObject
     {

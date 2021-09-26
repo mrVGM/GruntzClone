@@ -1,8 +1,6 @@
-using Base;
-using Gruntz.Actors;
 using System;
 
-namespace Gruntz.SceneID
+namespace Base.Actors
 {
     [Serializable]
     public class SceneIDComponentData : ISerializedObjectData

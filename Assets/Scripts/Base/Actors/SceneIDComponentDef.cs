@@ -1,8 +1,6 @@
-using Base;
-using Base.Actors;
 using System.Linq;
 
-namespace Gruntz.SceneID
+namespace Base.Actors
 {
     public class SceneIDComponentDef : ActorComponentDef
     {
