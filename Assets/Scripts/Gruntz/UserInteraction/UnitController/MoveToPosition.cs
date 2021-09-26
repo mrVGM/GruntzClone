@@ -1,5 +1,5 @@
 using Base.Actors;
-using Gruntz.Navigation;
+using Base.Navigation;
 using UnityEngine;
 
 namespace Gruntz.UserInteraction.UnitController

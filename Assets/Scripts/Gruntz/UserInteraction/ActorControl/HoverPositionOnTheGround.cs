@@ -47,7 +47,7 @@ namespace Gruntz.UserInteraction.ActorControl
             var actorManager = game.Context.GetRuntimeObject(actorManagerDef) as ActorManager;
 
             var actors = actorManager.Actors;
-            if (actors.Any(x => x.GetComponent<Navigation.NavAgent>() != null && (x.Pos - pos).sqrMagnitude <= 0.25f))
+            if (actors.Any(x => x.GetComponent<Base.Navigation.NavAgent>() != null && (x.Pos - pos).sqrMagnitude <= 0.25f))
             {
                 return;
             }

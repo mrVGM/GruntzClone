@@ -1,7 +1,7 @@
 using Base;
 using Base.Actors;
+using Base.Navigation;
 using Gruntz.Actors;
-using Gruntz.Navigation;
 using Gruntz.SceneID;
 using System.Collections.Generic;
 using System.IO;

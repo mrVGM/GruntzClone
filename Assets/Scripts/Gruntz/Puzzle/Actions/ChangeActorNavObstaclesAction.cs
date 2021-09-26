@@ -1,9 +1,6 @@
 using Base.Actors;
-using Base.MessagesSystem;
-using Gruntz.Actors;
-using Gruntz.Navigation;
+using Base.Navigation;
 using Gruntz.Puzzle.Statuses;
-using Gruntz.UserInteraction.UnitController;
 
 namespace Gruntz.Puzzle.Actions
 {

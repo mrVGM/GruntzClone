@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Gruntz.Navigation
+namespace Base.Navigation
 {
     public class NavAgentBehaviour : MonoBehaviour
     {

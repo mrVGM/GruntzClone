@@ -1,6 +1,4 @@
-using Base;
-
-namespace Gruntz.Navigation
+namespace Base.Navigation
 {
     public class NavigationDef : Def, IRuntimeInstance
     {

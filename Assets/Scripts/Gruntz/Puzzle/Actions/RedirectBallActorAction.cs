@@ -1,5 +1,5 @@
 using Base.Actors;
-using Gruntz.Navigation;
+using Base.Navigation;
 using Gruntz.Status;
 using UnityEngine;
 

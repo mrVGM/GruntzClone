@@ -1,7 +1,6 @@
 using Base.Actors;
-using Gruntz.Actors;
 
-namespace Gruntz.Navigation
+namespace Base.Navigation
 {
     public class NavAgentComponentDef : ActorComponentDef
     {

@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Base;
 using UnityEngine;
 
-namespace Gruntz.Navigation
+namespace Base.Navigation
 {
     public class Navigation : IOrderedUpdate, IContextObject
     {

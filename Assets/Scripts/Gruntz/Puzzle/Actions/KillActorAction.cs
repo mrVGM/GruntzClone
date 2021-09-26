@@ -1,9 +1,7 @@
 using Base.Actors;
 using Gruntz.Actors;
-using Gruntz.Navigation;
 using Gruntz.Puzzle.Statuses;
 using Gruntz.Status;
-using Gruntz.UserInteraction.UnitController;
 using System.Linq;
 using UnityEngine;
 

@@ -3,7 +3,7 @@ using Gruntz.Puzzle.Statuses;
 using Gruntz.Status;
 using System.Collections.Generic;
 using System.Linq;
-using static Gruntz.Navigation.NavAgent;
+using static Base.Navigation.NavAgent;
 
 namespace Gruntz.Puzzle.ActionGenarators
 {
