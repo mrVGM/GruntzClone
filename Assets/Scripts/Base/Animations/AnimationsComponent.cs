@@ -10,6 +10,7 @@ namespace Base.Animations
         {
             Idle = 0,
             Running = 1,
+            Ability = 2,
         }
         public AnimationsComponentDef AnimationsComponentDef { get; }
         public Actor Actor { get; }
