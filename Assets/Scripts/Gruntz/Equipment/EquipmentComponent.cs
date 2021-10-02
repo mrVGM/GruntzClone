@@ -1,7 +1,10 @@
 using Base.Actors;
 using Base.Status;
+using Gruntz.EquipmentVisuals;
 using Gruntz.Items;
 using Gruntz.Statuses;
+using System.Linq;
+using UnityEngine;
 
 namespace Gruntz.Equipment
 {
@@ -48,6 +51,23 @@ namespace Gruntz.Equipment
                 var status = statusComponent.GetStatus(EquipmentComponentDef.WeaponHolderStatus);
                 var itemHolder = status.StatusData as ItemHolderStatusData;
                 itemHolder.Item = value.ToDefRef<ItemDef>();
+
+                var equipmentRoot = Actor.ActorComponent.GetComponentInChildren<EquipmentRoot>();
+                if (equipmentRoot == null) {
+                    return;
+                }
+                while (equipmentRoot.transform.childCount > 0) {
+                    GameObject.Destroy(equipmentRoot.transform.GetChild(0));
+                }
+                if (value.Prefab != null) {
+                    var go = GameObject.Instantiate(value.Prefab, equipmentRoot.transform);
+                    var laggingPoints = go.GetComponentsInChildren<LaggingPoint>();
+                    var laggingPointTargets = Actor.ActorComponent.GetComponentsInChildren<LaggingPointTarget>();
+                    foreach (var laggingPoint in laggingPoints) {
+                        laggingPoint.Target = laggingPointTargets.FirstOrDefault(x => x.TagDef == laggingPoint.Tag);
+                        laggingPoint.transform.position = laggingPoint.Target.transform.position;
+                    }
+                }
             }
         }
 
