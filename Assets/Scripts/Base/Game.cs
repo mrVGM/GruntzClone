@@ -10,6 +10,7 @@ namespace Base
     {
         public static Game Instance { get; private set; } = null;
         public DefRepositoryDef DefRepositoryDef;
+        public System.Random Random = new System.Random();
         public GameObject LoadingCurtain;
         public MainUpdater MainUpdater => GetComponent<MainUpdater>();
         public SavesManager SavesManager => GetComponent<SavesManager>();

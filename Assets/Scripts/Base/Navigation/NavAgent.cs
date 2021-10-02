@@ -26,6 +26,7 @@ namespace Base.Navigation
         }
 
         public Actor Actor { get; }
+        public NavAgentComponentDef NavAgentComponentDef { get; }
 
         private NavAgentData _navAgentData;
         private NavAgentBehaviour _navAgentBehaviour;
@@ -79,8 +80,9 @@ namespace Base.Navigation
             }
         }
 
-        public NavAgent(Actor actor, NavAgentData navAgentData, NavAgentBehaviour navAgentBehaviour)
+        public NavAgent(NavAgentComponentDef navAgentComponentDef, Actor actor, NavAgentData navAgentData, NavAgentBehaviour navAgentBehaviour)
         {
+            NavAgentComponentDef = navAgentComponentDef;
             _navAgentBehaviour = navAgentBehaviour;
             _navAgentData = navAgentData;
             Actor = actor;
@@ -122,6 +124,14 @@ namespace Base.Navigation
 
         private void Move(MoveRequestResult moveRequestResult) 
         {
+            var messagesSystem = MessagesSystem.MessagesSystem.GetMessagesSystemFromContext();
+            if ((_navAgentBehaviour.ActorVisuals.position - moveRequestResult.PositionToMove).sqrMagnitude > 0.001) {
+                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, Actor, "moving");
+            }
+            else {
+                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, Actor, "staying");
+            }
+
             _navAgentBehaviour.ActorVisuals.position = moveRequestResult.PositionToMove;
             _navAgentBehaviour.NavObstacle.transform.position = moveRequestResult.TravelSegmentInfo.EndPos;
             _navAgentBehaviour.LocalTravelStartPoint.position = moveRequestResult.TravelSegmentInfo.StartPos;
