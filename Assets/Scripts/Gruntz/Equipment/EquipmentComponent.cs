@@ -88,5 +88,18 @@ namespace Gruntz.Equipment
                 itemHolder.Item = value.ToDefRef<ItemDef>();
             }
         }
+
+        public void EnableLagging(bool enabled)
+        {
+            var equipmentRoot = Actor.ActorComponent.GetComponentInChildren<EquipmentRoot>();
+            var laggingPoints = equipmentRoot.GetComponentsInChildren<LaggingPoint>();
+
+            foreach (var point in laggingPoints) {
+                if (point.Target == null) {
+                    continue;
+                }
+                point.Target.LaggingEnabled = enabled;
+            }
+        }
     }
 }

@@ -6,6 +6,6 @@ namespace Gruntz.UnitController
 {
     public class UnitControllerExecutionOrderTagDef : ExecutionOrderTagDef
     {
-        public override IEnumerable<MainUpdaterUpdateTime> UpdateTime => Enumerable.Repeat(MainUpdaterUpdateTime.FixedCrt, 1).Append(MainUpdaterUpdateTime.Update);
+        public override IEnumerable<MainUpdaterUpdateTime> UpdateTime => Enumerable.Repeat(MainUpdaterUpdateTime.Update, 1);
     }
 }

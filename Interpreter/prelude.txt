@@ -3,44 +3,14 @@ prelude.getGame = function() {
 	return Base.Game.Instance;
 };
 
-prelude.raycastInfo = function() {
-	let cam = prelude.getGame().Camera;
-	let cursorRay = cam.ScreenPointToRay(UnityEngine.Input.mousePosition);
-	let hits = UnityEngine.Physics.RaycastAll(cursorRay);
-	
-	let floorLayerIndex = UnityEngine.LayerMask.NameToLayer("Floor");
+prelude.info = function() {
+	let raycastInfo = require("./info.txt");
+	return raycastInfo();
+};
 
-	let res = {};
-	foreach (hits, function(hit) {
-		let col = hit.collider;
-		if (col.gameObject.layer == floorLayerIndex) {
-			let pos = hit.point;
-			
-			let half = 1 / 2;
-			print(half);
-
-			let argTypes = [];
-			argTypes.Add("System.Single");
-			argTypes.Add("System.Single");
-			argTypes.Add("System.Single");
-
-			let x = UnityEngine.Mathf.Floor(pos.x) + half;
-			let z = UnityEngine.Mathf.Floor(pos.z) + half;
-
-			print(x);
-			print(z);
-
-			let args = [];
-			args.Add(UnityEngine.Mathf.Floor(pos.x));
-			args.Add(pos.y);
-			args.Add(UnityEngine.Mathf.Floor(pos.z));
-			let tile = new("UnityEngine.Vector3", argTypes, args);
-			res.tile = tile;
-			break;
-		}
-	});
-
-	return res;
+prelude.playAbility = function() {
+	let playAbility = require("./gruntz.txt");
+	return playAbility();
 };
 
 exports = prelude;

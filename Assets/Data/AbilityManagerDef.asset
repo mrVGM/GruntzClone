@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e37eb56a85571a54497c28c99176a1ac, type: 3}
-  m_Name: AnimationsComponentDef
+  m_Script: {fileID: 11500000, guid: 0b98b5bc952c1954497e7ba0d086083c, type: 3}
+  m_Name: AbilityManagerDef
   m_EditorClassIdentifier: 
-  NavigationMessages: {fileID: 11400000, guid: 54b3f548e72751e4a885ce9b6d6ff857, type: 2}
   AbilityMessages: {fileID: 11400000, guid: 3a7241163b8f80a479647e5e48a84ce0, type: 2}
-  DefaultAbilityAnimation: {fileID: 7400000, guid: d385f986de7fc644fbf63b2a58dbdd61, type: 2}

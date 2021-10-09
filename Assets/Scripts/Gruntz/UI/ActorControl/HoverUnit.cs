@@ -24,9 +24,8 @@ namespace Gruntz.UI.ActorControl
                 return;
             }
 
-            var actorComponent = unitHit.collider.GetComponentInParent<ActorComponent>();
-            var actorManager = ActorManager.GetActorManagerFromContext();
-            var actor = actorManager.Actors.FirstOrDefault(x => x.ActorComponent == actorComponent);
+            var actorProxy = unitHit.collider.GetComponent<ActorProxy>();
+            var actor = actorProxy.Actor;
 
             var selectedActors = context.GetItem(SelectedActorsTag) as IEnumerable<Actor>;
             if (selectedActors != null && selectedActors.Contains(actor))

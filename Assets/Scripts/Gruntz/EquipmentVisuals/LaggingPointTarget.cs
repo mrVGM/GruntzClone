@@ -10,8 +10,14 @@ namespace Gruntz.EquipmentVisuals
         public Transform FixedDistance;
         public float Threshold = 0.001f;
 
+        public bool LaggingEnabled = true;
+
         public Vector3 GetPosition(LaggingPoint laggingPoint)
         {
+            if (!LaggingEnabled) {
+                return transform.position;
+            }
+
             if ((laggingPoint.transform.position - transform.position).magnitude < Threshold) {
                 return transform.position;
             }

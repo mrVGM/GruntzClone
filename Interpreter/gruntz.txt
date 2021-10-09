@@ -1,0 +1,38 @@
+let playAbility = function() {
+	let raycastInfo = require("./info.txt");
+
+	let selection = raycastInfo();
+	let actor = selection.actor;
+
+	let game = Base.Game.Instance;
+	let defRepo = game.DefRepositoryDef;
+
+	let ability = null;
+	foreach (defRepo.AllDefs, function(def) {
+		if (ability != null) {
+			return;
+		}
+		if (def.GetType().FullName == "Gruntz.Abilities.AbilityDef") {
+			ability = def;
+		}
+	});
+
+	let abilityManager = Gruntz.Abilities.AbilityManager.GetAbilityManagerFromContext();
+
+	print(abilityManager);
+	let argTypes = [];
+	argTypes.Add("Gruntz.Abilities.AbilityDef");
+	argTypes.Add("Base.Actors.Actor");
+	argTypes.Add("System.Object");
+
+	let args = [];
+	args.Add(ability);
+	args.Add(actor);
+	args.Add(null);
+
+	let player = new("Gruntz.Abilities.AbilityPlayer", argTypes, args);
+	print(player);
+	abilityManager.AbilityPlayers.Add(player);
+};
+
+exports = playAbility;

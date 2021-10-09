@@ -1,0 +1,53 @@
+let raycastInfo = function() {
+	let game = Base.Game.Instance;
+	let cam = game.Camera;
+	let cursorRay = cam.ScreenPointToRay(UnityEngine.Input.mousePosition);
+	let hits = UnityEngine.Physics.RaycastAll(cursorRay);
+	
+	let floorLayerIndex = UnityEngine.LayerMask.NameToLayer("Floor");
+	let unitSelectionLayerIndex = UnityEngine.LayerMask.NameToLayer("UnitSelection");
+
+	let res = {};
+	foreach (hits, function(hit) {
+		let col = hit.collider;
+		if (col.gameObject.layer != floorLayerIndex) {
+			return;
+		}
+
+		let pos = hit.point;	
+		let half = 1 / 2;
+
+		let argTypes = [];
+		argTypes.Add("System.Single");
+		argTypes.Add("System.Single");
+		argTypes.Add("System.Single");
+
+		let x = UnityEngine.Mathf.Floor(pos.x) + half;
+		let z = UnityEngine.Mathf.Floor(pos.z) + half;
+
+		let args = [];
+		args.Add(x);
+		args.Add(pos.y);
+		args.Add(z);
+		let tile = new("UnityEngine.Vector3", argTypes, args);
+		tile.x = x;
+		tile.z = z;
+		res.tile = tile;
+	});
+
+	foreach (hits, function(hit) {
+		let col = hit.collider;
+		if (col.gameObject.layer != unitSelectionLayerIndex) {
+			return;
+		}
+		let actorProxy = col.GetComponent|"Base.Actors.ActorProxy"|();
+		res.actor = actorProxy.Actor;
+	});
+
+	print(res.tile);
+	print(res.actor);
+
+	return res;
+};
+
+exports = raycastInfo;

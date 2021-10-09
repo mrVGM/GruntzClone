@@ -1,9 +1,10 @@
+using Base;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Base.Animations
+namespace Gruntz.Abilities
 {
-    public class AnimationsUpdateOrderTagDef : ExecutionOrderTagDef
+    public class AbilityManagerOrderTagDef : ExecutionOrderTagDef
     {
         public override IEnumerable<MainUpdaterUpdateTime> UpdateTime => Enumerable.Repeat(MainUpdaterUpdateTime.FixedCrt, 1);
     }

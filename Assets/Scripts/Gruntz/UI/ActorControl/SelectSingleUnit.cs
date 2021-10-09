@@ -23,9 +23,8 @@ namespace Gruntz.UI.ActorControl
                 {
                     return null;
                 }
-                var actorComponent = actorHit.collider.GetComponentInParent<ActorComponent>();
-                var actorManager = ActorManager.GetActorManagerFromContext();
-                var actor = actorManager.Actors.FirstOrDefault(x => x.ActorComponent == actorComponent);
+                var actorProxy = actorHit.collider.GetComponentInParent<ActorProxy>();
+                var actor = actorProxy.Actor;
                 return actor;
             }
 

@@ -1,6 +1,8 @@
 using Base.Actors;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static Gruntz.Abilities.AbilityManager;
 
 namespace Base.Animations
 {
@@ -44,10 +46,19 @@ namespace Base.Animations
             Animator.Play(state.shortNameHash, 0, (float)Game.Instance.Random.NextDouble());
         }
 
+        private void OverrideAbilityAnimation(AnimationClip animation)
+        {
+            var overrideController = Animator.runtimeAnimatorController as AnimatorOverrideController;
+            var overrides = new List<KeyValuePair<AnimationClip, AnimationClip>>();
+            overrides.Add(new KeyValuePair<AnimationClip, AnimationClip>(AnimationsComponentDef.DefaultAbilityAnimation, animation));
+            overrideController.ApplyOverrides(overrides);
+        }
+
         public void DoUpdate()
         {
             var messagesSystem = MessagesSystem.MessagesSystem.GetMessagesSystemFromContext();
             var messages = messagesSystem.GetMessages(AnimationsComponentDef.NavigationMessages);
+            var abilityMessages = messagesSystem.GetMessages(AnimationsComponentDef.AbilityMessages);
             
             messages = messages.Where(x => x.Sender == Actor).ToList();
             if (messages.Any(x => (x.Data as string) == "moving")) {
@@ -55,6 +66,14 @@ namespace Base.Animations
             }
             if (messages.Any(x => (x.Data as string) == "staying")) {
                 Animator.SetInteger("State", (int)AnimatorState.Idle);
+            }
+
+            var abilitiesMessagesForMe = abilityMessages.Select(x => (AbilityExecutionInfo)x.Data).Where(x => x.Actor == Actor);
+            foreach (var message in abilitiesMessagesForMe) {
+                if (message.ExecutionState == Gruntz.Abilities.AbilityPlayer.ExecutionState.Playing) {
+                    OverrideAbilityAnimation(message.AbilityDef.Animation);
+                    Animator.SetInteger("State", (int)AnimatorState.Ability);
+                }
             }
         }
     }
