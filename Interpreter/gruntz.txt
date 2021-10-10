@@ -4,6 +4,12 @@ let playAbility = function() {
 	let selection = raycastInfo();
 	let actor = selection.actor;
 
+	let abilitiesComponent = actor.GetComponent|"Gruntz.Abilities.AbilitiesComponent"|();
+	let mainAbility = abilitiesComponent.GetMainAbility();
+	abilitiesComponent.ActivateAbility(mainAbility, null);
+
+	return;
+
 	let game = Base.Game.Instance;
 	let defRepo = game.DefRepositoryDef;
 

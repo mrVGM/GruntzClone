@@ -1,12 +1,12 @@
 using Base;
 using Base.Actors;
-using Gruntz.Actors;
 using Base.Status;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Base.UI;
 using Gruntz.Statuses;
+using Gruntz.Abilities;
 
 namespace Gruntz.UI
 {
@@ -51,6 +51,17 @@ namespace Gruntz.UI
                     healthbar.transform.position = screenPos;
                     healthbar.gameObject.SetActive(true);
                     healthbar.Bar.localScale = new Vector3(healthStatusData.Health / healthStatusData.MaxHealth, 1.0f, 1.0f);
+
+                    healthbar.CooldownBarContainer.SetActive(false);
+                    var abilityComponent = actor.GetComponent<AbilitiesComponent>();
+                    var mainAbility = abilityComponent.GetMainAbility();
+                    if (mainAbility != null) {
+                        float downtime = abilityComponent.GetAbilityDownTime(mainAbility);
+                        if (downtime <= mainAbility.Cooldown) {
+                            healthbar.CooldownBarContainer.SetActive(true);
+                            healthbar.CooldownBar.localScale = new Vector3(downtime / mainAbility.Cooldown, 1.0f, 1.0f);
+                        }
+                    }
                 }
 
                 for (int i = healthbarsUsed; i < HealthbarsContainer.childCount; ++i)

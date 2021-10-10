@@ -56,12 +56,8 @@ namespace Gruntz.Abilities
 
         public bool IsEnabled(AbilityDef ability)
         {
-            var record = _abilitiesComponentData.AbilitiesUsage.FirstOrDefault(x => x.Ability == ability);
-            if (record == null) {
-                return true;
-            }
-
-            return Time.time - record.LastUsage > ability.Cooldown;
+            var downtime = GetAbilityDownTime(ability);
+            return downtime > ability.Cooldown;
         }
         public void ActivateAbility(AbilityDef ability, object target)
         {
@@ -76,6 +72,21 @@ namespace Gruntz.Abilities
             }
             record.Downtime = 0;
             record.LastUsage = Time.time;
+        }
+
+        public AbilityDef GetMainAbility()
+        {
+            return GetAbilities().FirstOrDefault();
+        }
+
+        public float GetAbilityDownTime(AbilityDef ability)
+        {
+            var record = _abilitiesComponentData.AbilitiesUsage.FirstOrDefault(x => x.Ability == ability);
+            if (record == null) {
+                return float.PositiveInfinity;
+            }
+
+            return Time.time - record.LastUsage;
         }
 
         public void DeInit()
