@@ -54,7 +54,7 @@ namespace Base.Animations
             overrideController.ApplyOverrides(overrides);
         }
 
-        public void DoUpdate()
+        public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {
             var messagesSystem = MessagesSystem.MessagesSystem.GetMessagesSystemFromContext();
             var messages = messagesSystem.GetMessages(AnimationsComponentDef.NavigationMessages);

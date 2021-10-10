@@ -87,7 +87,7 @@ namespace Base.Navigation
             _navAgentData = navAgentData;
             Actor = actor;
         }
-        public void DoUpdate()
+        public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {
             var game = Game.Instance;
             var navDef = game.DefRepositoryDef.AllDefs.OfType<NavigationDef>().FirstOrDefault();
@@ -126,10 +126,10 @@ namespace Base.Navigation
         {
             var messagesSystem = MessagesSystem.MessagesSystem.GetMessagesSystemFromContext();
             if ((_navAgentBehaviour.ActorVisuals.position - moveRequestResult.PositionToMove).sqrMagnitude > 0.001) {
-                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, Actor, "moving");
+                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, "moving");
             }
             else {
-                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, Actor, "staying");
+                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, "staying");
             }
 
             _navAgentBehaviour.ActorVisuals.position = moveRequestResult.PositionToMove;

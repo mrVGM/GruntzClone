@@ -16,7 +16,7 @@ namespace Base.Animations
                 actor = actorProxy.Actor;
             }
 
-            messagesSystem.SendMessage(MessagesBox, actor, animationEvent);
+            messagesSystem.SendMessage(MessagesBox, MainUpdaterUpdateTime.FixedCrt, actor, animationEvent);
         }
     }
 }

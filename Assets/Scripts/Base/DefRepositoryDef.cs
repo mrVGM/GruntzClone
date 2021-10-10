@@ -15,7 +15,7 @@ namespace Base
         }
 
         [SerializeField]
-        private List<DefWithId> DefsWithId;
+        private List<DefWithId> DefsWithId = new List<DefWithId>();
 
         public IEnumerable<Def> AllDefs => DefsWithId.Select(x => x.Def);
 

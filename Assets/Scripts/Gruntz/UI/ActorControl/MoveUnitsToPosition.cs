@@ -55,11 +55,14 @@ namespace Gruntz.UI.ActorControl
             var moveToPositionIntruction = new MoveToPosition { Position = pos };
             foreach (var actor in selected)
             {
-                messagesSystem.SendMessage(MessagesBoxTag, this, new UnitControllerInstruction
-                {
-                    Unit = actor,
-                    Executable = moveToPositionIntruction,
-                });
+                messagesSystem.SendMessage(
+                    MessagesBoxTag,
+                    MainUpdaterUpdateTime.Update,
+                    this,
+                    new UnitControllerInstruction{
+                        Unit = actor,
+                        Executable = moveToPositionIntruction,
+                    });
             }
 
             while (Input.GetAxis("Move") > 0)

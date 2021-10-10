@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -101,7 +102,7 @@ namespace Base
                 var updatables = sortedUpdatables[tag];
                 foreach (var updatable in updatables)
                 {
-                    updatable.DoUpdate();
+                    updatable.DoUpdate(mainUpdaterUpdateTime);
                 }
                 MainUpdaterLock.Unlock(l);
             }

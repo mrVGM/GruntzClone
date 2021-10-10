@@ -19,7 +19,7 @@ namespace Base
             }
         }
 
-        public void DoUpdate()
+        public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {
             var game = Game.Instance;
             game.MainUpdater.UnRegisterUpdatable(this);

@@ -16,7 +16,7 @@ namespace Base.UI
             }
         }
 
-        public void DoUpdate()
+        public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {
             var running = activeProcesses.Where(x => !x.IsFinished);
             var sortedProcesses = running.OrderBy(x => x.Priority).ToList();

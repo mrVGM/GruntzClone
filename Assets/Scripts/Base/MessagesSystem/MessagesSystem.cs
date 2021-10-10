@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace Base.MessagesSystem
         public struct Message
         {
             public MessagesBoxTagDef MessageBoxTag;
+            public MainUpdaterUpdateTime TimeToClear;
             public object Sender;
             public long Time;
             public object Data;
@@ -31,9 +33,15 @@ namespace Base.MessagesSystem
             messages.Clear();
         }
 
-        public void DoUpdate()
+        public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {
-            messages.Clear();
+            foreach (var pair in messages) {
+                var list = pair.Value;
+                if (list == null) {
+                    continue;
+                }
+                list.RemoveAll(x => x.TimeToClear == updateTime);
+            }
         }
 
         public MessagesSystem()
@@ -41,7 +49,7 @@ namespace Base.MessagesSystem
             Game.Instance.MainUpdater.RegisterUpdatable(this);
         }
 
-        public void SendMessage(MessagesBoxTagDef messagesBoxTag, object sender, object data)
+        public void SendMessage(MessagesBoxTagDef messagesBoxTag, MainUpdaterUpdateTime timeToClear, object sender, object data)
         {
             List<Message> list = null;
             if (!messages.TryGetValue(messagesBoxTag, out list))
@@ -49,7 +57,13 @@ namespace Base.MessagesSystem
                 list = new List<Message>();
                 messages[messagesBoxTag] = list;
             }
-            list.Add(new Message { Time = Time.frameCount, MessageBoxTag = messagesBoxTag, Sender = sender, Data = data });
+            list.Add(new Message {
+                Time = Time.frameCount,
+                MessageBoxTag = messagesBoxTag,
+                TimeToClear = timeToClear,
+                Sender = sender,
+                Data = data
+            });
         }
         public IEnumerable<Message> GetMessages(MessagesBoxTagDef messagesBoxTag)
         {

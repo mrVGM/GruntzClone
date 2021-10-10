@@ -41,7 +41,7 @@ namespace Gruntz.Abilities
             mainUpdater.UnRegisterUpdatable(this);
         }
 
-        public void DoUpdate()
+        public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {
             AbilityPlayers = AbilityPlayers.Where(x => x.State == AbilityPlayer.ExecutionState.Playing).ToList();
             var cache = AbilityPlayers.ToList();
@@ -50,7 +50,10 @@ namespace Gruntz.Abilities
             foreach (var ability in cache) {
                 ability.Update();
 
-                messagesSystem.SendMessage(AbilityManagerDef.AbilityMessages, this, new AbilityExecutionInfo {
+                messagesSystem.SendMessage(AbilityManagerDef.AbilityMessages,
+                    MainUpdaterUpdateTime.FixedCrt,
+                    this,
+                    new AbilityExecutionInfo {
                     Actor = ability.Actor,
                     AbilityDef = ability.AbilityDef,
                     ExecutionState = ability.State,

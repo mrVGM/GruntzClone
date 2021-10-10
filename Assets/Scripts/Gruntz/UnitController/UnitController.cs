@@ -14,7 +14,7 @@ namespace Gruntz.UnitController
 
         private ExecutionOrderTagDef orderTagDef { get; }
         public ExecutionOrderTagDef OrderTagDef => orderTagDef;
-        public void DoUpdate()
+        public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {
             var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
             var messages = messagesSystem.GetMessages(MessagesBox).Select(x => (UnitControllerInstruction)x.Data);

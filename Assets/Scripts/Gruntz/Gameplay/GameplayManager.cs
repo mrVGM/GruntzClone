@@ -65,7 +65,7 @@ namespace Gruntz.Gameplay
             }
         }
 
-        public void DoUpdate()
+        public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {
             while (_eventsCollected.Any())
             {

@@ -156,7 +156,7 @@ namespace Base.Navigation
             CalculateMoves(moveRequests, dt);
             moveRequests.Clear();
         }
-        public void DoUpdate()
+        public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {
             CalculateMoves();
         }
