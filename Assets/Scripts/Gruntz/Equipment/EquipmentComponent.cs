@@ -34,6 +34,10 @@ namespace Gruntz.Equipment
                 auxItemStatus = EquipmentComponentDef.AuxItemHolderStatus.Data.CreateStatus();
                 statusComponent.AddStatus(auxItemStatus);
             }
+            var item = (ItemDef)(weaponStatus.Data as ItemHolderStatusData).Item;
+            if (item != null) {
+                Weapon = item;
+            }
         }
 
         public ItemDef Weapon

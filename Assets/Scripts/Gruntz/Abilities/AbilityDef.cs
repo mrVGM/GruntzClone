@@ -9,6 +9,7 @@ namespace Gruntz.Abilities
 {
     public class AbilityDef : Def
     {
+        public float Cooldown = 0;
         public AnimationClip Animation;
         public MessagesBoxTagDef AnimationEventMessages;
         public IEnumerator<object> Execute(Actor actor, object target)

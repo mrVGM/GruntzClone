@@ -1,4 +1,5 @@
 using Base;
+using Gruntz.Abilities;
 using UnityEngine;
 
 namespace Gruntz.Items
@@ -7,5 +8,6 @@ namespace Gruntz.Items
     {
         public Sprite Icon;
         public GameObject Prefab;
+        public AbilityDef[] Abilities;
     }
 }
