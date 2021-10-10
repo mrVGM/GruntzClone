@@ -1,7 +1,8 @@
 using Base;
 using Base.Actors;
+using Base.MessagesSystem;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Linq;
 using UnityEngine;
 
 namespace Gruntz.Abilities
@@ -9,15 +10,20 @@ namespace Gruntz.Abilities
     public class AbilityDef : Def
     {
         public AnimationClip Animation;
+        public MessagesBoxTagDef AnimationEventMessages;
         public IEnumerator<object> Execute(Actor actor, object target)
         {
-            float time = Time.time;
-            var stopwatch = Stopwatch.StartNew();
-            while (Time.time - time < 5) {
+            var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
+            IEnumerable<AnimationEvent> eventsForMe()
+            {
+                var messages = messagesSystem.GetMessages(AnimationEventMessages);
+                messages = messages.ToList();
+                messages = messages.Where(x => x.Sender == actor);
+                return messages.Select(x => x.Data as AnimationEvent);
+            }
+            while (!eventsForMe().Any(x => x.stringParameter == "ActionEnd")) {
                 yield return null;
             }
-
-            yield break;
         }
     }
 }

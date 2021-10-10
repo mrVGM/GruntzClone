@@ -3,7 +3,6 @@ using Gruntz.Gameplay;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Base.Status
 {
@@ -72,8 +71,6 @@ namespace Base.Status
         public void RemoveStatus(Status status)
         {
             _statuses.Remove(status);
-
-            Debug.Log($"Removed: {status.StatusDef.name}, ActorPos: {_actor.Pos}, Number of Statuses: {_statuses.Count}, {_statuses.Select(x => x.StatusDef.name).Aggregate("", (x, y) => x + $" {y}")}");
 
             var gameplayManager = GameplayManager.GetActorManagerFromContext();
             gameplayManager.HandleGameplayEvent(new StatusGameplayEvent
