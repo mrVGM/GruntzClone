@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81a14ce7f75e0ec409113859aefbe97e, type: 3}
-  m_Name: HitWithHammerDef
+  m_Script: {fileID: 11500000, guid: c648027e19b0c3f42b708482fbb9ca0a, type: 3}
+  m_Name: RockTemplateDef
   m_EditorClassIdentifier: 
-  Cooldown: 0
-  Animation: {fileID: 7400000, guid: 879f6bcd3cd74c44988e1aa755e4663b, type: 2}
-  AnimationEventMessages: {fileID: 11400000, guid: ebcb4d3cc41eeec4d9bc05ee2537cc6f, type: 2}
+  ActorDef: {fileID: 0}
+  ActorComponents: []
+  Statuses: []
+  Weapon: {fileID: 0}
+  SpecialItem: {fileID: 0}
