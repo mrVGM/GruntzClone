@@ -9,8 +9,13 @@ prelude.info = function() {
 };
 
 prelude.playAbility = function() {
-	let playAbility = require("./gruntz.txt");
+	let playAbility = require("./gruntz.txt").playAbility;
 	return playAbility();
+};
+
+prelude.spawn = function(name) {
+	let spawn = require("./gruntz.txt").spawn;
+	return spawn(name);
 };
 
 exports = prelude;

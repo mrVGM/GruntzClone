@@ -148,6 +148,14 @@ namespace Base.Navigation
             });
         }
 
+        public void Teleport(Vector3 pos)
+        {
+            _navAgentBehaviour.ActorVisuals.position = pos;
+            _navAgentBehaviour.NavObstacle.transform.position = pos;
+            _navAgentBehaviour.LocalTravelStartPoint.position = pos;
+            Target = pos;
+        }
+
         public void DeInit()
         {
             var game = Game.Instance;

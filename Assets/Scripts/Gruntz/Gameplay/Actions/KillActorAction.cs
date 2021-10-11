@@ -26,18 +26,8 @@ namespace Gruntz.Gameplay.Actions
             Vector3 pos = Actor.Pos;
             var deadActorData = Actor.Data as ActorData;
             Actor.Deinit();
-
-            var actorComponents = GraveDef.ActorComponents
-                    .Select(x => new ActorData.Components { _component = x.ToDefRef<ActorComponentDef>() });
-            
-            var graveActorData = new ActorData
-            {
-                ActorDef = GraveDef.ActorDef.ToDefRef<ActorDef>(),
-                ActorComponents = actorComponents.ToArray()
-            };
-            var graveActor = ActorDeployment.DeployActor(graveActorData);
+            var graveActor = ActorDeployment.DeployActorFromTemplate(GraveDef, pos);
             GraveDef.ProcessActor(graveActor);
-            graveActor.ActorComponent.transform.position = pos;
             statusComponent = graveActor.GetComponent<StatusComponent>();
             var actorInstanceStatusData = ActorHolderStatusDef.Data as ActorInstanceHolderStatusData;
             actorInstanceStatusData.ActorData = deadActorData;

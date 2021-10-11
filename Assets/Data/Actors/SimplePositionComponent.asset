@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c648027e19b0c3f42b708482fbb9ca0a, type: 3}
-  m_Name: RockTemplateDef
+  m_Script: {fileID: 11500000, guid: 1f42d94b5f40d2f4393b34ac065ee6d3, type: 3}
+  m_Name: SimplePositionComponent
   m_EditorClassIdentifier: 
-  ActorDef: {fileID: 11400000, guid: 362116cca79653945ba1aa9623d9161b, type: 2}
-  ActorComponents: []
-  Statuses: []
-  Weapon: {fileID: 0}
-  SpecialItem: {fileID: 0}

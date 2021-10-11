@@ -7,38 +7,29 @@ let playAbility = function() {
 	let abilitiesComponent = actor.GetComponent|"Gruntz.Abilities.AbilitiesComponent"|();
 	let mainAbility = abilitiesComponent.GetMainAbility();
 	abilitiesComponent.ActivateAbility(mainAbility, null);
+};
 
-	return;
+let spawn = function(name) {
+	let raycastInfo = require("./info.txt");
+	let selection = raycastInfo();
 
 	let game = Base.Game.Instance;
 	let defRepo = game.DefRepositoryDef;
 
-	let ability = null;
+	let template = null;
 	foreach (defRepo.AllDefs, function(def) {
-		if (ability != null) {
+		if (template != null) {
 			return;
 		}
-		if (def.GetType().FullName == "Gruntz.Abilities.AbilityDef") {
-			ability = def;
+		if (def.GetType().FullName == "Gruntz.Actors.ActorTemplateDef" && def.name == name) {
+			template = def;
 		}
 	});
 
-	let abilityManager = Gruntz.Abilities.AbilityManager.GetAbilityManagerFromContext();
-
-	print(abilityManager);
-	let argTypes = [];
-	argTypes.Add("Gruntz.Abilities.AbilityDef");
-	argTypes.Add("Base.Actors.Actor");
-	argTypes.Add("System.Object");
-
-	let args = [];
-	args.Add(ability);
-	args.Add(actor);
-	args.Add(null);
-
-	let player = new("Gruntz.Abilities.AbilityPlayer", argTypes, args);
-	print(player);
-	abilityManager.AbilityPlayers.Add(player);
+	let actor = Gruntz.Actors.ActorDeployment.DeployActorFromTemplate(template, selection.tile);
+	return actor;
 };
 
-exports = playAbility;
+exports = {};
+exports.playAbility = playAbility;
+exports.spawn = spawn;
