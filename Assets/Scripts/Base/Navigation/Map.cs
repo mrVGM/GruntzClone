@@ -43,5 +43,16 @@ namespace Base.Navigation
         {
             return (target - pos).sqrMagnitude;
         }
+
+        public Vector3 SnapPosition(Vector3 vector)
+        {
+            Vector3 center = 0.5f * (Vector3.right + Vector3.up);
+            return new Vector3(Mathf.Round(vector.x), 0, Mathf.Round(vector.z)) + center;
+        }
+
+        public IEnumerable<Vector3> GetNeighbours(Vector3 vector)
+        {
+            return GetPotentialMoves(vector);
+        }
     }
 }

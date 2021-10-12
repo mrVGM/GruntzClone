@@ -6,6 +6,15 @@ namespace Base.Navigation
 {
     public class Navigation : IOrderedUpdate, IContextObject
     {
+        public static Navigation GetNavigationFromContext()
+        {
+            var game = Game.Instance;
+            var navDef = game.DefRepositoryDef.AllDefs.OfType<NavigationDef>().FirstOrDefault();
+            var context = game.Context;
+            var navigation = context.GetRuntimeObject(navDef) as Navigation;
+            return navigation;
+        }
+
         private const float Eps = 0.000001f;
         private List<MoveRequest> moveRequests { get; } = new List<MoveRequest>();
         public ExecutionOrderTagDef OrderTagDef
@@ -21,7 +30,7 @@ namespace Base.Navigation
         {
             moveRequests.Add(moveRequest);
         }
-        private Map map = new Map();
+        public Map Map { get; } = new Map();
         public static bool AreVectorsTheSame(Vector3 x, Vector3 y)
         {
             return (x - y).sqrMagnitude < Eps;
@@ -57,7 +66,7 @@ namespace Base.Navigation
             if (AreVectorsTheSame(moveRequest.CurrentPos, moveRequest.TravelSegmentInfo.EndPos))
             {
                 Vector3 currentPos = moveRequest.TravelSegmentInfo.EndPos;
-                var possibleSteps = map.GetPossibleMoves(currentPos, moveRequest.Obstacles).ToArray();
+                var possibleSteps = Map.GetPossibleMoves(currentPos, moveRequest.Obstacles).ToArray();
                 var bestStep = possibleSteps.OrderBy(x => {
                     if (moveRequest.CheckForSegmentInfoClashes)
                     {
@@ -69,7 +78,7 @@ namespace Base.Navigation
                         }
                     }
 
-                    return map.MoveCost(x, moveRequest.TargetPos);
+                    return Map.MoveCost(x, moveRequest.TargetPos);
                 }).First();
 
                 if (AreVectorsTheSame(bestStep, currentPos))

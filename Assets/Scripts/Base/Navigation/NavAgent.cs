@@ -89,10 +89,7 @@ namespace Base.Navigation
         }
         public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {
-            var game = Game.Instance;
-            var navDef = game.DefRepositoryDef.AllDefs.OfType<NavigationDef>().FirstOrDefault();
-            var context = game.Context;
-            var navigation = context.GetRuntimeObject(navDef) as Navigation;
+            var navigation = Navigation.GetNavigationFromContext();
 
             var request = new MoveRequest
             {

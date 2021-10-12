@@ -8,6 +8,19 @@ namespace Gruntz.AI
     {
         public SimpleAIComponentDef SimpleAIComponentDef { get; }
         public Actor Actor { get; }
+        private IAIAction _currentAction;
+
+        public IAIAction CurrentAction
+        {
+            get => _currentAction;
+            set
+            {
+                if (_currentAction != null) {
+                    _currentAction.Stop();
+                }
+                _currentAction = value;
+            }
+        }
 
         public ExecutionOrderTagDef OrderTagDef
         {
@@ -37,6 +50,12 @@ namespace Gruntz.AI
 
         public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {
+            if (CurrentAction != null && !CurrentAction.CanProceed()) {
+                CurrentAction = null;
+            }
+            if (CurrentAction != null) {
+                CurrentAction.Update();
+            }
         }
     }
 }
