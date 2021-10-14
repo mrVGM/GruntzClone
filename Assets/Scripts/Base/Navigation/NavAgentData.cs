@@ -24,7 +24,7 @@ namespace Base.Navigation
         public IEnumerable<string> ObstacleNames => ObstacleLayers.Except(DisabledObstacleLayers);
         public LayerMask Obstacles => LayerMask.GetMask(ObstacleNames.ToArray());
         public SerializedVector3 InitialPosition;
-        public SerializedVector3 Target;
+        public INavigationTarget Target;
         public SerializedVector3 TravelSegmentStart;
         public SerializedVector3 TravelSegmentEnd;
         public bool CheckForSegmentInfoClashes => ObstacleNames.Contains(UnityLayers.UnitObstacle);

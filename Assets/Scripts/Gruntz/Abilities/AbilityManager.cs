@@ -11,7 +11,7 @@ namespace Gruntz.Abilities
         public struct AbilityExecutionInfo
         {
             public Actor Actor;
-            public AbilityDef AbilityDef;
+            public HitAbilityDef AbilityDef;
             public AbilityPlayer.ExecutionState ExecutionState;
         }
         public ExecutionOrderTagDef OrderTagDef => Game.Instance.DefRepositoryDef.AllDefs.OfType<AbilityManagerOrderTagDef>().FirstOrDefault();

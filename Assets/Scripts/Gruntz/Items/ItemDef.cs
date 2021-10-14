@@ -8,6 +8,6 @@ namespace Gruntz.Items
     {
         public Sprite Icon;
         public GameObject Prefab;
-        public AbilityDef[] Abilities;
+        public HitAbilityDef[] Abilities;
     }
 }

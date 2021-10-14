@@ -53,7 +53,7 @@ namespace Gruntz.Actors
                     navData = formatter.Deserialize(memStream) as NavAgentData;
                 }
                 navData.InitialPosition = pos;
-                navData.Target = pos;
+                navData.Target = new NavAgent.SimpleNavTarget { Target = pos };
                 navData.TravelSegmentStart = pos;
                 navData.TravelSegmentEnd = pos;
                 navAgent.Data = navData;

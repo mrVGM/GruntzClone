@@ -1,12 +1,35 @@
+using System;
 using System.Linq;
 using Base.Actors;
 using Gruntz.Gameplay;
 using UnityEngine;
+using Utils;
 
 namespace Base.Navigation
 {
     public class NavAgent : IActorComponent, IOrderedUpdate, ISerializedObject
     {
+        [Serializable]
+        public class SimpleNavTarget : INavigationTarget
+        {
+            public SerializedVector3 Target;
+
+            public Vector3 AdjustPosition(Vector3 pos)
+            {
+                return Target;
+            }
+
+            public bool HasArrived(Vector3 pos)
+            {
+                return (pos - Target).sqrMagnitude < 0.0001;
+            }
+
+            public float Proximity(Vector3 pos)
+            {
+                return (pos - Target).magnitude;
+            }
+        }
+
         public class ActorTouchedPositionGameplayEvent : GameplayEvent
         {
             public Actor Actor;
@@ -57,6 +80,14 @@ namespace Base.Navigation
         public Vector3 Pos =>_navAgentBehaviour.ActorVisuals.position;
 
         public Vector3 Target
+        {
+            set
+            {
+                _navAgentData.Target = new SimpleNavTarget { Target = value };
+            }
+        }
+
+        public INavigationTarget NavTarget
         {
             set
             {
@@ -138,7 +169,7 @@ namespace Base.Navigation
                 _navAgentBehaviour.ActorVisuals.rotation = Quaternion.LookRotation(moveRequestResult.Direction);
             }
 
-            var gameplayManager = GameplayManager.GetActorManagerFromContext();
+            var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
             gameplayManager.HandleGameplayEvent(new ActorTouchedPositionGameplayEvent {
                 Actor = Actor,
                 Positions = moveRequestResult.TouchedPositions
@@ -157,6 +188,11 @@ namespace Base.Navigation
         {
             var game = Game.Instance;
             game.MainUpdater.UnRegisterUpdatable(this);
+        }
+
+        public void TurnTo(Vector3 pos)
+        {
+            _navAgentBehaviour.ActorVisuals.rotation = Quaternion.LookRotation(pos - Pos);
         }
     }
 }

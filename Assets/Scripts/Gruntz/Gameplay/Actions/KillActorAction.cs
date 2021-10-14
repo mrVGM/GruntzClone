@@ -16,11 +16,12 @@ namespace Gruntz.Gameplay.Actions
         public void Execute()
         {
             var statusComponent = Actor.GetComponent<StatusComponent>();
-            var healthStatus = statusComponent.GetStatuses(x => x.StatusData is HealthStatusData).FirstOrDefault();
-            if (healthStatus != null)
-            {
-                var healthStatusData = healthStatus.StatusData as HealthStatusData;
-                healthStatusData.Health = 0;
+            if (statusComponent != null) {
+                var healthStatus = statusComponent.GetStatuses(x => x.StatusData is HealthStatusData).FirstOrDefault();
+                if (healthStatus != null) {
+                    var healthStatusData = healthStatus.StatusData as HealthStatusData;
+                    healthStatusData.Health = 0;
+                }
             }
 
             Vector3 pos = Actor.Pos;

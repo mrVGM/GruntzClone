@@ -2,6 +2,7 @@ using Base;
 using Base.Actors;
 using Base.MessagesSystem;
 using Base.UI;
+using Gruntz.AI;
 using Gruntz.UnitController;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +54,8 @@ namespace Gruntz.UI.ActorControl
 
             var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
             var moveToPositionIntruction = new MoveToPosition { Position = pos };
+
+
             foreach (var actor in selected)
             {
                 messagesSystem.SendMessage(

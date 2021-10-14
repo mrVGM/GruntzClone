@@ -37,7 +37,7 @@ namespace Gruntz.Gameplay
             game.MainUpdater.UnRegisterUpdatable(this);
         }
 
-        public static GameplayManager GetActorManagerFromContext()
+        public static GameplayManager GetGameplayManagerFromContext()
         {
             var game = Game.Instance;
             var gameplayManagerDef = game.DefRepositoryDef.AllDefs.OfType<GameplayManagerDef>().First();

@@ -7,5 +7,6 @@ namespace Utils
         public static string Floor = "Floor";
         public static string UnitSelection = "UnitSelection";
         public static string UnitObstacle = "UnitObstacle";
+        public static string ActorGeneral = "ActorGeneral";
     }
 }

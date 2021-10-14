@@ -12,13 +12,13 @@ namespace Gruntz.Abilities
             Finished,
             Interrupted,
         }
-        public AbilityDef AbilityDef { get; }
+        public HitAbilityDef AbilityDef { get; }
         public Actor Actor { get; }
         public IEnumerator<ExecutionState> Execution { get; }
         public bool Interrupted { get; private set; } = false;
 
         public ExecutionState State { get; private set; } = AbilityPlayer.ExecutionState.Playing;
-        public AbilityPlayer(AbilityDef abilityDef, Actor actor, object target)
+        public AbilityPlayer(HitAbilityDef abilityDef, Actor actor, object target)
         {
             AbilityDef = abilityDef;
             Actor = actor;

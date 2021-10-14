@@ -77,7 +77,7 @@ namespace Gruntz
                         navData = formatter.Deserialize(memStream) as NavAgentData;
                     }
                     navData.InitialPosition = deployPoint.transform.position;
-                    navData.Target = deployPoint.transform.position;
+                    navData.Target = new NavAgent.SimpleNavTarget { Target = deployPoint.transform.position };
                     navData.Speed = navComponentDef.NavAgentData.Speed;
                     navComponent.Data = navData;
                 }

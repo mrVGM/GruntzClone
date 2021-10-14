@@ -15,7 +15,7 @@ namespace Gruntz.TriggerBox
                 if (ownActor == otherActor) {
                     return;
                 }
-                var gameplayManager = GameplayManager.GetActorManagerFromContext();
+                var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
                 gameplayManager.HandleGameplayEvent(new ActorsClashedGameplayEvent { Actor1 = ownActor, Actor2 = otherActor });
             }
         }

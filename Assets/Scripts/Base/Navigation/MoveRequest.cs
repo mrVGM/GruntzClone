@@ -7,7 +7,7 @@ namespace Base.Navigation
     {
         public LayerMask Obstacles;
         public Vector3 CurrentPos;
-        public Vector3 TargetPos;
+        public INavigationTarget TargetPos;
         public float MoveSpeed;
         public bool CheckForSegmentInfoClashes;
         public ITravelSegmentInfo TravelSegmentInfo;

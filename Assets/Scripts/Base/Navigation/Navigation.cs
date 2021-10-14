@@ -4,6 +4,12 @@ using UnityEngine;
 
 namespace Base.Navigation
 {
+    public interface INavigationTarget
+    {
+        bool HasArrived(Vector3 pos);
+        float Proximity(Vector3 pos);
+        Vector3 AdjustPosition(Vector3 pos);
+    }
     public class Navigation : IOrderedUpdate, IContextObject
     {
         public static Navigation GetNavigationFromContext()
@@ -15,7 +21,7 @@ namespace Base.Navigation
             return navigation;
         }
 
-        private const float Eps = 0.000001f;
+        public const float Eps = 0.000001f;
         private List<MoveRequest> moveRequests { get; } = new List<MoveRequest>();
         public ExecutionOrderTagDef OrderTagDef
         {
@@ -50,14 +56,15 @@ namespace Base.Navigation
 
         private MoveRequestResult CalculateMove(MoveRequest moveRequest, IEnumerable<ITravelSegmentInfo> travelSegments, float maxTravelDistance)
         {
-            if (AreVectorsTheSame(moveRequest.CurrentPos, moveRequest.TargetPos))
+            if (moveRequest.TargetPos.HasArrived(moveRequest.CurrentPos))
             {
+                var adjustedPos = moveRequest.TargetPos.AdjustPosition(moveRequest.CurrentPos);
                 var moveRequestResult = new MoveRequestResult
                 {
-                    PositionToMove = moveRequest.TargetPos,
+                    PositionToMove = adjustedPos,
                     Direction = Vector3.zero,
-                    TravelSegmentInfo = new TravelSegmentInfo { StartPos = moveRequest.TargetPos, EndPos = moveRequest.TargetPos },
-                    TouchedPositions = new[] { moveRequest.TargetPos }
+                    TravelSegmentInfo = new TravelSegmentInfo { StartPos = adjustedPos, EndPos = adjustedPos },
+                    TouchedPositions = new[] { adjustedPos }
                 };
 
                 return moveRequestResult;
@@ -78,7 +85,7 @@ namespace Base.Navigation
                         }
                     }
 
-                    return Map.MoveCost(x, moveRequest.TargetPos);
+                    return moveRequest.TargetPos.Proximity(x);
                 }).First();
 
                 if (AreVectorsTheSame(bestStep, currentPos))

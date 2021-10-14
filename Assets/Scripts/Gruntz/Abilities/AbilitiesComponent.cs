@@ -40,7 +40,7 @@ namespace Gruntz.Abilities
             AbilitiesComponentDef = abilitiesComponentDef;
         }
 
-        public IEnumerable<AbilityDef> GetAbilities()
+        public IEnumerable<HitAbilityDef> GetAbilities()
         {
             var equipmentComponent = Actor.GetComponent<EquipmentComponent>();
             foreach (var ability in equipmentComponent.Weapon.Abilities) {
@@ -54,19 +54,19 @@ namespace Gruntz.Abilities
             }
         }
 
-        public bool IsEnabled(AbilityDef ability)
+        public bool IsEnabled(HitAbilityDef ability)
         {
             var downtime = GetAbilityDownTime(ability);
             return downtime > ability.Cooldown;
         }
-        public void ActivateAbility(AbilityDef ability, object target)
+        public void ActivateAbility(HitAbilityDef ability, object target)
         {
             var abilitiesManager = AbilityManager.GetAbilityManagerFromContext();
             abilitiesManager.AbilityPlayers.Add(new AbilityPlayer(ability, Actor, target));
             var record = _abilitiesComponentData.AbilitiesUsage.FirstOrDefault(x => x.Ability == ability);
             if (record == null) {
                 record = new AbilitiesComponentData.AbilityUsageRecord {
-                    Ability = ability.ToDefRef<AbilityDef>()
+                    Ability = ability.ToDefRef<HitAbilityDef>()
                 };
                 _abilitiesComponentData.AbilitiesUsage.Add(record);
             }
@@ -74,12 +74,12 @@ namespace Gruntz.Abilities
             record.LastUsage = Time.time;
         }
 
-        public AbilityDef GetMainAbility()
+        public HitAbilityDef GetMainAbility()
         {
             return GetAbilities().FirstOrDefault();
         }
 
-        public float GetAbilityDownTime(AbilityDef ability)
+        public float GetAbilityDownTime(HitAbilityDef ability)
         {
             var record = _abilitiesComponentData.AbilitiesUsage.FirstOrDefault(x => x.Ability == ability);
             if (record == null) {

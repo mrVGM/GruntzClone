@@ -10,7 +10,7 @@ namespace Gruntz.Abilities
         [Serializable]
         public class AbilityUsageRecord
         {
-            public DefRef<AbilityDef> Ability;
+            public DefRef<HitAbilityDef> Ability;
             public float Downtime;
 
             [NonSerialized]

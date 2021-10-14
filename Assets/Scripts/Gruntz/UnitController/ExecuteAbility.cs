@@ -5,7 +5,7 @@ namespace Gruntz.UnitController
 {
     public struct ExecuteAbility : IUnitExecutable
     {
-        public AbilityDef Ability;
+        public HitAbilityDef Ability;
         public object Target;
 
         void IUnitExecutable.Execute(Actor actor)

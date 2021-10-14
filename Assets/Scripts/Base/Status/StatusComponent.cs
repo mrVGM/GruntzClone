@@ -59,7 +59,7 @@ namespace Base.Status
         public void AddStatus(Status status)
         {
             _statuses.Add(status);
-            var gameplayManager = GameplayManager.GetActorManagerFromContext();
+            var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
 
             gameplayManager.HandleGameplayEvent(new StatusGameplayEvent { 
                 OperationExecuted = StatusGameplayEvent.Operation.Added,
@@ -72,7 +72,7 @@ namespace Base.Status
         {
             _statuses.Remove(status);
 
-            var gameplayManager = GameplayManager.GetActorManagerFromContext();
+            var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
             gameplayManager.HandleGameplayEvent(new StatusGameplayEvent
             {
                 OperationExecuted = StatusGameplayEvent.Operation.Removed,
