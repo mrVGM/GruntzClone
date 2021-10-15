@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800fd0132ccc3f741b8276d45e2e2bf1, type: 3}
+  m_Name: ShovelItemDef
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: fe88600d385a2954cbdb42729cd07635, type: 3}
+  Prefab: {fileID: 6366140874609464151, guid: f49c7e4ad6e1df74a84adfcca93ec615, type: 3}
+  Abilities:
+  - {fileID: 11400000, guid: 5b8af3e21838ee642ab12633221d28a0, type: 2}

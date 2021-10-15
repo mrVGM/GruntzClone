@@ -40,7 +40,7 @@ namespace Gruntz.Abilities
             AbilitiesComponentDef = abilitiesComponentDef;
         }
 
-        public IEnumerable<HitAbilityDef> GetAbilities()
+        public IEnumerable<AbilityDef> GetAbilities()
         {
             var equipmentComponent = Actor.GetComponent<EquipmentComponent>();
             foreach (var ability in equipmentComponent.Weapon.Abilities) {
@@ -54,19 +54,24 @@ namespace Gruntz.Abilities
             }
         }
 
-        public bool IsEnabled(HitAbilityDef ability)
+        public bool IsOnCooldown(AbilityDef ability)
         {
             var downtime = GetAbilityDownTime(ability);
-            return downtime > ability.Cooldown;
+            return downtime <= ability.Cooldown;
         }
-        public void ActivateAbility(HitAbilityDef ability, object target)
+
+        public bool IsEnabled(AbilityDef ability)
+        {
+            return !IsOnCooldown(ability);
+        }
+        public void ActivateAbility(AbilityDef ability, object target)
         {
             var abilitiesManager = AbilityManager.GetAbilityManagerFromContext();
             abilitiesManager.AbilityPlayers.Add(new AbilityPlayer(ability, Actor, target));
             var record = _abilitiesComponentData.AbilitiesUsage.FirstOrDefault(x => x.Ability == ability);
             if (record == null) {
                 record = new AbilitiesComponentData.AbilityUsageRecord {
-                    Ability = ability.ToDefRef<HitAbilityDef>()
+                    Ability = ability.ToDefRef<AbilityDef>()
                 };
                 _abilitiesComponentData.AbilitiesUsage.Add(record);
             }
@@ -74,12 +79,12 @@ namespace Gruntz.Abilities
             record.LastUsage = Time.time;
         }
 
-        public HitAbilityDef GetMainAbility()
+        public AbilityDef GetMainAbility()
         {
             return GetAbilities().FirstOrDefault();
         }
 
-        public float GetAbilityDownTime(HitAbilityDef ability)
+        public float GetAbilityDownTime(AbilityDef ability)
         {
             var record = _abilitiesComponentData.AbilitiesUsage.FirstOrDefault(x => x.Ability == ability);
             if (record == null) {

@@ -18,13 +18,20 @@ namespace Gruntz.SwitchState
         }
 
         public void Init()
-        {
+        {            
             var statusComponent = Actor.GetComponent<StatusComponent>();
             var state = statusComponent
                 .GetStatuses(x => SwitchStateComponentDef.StateStatuses.Contains(x.StatusDef))
                 .FirstOrDefault();
+            StatusDef stateDef = null;
             if (state != null) {
-                SetCurrentState(state.StatusDef);
+                stateDef = state.StatusDef;
+            }
+            if (stateDef == null) {
+                stateDef = SwitchStateComponentDef.StateStatuses.FirstOrDefault();
+            }
+            if (stateDef != null) {
+                SetCurrentState(stateDef);
             }
         }
 
@@ -40,6 +47,16 @@ namespace Gruntz.SwitchState
             var newStatus = stateStatusDef.Data.CreateStatus();
             statusComponent.AddStatus(newStatus);
             UpdateState();
+        }
+
+        public StatusDef GetCurrentState()
+        {
+            var statusComponent = Actor.GetComponent<StatusComponent>();
+            var status = statusComponent
+                .GetStatuses(x => SwitchStateComponentDef.StateStatuses.Contains(x.StatusDef))
+                .FirstOrDefault();
+
+            return status.StatusDef;
         }
 
         private void UpdateState()

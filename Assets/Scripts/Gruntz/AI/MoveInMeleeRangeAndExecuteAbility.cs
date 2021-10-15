@@ -47,7 +47,7 @@ namespace Gruntz.AI
         }
 
         IEnumerator<CrtState> _crt;
-        public MoveInMeleeRangeAndExecuteAbility(Actor actor, Actor targetActor, HitAbilityDef ability)
+        public MoveInMeleeRangeAndExecuteAbility(Actor actor, Actor targetActor, AbilityDef ability)
         {
             var abilitiesComponent = actor.GetComponent<AbilitiesComponent>();
             var navAgent = actor.GetComponent<NavAgent>();

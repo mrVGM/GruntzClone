@@ -11,7 +11,7 @@ namespace Gruntz.Abilities
         public struct AbilityExecutionInfo
         {
             public Actor Actor;
-            public HitAbilityDef AbilityDef;
+            public AbilityDef AbilityDef;
             public AbilityPlayer.ExecutionState ExecutionState;
         }
         public ExecutionOrderTagDef OrderTagDef => Game.Instance.DefRepositoryDef.AllDefs.OfType<AbilityManagerOrderTagDef>().FirstOrDefault();
@@ -54,10 +54,10 @@ namespace Gruntz.Abilities
                     MainUpdaterUpdateTime.FixedCrt,
                     this,
                     new AbilityExecutionInfo {
-                    Actor = ability.Actor,
-                    AbilityDef = ability.AbilityDef,
-                    ExecutionState = ability.State,
-                });
+                        Actor = ability.Actor,
+                        AbilityDef = ability.AbilityDef,
+                        ExecutionState = ability.State,
+                    });
             }
         }
     }

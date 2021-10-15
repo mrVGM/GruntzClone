@@ -578,6 +578,8 @@ Transform:
   m_Children:
   - {fileID: 74605882189378124}
   - {fileID: 1149053074649959694}
+  - {fileID: 5106989571280110550}
+  - {fileID: 8580179088787118339}
   m_Father: {fileID: 8665106600942007765}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -678,6 +680,54 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &3114939432933102187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8580179088787118339}
+  - component: {fileID: 1171478866988327803}
+  m_Layer: 0
+  m_Name: ShovelHead
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8580179088787118339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3114939432933102187}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.53999996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2472806087051246059}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1171478866988327803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3114939432933102187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a181081d88b92439425eb2e5c89933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TagDef: {fileID: 11400000, guid: 12173bbe89371514087edf251d03d208, type: 2}
+  Lag: 3
+  FixedDistance: {fileID: 5106989571280110550}
+  Threshold: 0.001
+  LaggingEnabled: 1
 --- !u!1 &3513354020482872491
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,6 +855,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b846a24deae384ea5d5141c44f5130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4278490783521871213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5106989571280110550}
+  - component: {fileID: 4222747850691443983}
+  m_Layer: 0
+  m_Name: ShovelHandle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5106989571280110550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4278490783521871213}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.101}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2472806087051246059}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4222747850691443983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4278490783521871213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a181081d88b92439425eb2e5c89933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TagDef: {fileID: 11400000, guid: b07e5037a1229a248a5ece68405c9263, type: 2}
+  Lag: 8
+  FixedDistance: {fileID: 0}
+  Threshold: 0.001
+  LaggingEnabled: 1
 --- !u!1 &4910498568079788389
 GameObject:
   m_ObjectHideFlags: 0
