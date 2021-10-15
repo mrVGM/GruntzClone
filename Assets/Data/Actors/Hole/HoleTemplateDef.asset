@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c648027e19b0c3f42b708482fbb9ca0a, type: 3}
+  m_Name: HoleTemplateDef
+  m_EditorClassIdentifier: 
+  ActorDef: {fileID: 11400000, guid: 4d90b5d9d2bc8a1448bde06bd35fca21, type: 2}
+  ActorComponents:
+  - {fileID: 11400000, guid: b077f7cb245a9b344957dec8e6f898cb, type: 2}
+  - {fileID: 11400000, guid: 37346a41e6839de44b0a58a35a41e7f1, type: 2}
+  Statuses: []
+  Weapon: {fileID: 0}
+  SpecialItem: {fileID: 0}

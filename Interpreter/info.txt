@@ -6,6 +6,7 @@ let raycastInfo = function() {
 	
 	let floorLayerIndex = UnityEngine.LayerMask.NameToLayer("Floor");
 	let unitSelectionLayerIndex = UnityEngine.LayerMask.NameToLayer("UnitSelection");
+	let actorGeneral = UnityEngine.LayerMask.NameToLayer("ActorGeneral");
 
 	let res = {};
 	foreach (hits, function(hit) {
@@ -37,7 +38,7 @@ let raycastInfo = function() {
 
 	foreach (hits, function(hit) {
 		let col = hit.collider;
-		if (col.gameObject.layer != unitSelectionLayerIndex) {
+		if (col.gameObject.layer != unitSelectionLayerIndex && col.gameObject.layer != actorGeneral) {
 			return;
 		}
 		let actorProxy = col.GetComponent|"Base.Actors.ActorProxy"|();

@@ -18,4 +18,9 @@ prelude.spawn = function(name) {
 	return spawn(name);
 };
 
+prelude.switchState = function(index) {
+	let switch = require("./gruntz.txt").switchState;
+	return switch(index);
+};
+
 exports = prelude;
