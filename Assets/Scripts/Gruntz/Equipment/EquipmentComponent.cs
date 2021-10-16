@@ -61,7 +61,9 @@ namespace Gruntz.Equipment
                     return;
                 }
                 while (equipmentRoot.transform.childCount > 0) {
-                    GameObject.Destroy(equipmentRoot.transform.GetChild(0));
+                    var child = equipmentRoot.transform.GetChild(0);
+                    child.SetParent(null);
+                    GameObject.Destroy(child.gameObject);
                 }
                 if (value.Prefab != null) {
                     var go = GameObject.Instantiate(value.Prefab, equipmentRoot.transform);
