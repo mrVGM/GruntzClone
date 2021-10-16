@@ -14,6 +14,7 @@ namespace Gruntz.Abilities
         }
         public AbilityDef AbilityDef { get; }
         public Actor Actor { get; }
+        public object Target { get; }
         public IEnumerator<ExecutionState> Execution { get; }
         public bool Interrupted { get; private set; } = false;
 
@@ -22,10 +23,11 @@ namespace Gruntz.Abilities
         {
             AbilityDef = abilityDef;
             Actor = actor;
+            Target = target;
 
             IEnumerator<ExecutionState> playAbility()
             {
-                var crt = AbilityDef.Execute(Actor, target);
+                var crt = AbilityDef.Execute(Actor, Target);
                 while (crt.MoveNext())
                 {
                     yield return ExecutionState.Playing;

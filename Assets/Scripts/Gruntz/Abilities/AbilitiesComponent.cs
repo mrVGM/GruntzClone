@@ -72,7 +72,17 @@ namespace Gruntz.Abilities
                 return false;
             }
 
-            return tagsComponent.Tags.Intersect(ability.TargetActorTags).Any();
+            if (!tagsComponent.Tags.Intersect(ability.TargetActorTags).Any()) {
+                return false;
+            }
+
+            var abilityManager = AbilityManager.GetAbilityManagerFromContext();
+            var otherPlayers = abilityManager.AbilityPlayers.Where(x => x.AbilityDef == ability);
+            otherPlayers = otherPlayers.Where(x => x.Target == actor);
+            if (otherPlayers.Any(x => x.Actor != Actor)) {
+                return false;
+            }
+            return true;
         }
 
         public void ActivateAbility(AbilityDef ability, object target)

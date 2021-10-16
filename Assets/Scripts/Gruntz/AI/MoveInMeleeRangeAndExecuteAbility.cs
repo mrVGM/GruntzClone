@@ -80,7 +80,9 @@ namespace Gruntz.AI
                         if (navTarget.HasArrived(actor.Pos)) {
                             navAgent.TurnTo(targetActor.Pos);
                             if (abilitiesComponent.IsEnabled(ability)) {
-                                abilitiesComponent.ActivateAbility(ability, targetActor);
+                                if (abilitiesComponent.CanExecuteOn(ability, targetActor)) {
+                                    abilitiesComponent.ActivateAbility(ability, targetActor);
+                                }
                                 break;
                             }
                         }
