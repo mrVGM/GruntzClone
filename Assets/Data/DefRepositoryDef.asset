@@ -217,3 +217,11 @@ MonoBehaviour:
     Guid: 5816c341-6ed8-4a30-a41e-d84570595159
   - Def: {fileID: 11400000, guid: 12173bbe89371514087edf251d03d208, type: 2}
     Guid: d88bbf5d-be55-421a-9da8-f5aa94421f33
+  - Def: {fileID: 11400000, guid: 77195d14516662644b42d610b12b3190, type: 2}
+    Guid: e9985c06-81d4-4f0a-8dc6-ffd587bffe87
+  - Def: {fileID: 11400000, guid: 05f7c766aca1c964c9ecc28953be24d6, type: 2}
+    Guid: b81ebf12-9e4f-4dbe-8d8d-1a6b1471f998
+  - Def: {fileID: 11400000, guid: bd09810bfb8121440b3484339cbb1897, type: 2}
+    Guid: b70910ed-ad9b-44b4-823b-f05511c254ed
+  - Def: {fileID: 11400000, guid: d3e5a30ee62c47549b3c0e3bdf36c692, type: 2}
+    Guid: 7809b14a-05d3-416a-a93a-f1c0a0d2f9ed

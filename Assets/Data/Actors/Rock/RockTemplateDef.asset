@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: RockTemplateDef
   m_EditorClassIdentifier: 
   ActorDef: {fileID: 11400000, guid: 362116cca79653945ba1aa9623d9161b, type: 2}
-  ActorComponents: []
+  ActorComponents:
+  - {fileID: 11400000, guid: 05f7c766aca1c964c9ecc28953be24d6, type: 2}
   Statuses: []
   Weapon: {fileID: 0}
   SpecialItem: {fileID: 0}

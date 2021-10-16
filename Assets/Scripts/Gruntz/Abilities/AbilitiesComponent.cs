@@ -64,6 +64,17 @@ namespace Gruntz.Abilities
         {
             return !IsOnCooldown(ability);
         }
+
+        public bool CanExecuteOn(AbilityDef ability, Actor actor)
+        {
+            var tagsComponent = actor.GetComponent<TagsComponent>();
+            if (tagsComponent == null) {
+                return false;
+            }
+
+            return tagsComponent.Tags.Intersect(ability.TargetActorTags).Any();
+        }
+
         public void ActivateAbility(AbilityDef ability, object target)
         {
             var abilitiesManager = AbilityManager.GetAbilityManagerFromContext();

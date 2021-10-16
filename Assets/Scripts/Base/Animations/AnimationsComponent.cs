@@ -31,6 +31,9 @@ namespace Base.Animations
         {
             Actor = actor;
             Animator = Actor.ActorComponent.GetComponentInChildren<Animator>();
+            var controller = Animator.runtimeAnimatorController;
+            controller = new AnimatorOverrideController(controller);
+            Animator.runtimeAnimatorController = controller;
             AnimationsComponentDef = animationsComponentDef;
         }
         public void DeInit()
