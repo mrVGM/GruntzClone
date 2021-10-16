@@ -47,7 +47,32 @@ let switchState = function(index) {
 	switchStateComponent.SetCurrentState(statusDef);
 };
 
+let giveWeapon = function(name) {
+	let raycastInfo = require("./info.txt");
+	let selection = raycastInfo();
+	let actor = selection.actor;
+	if (actor == null) {
+		return;
+	}
+
+	let game = Base.Game.Instance;
+	let defRepo = game.DefRepositoryDef;
+
+	let item = null;
+	foreach (defRepo.AllDefs, function(def) {
+		if (item != null) {
+			return;
+		}
+		if (def.GetType().FullName == "Gruntz.Items.ItemDef" && def.name == name) {
+			item = def;
+		}
+	});
+	let equipment = actor.GetComponent|"Gruntz.Equipment.EquipmentComponent"|();
+	equipment.Weapon = item;
+};
+
 exports = {};
 exports.playAbility = playAbility;
 exports.spawn = spawn;
 exports.switchState = switchState;
+exports.giveWeapon = giveWeapon;

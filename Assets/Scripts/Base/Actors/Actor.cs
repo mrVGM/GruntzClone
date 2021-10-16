@@ -10,6 +10,15 @@ namespace Base.Actors
         ActorData _actorData;
         Dictionary<ActorComponentDef, IActorComponent> _components { get; } = new Dictionary<ActorComponentDef, IActorComponent>();
         public ActorComponent ActorComponent { get; private set; }
+
+        public bool IsInPlay
+        {
+            get
+            {
+                var actorManager = ActorManager.GetActorManagerFromContext();
+                return actorManager.Actors.Contains(this);
+            }
+        }
         
         public Vector3 Pos
         {

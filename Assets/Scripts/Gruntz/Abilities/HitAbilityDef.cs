@@ -19,7 +19,12 @@ namespace Gruntz.Abilities
                 messages = messages.Where(x => x.Sender == actor);
                 return messages.Select(x => x.Data as AnimationEvent);
             }
+            var targetActor = target as Actor;
             while (true) {
+                if (!actor.IsInPlay) {
+                    yield break;
+                }
+
                 if (eventsForMe().Any(x => x.stringParameter == "ActionEnd")) {
                     yield break;
                 }
@@ -29,7 +34,7 @@ namespace Gruntz.Abilities
                     gameplayManager.HandleGameplayEvent(new DestroyedActorGameplayEvent {
                         Ability = this,
                         SourceActor = actor,
-                        TargetActor = target as Actor
+                        TargetActor = targetActor
                     });
                 }
                 yield return null;

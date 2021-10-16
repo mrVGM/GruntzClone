@@ -72,6 +72,9 @@ namespace Gruntz.AI
                 IEnumerator<CrtState> crt()
                 {
                     while (true) {
+                        if (!targetActor.IsInPlay) {
+                            break;
+                        }
                         var navTarget = new NeighboursTarget { Pos = map.SnapPosition(targetActor.Pos) };
                         navAgent.NavTarget = navTarget;
                         if (navTarget.HasArrived(actor.Pos)) {

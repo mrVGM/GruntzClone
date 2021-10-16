@@ -23,4 +23,9 @@ prelude.switchState = function(index) {
 	return switch(index);
 };
 
+prelude.giveWeapon = function(name) {
+	let giveWeapon = require("./gruntz.txt").giveWeapon;
+	return giveWeapon(name);
+};
+
 exports = prelude;
