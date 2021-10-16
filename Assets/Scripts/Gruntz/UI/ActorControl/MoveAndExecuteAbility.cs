@@ -1,8 +1,10 @@
 using Base;
 using Base.Actors;
+using Base.MessagesSystem;
 using Base.UI;
 using Gruntz.Abilities;
 using Gruntz.AI;
+using Gruntz.UnitController;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,7 +15,8 @@ namespace Gruntz.UI.ActorControl
     public class MoveAndExecuteAbility : CoroutineProcess
     {
         public ProcessContextTagDef HitResultsTag;
-        public ProcessContextTagDef SelectedActorsTag;
+        public ProcessContextTagDef SelectedActorsTag; 
+        public MessagesBoxTagDef MessagesBoxTag;
 
         protected override IEnumerator<object> Crt()
         {
@@ -49,9 +52,17 @@ namespace Gruntz.UI.ActorControl
             }
 
             var selectedActor = selected.First();
-            var simpleAI = selectedActor.GetComponent<SimpleAIComponent>();
             var abilitiesComponent = selectedActor.GetComponent<AbilitiesComponent>();
-            simpleAI.CurrentAction = new MoveInMeleeRangeAndExecuteAbility(selectedActor, targetActor, abilitiesComponent.GetMainAbility());
+
+            var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
+            var instruction = new MoveInMeleeRangeAndExecuteAbility(targetActor, abilitiesComponent.GetMainAbility());
+            messagesSystem.SendMessage(MessagesBoxTag,
+                MainUpdaterUpdateTime.Update,
+                this,
+                new UnitControllerInstruction {
+                    Unit = selectedActor,
+                    Executable = instruction 
+                });
 
             while (Input.GetAxis("Ability") > 0) {
                 yield return null;

@@ -6,10 +6,27 @@ namespace Gruntz.UnitController
 {
     public struct MoveToPosition : IUnitExecutable
     {
-        public Vector3 Position;
-        void IUnitExecutable.Execute(Actor actor)
+        private class Executable : IUpdatingExecutable
         {
-            actor.GetComponent<NavAgent>().Target = Position;
+            public Actor Actor;
+            public INavigationTarget Target;
+            public void StopExecution()
+            {
+            }
+
+            public bool UpdateExecutable()
+            {
+                var navAgent = Actor.GetComponent<NavAgent>();
+                navAgent.Target = Target;
+                return false;
+            }
+        }
+
+        public INavigationTarget Target;
+
+        public IUpdatingExecutable Execute(Actor actor)
+        {
+            return new Executable { Actor = actor, Target = Target };
         }
     }
 }

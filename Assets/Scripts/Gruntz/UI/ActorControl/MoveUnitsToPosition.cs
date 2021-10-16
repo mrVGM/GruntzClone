@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Utils;
+using static Base.Navigation.NavAgent;
 
 namespace Gruntz.UI.ActorControl
 {
@@ -53,7 +54,7 @@ namespace Gruntz.UI.ActorControl
             marker.transform.position = pos;
 
             var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
-            var moveToPositionIntruction = new MoveToPosition { Position = pos };
+            var moveToPositionIntruction = new MoveToPosition { Target = new SimpleNavTarget { Target = pos } };
 
 
             foreach (var actor in selected)

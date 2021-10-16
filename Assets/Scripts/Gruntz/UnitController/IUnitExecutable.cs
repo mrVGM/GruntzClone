@@ -2,8 +2,13 @@ using Base.Actors;
 
 namespace Gruntz.UnitController
 {
+    public interface IUpdatingExecutable
+    {
+        bool UpdateExecutable();
+        void StopExecution();
+    }
     public interface IUnitExecutable
     {
-        void Execute(Actor actor);
+        IUpdatingExecutable Execute(Actor actor);
     }
 }

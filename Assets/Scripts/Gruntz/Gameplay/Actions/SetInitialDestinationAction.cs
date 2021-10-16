@@ -2,6 +2,7 @@ using Base.Actors;
 using Base.Navigation;
 using Base.Status;
 using UnityEngine;
+using static Base.Navigation.NavAgent;
 
 namespace Gruntz.Gameplay.Actions
 {
@@ -17,7 +18,7 @@ namespace Gruntz.Gameplay.Actions
             if (statusComponent.GetStatus(StatusToRemove.StatusDef) == null) {
                 return;            }
             var navAgent = Actor.GetComponent<NavAgent>();
-            navAgent.Target = Destination;
+            navAgent.Target = new SimpleNavTarget { Target = Destination };
             statusComponent.RemoveStatus(StatusToRemove);
         }
     }

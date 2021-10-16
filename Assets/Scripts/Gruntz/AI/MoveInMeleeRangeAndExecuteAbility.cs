@@ -1,6 +1,7 @@
 using Base.Actors;
 using Base.Navigation;
 using Gruntz.Abilities;
+using Gruntz.UnitController;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using Utils;
 
 namespace Gruntz.AI
 {
-    public class MoveInMeleeRangeAndExecuteAbility : IAIAction
+    public class MoveInMeleeRangeAndExecuteAbility : IUnitExecutable
     {
         [Serializable]
         public struct NeighboursTarget : INavigationTarget
@@ -40,53 +41,85 @@ namespace Gruntz.AI
             }
         }
 
-        private enum CrtState
+        private Actor _targetActor;
+        private AbilityDef _ability;
+
+        public MoveInMeleeRangeAndExecuteAbility(Actor targetActor, AbilityDef ability)
         {
-            Active,
-            Finished
+            _targetActor = targetActor;
+            _ability = ability;
         }
 
-        IEnumerator<CrtState> _crt;
-        public MoveInMeleeRangeAndExecuteAbility(Actor actor, Actor targetActor, AbilityDef ability)
+        private class UpdatingExecute : IUpdatingExecutable
         {
-            var abilitiesComponent = actor.GetComponent<AbilitiesComponent>();
-            var navAgent = actor.GetComponent<NavAgent>();
-            var navigation = Navigation.GetNavigationFromContext();
-            var map = navigation.Map;
-            navAgent.NavTarget = new NeighboursTarget { Pos = targetActor.Pos };
-
-            IEnumerator<CrtState> crt()
+            private enum CrtState
             {
-                yield return CrtState.Active;
-                while(true) {
-                    var navTarget = new NeighboursTarget { Pos = map.SnapPosition(targetActor.Pos) };
-                    navAgent.NavTarget = navTarget;
-                    if (navTarget.HasArrived(actor.Pos)) {
-                        navAgent.TurnTo(targetActor.Pos);
-                        if (abilitiesComponent.IsEnabled(ability)) {
-                            abilitiesComponent.ActivateAbility(ability, targetActor);
+                Active,
+                Finished,
+                Interrupted
+            }
+
+            private IEnumerator<CrtState> _crt;
+            private bool _stopped = false;
+
+            public UpdatingExecute(Actor actor, Actor targetActor, AbilityDef ability)
+            {
+                var navigation = Navigation.GetNavigationFromContext();
+                var map = navigation.Map;
+                var navAgent = actor.GetComponent<NavAgent>();
+                var abilitiesComponent = actor.GetComponent<AbilitiesComponent>();
+
+                IEnumerator<CrtState> crt()
+                {
+                    while (true) {
+                        var navTarget = new NeighboursTarget { Pos = map.SnapPosition(targetActor.Pos) };
+                        navAgent.NavTarget = navTarget;
+                        if (navTarget.HasArrived(actor.Pos)) {
+                            navAgent.TurnTo(targetActor.Pos);
+                            if (abilitiesComponent.IsEnabled(ability)) {
+                                abilitiesComponent.ActivateAbility(ability, targetActor);
+                                break;
+                            }
+                        }
+                        yield return CrtState.Active;
+                    }
+                    yield return CrtState.Finished;
+                }
+
+                IEnumerator<CrtState> stoppableCrt()
+                {
+                    var coroutine = crt();
+                    while (true) {
+                        if (_stopped) {
+                            yield return CrtState.Interrupted;
+                            break;
+                        }
+                        coroutine.MoveNext();
+                        yield return coroutine.Current;
+                        if (coroutine.Current == CrtState.Finished) {
                             break;
                         }
                     }
-                    yield return CrtState.Active;
                 }
-                yield return CrtState.Finished;
+
+                _crt = stoppableCrt();
             }
-            _crt = crt();
-            _crt.MoveNext();
-        }
-        public bool CanProceed()
-        {
-            return _crt.Current == CrtState.Active;
+
+            public void StopExecution()
+            {
+                _stopped = true;
+            }
+
+            public bool UpdateExecutable()
+            {
+                _crt.MoveNext();
+                return _crt.Current == CrtState.Active;
+            }
         }
 
-        public void Update()
+        public IUpdatingExecutable Execute(Actor actor)
         {
-            _crt.MoveNext();
-        }
-
-        public void Stop()
-        {
+            return new UpdatingExecute(actor, _targetActor, _ability);
         }
     }
 }

@@ -14,10 +14,10 @@ namespace Gruntz.Gameplay.Actions
         {
             var unitController = Actor.GetComponent<UnitController.UnitController>();
             if (Restore) {
-                unitController.MessageBoxTagStack.Remove(MessagesBoxTagDef);
+                unitController.RemoveMessagesBoxTag(MessagesBoxTagDef);
             }
             else {
-                unitController.MessageBoxTagStack.Add(MessagesBoxTagDef);
+                unitController.PushMessagesBoxTag(MessagesBoxTagDef);
             }
         }
     }

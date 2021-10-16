@@ -79,11 +79,11 @@ namespace Base.Navigation
 
         public Vector3 Pos =>_navAgentBehaviour.ActorVisuals.position;
 
-        public Vector3 Target
+        public INavigationTarget Target
         {
             set
             {
-                _navAgentData.Target = new SimpleNavTarget { Target = value };
+                _navAgentData.Target = value;
             }
         }
 
@@ -174,14 +174,6 @@ namespace Base.Navigation
                 Actor = Actor,
                 Positions = moveRequestResult.TouchedPositions
             });
-        }
-
-        public void Teleport(Vector3 pos)
-        {
-            _navAgentBehaviour.ActorVisuals.position = pos;
-            _navAgentBehaviour.NavObstacle.transform.position = pos;
-            _navAgentBehaviour.LocalTravelStartPoint.position = pos;
-            Target = pos;
         }
 
         public void DeInit()
