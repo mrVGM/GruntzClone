@@ -8,5 +8,6 @@ namespace Utils
         public static string UnitSelection = "UnitSelection";
         public static string UnitObstacle = "UnitObstacle";
         public static string ActorGeneral = "ActorGeneral";
+        public static string Ignored = "Ignored";
     }
 }

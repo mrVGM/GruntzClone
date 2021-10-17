@@ -19,20 +19,17 @@ namespace Gruntz.UI.ActorControl
             GroundSelectionMarker.transform.position = 1000 * Vector3.down;
 
             var selectedActors = context.GetItem(SelectedActorsTag) as IEnumerable<Actor>;
-            if (selectedActors == null || !selectedActors.Any())
-            {
+            if (selectedActors == null || !selectedActors.Any()) {
                 return;
             }
             var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
             hits = hits.Where(x => !x.collider.isTrigger);
-            if (hits.Count() > 1)
-            {
+            if (hits.Count() > 1) {
                 return;
             }
             var floorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == LayerMask.NameToLayer(UnityLayers.Floor));
 
-            if (floorHit.collider == null)
-            {
+            if (floorHit.collider == null) {
                 return;
             }
 
@@ -48,8 +45,7 @@ namespace Gruntz.UI.ActorControl
             var actorManager = game.Context.GetRuntimeObject(actorManagerDef) as ActorManager;
 
             var actors = actorManager.Actors;
-            if (actors.Any(x => x.GetComponent<Base.Navigation.NavAgent>() != null && (x.Pos - pos).sqrMagnitude <= 0.25f))
-            {
+            if (actors.Any(x => x.GetComponent<Base.Navigation.NavAgent>() != null && (x.Pos - pos).sqrMagnitude <= 0.25f)) {
                 return;
             }
 
@@ -60,8 +56,7 @@ namespace Gruntz.UI.ActorControl
         {
             GroundSelectionMarker.SetActive(true);
 
-            while (true)
-            {
+            while (true) {
                 UpdateMarker();
                 yield return null;
             }

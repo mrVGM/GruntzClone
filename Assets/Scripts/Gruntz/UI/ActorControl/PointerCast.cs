@@ -3,6 +3,7 @@ using System.Linq;
 using Base;
 using Base.UI;
 using UnityEngine;
+using Utils;
 
 namespace Gruntz.UI.ActorControl
 {
@@ -19,7 +20,7 @@ namespace Gruntz.UI.ActorControl
 
             int numOfHits = Physics.RaycastNonAlloc(cursorRay, hits);
             
-            var realHits = hits.Take(numOfHits);
+            var realHits = hits.Take(numOfHits).Where(x => x.collider.gameObject.layer != LayerMask.NameToLayer(UnityLayers.Ignored));
 
             context.PutItem(HitResultsTag, realHits);
         }
