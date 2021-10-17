@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 800fd0132ccc3f741b8276d45e2e2bf1, type: 3}
-  m_Name: BareHandsItemDef
+  m_Script: {fileID: 11500000, guid: a4ef417f337c89861b25154eb05cbfb7, type: 3}
+  m_Name: LeftHandFrontTagDef
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 6d3a4e5be2f3ada4ea02b3139698588a, type: 3}
-  Prefab: {fileID: 2149396686695844204, guid: f9f3ae7ee2e5d8547a1db1671d1d4fe1, type: 3}
-  Abilities: []
