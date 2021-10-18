@@ -1,9 +1,10 @@
 using Base;
 using Base.Actors;
 using Base.MessagesSystem;
+using Base.Navigation;
 using Base.UI;
-using Gruntz.AI;
 using Gruntz.UnitController;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -50,23 +51,26 @@ namespace Gruntz.UI.ActorControl
             pos.z = Mathf.Round(pos.z);
             pos += center;
 
-            var marker = Instantiate(Marker);
-            marker.transform.position = pos;
+            if (ActorControlUtils.CanStepToPosition(selected.Select(x => x.GetComponent<NavAgent>()), pos)) {
+                var marker = Instantiate(Marker);
+                marker.transform.position = pos;
 
-            var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
-            var moveToPositionIntruction = new MoveToPosition { Target = new SimpleNavTarget { Target = pos } };
+                var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
+                var moveToPositionIntruction = new MoveToPosition { Target = new SimpleNavTarget { Target = pos } };
 
 
-            foreach (var actor in selected)
-            {
-                messagesSystem.SendMessage(
-                    MessagesBoxTag,
-                    MainUpdaterUpdateTime.Update,
-                    this,
-                    new UnitControllerInstruction{
-                        Unit = actor,
-                        Executable = moveToPositionIntruction,
-                    });
+                foreach (var actor in selected)
+                {
+                    messagesSystem.SendMessage(
+                        MessagesBoxTag,
+                        MainUpdaterUpdateTime.Update,
+                        this,
+                        new UnitControllerInstruction
+                        {
+                            Unit = actor,
+                            Executable = moveToPositionIntruction,
+                        });
+                }
             }
 
             while (Input.GetAxis("Move") > 0)

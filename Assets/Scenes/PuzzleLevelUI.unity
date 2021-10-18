@@ -2582,6 +2582,7 @@ MonoBehaviour:
   m_Priority: 1
   HitResultsTag: {fileID: 11400000, guid: d41060e2515a58b87afb171318b9611a, type: 2}
   SelectedActorsTag: {fileID: 11400000, guid: a9b2daba292157448bcd837138c348cc, type: 2}
+  BallActorStatusDef: {fileID: 11400000, guid: b369f0a9db5183044a3530336c95ccbd, type: 2}
   GroundSelectionMarker: {fileID: 881730138}
 --- !u!1 &1085798761
 GameObject:

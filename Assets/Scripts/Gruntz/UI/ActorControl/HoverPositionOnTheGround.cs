@@ -1,5 +1,6 @@
-using Base;
 using Base.Actors;
+using Base.Navigation;
+using Base.Status;
 using Base.UI;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +24,7 @@ namespace Gruntz.UI.ActorControl
                 return;
             }
             var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
-            hits = hits.Where(x => !x.collider.isTrigger);
-            if (hits.Count() > 1) {
-                return;
-            }
             var floorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == LayerMask.NameToLayer(UnityLayers.Floor));
-
             if (floorHit.collider == null) {
                 return;
             }
@@ -40,15 +36,9 @@ namespace Gruntz.UI.ActorControl
             pos.z = Mathf.Round(pos.z);
             pos += center;
 
-            var game = Game.Instance;
-            var actorManagerDef = game.DefRepositoryDef.AllDefs.OfType<ActorManagerDef>().FirstOrDefault();
-            var actorManager = game.Context.GetRuntimeObject(actorManagerDef) as ActorManager;
-
-            var actors = actorManager.Actors;
-            if (actors.Any(x => x.GetComponent<Base.Navigation.NavAgent>() != null && (x.Pos - pos).sqrMagnitude <= 0.25f)) {
+            if (!ActorControlUtils.CanStepToPosition(selectedActors.Select(x => x.GetComponent<NavAgent>()), pos)) {
                 return;
             }
-
             GroundSelectionMarker.transform.position = pos;
         }
 
