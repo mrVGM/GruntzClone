@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e97f859afb0abd48a32de0dddb6f6cd, type: 3}
-  m_Name: LevelProgressInfoDef
+  m_Script: {fileID: 11500000, guid: c40fecb6bf7eec8509735401518e37fb, type: 3}
+  m_Name: LevelSelectionLevel
   m_EditorClassIdentifier: 
-  AllLevels:
-  - {fileID: 11400000, guid: 4b50ae2fe86ca02408f2c64b6c8becd4, type: 2}
-  - {fileID: 11400000, guid: a0fe6bf0081ca4544adcb04f73285a21, type: 2}
+  Name: 
+  SceneIds: 04000000

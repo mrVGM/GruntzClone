@@ -53,7 +53,10 @@ namespace Gruntz.UI
                             .FirstOrDefault(x => x.Def == LevelProgressInfoDef)
                             .ContextObjectData as LevelProgressInfoData;
 
-                    levelProgressInfoData.FinishedLevels.Add(game.currentLevel.ToDefRef<LevelDef>());
+                    var completed = levelProgressInfoData.FinishedLevels.Select(x => (LevelDef)x);
+                    if (!completed.Contains(game.currentLevel)) {
+                        levelProgressInfoData.FinishedLevels.Add(game.currentLevel.ToDefRef<LevelDef>());
+                    }
                     using (var memStream = new MemoryStream()) {
                         binaryFormatter.Serialize(memStream, savedGame);
                         progressSave.SavedGame = memStream.GetBuffer();

@@ -58,6 +58,8 @@ namespace Gruntz
 
                 var button = ButtonsContainer.GetChild(index).GetComponent<Button>();
                 button.gameObject.SetActive(true);
+                var text = button.GetComponentInChildren<Text>();
+                text.text = level.Name;
                 button.onClick.AddListener(() => {
                     game.SavesManager.CreateSave(FinishedLevelsSaveTagDef);
                     game.LoadLevel(level, () => { });
