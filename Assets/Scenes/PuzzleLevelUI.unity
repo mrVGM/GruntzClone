@@ -1390,6 +1390,8 @@ MonoBehaviour:
   m_Priority: 200
   TrophyItem: {fileID: 11400000, guid: 53df750c871865446a414ca3860cf214, type: 2}
   RegularActor: {fileID: 11400000, guid: ef6970aceacb01e458f6d9697d1190df, type: 2}
+  LevelProgressSaveTag: {fileID: 11400000, guid: 9d427a5a623ab2345b5cf65fc1685ea7, type: 2}
+  LevelProgressInfoDef: {fileID: 11400000, guid: a96813e68669d0640882b8df898c43cd, type: 2}
 --- !u!114 &348440601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1447,7 +1449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Priority: 0
-  LevelDef: {fileID: 11400000, guid: 99b5293dfe9c079a8ba23415b96bc9de, type: 2}
+  SaveTagDef: {fileID: 11400000, guid: 9d427a5a623ab2345b5cf65fc1685ea7, type: 2}
 --- !u!1 &379629128
 GameObject:
   m_ObjectHideFlags: 0
@@ -4259,6 +4261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247117a936650fc4ba9956465d579d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  QuickSave: {fileID: 0}
 --- !u!114 &1878918203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5058,6 +5061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247117a936650fc4ba9956465d579d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  QuickSave: {fileID: 11400000, guid: 4cd4a5430a7fd2040a2f66b8d846ea42, type: 2}
 --- !u!1 &2052716110
 GameObject:
   m_ObjectHideFlags: 0

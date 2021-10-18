@@ -6,19 +6,19 @@ namespace Utils.Test
 {
     public class SaveGame : MonoBehaviour
     {
+        public TagDef QuickSave;
         public void Save()
         {
             var game = Game.Instance;
             var savesManager = game.SavesManager;
-            savesManager.CreateSave();
+            savesManager.CreateSave(QuickSave);
         }
         public void LoadLast()
         {
             var game = Game.Instance;
             var savesManager = game.SavesManager;
-            var save = savesManager.saves.LastOrDefault();
-            if (save != null)
-            {
+            var save = savesManager.Saves.LastOrDefault(x => x.SaveTag == QuickSave);
+            if (save != null) {
                 savesManager.LoadSave(save);
             }
         }

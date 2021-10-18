@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c40fecb6bf7eec8509735401518e37fb, type: 3}
-  m_Name: InitialLevel
+  m_Script: {fileID: 11500000, guid: a4ef417f337c89861b25154eb05cbfb7, type: 3}
+  m_Name: QuickSaveTagDef
   m_EditorClassIdentifier: 
-  SceneIds: 04000000

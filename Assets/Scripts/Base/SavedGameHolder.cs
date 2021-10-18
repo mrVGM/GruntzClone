@@ -10,7 +10,7 @@ namespace Base
         {
         }
 
-        public static SavedGameHolder GetSavedGameHolderFromGame()
+        public static SavedGameHolder GetSavedGameHolderFromContext()
         {
             var game = Game.Instance;
             var savedGameHolderDef = game.DefRepositoryDef.AllDefs.OfType<SavedGameHolderDef>().First();

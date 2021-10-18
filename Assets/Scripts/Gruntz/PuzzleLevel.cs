@@ -32,7 +32,7 @@ namespace Gruntz
             }
 
             var actorManager = ActorManager.GetActorManagerFromContext();
-            var savedGameHolder = SavedGameHolder.GetSavedGameHolderFromGame();
+            var savedGameHolder = SavedGameHolder.GetSavedGameHolderFromContext();
             if (savedGameHolder.SavedGame != null)
             {
                 actorManager.DeployActor = ActorDeployment.DeployActor;

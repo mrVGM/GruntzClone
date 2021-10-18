@@ -13,13 +13,14 @@ namespace Base
         public class Save
         {
             public string SaveName;
+            public TagDef SaveTag;
             public byte[] SavedGame;
         }
 
-        public List<Save> saves = new List<Save>();
-        public IEnumerable<Save> Saves => saves;
+        private List<Save> _saves = new List<Save>();
+        public IEnumerable<Save> Saves => _saves;
 
-        public void CreateSave()
+        public void CreateSave(TagDef tag)
         {
             var game = Game.Instance;
             var savedGame = new SavedGame
@@ -34,9 +35,10 @@ namespace Base
                 var save = new Save
                 {
                     SaveName = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"),
+                    SaveTag = tag,
                     SavedGame = memSteam.GetBuffer(),
                 };
-                saves.Add(save);
+                _saves.Add(save);
             }
         }
 
@@ -49,7 +51,7 @@ namespace Base
                 var savedGame = binaryFormatter.Deserialize(memStream) as SavedGame;
                 game.LoadLevel(savedGame.Level, () =>
                 {
-                    var savedGameHolder = SavedGameHolder.GetSavedGameHolderFromGame();
+                    var savedGameHolder = SavedGameHolder.GetSavedGameHolderFromContext();
                     savedGameHolder.SavedGame = savedGame;
                 });
             }
