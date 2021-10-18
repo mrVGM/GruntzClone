@@ -1,0 +1,50 @@
+using Base;
+using Base.Actors;
+using Base.Status;
+using System.Collections.Generic;
+using Base.UI;
+using Gruntz.Items;
+using System.Linq;
+using Gruntz.Equipment;
+
+namespace Gruntz.UI
+{
+    public class CheckForLevelFinish : CoroutineProcess
+    {
+        public ItemDef TrophyItem;
+        public StatusDef RegularActor;
+        protected override IEnumerator<object> Crt()
+        {
+            var actorManager = ActorManager.GetActorManagerFromContext();
+
+            while (true) {
+                var activeActors = actorManager.Actors.Where(x => {
+                    var statusComponent = x.GetComponent<StatusComponent>();
+                    return statusComponent.GetStatus(RegularActor) != null;
+                });
+
+                if (!activeActors.Any()) {
+                    yield break;
+                }
+
+                if (activeActors.Any(x => {
+                    var equipmentComponent = x.GetComponent<EquipmentComponent>();
+                    if (equipmentComponent == null)
+                    {
+                        return false;
+                    }
+                    return equipmentComponent.Weapon == TrophyItem;
+                })) {
+                    yield break;
+                }
+
+                yield return null;
+            }
+        }
+
+        protected override IEnumerator<object> FinishCrt()
+        {
+            yield break;
+        }
+    }
+}

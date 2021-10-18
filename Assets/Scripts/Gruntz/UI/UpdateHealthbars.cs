@@ -76,6 +76,11 @@ namespace Gruntz.UI
 
         protected override IEnumerator<object> FinishCrt()
         {
+            for (int i = 0; i < HealthbarsContainer.childCount; ++i) {
+                var child = HealthbarsContainer.GetChild(i);
+                child.gameObject.SetActive(false);
+            }
+
             yield break;
         }
     }

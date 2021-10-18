@@ -46,6 +46,8 @@ namespace Gruntz.UI
 
         protected override IEnumerator<object> FinishCrt()
         {
+            SpecialItem.gameObject.SetActive(false);
+            Weapon.gameObject.SetActive(false);
             yield break;
         }
     }
