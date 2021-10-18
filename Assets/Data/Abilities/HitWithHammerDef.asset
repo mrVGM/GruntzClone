@@ -15,5 +15,5 @@ MonoBehaviour:
   Cooldown: 10
   Animation: {fileID: 7400000, guid: 879f6bcd3cd74c44988e1aa755e4663b, type: 2}
   AnimationEventMessages: {fileID: 11400000, guid: ebcb4d3cc41eeec4d9bc05ee2537cc6f, type: 2}
-  TargetActorTags:
-  - {fileID: 11400000, guid: d3e5a30ee62c47549b3c0e3bdf36c692, type: 2}
+  TargetActorStatuses:
+  - {fileID: 11400000, guid: 9c63b7a5dfc0c2c4f96e8b8ec4fbe5f5, type: 2}

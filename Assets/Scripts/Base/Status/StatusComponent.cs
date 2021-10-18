@@ -1,8 +1,11 @@
 using Base.Actors;
+using Gruntz.Actors;
 using Gruntz.Gameplay;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
+using UnityEngine;
 
 namespace Base.Status
 {
@@ -89,6 +92,20 @@ namespace Base.Status
         public IEnumerable<Status> GetStatuses(Func<Status, bool> predicate)
         {
             return _statuses.Where(predicate);
+        }
+
+        [MenuItem("Asd/asd")]
+        public static void asd()
+        {
+            var allDefPaths = AssetDatabase.FindAssets("t:Def").Select(x => AssetDatabase.GUIDToAssetPath(x));
+            var allDefs = allDefPaths.Select(x => AssetDatabase.LoadAssetAtPath<Def>(x));
+            var allTemplates = allDefs.OfType<ActorTemplateDef>();
+
+            foreach (var template in allTemplates) {
+                if (!template.ActorComponents.OfType<StatusComponentDef>().Any()) {
+                    Debug.Log($"{template}", template);
+                }
+            }
         }
     }
 }

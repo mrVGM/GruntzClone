@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0e0efeb4db8be9438608b233d2551d6, type: 3}
-  m_Name: RockTagsComponentDef
+  m_Script: {fileID: 11500000, guid: 8a9588a205dec2948b96656ccd4535af, type: 3}
+  m_Name: RockStatusComponentDef
   m_EditorClassIdentifier: 
-  Tags:
-  - {fileID: 11400000, guid: d3e5a30ee62c47549b3c0e3bdf36c692, type: 2}
+  InitialStatuses:
+  - {fileID: 11400000, guid: 9c63b7a5dfc0c2c4f96e8b8ec4fbe5f5, type: 2}

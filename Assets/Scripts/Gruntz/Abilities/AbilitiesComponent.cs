@@ -1,5 +1,6 @@
 ﻿using Base;
 using Base.Actors;
+using Base.Status;
 using Gruntz.Equipment;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,12 +68,12 @@ namespace Gruntz.Abilities
 
         public bool CanExecuteOn(AbilityDef ability, Actor actor)
         {
-            var tagsComponent = actor.GetComponent<TagsComponent>();
-            if (tagsComponent == null) {
+            var statusComponent = actor.GetComponent<StatusComponent>();
+            if (statusComponent == null) {
                 return false;
             }
 
-            if (!tagsComponent.Tags.Intersect(ability.TargetActorTags).Any()) {
+            if (!statusComponent.GetStatuses(x => ability.TargetActorStatuses.Contains(x.StatusDef)).Any()) {
                 return false;
             }
 

@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4ef417f337c89861b25154eb05cbfb7, type: 3}
-  m_Name: HoleActorTag
+  m_Script: {fileID: 11500000, guid: 006a7c8336c579644bb6b6929b6a3f3b, type: 3}
+  m_Name: HoleActorStatusDef
   m_EditorClassIdentifier: 
