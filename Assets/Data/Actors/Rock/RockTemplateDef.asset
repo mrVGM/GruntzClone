@@ -15,6 +15,7 @@ MonoBehaviour:
   ActorDef: {fileID: 11400000, guid: 362116cca79653945ba1aa9623d9161b, type: 2}
   ActorComponents:
   - {fileID: 11400000, guid: 86f426991bd136747b831548a4980882, type: 2}
+  - {fileID: 11400000, guid: 5ded2b228fcd94f44a9870f6487ea069, type: 2}
   Statuses: []
   Weapon: {fileID: 0}
   SpecialItem: {fileID: 0}

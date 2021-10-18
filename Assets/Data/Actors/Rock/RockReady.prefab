@@ -68,6 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7035577896102650224}
   - component: {fileID: 1648749331335008773}
+  - component: {fileID: 62402299373949784}
   m_Layer: 0
   m_Name: RockReady
   m_TagString: NeedsSceneID
@@ -105,6 +106,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6678a5ad876508149852fd364562bd11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &62402299373949784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855982963488715823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f45eb94077ac5438e47d10af542627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderers:
+  - {fileID: 3035121703799720086}
 --- !u!1 &3617846749873526934
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,9 +375,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: cf054c7d656283749a1708a7f1b2dfa6, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cf054c7d656283749a1708a7f1b2dfa6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e63b4706204c52649a54c564712bba8c, type: 2}
+    - target: {fileID: -7511558181221131132, guid: cf054c7d656283749a1708a7f1b2dfa6, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: cf7f2afefce2ed649a1dc8f089af537e, type: 2}
     - target: {fileID: 919132149155446097, guid: cf054c7d656283749a1708a7f1b2dfa6, type: 3}
       propertyPath: m_Name
       value: rock
@@ -372,5 +395,10 @@ PrefabInstance:
 --- !u!4 &4203485486629549049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cf054c7d656283749a1708a7f1b2dfa6, type: 3}
+  m_PrefabInstance: {fileID: 4458421493712098322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3035121703799720086 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: cf054c7d656283749a1708a7f1b2dfa6, type: 3}
   m_PrefabInstance: {fileID: 4458421493712098322}
   m_PrefabAsset: {fileID: 0}

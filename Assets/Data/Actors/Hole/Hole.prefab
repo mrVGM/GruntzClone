@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 1648749331335008773}
   - component: {fileID: 8446275140313878203}
   - component: {fileID: 4713856082725132241}
+  - component: {fileID: 488097737405191354}
   m_Layer: 0
   m_Name: Hole
   m_TagString: NeedsSceneID
@@ -264,6 +265,20 @@ MonoBehaviour:
     State: 0
   - Status: {fileID: 11400000, guid: c489291eb6a72f04c8777f7deb2e397c, type: 2}
     State: 1
+--- !u!114 &488097737405191354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855982963488715823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f45eb94077ac5438e47d10af542627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderers:
+  - {fileID: 7432739697040593822}
 --- !u!1 &3043346571915763205
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,6 +945,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 426308829b28b944d8dfe3980e115d60, type: 3}
+--- !u!23 &7432739697040593822 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7202271454713460447, guid: 426308829b28b944d8dfe3980e115d60, type: 3}
+  m_PrefabInstance: {fileID: 348464807104292161}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &242991623775994538 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 426308829b28b944d8dfe3980e115d60, type: 3}
