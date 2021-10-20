@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9266b30b0af0bf345bb772562c230ae4, type: 3}
-  m_Name: DebugLevel
+  m_Name: RocksAndHolesLevel
   m_EditorClassIdentifier: 
-  SceneIds: 0200000003000000
+  Name: ROCKS & HOLES
+  SceneIds: 0600000002000000

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e536bac1ba7beb141b920dc21052de1e, type: 3}
   m_Name: DigHoleDef
   m_EditorClassIdentifier: 
-  Cooldown: 10
+  Cooldown: 4
   Animation: {fileID: 7400000, guid: 5f9530623cb216d4fb49e49805ae65e5, type: 2}
   AnimationEventMessages: {fileID: 11400000, guid: ebcb4d3cc41eeec4d9bc05ee2537cc6f, type: 2}
   TargetActorStatuses:

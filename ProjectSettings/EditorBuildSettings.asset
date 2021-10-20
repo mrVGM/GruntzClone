@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuLevel.unity
     guid: 7d42e9a8ebd7677fb937bd666fb10142
   - enabled: 1
-    path: Assets/Scenes/PuzzleLevel.unity
-    guid: 4e01298f31b23a03bbef4010f780fd99
-  - enabled: 1
     path: Assets/Scenes/PuzzleLevelUI.unity
     guid: 7ff893f06a3aba419a99d4e2d4354ea4
   - enabled: 1
@@ -26,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BallLevel.unity
     guid: 22a97c23a2bff4544b4a06417f0f4993
+  - enabled: 1
+    path: Assets/Scenes/HolesLevel.unity
+    guid: 6f3087c7c71b1e546a0dbac2443c0a6e
   m_configObjects: {}

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40273f6b39506441a8ea01f8d4ae647, type: 3}
   m_Name: ActorHealthStatusDef
   m_EditorClassIdentifier: 
-  InitialHealth: 5
+  InitialHealth: 10
   InitialMaxHealth: 10

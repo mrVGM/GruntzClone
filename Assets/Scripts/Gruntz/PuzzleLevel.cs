@@ -26,8 +26,9 @@ namespace Gruntz
 
             var actorDeployPoints = ActorDeployPoints.GetComponentsInChildren<ActorDeployPoint>();
             foreach (var dp in actorDeployPoints) {
-                if (dp.ActorComponent != null) {
-                    dp.ActorComponent.gameObject.SetActive(false);
+                for (int i = 0; i < dp.transform.childCount; ++i) {
+                    var child = dp.transform.GetChild(i);
+                    child.gameObject.SetActive(false);
                 }
             }
 
