@@ -102,7 +102,7 @@ namespace Base.Status
             var allTemplates = allDefs.OfType<ActorTemplateDef>();
 
             foreach (var template in allTemplates) {
-                if (!template.ActorComponents.OfType<StatusComponentDef>().Any()) {
+                if (!template.Components.OfType<StatusComponentDef>().Any()) {
                     Debug.Log($"{template}", template);
                 }
             }

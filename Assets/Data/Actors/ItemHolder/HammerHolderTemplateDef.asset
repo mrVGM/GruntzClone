@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c648027e19b0c3f42b708482fbb9ca0a, type: 3}
   m_Name: HammerHolderTemplateDef
   m_EditorClassIdentifier: 
+  ParentTemplate: {fileID: 11400000, guid: 550bdc9159ca2234bb37661c89189506, type: 2}
   ActorDef: {fileID: 0}
-  ActorComponents:
-  - {fileID: 11400000, guid: 1d9f09e3cb7691346a65673e74595bfe, type: 2}
-  - {fileID: 11400000, guid: b4703258f2e679a4381e8d9f7f25dd6d, type: 2}
-  - {fileID: 11400000, guid: 23de4fa9ad3ac8549b9f8d8107633bbb, type: 2}
+  ActorComponents: []
   Statuses: []
   Weapon: {fileID: 11400000, guid: e06f53a351c759f46a419b622d31ce76, type: 2}
   SpecialItem: {fileID: 0}

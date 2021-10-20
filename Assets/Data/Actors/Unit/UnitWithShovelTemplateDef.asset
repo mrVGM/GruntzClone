@@ -12,15 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c648027e19b0c3f42b708482fbb9ca0a, type: 3}
   m_Name: UnitWithShovelTemplateDef
   m_EditorClassIdentifier: 
-  ActorDef: {fileID: 11400000, guid: c8a246dfd095b21428e13fcc05182468, type: 2}
-  ActorComponents:
-  - {fileID: 11400000, guid: d28ca2df11065d948b285a5c6e7d6305, type: 2}
-  - {fileID: 11400000, guid: f6db9d06083b4c140aa3da8373935fef, type: 2}
-  - {fileID: 11400000, guid: 428bd8dcfb949d849a285a21d01b1796, type: 2}
-  - {fileID: 11400000, guid: bb821dd0a6c1c684db497a54ba671aef, type: 2}
-  - {fileID: 11400000, guid: df9f2b3c2e659ac4b867cf4541916d53, type: 2}
-  - {fileID: 11400000, guid: 9980e60423d362848bc3dfaf70e8e21c, type: 2}
-  - {fileID: 11400000, guid: f8a0782eff1e33647bba728443dbc9d9, type: 2}
+  ParentTemplate: {fileID: 11400000, guid: cddc5fb0bd0731a478a1898aa405657d, type: 2}
+  ActorDef: {fileID: 0}
+  ActorComponents: []
   Statuses: []
   Weapon: {fileID: 11400000, guid: e657b07144215234b865d483ba936d1c, type: 2}
   SpecialItem: {fileID: 0}

@@ -50,7 +50,7 @@ namespace Gruntz
             var deployDatas = new Dictionary<ActorData, ActorTemplateDef>();
             foreach (var deployPoint in actorDeployPoints)
             {
-                var actorComponents = deployPoint.ActorTempleteDef.ActorComponents
+                var actorComponents = deployPoint.ActorTempleteDef.Components
                     .Select(x => new ActorData.Components { _component = x.ToDefRef<ActorComponentDef>() });
                 if (deployPoint.ActorComponent != null)
                 {
@@ -62,7 +62,7 @@ namespace Gruntz
                 }
                 var actorData = new ActorData
                 {
-                    ActorDef = (deployPoint.ActorTempleteDef.ActorDef != null) ? deployPoint.ActorTempleteDef.ActorDef.ToDefRef<ActorDef>() : default(DefRef<ActorDef>),
+                    ActorDef = (deployPoint.ActorTempleteDef.ActorPrefabDef != null) ? deployPoint.ActorTempleteDef.ActorPrefabDef.ToDefRef<ActorDef>() : default(DefRef<ActorDef>),
                     ActorComponents = actorComponents.ToArray()
                 };
                 var navComponent = actorData.ActorComponents.FirstOrDefault(x => x.Component is NavAgentComponentDef);

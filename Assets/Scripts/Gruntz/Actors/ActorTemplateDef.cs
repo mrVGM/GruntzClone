@@ -3,16 +3,66 @@ using Base.Actors;
 using Base.Status;
 using Gruntz.Equipment;
 using Gruntz.Items;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace Gruntz.Actors
 {
     public class ActorTemplateDef : Def
     {
-        public ActorDef ActorDef;
-        public ActorComponentDef[] ActorComponents;
+        public ActorTemplateDef ParentTemplate;
+        [SerializeField]
+        private ActorDef ActorDef;
+        [SerializeField]
+        private ActorComponentDef[] ActorComponents;
         public StatusDef[] Statuses;
         public ItemDef Weapon;
         public ItemDef SpecialItem;
+
+        public IEnumerable<ActorComponentDef> Components
+        {
+            get
+            {
+                if (ParentTemplate == null) {
+                    foreach (var comp in ActorComponents) {
+                        yield return comp;
+                    }
+                    yield break;
+                }
+
+                var used = new List<ActorComponentDef>();
+                foreach (var comp in ParentTemplate.Components) {
+                    var compType = comp.GetType();
+                    var overrideComponent = ActorComponents.FirstOrDefault(x => compType.IsAssignableFrom(x.GetType()));
+                    if (overrideComponent != null) {
+                        yield return overrideComponent;
+                        used.Add(overrideComponent);
+                    }
+                    else {
+                        yield return comp;
+                    }
+                }
+
+                foreach (var comp in ActorComponents.Except(used)) {
+                    yield return comp;
+                }
+            }
+        }
+
+        public ActorDef ActorPrefabDef
+        {
+            get
+            {
+                if (ActorDef != null) {
+                    return ActorDef;
+                }
+                if (ParentTemplate != null) {
+                    return ParentTemplate.ActorPrefabDef;
+                }
+                return null;
+            }
+        }
 
         public void ProcessActor(Actor actor)
         {

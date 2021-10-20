@@ -33,11 +33,11 @@ namespace Gruntz.Actors
 
         public static Actor DeployActorFromTemplate(ActorTemplateDef template, Vector3 pos)
         {
-            var actorComponents = template.ActorComponents
+            var actorComponents = template.Components
                     .Select(x => new ActorData.Components { _component = x.ToDefRef<ActorComponentDef>() });
 
             var actorData = new ActorData {
-                ActorDef = template.ActorDef.ToDefRef<ActorDef>(),
+                ActorDef = template.ActorPrefabDef.ToDefRef<ActorDef>(),
                 ActorComponents = actorComponents.ToArray()
             };
 
