@@ -19,15 +19,24 @@ namespace Gruntz
             var game = Game.Instance;
             var savedGameHolder = SavedGameHolder.GetSavedGameHolderFromContext();
             if (savedGameHolder.SavedGame != null) {
-                foreach (var pair in savedGameHolder.SavedGame.SerializedContextObjects) {
-                    var contextObject = game.Context.GetRuntimeObject(pair.Def);
-                    var serializedObject = contextObject as ISerializedObject;
-                    serializedObject.Data = pair.ContextObjectData;
-                }
+                savedGameHolder.RestoreContext();
             }
 
             var levelProgressInfo = game.Context.GetRuntimeObject(LevelProgressInfoDef) as LevelProgressInfo;
-            var levelProgresInfoData = levelProgressInfo.Data as LevelProgressInfoData;
+            var levelProgressInfoData = levelProgressInfo.Data as LevelProgressInfoData;
+
+            var levelResult = LevelResultHolder.GetLevelResultHolderFromContext();
+            if (levelResult.Level != null) {
+                var result = (PuzzleLevelResult.Result)levelResult.LevelResult;
+                if (result == PuzzleLevelResult.Result.Completed) {
+                    var completedSoFar = levelProgressInfoData.FinishedLevels.Select(x => (LevelDef)x);
+                    if (!completedSoFar.Contains(levelResult.Level)) {
+                        levelProgressInfoData.FinishedLevels = completedSoFar.Append(levelResult.Level)
+                            .Select(x => x.ToDefRef<LevelDef>()).ToList();
+                        game.SavesManager.CreateSave(FinishedLevelsSaveTagDef);
+                    }
+                }
+            }
 
             for (int i = 0; i < ButtonsContainer.childCount; ++i) {
                 var child = ButtonsContainer.GetChild(i);
@@ -36,7 +45,7 @@ namespace Gruntz
 
             IEnumerable<LevelDef> levelsToDisplay()
             {
-                foreach (var level in levelProgresInfoData.FinishedLevels) {
+                foreach (var level in levelProgressInfoData.FinishedLevels) {
                     yield return level;
                 }
             }

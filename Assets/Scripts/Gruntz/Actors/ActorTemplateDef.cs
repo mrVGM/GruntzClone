@@ -13,9 +13,9 @@ namespace Gruntz.Actors
     {
         public ActorTemplateDef ParentTemplate;
         [SerializeField]
-        private ActorDef ActorDef;
+        private ActorDef ActorDef = null;
         [SerializeField]
-        private ActorComponentDef[] ActorComponents;
+        private ActorComponentDef[] ActorComponents = null;
         public StatusDef[] Statuses;
         public ItemDef Weapon;
         public ItemDef SpecialItem;

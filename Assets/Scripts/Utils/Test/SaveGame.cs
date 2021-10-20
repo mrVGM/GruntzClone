@@ -20,7 +20,7 @@ namespace Utils.Test
             var savesManager = game.SavesManager;
             var save = savesManager.Saves.LastOrDefault(x => x.SaveTag == QuickSave);
             if (save != null) {
-                savesManager.LoadSave(save);
+                savesManager.LoadSave(save, () => { });
             }
         }
 
@@ -36,7 +36,7 @@ namespace Utils.Test
             var savesManager = game.SavesManager;
             var save = savesManager.Saves.LastOrDefault(x => x.SaveTag == LevelProgressSaveTag);
             if (save != null) {
-                savesManager.LoadSave(save);
+                savesManager.LoadSave(save, () => { });
             }
         }
     }

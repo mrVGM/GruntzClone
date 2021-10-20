@@ -16,5 +16,16 @@ namespace Base
             var savedGameHolderDef = game.DefRepositoryDef.AllDefs.OfType<SavedGameHolderDef>().First();
             return game.Context.GetRuntimeObject(savedGameHolderDef) as SavedGameHolder;
         }
+
+        public void RestoreContext()
+        {
+            var game = Game.Instance;
+            foreach (var pair in SavedGame.SerializedContextObjects)
+            {
+                var contextObject = game.Context.GetRuntimeObject(pair.Def);
+                var serializedObject = contextObject as ISerializedObject;
+                serializedObject.Data = pair.ContextObjectData;
+            }
+        }
     }
 }

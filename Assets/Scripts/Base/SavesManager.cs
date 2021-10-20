@@ -22,6 +22,7 @@ namespace Base
 
         public void CreateSave(TagDef tag)
         {
+            _saves.RemoveAll(x => x.SaveTag == tag);
             var game = Game.Instance;
             var savedGame = new SavedGame
             {
@@ -42,7 +43,7 @@ namespace Base
             }
         }
 
-        public void LoadSave(Save save)
+        public void LoadSave(Save save, Action onLoaded)
         {
             var game = Game.Instance;
             var binaryFormatter = new BinaryFormatter();
@@ -53,6 +54,7 @@ namespace Base
                 {
                     var savedGameHolder = SavedGameHolder.GetSavedGameHolderFromContext();
                     savedGameHolder.SavedGame = savedGame;
+                    onLoaded();
                 });
             }
         }

@@ -37,12 +37,7 @@ namespace Gruntz
             if (savedGameHolder.SavedGame != null)
             {
                 actorManager.DeployActor = ActorDeployment.DeployActor;
-                foreach (var pair in savedGameHolder.SavedGame.SerializedContextObjects)
-                {
-                    var contextObject = game.Context.GetRuntimeObject(pair.Def);
-                    var serializedObject = contextObject as ISerializedObject;
-                    serializedObject.Data = pair.ContextObjectData;
-                }
+                savedGameHolder.RestoreContext();
                 actorManager.DeployActor = null;
                 return;
             }

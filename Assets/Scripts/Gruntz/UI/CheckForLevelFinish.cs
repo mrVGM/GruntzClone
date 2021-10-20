@@ -16,8 +16,7 @@ namespace Gruntz.UI
     {
         public ItemDef TrophyItem;
         public StatusDef RegularActor;
-        public TagDef LevelProgressSaveTag;
-        public LevelProgressInfoDef LevelProgressInfoDef;
+        public ProcessContextTagDef LevelResultTagDef;
         protected override IEnumerator<object> Crt()
         {
             var actorManager = ActorManager.GetActorManagerFromContext();
@@ -29,39 +28,18 @@ namespace Gruntz.UI
                 });
 
                 if (!activeActors.Any()) {
+                    context.PutItem(LevelResultTagDef, PuzzleLevelResult.Result.Failed);
                     yield break;
                 }
 
                 if (activeActors.Any(x => {
                     var equipmentComponent = x.GetComponent<EquipmentComponent>();
-                    if (equipmentComponent == null)
-                    {
+                    if (equipmentComponent == null) {
                         return false;
                     }
                     return equipmentComponent.Weapon == TrophyItem;
                 })) {
-                    var game = Game.Instance;
-                    var savesManager = game.SavesManager;
-                    var progressSave = savesManager.Saves.FirstOrDefault(x => x.SaveTag = LevelProgressSaveTag);
-
-                    var binaryFormatter = new BinaryFormatter();
-                    SavedGame savedGame = null;
-                    using (var memStream = new MemoryStream(progressSave.SavedGame)) {
-                        savedGame = binaryFormatter.Deserialize(memStream) as SavedGame;
-                    }
-                    var levelProgressInfoData = savedGame.SerializedContextObjects
-                            .FirstOrDefault(x => x.Def == LevelProgressInfoDef)
-                            .ContextObjectData as LevelProgressInfoData;
-
-                    var completed = levelProgressInfoData.FinishedLevels.Select(x => (LevelDef)x);
-                    if (!completed.Contains(game.currentLevel)) {
-                        levelProgressInfoData.FinishedLevels.Add(game.currentLevel.ToDefRef<LevelDef>());
-                    }
-                    using (var memStream = new MemoryStream()) {
-                        binaryFormatter.Serialize(memStream, savedGame);
-                        progressSave.SavedGame = memStream.GetBuffer();
-                    }
-
+                    context.PutItem(LevelResultTagDef, PuzzleLevelResult.Result.Completed);
                     yield break;
                 }
 
