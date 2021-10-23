@@ -12,7 +12,6 @@ namespace Gruntz.UI
         public List<ILock> Locks = new List<ILock>();
         protected override IEnumerator<object> Crt()
         {
-            Time.fixedDeltaTime = float.PositiveInfinity;
             var game = Game.Instance;
             Locks.Clear();
             foreach (var tag in game.MainUpdater.ExecutionOrder)
