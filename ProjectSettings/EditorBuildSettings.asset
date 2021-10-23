@@ -26,7 +26,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HolesLevel.unity
     guid: 6f3087c7c71b1e546a0dbac2443c0a6e
-  - enabled: 1
-    path: Assets/Scenes/IntroPuzzleLevelUI.unity
-    guid: 795531efaca34f14d80da7dd07f24875
   m_configObjects: {}

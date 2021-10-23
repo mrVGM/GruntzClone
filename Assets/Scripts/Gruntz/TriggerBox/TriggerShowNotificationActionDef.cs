@@ -16,6 +16,7 @@ namespace Gruntz.TriggerBox
 
         public MessagesBoxTagDef MessagesBox;
         public StatusDef RegularActorStatus;
+        public StatusDef NotificationShownStatus;
 
         public override void TriggerEnter(Collider ownCollider, Collider otherCollider)
         {
@@ -31,6 +32,11 @@ namespace Gruntz.TriggerBox
             if (statusComponent.GetStatus(RegularActorStatus) == null) {
                 return;
             }
+
+            if (statusComponent.GetStatus(NotificationShownStatus) != null) {
+                return;
+            }
+            statusComponent.AddStatus(NotificationShownStatus.Data.CreateStatus());
 
             var equipmentComponent = ownActor.GetComponent<EquipmentComponent>();
             var notificationItem = equipmentComponent.Weapon;
@@ -56,6 +62,10 @@ namespace Gruntz.TriggerBox
             var statusComponent = otherActor.GetComponent<StatusComponent>();
             if (statusComponent.GetStatus(RegularActorStatus) == null) {
                 return;
+            }
+            var statuses = statusComponent.GetStatuses(x => x.StatusDef == NotificationShownStatus).ToList();
+            foreach (var status in statuses) {
+                statusComponent.RemoveStatus(status);
             }
 
             var switchComponent = ownActor.GetComponent<SwitchState.SwitchStateComponent>();
