@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HolesLevel.unity
     guid: 6f3087c7c71b1e546a0dbac2443c0a6e
+  - enabled: 1
+    path: Assets/Scenes/PistonsLevel.unity
+    guid: 8ba82ee5c8ad58c43befac920e5cf270
   m_configObjects: {}

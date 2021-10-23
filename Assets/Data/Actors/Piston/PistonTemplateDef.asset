@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c648027e19b0c3f42b708482fbb9ca0a, type: 3}
+  m_Name: PistonTemplateDef
+  m_EditorClassIdentifier: 
+  ParentTemplate: {fileID: 0}
+  ActorDef: {fileID: 11400000, guid: aeb6f53259c8af64f87604f93e300231, type: 2}
+  ActorComponents:
+  - {fileID: 11400000, guid: b9f8f950527ff86458a24aecccc748cc, type: 2}
+  - {fileID: 11400000, guid: de4b3f7aec5ee87458e96922edc24245, type: 2}
+  - {fileID: 11400000, guid: 3b7d2b0cf856750479566166f18a8962, type: 2}
+  Statuses:
+  - {fileID: 11400000, guid: 0d95ff48b95258046be3185fc3333684, type: 2}
+  Weapon: {fileID: 0}
+  SpecialItem: {fileID: 0}

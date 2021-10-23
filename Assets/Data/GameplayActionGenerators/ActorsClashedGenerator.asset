@@ -16,5 +16,6 @@ MonoBehaviour:
   ActorInstanceHolderStatusDef: {fileID: 11400000, guid: c2a65b685ac5e0a49a378bd91bdb1eef, type: 2}
   Hardness:
   - {fileID: 11400000, guid: ef6970aceacb01e458f6d9697d1190df, type: 2}
-  - {fileID: 11400000, guid: 319a7113f1ea182ac89c194b601a294d, type: 2}
   - {fileID: 11400000, guid: b369f0a9db5183044a3530336c95ccbd, type: 2}
+  - {fileID: 11400000, guid: 14cec5cbae8eefa44919221645115e41, type: 2}
+  - {fileID: 11400000, guid: 700d59ce6ec37bd438003e17cc922283, type: 2}
