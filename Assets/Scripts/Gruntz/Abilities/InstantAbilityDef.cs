@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Gruntz.Abilities
 {
-    public class HitAbilityDef : AbilityDef
+    public class InstantAbilityDef : AbilityDef
     {
         public override IEnumerator<object> Execute(Actor actor, object target)
         {

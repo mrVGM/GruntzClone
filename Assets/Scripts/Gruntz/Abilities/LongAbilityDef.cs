@@ -5,13 +5,14 @@ using UnityEngine;
 
 namespace Gruntz.Abilities
 {
-    public class DigHoleAbilityDef : AbilityDef
+    public class LongAbilityDef : AbilityDef
     {
+        public float ExecutionTime = 2.0f;
         public override IEnumerator<object> Execute(Actor actor, object target)
         {
             var abilitiesComponent = actor.GetComponent<AbilitiesComponent>();
             float startTime = Time.time;
-            while (abilitiesComponent.IsOnCooldown(this)) {
+            while (Time.time - startTime < ExecutionTime) {
                 yield return null;
             }
             var gameplayManager = GameplayManager.GetGameplayManagerFromContext();

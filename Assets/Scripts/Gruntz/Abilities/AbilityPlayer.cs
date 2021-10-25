@@ -1,5 +1,6 @@
 using Base.Actors;
 using Gruntz.Equipment;
+using System;
 using System.Collections.Generic;
 
 namespace Gruntz.Abilities
@@ -19,7 +20,7 @@ namespace Gruntz.Abilities
         public bool Interrupted { get; private set; } = false;
 
         public ExecutionState State { get; private set; } = AbilityPlayer.ExecutionState.Playing;
-        public AbilityPlayer(AbilityDef abilityDef, Actor actor, object target)
+        public AbilityPlayer(AbilityDef abilityDef, Actor actor, object target, Action executed)
         {
             AbilityDef = abilityDef;
             Actor = actor;
@@ -60,6 +61,7 @@ namespace Gruntz.Abilities
                     crt.MoveNext();
                     if (crt.Current != ExecutionState.Playing) {
                         equipment.EnableLagging(true);
+                        executed();
                         yield return crt.Current;
                         break;
                     }

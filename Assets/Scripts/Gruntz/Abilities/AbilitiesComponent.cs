@@ -2,6 +2,7 @@
 using Base.Actors;
 using Base.Status;
 using Gruntz.Equipment;
+using Gruntz.Items;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -55,6 +56,22 @@ namespace Gruntz.Abilities
             }
         }
 
+        public ItemDef GetSourceItem(AbilityDef ability)
+        {
+            var equipmentComponent = Actor.GetComponent<EquipmentComponent>();
+            if (equipmentComponent.Weapon.Abilities.Contains(ability)) {
+                return equipmentComponent.Weapon;
+            }
+
+            if (equipmentComponent.SpecialItem == null) {
+                return null;
+            }
+            if (equipmentComponent.SpecialItem.Abilities.Contains(ability)) {
+                return equipmentComponent.SpecialItem;
+            }
+            return null;
+        }
+
         public bool IsOnCooldown(AbilityDef ability)
         {
             var downtime = GetAbilityDownTime(ability);
@@ -89,16 +106,17 @@ namespace Gruntz.Abilities
         public void ActivateAbility(AbilityDef ability, object target)
         {
             var abilitiesManager = AbilityManager.GetAbilityManagerFromContext();
-            abilitiesManager.AbilityPlayers.Add(new AbilityPlayer(ability, Actor, target));
-            var record = _abilitiesComponentData.AbilitiesUsage.FirstOrDefault(x => x.Ability == ability);
-            if (record == null) {
-                record = new AbilitiesComponentData.AbilityUsageRecord {
-                    Ability = ability.ToDefRef<AbilityDef>()
-                };
-                _abilitiesComponentData.AbilitiesUsage.Add(record);
-            }
-            record.Downtime = 0;
-            record.LastUsage = Time.time;
+            abilitiesManager.AbilityPlayers.Add(new AbilityPlayer(ability, Actor, target, () => {
+                var record = _abilitiesComponentData.AbilitiesUsage.FirstOrDefault(x => x.Ability == ability);
+                if (record == null) {
+                    record = new AbilitiesComponentData.AbilityUsageRecord {
+                        Ability = ability.ToDefRef<AbilityDef>()
+                    };
+                    _abilitiesComponentData.AbilitiesUsage.Add(record);
+                }
+                record.Downtime = 0;
+                record.LastUsage = Time.time;
+            }));
         }
 
         public AbilityDef GetMainAbility()
@@ -108,12 +126,14 @@ namespace Gruntz.Abilities
 
         public float GetAbilityDownTime(AbilityDef ability)
         {
-            var record = _abilitiesComponentData.AbilitiesUsage.FirstOrDefault(x => x.Ability == ability);
-            if (record == null) {
+            var abilityItem = GetSourceItem(ability);
+            var records = _abilitiesComponentData.AbilitiesUsage.Where(x => GetSourceItem(x.Ability) == abilityItem);
+
+            if (!records.Any()) {
                 return float.PositiveInfinity;
             }
 
-            return Time.time - record.LastUsage;
+            return Time.time - records.Max(x => x.LastUsage);
         }
 
         public void DeInit()
