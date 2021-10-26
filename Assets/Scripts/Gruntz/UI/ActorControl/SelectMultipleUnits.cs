@@ -64,7 +64,7 @@ namespace Gruntz.UI.ActorControl
                     .Where(x => x.gameObject.layer == LayerMask.NameToLayer(UnityLayers.UnitSelection));
 
                 var actorProxies = hits.Select(x => x.GetComponent<ActorProxy>()).ToList();
-                var res = actorProxies.Select(x => x.Actor);
+                var res = actorProxies.Select(x => x.Actor).Where(x => ActorControlUtils.CanSelectActor(x, Enumerable.Empty<Actor>()));
                 return res;
             }
 

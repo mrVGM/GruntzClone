@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using Base.Actors;
 using Base.Navigation;
+using Gruntz.Team;
 using UnityEngine;
 
 namespace Gruntz.UI.ActorControl
@@ -19,6 +21,24 @@ namespace Gruntz.UI.ActorControl
             {
                 return false;
             }
+            return true;
+        }
+
+        public static bool CanSelectActor(Actor actor, IEnumerable<Actor> alreadySelected)
+        {
+            var teamComponent = actor.GetComponent<TeamComponent>();
+            if (teamComponent == null) {
+                return false;
+            }
+
+            if (teamComponent.UnitTeam != TeamComponent.Team.Player) {
+                return false;
+            }
+
+            if (alreadySelected != null && alreadySelected.Contains(actor)) {
+                return false;
+            }
+
             return true;
         }
     }

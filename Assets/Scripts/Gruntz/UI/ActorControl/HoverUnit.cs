@@ -28,7 +28,7 @@ namespace Gruntz.UI.ActorControl
             var actor = actorProxy.Actor;
 
             var selectedActors = context.GetItem(SelectedActorsTag) as IEnumerable<Actor>;
-            if (selectedActors != null && selectedActors.Contains(actor))
+            if (!ActorControlUtils.CanSelectActor(actor, selectedActors))
             {
                 return;
             }

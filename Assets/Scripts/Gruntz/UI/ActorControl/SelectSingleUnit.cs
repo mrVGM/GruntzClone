@@ -19,12 +19,14 @@ namespace Gruntz.UI.ActorControl
             {
                 var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
                 var actorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == LayerMask.NameToLayer(UnityLayers.UnitSelection));
-                if (actorHit.collider == null)
-                {
+                if (actorHit.collider == null) {
                     return null;
                 }
                 var actorProxy = actorHit.collider.GetComponentInParent<ActorProxy>();
                 var actor = actorProxy.Actor;
+                if (!ActorControlUtils.CanSelectActor(actor, Enumerable.Empty<Actor>())) {
+                    return null;
+                }
                 return actor;
             }
 

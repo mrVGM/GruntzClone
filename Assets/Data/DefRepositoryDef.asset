@@ -345,3 +345,7 @@ MonoBehaviour:
     Guid: da8e9771-3e90-4a30-8b77-6aae796c5bed
   - Def: {fileID: 11400000, guid: 26eefe928e4a60946afc2bc50d9e33dd, type: 2}
     Guid: cc062e83-e929-4aec-8f92-13d97577fb93
+  - Def: {fileID: 11400000, guid: 78f52230b05640e4f9f8b0524b5554c4, type: 2}
+    Guid: 04ed1f1f-338d-4b0a-809a-16b4fd1f3dee
+  - Def: {fileID: 11400000, guid: 86fb214a7fda4754eae55ec4ae8061b9, type: 2}
+    Guid: b169a788-8f5f-4569-8b1a-4e604a269ad8

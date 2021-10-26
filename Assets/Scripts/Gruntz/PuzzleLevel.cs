@@ -2,6 +2,7 @@ using Base;
 using Base.Actors;
 using Base.Navigation;
 using Gruntz.Actors;
+using Gruntz.Team;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -42,7 +43,7 @@ namespace Gruntz
                 return;
             }
 
-            var deployDatas = new Dictionary<ActorData, ActorTemplateDef>();
+            var deployDatas = new Dictionary<ActorData, ActorDeployPoint>();
             foreach (var deployPoint in actorDeployPoints)
             {
                 var actorComponents = deployPoint.ActorTempleteDef.Components
@@ -77,14 +78,19 @@ namespace Gruntz
                     navData.Speed = navComponentDef.NavAgentData.Speed;
                     navComponent.Data = navData;
                 }
-                deployDatas[actorData] = deployPoint.ActorTempleteDef;
+                deployDatas[actorData] = deployPoint;
             }
             var actorManagerData = new ActorManagerData { ActorDatas = deployDatas.Keys.ToList() };
 
             actorManager.DeployActor = x => {
                 var actor = ActorDeployment.DeployActor(x);
-                var template = deployDatas[actor.Data as ActorData];
-                template.ProcessActor(actor);
+                var deployPoint = deployDatas[actor.Data as ActorData];
+                deployPoint.ActorTempleteDef.ProcessActor(actor);
+                var team = deployPoint.GetComponent<DeployPointTeam>();
+                if (team != null) {
+                    var teamComponent = actor.GetComponent<TeamComponent>();
+                    teamComponent.UnitTeam = team.Team;
+                }
                 return actor;
             };
             actorManager.Data = actorManagerData;
