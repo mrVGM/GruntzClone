@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f40273f6b39506441a8ea01f8d4ae647, type: 3}
-  m_Name: ActorHealthStatusDef
+  m_Script: {fileID: 11500000, guid: 8aaf3f4b87cb7764790bea2bc19b765e, type: 3}
+  m_Name: DamageActorGenerator
   m_EditorClassIdentifier: 
-  InitialHealth: 100
-  InitialMaxHealth: 100
+  GraveDef: {fileID: 11400000, guid: 8ccfd9b607d6eb846a81fb684f87f281, type: 2}
+  ActorHolderStatusDef: {fileID: 11400000, guid: c2a65b685ac5e0a49a378bd91bdb1eef, type: 2}

@@ -80,6 +80,13 @@ namespace Gruntz.Abilities
 
         public bool IsEnabled(AbilityDef ability)
         {
+            var abilityManager = AbilityManager.GetAbilityManagerFromContext();
+            bool playing = abilityManager.AbilityPlayers
+                .Any(x => x.AbilityDef == ability && x.Actor == Actor && x.State == AbilityPlayer.ExecutionState.Playing);
+            if (playing) {
+                return false;
+            }
+
             return !IsOnCooldown(ability);
         }
 
