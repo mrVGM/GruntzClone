@@ -7,13 +7,5 @@ namespace Gruntz.Gameplay.Actions
     {
         public Actor Actor { get; set; }
         public Status[] StatusesToRemove;
-
-        public void Execute()
-        {
-            var statusComponent = Actor.GetComponent<StatusComponent>();
-            foreach (var status in StatusesToRemove) {
-                statusComponent.RemoveStatus(status);
-            }
-        }
     }
 }

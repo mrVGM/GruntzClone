@@ -5,6 +5,5 @@ namespace Gruntz.Gameplay
     public interface IGameplayAction
     {
         Actor Actor { get; }
-        void Execute();
     }
 }
