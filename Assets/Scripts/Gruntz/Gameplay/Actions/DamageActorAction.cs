@@ -11,8 +11,6 @@ namespace Gruntz.Gameplay.Actions
         public float DamageValue;
         public Actor Actor { get; set; }
 
-        Actor IGameplayAction.Actor => throw new System.NotImplementedException();
-
         public void Execute()
         {
             var statusComponent = Actor.GetComponent<StatusComponent>();

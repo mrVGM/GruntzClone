@@ -15,6 +15,8 @@ namespace Gruntz.Abilities
         public Actor Actor { get; }
 
         private AbilitiesComponentData _abilitiesComponentData;
+
+        public AbilityPlayer Current { get; private set; }
         public ISerializedObjectData Data
         {
             get
@@ -113,7 +115,7 @@ namespace Gruntz.Abilities
         public void ActivateAbility(AbilityDef ability, object target)
         {
             var abilitiesManager = AbilityManager.GetAbilityManagerFromContext();
-            abilitiesManager.AbilityPlayers.Add(new AbilityPlayer(ability, Actor, target, () => {
+            var player = new AbilityPlayer(ability, Actor, target, () => {
                 var record = _abilitiesComponentData.AbilitiesUsage.FirstOrDefault(x => x.Ability == ability);
                 if (record == null) {
                     record = new AbilitiesComponentData.AbilityUsageRecord {
@@ -123,7 +125,12 @@ namespace Gruntz.Abilities
                 }
                 record.Downtime = 0;
                 record.LastUsage = Time.time;
-            }));
+            });
+            if (Current != null) {
+                Current.Interrupt();
+            }
+            Current = player;
+            abilitiesManager.AbilityPlayers.Add(Current);
         }
 
         public AbilityDef GetMainAbility()
@@ -150,6 +157,9 @@ namespace Gruntz.Abilities
 
         public void DeInit()
         {
+            if (Current != null) {
+                Current.Interrupt();
+            }
         }
 
         public void Init()

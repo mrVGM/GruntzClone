@@ -59,10 +59,7 @@ namespace Gruntz.Gameplay
         private void ProcessGameplayEvents(IEnumerable<GameplayEvent> gameplayEvents)
         {
             var actions = GenerateActions(gameplayEvents);
-
-            foreach (var action in actions) {
-                action.Execute();
-            }
+            _gameplayManagerDef.gameplayActionsProcessorDef.ProcessActions(actions);
         }
 
         public void DoUpdate(MainUpdaterUpdateTime updateTime)
