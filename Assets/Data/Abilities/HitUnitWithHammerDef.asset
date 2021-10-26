@@ -15,6 +15,5 @@ MonoBehaviour:
   Cooldown: 3
   Animation: {fileID: 7400000, guid: 879f6bcd3cd74c44988e1aa755e4663b, type: 2}
   AnimationEventMessages: {fileID: 11400000, guid: ebcb4d3cc41eeec4d9bc05ee2537cc6f, type: 2}
-  TargetActorStatuses:
-  - {fileID: 11400000, guid: ef6970aceacb01e458f6d9697d1190df, type: 2}
+  TargetActorStatuses: []
   Damage: 10

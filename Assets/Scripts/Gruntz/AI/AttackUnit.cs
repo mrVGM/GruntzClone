@@ -44,10 +44,9 @@ namespace Gruntz.AI
         private Actor _targetActor;
         private AbilityDef _ability;
 
-        public AttackUnit(Actor targetActor, AbilityDef ability)
+        public AttackUnit(Actor targetActor)
         {
             _targetActor = targetActor;
-            _ability = ability;
         }
 
         private class UpdatingExecute : IUpdatingExecutable
@@ -81,9 +80,7 @@ namespace Gruntz.AI
                             navAgent.TurnTo(targetActor.Pos);
                             var ability = abilitiesComponent.GetAttackAbility();
                             if (abilitiesComponent.IsEnabled(ability)) {
-                                if (abilitiesComponent.CanExecuteOn(ability, targetActor)) {
-                                    abilitiesComponent.ActivateAbility(ability, targetActor);
-                                }
+                                abilitiesComponent.ActivateAbility(ability, targetActor);
                             }
                         }
                         yield return CrtState.Active;

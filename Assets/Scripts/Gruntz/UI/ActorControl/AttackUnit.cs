@@ -2,8 +2,6 @@ using Base;
 using Base.Actors;
 using Base.MessagesSystem;
 using Base.UI;
-using Gruntz.Abilities;
-using Gruntz.AI;
 using Gruntz.UnitController;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +10,7 @@ using Utils;
 
 namespace Gruntz.UI.ActorControl
 {
-    public class MoveAndExecuteAbility : CoroutineProcess
+    public class AttackUnit : CoroutineProcess
     {
         public ProcessContextTagDef HitResultsTag;
         public ProcessContextTagDef SelectedActorsTag; 
@@ -21,7 +19,7 @@ namespace Gruntz.UI.ActorControl
         protected override IEnumerator<object> Crt()
         {
             var selected = context.GetItem(SelectedActorsTag) as IEnumerable<Actor>;
-            if (selected == null || selected.Count() != 1)
+            if (selected == null || !selected.Any())
             {
                 yield break;
             }
@@ -29,11 +27,19 @@ namespace Gruntz.UI.ActorControl
             Actor getTargetActor()
             {
                 var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
-                var actorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == LayerMask.NameToLayer(UnityLayers.ActorGeneral));
+                var actorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == LayerMask.NameToLayer(UnityLayers.UnitSelection));
                 if (actorHit.Equals(default(RaycastHit))) {
                     return null;
                 }
-                return actorHit.collider.GetComponent<ActorProxy>().Actor;
+                var actor = actorHit.collider.GetComponent<ActorProxy>().Actor;
+                var team = actor.GetComponent<Team.TeamComponent>();
+                if (team == null) {
+                    return null;
+                }
+                if (team.UnitTeam == Team.TeamComponent.Team.Enemy) {
+                    return actor;
+                }
+                return null;
             }
 
             var game = Game.Instance;
@@ -42,13 +48,8 @@ namespace Gruntz.UI.ActorControl
                 yield return null;
             }
 
-            var selectedActor = selected.First();
-            var abilitiesComponent = selectedActor.GetComponent<AbilitiesComponent>();
-
-            var ability = abilitiesComponent.GetMainAbility();
             var targetActor = getTargetActor();
-
-            if (targetActor == null || !abilitiesComponent.CanExecuteOn(ability, targetActor)) {
+            if (targetActor == null) {
                 while (Input.GetAxis("Ability") > 0) {
                     yield return null;
                 }
@@ -56,15 +57,16 @@ namespace Gruntz.UI.ActorControl
             }
 
             var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
-            var instruction = new MoveInMeleeRangeAndExecuteAbility(targetActor, ability);
-            
-            messagesSystem.SendMessage(MessagesBoxTag,
-                MainUpdaterUpdateTime.Update,
-                this,
-                new UnitControllerInstruction {
-                    Unit = selectedActor,
-                    Executable = instruction 
-                });
+            foreach (var actor in selected) {
+                var instruction = new AI.AttackUnit(targetActor);
+                messagesSystem.SendMessage(MessagesBoxTag,
+                    MainUpdaterUpdateTime.Update,
+                    this,
+                    new UnitControllerInstruction {
+                        Unit = actor,
+                        Executable = instruction
+                    });
+            }
 
             while (Input.GetAxis("Ability") > 0) {
                 yield return null;
