@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GraveDef: {fileID: 11400000, guid: 8ccfd9b607d6eb846a81fb684f87f281, type: 2}
   ActorHolderStatusDef: {fileID: 11400000, guid: c2a65b685ac5e0a49a378bd91bdb1eef, type: 2}
+  UnitControllerMessagesBox: {fileID: 11400000, guid: 2345e1da218ac4c4f8843a775122f559, type: 2}

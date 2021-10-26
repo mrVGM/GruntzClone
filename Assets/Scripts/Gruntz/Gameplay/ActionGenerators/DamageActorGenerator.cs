@@ -17,20 +17,10 @@ namespace Gruntz.Gameplay.ActionGenarators
 
             foreach (var damageActorEvent in damageActorEvents) {
                 var actorToDamage = damageActorEvent.TargetActor;
-                var statusComponent = actorToDamage.GetComponent<StatusComponent>();
-                var healhStatus = statusComponent.GetStatuses(x => x.StatusDef is HealthStatusDef).FirstOrDefault();
-                var healthStatusData = healhStatus.StatusData as HealthStatusData;
-                float health = healthStatusData.Health;
-                health -= damageActorEvent.Ability.DamageAmount;
-
-                if (health <= 0) {
-                    yield return new KillActorAction { Actor = actorToDamage, ActorHolderStatusDef = ActorHolderStatusDef, GraveDef = GraveDef };
-                    continue;
-                }
-
                 yield return new DamageActorAction {
                     DamageValue = damageActorEvent.Ability.DamageAmount,
-                    Actor = actorToDamage
+                    Actor = actorToDamage,
+                    DamageDealer = damageActorEvent.SourceActor,
                 };
             }
         }

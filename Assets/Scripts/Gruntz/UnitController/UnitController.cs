@@ -18,6 +18,7 @@ namespace Gruntz.UnitController
         public ExecutionOrderTagDef OrderTagDef => orderTagDef;
 
         private IUpdatingExecutable _updatingExecutable;
+        public UnitControllerState UnitControllerState { get; } = new UnitControllerState();
 
         public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {

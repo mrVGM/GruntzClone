@@ -1,11 +1,14 @@
 using Base;
 using Base.Actors;
+using Base.MessagesSystem;
 using Base.Navigation;
 using Base.Status;
 using Gruntz.Actors;
+using Gruntz.AI;
 using Gruntz.Gameplay.Actions;
 using Gruntz.Statuses;
 using Gruntz.SwitchState;
+using Gruntz.UnitController;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -23,6 +26,7 @@ namespace Gruntz.Gameplay
 
         public ActorTemplateDef GraveDef;
         public ActorInstanceHolderStatusDef ActorHolderStatusDef;
+        public MessagesBoxTagDef UnitControllerMessagesBox;
 
         private delegate ProcessResultt ProcessAction(IEnumerable<IGameplayAction> actions);
         private ProcessAction[] _processActions { get; set; } = null;
@@ -108,29 +112,34 @@ namespace Gruntz.Gameplay
             bool dirty = false;
             IEnumerable<IGameplayAction> processActions()
             {
-                var actorAccumulatedDamage = new Dictionary<Actor, float>();
-                var damageActions = actions.OfType<DamageActorAction>();
-                foreach (var damageAction in damageActions)
-                {
-                    if (!actorAccumulatedDamage.TryGetValue(damageAction.Actor, out _))
-                    {
-                        actorAccumulatedDamage[damageAction.Actor] = 0;
-                    }
-                    actorAccumulatedDamage[damageAction.Actor] += damageAction.DamageValue;
-                }
+                var accumulatedDamage = from damageAction in 
+                                (from action in actions
+                                where action is DamageActorAction
+                                select action as DamageActorAction)
+                            group damageAction by damageAction.Actor;
 
-                foreach (var pair in actorAccumulatedDamage)
+                foreach (var accum in accumulatedDamage)
                 {
                     dirty = true;
-                    var statusComponent = pair.Key.GetComponent<StatusComponent>();
+                    var actor = accum.Key;
+                    var statusComponent = actor.GetComponent<StatusComponent>();
                     var healthStatus = statusComponent.GetStatuses(x => x.StatusData is HealthStatusData).FirstOrDefault();
                     var healthStatusData = healthStatus.StatusData as HealthStatusData;
                     float health = healthStatusData.Health;
-                    health -= pair.Value;
+                    health -= accum.Sum(x => x.DamageValue);
                     healthStatusData.Health = Mathf.Max(0, health);
-                    if (health <= 0)
-                    {
-                        yield return new KillActorAction { Actor = pair.Key, GraveDef = GraveDef, ActorHolderStatusDef = ActorHolderStatusDef };
+                    if (health <= 0) {
+                        yield return new KillActorAction { Actor = actor, GraveDef = GraveDef, ActorHolderStatusDef = ActorHolderStatusDef };
+                    }
+                    else {
+                        var maxDamage = accum.OrderByDescending(x => x.DamageValue).FirstOrDefault();
+                        var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
+                        messagesSystem.SendMessage(UnitControllerMessagesBox, MainUpdaterUpdateTime.Update,
+                            this,
+                            new UnitControllerInstruction {
+                            Unit = actor,
+                            Executable = new AttackUnit(maxDamage.DamageDealer)
+                        });
                     }
                 }
 

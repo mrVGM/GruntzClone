@@ -61,8 +61,11 @@ namespace Gruntz.AI
             private IEnumerator<CrtState> _crt;
             private bool _stopped = false;
 
+            private Actor _actor { get; }
+
             public UpdatingExecute(Actor actor, Actor targetActor)
             {
+                _actor = actor;
                 var navigation = Navigation.GetNavigationFromContext();
                 var map = navigation.Map;
                 var navAgent = actor.GetComponent<NavAgent>();
@@ -90,6 +93,9 @@ namespace Gruntz.AI
 
                 IEnumerator<CrtState> stoppableCrt()
                 {
+                    var unitController = actor.GetComponent<UnitController.UnitController>();
+                    unitController.UnitControllerState.FightingWith = targetActor;
+
                     var coroutine = crt();
                     while (true) {
                         if (_stopped) {
@@ -109,6 +115,9 @@ namespace Gruntz.AI
 
             public void StopExecution()
             {
+                var unitController = _actor.GetComponent<UnitController.UnitController>();
+                unitController.UnitControllerState.FightingWith = null;
+
                 _stopped = true;
             }
 
