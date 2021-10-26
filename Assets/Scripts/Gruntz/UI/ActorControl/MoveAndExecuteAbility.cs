@@ -56,7 +56,15 @@ namespace Gruntz.UI.ActorControl
             }
 
             var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
-            var instruction = new MoveInMeleeRangeAndExecuteAbility(targetActor, ability);
+
+            IUnitExecutable instruction = null;
+            if (ability is IAttackAbility) {
+                instruction = new AttackUnit(targetActor, ability);
+            }
+            else {
+                instruction = new MoveInMeleeRangeAndExecuteAbility(targetActor, ability);
+            }
+
             messagesSystem.SendMessage(MessagesBoxTag,
                 MainUpdaterUpdateTime.Update,
                 this,

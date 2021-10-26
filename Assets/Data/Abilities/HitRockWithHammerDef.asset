@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81a14ce7f75e0ec409113859aefbe97e, type: 3}
-  m_Name: HitWithHammerDef
+  m_Name: HitRockWithHammerDef
   m_EditorClassIdentifier: 
   Cooldown: 3
   Animation: {fileID: 7400000, guid: 879f6bcd3cd74c44988e1aa755e4663b, type: 2}

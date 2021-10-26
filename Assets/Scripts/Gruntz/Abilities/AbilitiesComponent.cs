@@ -124,6 +124,11 @@ namespace Gruntz.Abilities
             return GetAbilities().FirstOrDefault();
         }
 
+        public AbilityDef GetAttackAbility()
+        {
+            return GetAbilities().FirstOrDefault(x => x is IAttackAbility);
+        }
+
         public float GetAbilityDownTime(AbilityDef ability)
         {
             var abilityItem = GetSourceItem(ability);
