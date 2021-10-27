@@ -23,6 +23,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9980e60423d362848bc3dfaf70e8e21c, type: 2}
   - {fileID: 11400000, guid: f8a0782eff1e33647bba728443dbc9d9, type: 2}
   - {fileID: 11400000, guid: 78f52230b05640e4f9f8b0524b5554c4, type: 2}
+  - {fileID: 11400000, guid: f0dde30cbe7fe33498e8b4f3ebbff373, type: 2}
   Statuses: []
   Weapon: {fileID: 0}
   SpecialItem: {fileID: 0}
