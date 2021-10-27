@@ -58,7 +58,7 @@ namespace Gruntz.UI.ActorControl
 
             var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
             foreach (var actor in selected) {
-                var instruction = new AI.AttackUnit(targetActor);
+                var instruction = new UnitController.Instructions.AttackUnit(targetActor);
                 messagesSystem.SendMessage(MessagesBoxTag,
                     MainUpdaterUpdateTime.Update,
                     this,

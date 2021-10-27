@@ -8,9 +8,9 @@ using System.Linq;
 using UnityEngine;
 using Utils;
 
-namespace Gruntz.AI
+namespace Gruntz.UnitController.Instructions
 {
-    public class MoveInMeleeRangeAndExecuteAbility : IUnitExecutable
+    public class AttackUnit : IUnitExecutable
     {
         [Serializable]
         public struct NeighboursTarget : INavigationTarget
@@ -44,10 +44,9 @@ namespace Gruntz.AI
         private Actor _targetActor;
         private AbilityDef _ability;
 
-        public MoveInMeleeRangeAndExecuteAbility(Actor targetActor, AbilityDef ability)
+        public AttackUnit(Actor targetActor)
         {
             _targetActor = targetActor;
-            _ability = ability;
         }
 
         private class UpdatingExecute : IUpdatingExecutable
@@ -62,8 +61,11 @@ namespace Gruntz.AI
             private IEnumerator<CrtState> _crt;
             private bool _stopped = false;
 
-            public UpdatingExecute(Actor actor, Actor targetActor, AbilityDef ability)
+            private Actor _actor { get; }
+
+            public UpdatingExecute(Actor actor, Actor targetActor)
             {
+                _actor = actor;
                 var navigation = Navigation.GetNavigationFromContext();
                 var map = navigation.Map;
                 var navAgent = actor.GetComponent<NavAgent>();
@@ -79,11 +81,9 @@ namespace Gruntz.AI
                         navAgent.NavTarget = navTarget;
                         if (navTarget.HasArrived(actor.Pos)) {
                             navAgent.TurnTo(targetActor.Pos);
+                            var ability = abilitiesComponent.GetAttackAbility();
                             if (abilitiesComponent.IsEnabled(ability)) {
-                                if (abilitiesComponent.CanExecuteOn(ability, targetActor)) {
-                                    abilitiesComponent.ActivateAbility(ability, targetActor);
-                                }
-                                break;
+                                abilitiesComponent.ActivateAbility(ability, targetActor);
                             }
                         }
                         yield return CrtState.Active;
@@ -93,6 +93,9 @@ namespace Gruntz.AI
 
                 IEnumerator<CrtState> stoppableCrt()
                 {
+                    var unitController = actor.GetComponent<UnitController>();
+                    unitController.UnitControllerState.FightingWith = targetActor;
+
                     var coroutine = crt();
                     while (true) {
                         if (_stopped) {
@@ -112,6 +115,9 @@ namespace Gruntz.AI
 
             public void StopExecution()
             {
+                var unitController = _actor.GetComponent<UnitController>();
+                unitController.UnitControllerState.FightingWith = null;
+
                 _stopped = true;
             }
 
@@ -124,7 +130,7 @@ namespace Gruntz.AI
 
         public IUpdatingExecutable Execute(Actor actor)
         {
-            return new UpdatingExecute(actor, _targetActor, _ability);
+            return new UpdatingExecute(actor, _targetActor);
         }
     }
 }

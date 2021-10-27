@@ -1,6 +1,6 @@
 using Base.Actors;
 
-namespace Gruntz.UnitController
+namespace Gruntz.UnitController.Instructions
 {
     public interface IUpdatingExecutable
     {

@@ -2,7 +2,7 @@ using Base.Actors;
 using Base.Navigation;
 using UnityEngine;
 
-namespace Gruntz.UnitController
+namespace Gruntz.UnitController.Instructions
 {
     public struct MoveToPosition : IUnitExecutable
     {
