@@ -95,7 +95,7 @@ namespace Base.Actors
             var actorManager = ActorManager.GetActorManagerFromContext();
             actorManager.RemoveActor(this);
             ActorComponent.gameObject.SetActive(false);
-            GameObject.Destroy(ActorComponent.gameObject);
+            ActorComponent.gameObject.name = $"Dead - {ActorComponent.gameObject.name}";
         }
 
         public T GetComponent<T>() where T : IActorComponent
