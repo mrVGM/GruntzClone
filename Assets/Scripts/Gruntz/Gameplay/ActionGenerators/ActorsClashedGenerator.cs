@@ -52,8 +52,7 @@ namespace Gruntz.Gameplay.ActionGenarators
                 var actorToKill = actorsCollection(clash).OrderBy(hardness).FirstOrDefault();
                 yield return new KillActorAction {
                     Actor = actorToKill,
-                    ActorHolderStatusDef = ActorInstanceHolderStatusDef,
-                    GraveDef = GraveDeployDef
+                    Reason = KillActorAction.DeathReason.Clash
                 };
             }
         }

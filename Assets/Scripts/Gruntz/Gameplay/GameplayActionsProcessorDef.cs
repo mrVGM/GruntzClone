@@ -26,6 +26,7 @@ namespace Gruntz.Gameplay
 
         public ActorTemplateDef GraveDef;
         public ActorInstanceHolderStatusDef ActorHolderStatusDef;
+        public ActorTemplateDef MaterialActor;
         public MessagesBoxTagDef UnitControllerMessagesBox;
 
         private delegate ProcessResultt ProcessAction(IEnumerable<IGameplayAction> actions);
@@ -98,6 +99,12 @@ namespace Gruntz.Gameplay
                     statusComponent.AddStatus(actorInstanceStatusData.CreateStatus());
 
                     dead.Add(action.Actor);
+
+                    if (killAction.Reason == KillActorAction.DeathReason.Damage) {
+                        var nav = Navigation.GetNavigationFromContext();
+                        Vector3 snappedPos = nav.Map.SnapPosition(pos);
+                        ActorDeployment.DeployActorFromTemplate(MaterialActor, snappedPos);
+                    }
                 }
             }
 
@@ -129,7 +136,7 @@ namespace Gruntz.Gameplay
                     health -= accum.Sum(x => x.DamageValue);
                     healthStatusData.Health = Mathf.Max(0, health);
                     if (health <= 0) {
-                        yield return new KillActorAction { Actor = actor, GraveDef = GraveDef, ActorHolderStatusDef = ActorHolderStatusDef };
+                        yield return new KillActorAction { Actor = actor, Reason = KillActorAction.DeathReason.Damage };
                     }
                     else {
                         var maxDamage = accum.OrderByDescending(x => x.DamageValue).FirstOrDefault();

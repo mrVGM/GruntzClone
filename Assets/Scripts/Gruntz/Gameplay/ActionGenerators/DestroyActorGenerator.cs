@@ -17,8 +17,7 @@ namespace Gruntz.Gameplay.ActionGenarators
             foreach (var destroyedActorGameplayEvent in destroyActorEvents) {
                 yield return new KillActorAction { 
                     Actor = destroyedActorGameplayEvent.TargetActor,
-                    GraveDef = GraveDef,
-                    ActorHolderStatusDef = ActorHolderStatusDef
+                    Reason = KillActorAction.DeathReason.Destruction,
                 };
             }
         }
