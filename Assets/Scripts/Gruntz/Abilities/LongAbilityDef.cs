@@ -14,13 +14,13 @@ namespace Gruntz.Abilities
             var actor = ctx.Actor;
             var targetActor = ctx.Target as Actor;
 
-            IEnumerator<object> crt()
+            IEnumerator<AbilityProgress> crt()
             {
                 var abilitiesComponent = actor.GetComponent<AbilitiesComponent>();
                 float startTime = Time.time;
                 while (Time.time - startTime < ExecutionTime)
                 {
-                    yield return null;
+                    yield return AbilityProgress.PlayingAnimation;
                 }
                 var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
                 gameplayManager.HandleGameplayEvent(new HoleDugGameplayEvent
@@ -29,6 +29,7 @@ namespace Gruntz.Abilities
                     SourceActor = actor,
                     TargetActor = targetActor
                 });
+                yield return AbilityProgress.Finished;
             }
 
             return new AbilityExecution { Coroutine = crt(), OnFinishedCallback = ctx.OnFinished };

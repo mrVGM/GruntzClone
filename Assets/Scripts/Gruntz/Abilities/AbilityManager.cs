@@ -8,7 +8,7 @@ namespace Gruntz.Abilities
 {
     public class AbilityManager : IContextObject, IOrderedUpdate
     {
-        public struct AbilityExecutionInfo
+        public struct AbilityAnimationInfo
         {
             public Actor Actor;
             public AbilityDef AbilityDef;
@@ -62,7 +62,7 @@ namespace Gruntz.Abilities
                 messagesSystem.SendMessage(AbilityManagerDef.AbilityMessages,
                     MainUpdaterUpdateTime.FixedCrt,
                     this,
-                    new AbilityExecutionInfo {
+                    new AbilityAnimationInfo {
                         Actor = ability.Actor,
                         AbilityDef = ability.AbilityDef,
                         ExecutionState = ability.State,

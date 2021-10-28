@@ -10,6 +10,12 @@ namespace Gruntz.Abilities
 {
     public abstract class AbilityDef : Def
     {
+        public enum AbilityProgress
+        {
+            InProgress,
+            PlayingAnimation,
+            Finished
+        }
         public class AbilityExecutionContext
         {
             public Actor Actor;
@@ -19,7 +25,7 @@ namespace Gruntz.Abilities
 
         public class AbilityExecution
         {
-            public IEnumerator<object> Coroutine;
+            public IEnumerator<AbilityProgress> Coroutine;
             public Action OnFinishedCallback;
         }
 

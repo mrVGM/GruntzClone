@@ -30,9 +30,11 @@ namespace Gruntz.Abilities
             {
                 var abilityExecution = AbilityDef.Execute(ctx);
                 var crt = abilityExecution.Coroutine;
-                while (crt.MoveNext())
+                crt.MoveNext();
+                while (crt.Current != AbilityDef.AbilityProgress.Finished)
                 {
                     yield return ExecutionState.Playing;
+                    crt.MoveNext();
                 }
                 yield return ExecutionState.Finished;
             }

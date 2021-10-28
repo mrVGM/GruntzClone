@@ -16,7 +16,7 @@ namespace Gruntz.Abilities
         {
             var actor = ctx.Actor;
             var targetActor = ctx.Target as Actor;
-            IEnumerator<object> crt()
+            IEnumerator<AbilityProgress> crt()
             {
                 var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
                 IEnumerable<AnimationEvent> eventsForMe()
@@ -30,11 +30,13 @@ namespace Gruntz.Abilities
                 {
                     if (!actor.IsInPlay)
                     {
+                        yield return AbilityProgress.Finished;
                         yield break;
                     }
 
                     if (eventsForMe().Any(x => x.stringParameter == "ActionEnd"))
                     {
+                        yield return AbilityProgress.Finished;
                         yield break;
                     }
 
@@ -48,7 +50,7 @@ namespace Gruntz.Abilities
                             TargetActor = targetActor
                         });
                     }
-                    yield return null;
+                    yield return AbilityProgress.PlayingAnimation;
                 }
             }
 

@@ -71,7 +71,7 @@ namespace Base.Animations
                 Animator.SetInteger("State", (int)AnimatorState.Idle);
             }
 
-            var abilitiesMessagesForMe = abilityMessages.Select(x => (AbilityExecutionInfo)x.Data).Where(x => x.Actor == Actor);
+            var abilitiesMessagesForMe = abilityMessages.Select(x => (AbilityAnimationInfo)x.Data).Where(x => x.Actor == Actor);
             foreach (var message in abilitiesMessagesForMe) {
                 if (message.ExecutionState == Gruntz.Abilities.AbilityPlayer.ExecutionState.Playing) {
                     OverrideAbilityAnimation(message.AbilityDef.Animation);
