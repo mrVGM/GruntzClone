@@ -82,6 +82,9 @@ namespace Gruntz.UnitController.Instructions
                         if (navTarget.HasArrived(actor.Pos)) {
                             navAgent.TurnTo(targetActor.Pos);
                             var ability = abilitiesComponent.GetAttackAbility();
+                            if (ability == null) {
+                                break;
+                            }
                             if (abilitiesComponent.IsEnabled(ability)) {
                                 abilitiesComponent.ActivateAbility(ability, targetActor);
                             }

@@ -84,7 +84,7 @@ namespace Gruntz.Abilities
         {
             var abilityManager = AbilityManager.GetAbilityManagerFromContext();
             bool playing = abilityManager.AbilityPlayers
-                .Any(x => x.AbilityDef == ability && x.Actor == Actor && x.State == AbilityPlayer.ExecutionState.Playing);
+                .Any(x => x.AbilityDef == ability && x.Actor == Actor && x.State.GeneralState == AbilityPlayer.GeneralExecutionState.Playing);
             if (playing) {
                 return false;
             }

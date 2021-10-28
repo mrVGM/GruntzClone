@@ -7,12 +7,27 @@ namespace Gruntz.Abilities
 {
     public class AbilityPlayer
     {
-        public enum ExecutionState
+        public enum GeneralExecutionState
         {
             Playing,
-            AnimationPlaying,
             Finished,
             Interrupted,
+        }
+
+        public enum AnimationExecutionState
+        {
+            AnimationNotPlaying,
+            AnimationPlaying,
+        }
+        public struct ExecutionState
+        {
+            public GeneralExecutionState GeneralState;
+            public AnimationExecutionState AnimationState;
+
+            public static ExecutionState DefaultState = new ExecutionState {
+                GeneralState = GeneralExecutionState.Playing,
+                AnimationState = AnimationExecutionState.AnimationNotPlaying
+            };
         }
         public AbilityDef AbilityDef { get; }
         public Actor Actor { get; }
@@ -20,7 +35,7 @@ namespace Gruntz.Abilities
         public IEnumerator<ExecutionState> Execution { get; }
         public bool Interrupted { get; private set; } = false;
 
-        public ExecutionState State { get; private set; } = AbilityPlayer.ExecutionState.Playing;
+        public ExecutionState State { get; private set; } = ExecutionState.DefaultState;
         public AbilityPlayer(AbilityDef abilityDef, AbilityDef.AbilityExecutionContext ctx)
         {
             AbilityDef = abilityDef;
@@ -34,10 +49,12 @@ namespace Gruntz.Abilities
                 crt.MoveNext();
                 while (crt.Current != AbilityDef.AbilityProgress.Finished)
                 {
-                    yield return crt.Current == AbilityDef.AbilityProgress.PlayingAnimation ? ExecutionState.AnimationPlaying : ExecutionState.Playing;
+                    yield return crt.Current == AbilityDef.AbilityProgress.PlayingAnimation ?
+                        new ExecutionState { GeneralState = GeneralExecutionState.Playing, AnimationState = AnimationExecutionState.AnimationPlaying } :
+                        new ExecutionState { GeneralState = GeneralExecutionState.Playing, AnimationState = AnimationExecutionState.AnimationNotPlaying };
                     crt.MoveNext();
                 }
-                yield return ExecutionState.Finished;
+                yield return new ExecutionState { GeneralState = GeneralExecutionState.Finished, AnimationState = AnimationExecutionState.AnimationNotPlaying };
             }
 
             IEnumerator<ExecutionState> playAndInterrupt()
@@ -45,12 +62,12 @@ namespace Gruntz.Abilities
                 var crt = playAbility();
                 while (true) {
                     if (Interrupted) {
-                        yield return ExecutionState.Interrupted;
+                        yield return new ExecutionState { GeneralState = GeneralExecutionState.Interrupted, AnimationState = AnimationExecutionState.AnimationNotPlaying };
                         break;
                     }
                     crt.MoveNext();
                     yield return crt.Current;
-                    if (crt.Current == ExecutionState.Finished) {
+                    if (crt.Current.GeneralState == GeneralExecutionState.Finished) {
                         break;
                     }
                 }
@@ -64,13 +81,13 @@ namespace Gruntz.Abilities
                 bool animationPlaying = false;
                 while (true) {
                     crt.MoveNext();
-                    if (crt.Current == ExecutionState.Finished || crt.Current != ExecutionState.Interrupted) {
+                    if (crt.Current.GeneralState != GeneralExecutionState.Playing) {
                         equipment.EnableLagging(true);
                         ctx.OnFinished();
                         yield return crt.Current;
                         break;
                     }
-                    if (crt.Current == ExecutionState.AnimationPlaying && !animationPlaying) {
+                    if (crt.Current.AnimationState == AnimationExecutionState.AnimationPlaying && !animationPlaying) {
                         equipment.EnableLagging(false);
                         animationPlaying = true;
                     }
@@ -82,7 +99,7 @@ namespace Gruntz.Abilities
         }
         public void Update()
         {
-            if (State == ExecutionState.Playing) {
+            if (State.GeneralState == GeneralExecutionState.Playing) {
                 Execution.MoveNext();
             }
             State = Execution.Current;

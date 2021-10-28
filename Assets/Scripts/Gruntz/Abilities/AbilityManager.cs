@@ -43,7 +43,7 @@ namespace Gruntz.Abilities
 
         public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {
-            AbilityPlayers = AbilityPlayers.Where(x => x.State == AbilityPlayer.ExecutionState.Playing).ToList();
+            AbilityPlayers = AbilityPlayers.Where(x => x.State.GeneralState == AbilityPlayer.GeneralExecutionState.Playing).ToList();
             var cache = AbilityPlayers.ToList();
             var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
 
