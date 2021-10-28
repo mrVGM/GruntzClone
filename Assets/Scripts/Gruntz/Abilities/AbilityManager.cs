@@ -47,16 +47,8 @@ namespace Gruntz.Abilities
             var cache = AbilityPlayers.ToList();
             var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
 
-            var navigationMessages = messagesSystem.GetMessages(AbilityManagerDef.NavigationMessages);
 
             foreach (var ability in cache) {
-                var navMessages = navigationMessages.Where(x => x.Sender == ability.Actor);
-                if (navMessages.Any()) {
-                    var message = navMessages.First().Data as string;
-                    if (message == "moving") {
-                        ability.Interrupt();
-                    }
-                }
                 ability.Update();
 
                 messagesSystem.SendMessage(AbilityManagerDef.AbilityMessages,

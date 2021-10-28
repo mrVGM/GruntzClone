@@ -42,9 +42,9 @@ namespace Gruntz.Abilities
             Actor = ctx.Actor;
             Target = ctx.Target;
 
+            var abilityExecution = AbilityDef.Execute(ctx);
             IEnumerator<ExecutionState> playAbility()
             {
-                var abilityExecution = AbilityDef.Execute(ctx);
                 var crt = abilityExecution.Coroutine;
                 crt.MoveNext();
                 while (crt.Current != AbilityDef.AbilityProgress.Finished)
@@ -83,7 +83,7 @@ namespace Gruntz.Abilities
                     crt.MoveNext();
                     if (crt.Current.GeneralState != GeneralExecutionState.Playing) {
                         equipment.EnableLagging(true);
-                        ctx.OnFinished();
+                        abilityExecution.OnFinishedCallback();
                         yield return crt.Current;
                         break;
                     }

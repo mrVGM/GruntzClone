@@ -6,7 +6,7 @@ namespace Gruntz.UnitController.Instructions
 {
     public struct MoveToPosition : IUnitExecutable
     {
-        private class Executable : IUpdatingExecutable
+        private class UpdatingExecute : IUpdatingExecutable
         {
             public Actor Actor;
             public INavigationTarget Target;
@@ -26,7 +26,7 @@ namespace Gruntz.UnitController.Instructions
 
         public IUpdatingExecutable Execute(Actor actor)
         {
-            return new Executable { Actor = actor, Target = Target };
+            return new UpdatingExecute { Actor = actor, Target = Target };
         }
     }
 }

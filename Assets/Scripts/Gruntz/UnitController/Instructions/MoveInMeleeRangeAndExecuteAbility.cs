@@ -82,6 +82,10 @@ namespace Gruntz.UnitController.Instructions
                             if (abilitiesComponent.IsEnabled(ability)) {
                                 if (abilitiesComponent.CanExecuteOn(ability, targetActor)) {
                                     abilitiesComponent.ActivateAbility(ability, targetActor);
+                                    while (abilitiesComponent.Current != null
+                                        && abilitiesComponent.Current.State.GeneralState == AbilityPlayer.GeneralExecutionState.Playing) {
+                                        yield return CrtState.Active;
+                                    }
                                 }
                                 break;
                             }
@@ -107,12 +111,29 @@ namespace Gruntz.UnitController.Instructions
                     }
                 }
 
-                _crt = stoppableCrt();
+                IEnumerator<CrtState> realCrt()
+                {
+                    var coroutine = stoppableCrt();
+                    while (true) {
+                        coroutine.MoveNext();
+                        if (coroutine.Current != CrtState.Active) {
+                            if (abilitiesComponent.Current != null) {
+                                abilitiesComponent.Current.Interrupt();
+                            }
+                            break;
+                        }
+                        yield return coroutine.Current;
+                    }
+                    yield return coroutine.Current;
+                }
+
+                _crt = realCrt();
             }
 
             public void StopExecution()
             {
                 _stopped = true;
+                while (UpdateExecutable()) { }
             }
 
             public bool UpdateExecutable()

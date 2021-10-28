@@ -60,11 +60,8 @@ namespace Gruntz.UnitController.Instructions
             private IEnumerator<CrtState> _crt;
             private bool _stopped = false;
 
-            private Actor _actor { get; }
-
             public UpdatingExecute(Actor actor, Actor targetActor)
             {
-                _actor = actor;
                 var navigation = Navigation.GetNavigationFromContext();
                 var map = navigation.Map;
                 var navAgent = actor.GetComponent<NavAgent>();
@@ -80,6 +77,7 @@ namespace Gruntz.UnitController.Instructions
                         }
                         var navTarget = new NeighboursTarget { Pos = map.SnapPosition(targetActor.Pos) };
                         navAgent.NavTarget = navTarget;
+                        bool waitFrame = true;
                         if (navTarget.HasArrived(actor.Pos)) {
                             navAgent.TurnTo(targetActor.Pos);
                             var ability = abilitiesComponent.GetAttackAbility();
@@ -88,9 +86,17 @@ namespace Gruntz.UnitController.Instructions
                             }
                             if (abilitiesComponent.IsEnabled(ability)) {
                                 abilitiesComponent.ActivateAbility(ability, targetActor);
+
+                                while (abilitiesComponent.Current != null
+                                    && abilitiesComponent.Current.State.GeneralState == AbilityPlayer.GeneralExecutionState.Playing) {
+                                    yield return CrtState.Active;
+                                    waitFrame = false;
+                                }
                             }
                         }
-                        yield return CrtState.Active;
+                        if (waitFrame) {
+                            yield return CrtState.Active;
+                        }
                     }
                     yield return CrtState.Finished;
                 }
@@ -103,13 +109,13 @@ namespace Gruntz.UnitController.Instructions
                     var coroutine = crt();
                     while (true) {
                         if (_stopped) {
-                            conflictManager.LeaveConflict(_actor);
+                            conflictManager.LeaveConflict(actor);
                             yield return CrtState.Interrupted;
                             break;
                         }
                         coroutine.MoveNext();
                         if (coroutine.Current == CrtState.Finished) {
-                            conflictManager.LeaveConflict(_actor);
+                            conflictManager.LeaveConflict(actor);
                         }
                         yield return coroutine.Current;
                         if (coroutine.Current == CrtState.Finished) {
@@ -118,17 +124,35 @@ namespace Gruntz.UnitController.Instructions
                     }
                 }
 
-                _crt = stoppableCrt();
+                IEnumerator<CrtState> realCrt()
+                {
+                    var coroutine = stoppableCrt();
+                    while (true) {
+                        coroutine.MoveNext();
+                        if (coroutine.Current != CrtState.Active) {
+                            var unitController = actor.GetComponent<UnitController>();
+                            unitController.UnitControllerState.FightingWith = null;
+                            var conflictManager = ConflictManager.ConflictManager.GetConflictManagerFromContext();
+                            conflictManager.LeaveConflict(actor);
+
+                            if (coroutine.Current == CrtState.Interrupted && abilitiesComponent.Current != null) {
+                                abilitiesComponent.Current.Interrupt();
+                            }
+                            yield return coroutine.Current;
+                            break;
+                        }
+
+                        yield return coroutine.Current;
+                    }
+                }
+
+                _crt = realCrt();
             }
 
             public void StopExecution()
             {
-                var unitController = _actor.GetComponent<UnitController>();
-                unitController.UnitControllerState.FightingWith = null;
-                var conflictManager = ConflictManager.ConflictManager.GetConflictManagerFromContext();
-                conflictManager.LeaveConflict(_actor);
-
                 _stopped = true;
+                while (UpdateExecutable()) { }
             }
 
             public bool UpdateExecutable()
