@@ -10,6 +10,7 @@ namespace Gruntz.Abilities
         public enum ExecutionState
         {
             Playing,
+            AnimationPlaying,
             Finished,
             Interrupted,
         }
@@ -33,7 +34,7 @@ namespace Gruntz.Abilities
                 crt.MoveNext();
                 while (crt.Current != AbilityDef.AbilityProgress.Finished)
                 {
-                    yield return ExecutionState.Playing;
+                    yield return crt.Current == AbilityDef.AbilityProgress.PlayingAnimation ? ExecutionState.AnimationPlaying : ExecutionState.Playing;
                     crt.MoveNext();
                 }
                 yield return ExecutionState.Finished;
@@ -58,17 +59,22 @@ namespace Gruntz.Abilities
             IEnumerator<ExecutionState> playAndFixEquipment()
             {
                 var equipment = Actor.GetComponent<EquipmentComponent>();
-                equipment.EnableLagging(false);
                 var crt = playAndInterrupt();
+
+                bool animationPlaying = false;
                 while (true) {
                     crt.MoveNext();
-                    if (crt.Current != ExecutionState.Playing) {
+                    if (crt.Current == ExecutionState.Finished || crt.Current != ExecutionState.Interrupted) {
                         equipment.EnableLagging(true);
                         ctx.OnFinished();
                         yield return crt.Current;
                         break;
                     }
-                    yield return ExecutionState.Playing;
+                    if (crt.Current == ExecutionState.AnimationPlaying && !animationPlaying) {
+                        equipment.EnableLagging(false);
+                        animationPlaying = true;
+                    }
+                    yield return crt.Current;
                 }
             }
 
