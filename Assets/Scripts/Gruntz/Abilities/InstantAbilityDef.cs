@@ -9,36 +9,47 @@ namespace Gruntz.Abilities
 {
     public class InstantAbilityDef : AbilityDef
     {
-        public override IEnumerator<object> Execute(Actor actor, object target)
+        public override AbilityExecution Execute(AbilityExecutionContext ctx)
         {
-            var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
-            IEnumerable<AnimationEvent> eventsForMe()
+            var actor = ctx.Actor;
+            var targetActor = ctx.Target as Actor;
+            IEnumerator<object> crt()
             {
-                var messages = messagesSystem.GetMessages(AnimationEventMessages);
-                messages = messages.ToList();
-                messages = messages.Where(x => x.Sender == actor);
-                return messages.Select(x => x.Data as AnimationEvent);
-            }
-            var targetActor = target as Actor;
-            while (true) {
-                if (!actor.IsInPlay) {
-                    yield break;
+                var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
+                IEnumerable<AnimationEvent> eventsForMe()
+                {
+                    var messages = messagesSystem.GetMessages(AnimationEventMessages);
+                    messages = messages.ToList();
+                    messages = messages.Where(x => x.Sender == actor);
+                    return messages.Select(x => x.Data as AnimationEvent);
                 }
+                while (true)
+                {
+                    if (!actor.IsInPlay)
+                    {
+                        yield break;
+                    }
 
-                if (eventsForMe().Any(x => x.stringParameter == "ActionEnd")) {
-                    yield break;
-                }
+                    if (eventsForMe().Any(x => x.stringParameter == "ActionEnd"))
+                    {
+                        yield break;
+                    }
 
-                if (eventsForMe().Any(x => x.stringParameter == "Hit")) {
-                    var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
-                    gameplayManager.HandleGameplayEvent(new DestroyedActorGameplayEvent {
-                        Ability = this,
-                        SourceActor = actor,
-                        TargetActor = targetActor
-                    });
+                    if (eventsForMe().Any(x => x.stringParameter == "Hit"))
+                    {
+                        var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
+                        gameplayManager.HandleGameplayEvent(new DestroyedActorGameplayEvent
+                        {
+                            Ability = this,
+                            SourceActor = actor,
+                            TargetActor = targetActor
+                        });
+                    }
+                    yield return null;
                 }
-                yield return null;
             }
+
+            return new AbilityExecution { Coroutine = crt(), OnFinishedCallback = ctx.OnFinished };
         }
     }
 }

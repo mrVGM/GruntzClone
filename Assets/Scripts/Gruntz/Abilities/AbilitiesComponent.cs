@@ -115,17 +115,25 @@ namespace Gruntz.Abilities
         public void ActivateAbility(AbilityDef ability, object target)
         {
             var abilitiesManager = AbilityManager.GetAbilityManagerFromContext();
-            var player = new AbilityPlayer(ability, Actor, target, () => {
-                var record = _abilitiesComponentData.AbilitiesUsage.FirstOrDefault(x => x.Ability == ability);
-                if (record == null) {
-                    record = new AbilitiesComponentData.AbilityUsageRecord {
-                        Ability = ability.ToDefRef<AbilityDef>()
-                    };
-                    _abilitiesComponentData.AbilitiesUsage.Add(record);
+            var executionContext = new AbilityDef.AbilityExecutionContext {
+                Actor = Actor,
+                Target = target,
+                OnFinished = () => {
+                    var record = _abilitiesComponentData.AbilitiesUsage.FirstOrDefault(x => x.Ability == ability);
+                    if (record == null)
+                    {
+                        record = new AbilitiesComponentData.AbilityUsageRecord
+                        {
+                            Ability = ability.ToDefRef<AbilityDef>()
+                        };
+                        _abilitiesComponentData.AbilitiesUsage.Add(record);
+                    }
+                    record.Downtime = 0;
+                    record.LastUsage = Time.time;
                 }
-                record.Downtime = 0;
-                record.LastUsage = Time.time;
-            });
+            };
+
+            var player = new AbilityPlayer(ability, executionContext);
             if (Current != null) {
                 Current.Interrupt();
             }

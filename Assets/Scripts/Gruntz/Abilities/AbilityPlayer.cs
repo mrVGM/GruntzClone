@@ -20,15 +20,16 @@ namespace Gruntz.Abilities
         public bool Interrupted { get; private set; } = false;
 
         public ExecutionState State { get; private set; } = AbilityPlayer.ExecutionState.Playing;
-        public AbilityPlayer(AbilityDef abilityDef, Actor actor, object target, Action executed)
+        public AbilityPlayer(AbilityDef abilityDef, AbilityDef.AbilityExecutionContext ctx)
         {
             AbilityDef = abilityDef;
-            Actor = actor;
-            Target = target;
+            Actor = ctx.Actor;
+            Target = ctx.Target;
 
             IEnumerator<ExecutionState> playAbility()
             {
-                var crt = AbilityDef.Execute(Actor, Target);
+                var abilityExecution = AbilityDef.Execute(ctx);
+                var crt = abilityExecution.Coroutine;
                 while (crt.MoveNext())
                 {
                     yield return ExecutionState.Playing;
@@ -61,7 +62,7 @@ namespace Gruntz.Abilities
                     crt.MoveNext();
                     if (crt.Current != ExecutionState.Playing) {
                         equipment.EnableLagging(true);
-                        executed();
+                        ctx.OnFinished();
                         yield return crt.Current;
                         break;
                     }
