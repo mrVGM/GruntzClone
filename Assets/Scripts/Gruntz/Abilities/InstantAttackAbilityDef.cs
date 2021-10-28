@@ -1,5 +1,6 @@
 using Base.Actors;
 using Base.MessagesSystem;
+using Base.Navigation;
 using Gruntz.Gameplay;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,27 @@ namespace Gruntz.Abilities
             var targetActor = ctx.Target as Actor;
             var conflictManager = ConflictManager.ConflictManager.GetConflictManagerFromContext();
             ILock l = null;
+
+            var navigation = Navigation.GetNavigationFromContext();
+            var map = navigation.Map;
+
+            bool isTargetStillValid()
+            {
+                if (!targetActor.IsInPlay) {
+                    return false;
+                }
+
+                var snappedTargetPos = map.SnapPosition(targetActor.Pos);
+                var neighbours = map.GetNeighbours(snappedTargetPos);
+
+                bool isInRange = neighbours.Any(x => (x - actor.Pos).sqrMagnitude < 0.01f);
+                if (!isInRange) {
+                    return false;
+                }
+
+                return true;
+            }
+
             IEnumerator<ExecutionState> crt()
             {
                 var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
@@ -33,6 +55,15 @@ namespace Gruntz.Abilities
 
                 while (l == null)
                 {
+                    if (!isTargetStillValid()) {
+                        yield return new ExecutionState {
+                            GeneralState = GeneralExecutionState.Finished,
+                            AnimationState = AnimationExecutionState.AnimationNotPlaying,
+                            CooldownState = CooldownState.NoCooldown
+                        };
+                        yield break;
+                    }
+
                     l = conflictManager.TryGetLock(actor, targetActor);
                     yield return new ExecutionState {
                         GeneralState = GeneralExecutionState.Playing,

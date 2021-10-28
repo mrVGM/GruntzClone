@@ -41,7 +41,6 @@ namespace Gruntz.UnitController.Instructions
         }
 
         private Actor _targetActor;
-        private AbilityDef _ability;
 
         public AttackUnit(Actor targetActor)
         {
@@ -66,9 +65,6 @@ namespace Gruntz.UnitController.Instructions
                 var map = navigation.Map;
                 var navAgent = actor.GetComponent<NavAgent>();
                 var abilitiesComponent = actor.GetComponent<AbilitiesComponent>();
-
-                var conflictManager = ConflictManager.ConflictManager.GetConflictManagerFromContext();
-
                 IEnumerator<CrtState> crt()
                 {
                     while (true) {
