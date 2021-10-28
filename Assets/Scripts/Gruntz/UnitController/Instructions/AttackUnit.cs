@@ -1,7 +1,6 @@
 using Base.Actors;
 using Base.Navigation;
 using Gruntz.Abilities;
-using Gruntz.UnitController;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,6 +70,8 @@ namespace Gruntz.UnitController.Instructions
                 var navAgent = actor.GetComponent<NavAgent>();
                 var abilitiesComponent = actor.GetComponent<AbilitiesComponent>();
 
+                var conflictManager = ConflictManager.ConflictManager.GetConflictManagerFromContext();
+
                 IEnumerator<CrtState> crt()
                 {
                     while (true) {
@@ -102,10 +103,14 @@ namespace Gruntz.UnitController.Instructions
                     var coroutine = crt();
                     while (true) {
                         if (_stopped) {
+                            conflictManager.LeaveConflict(_actor);
                             yield return CrtState.Interrupted;
                             break;
                         }
                         coroutine.MoveNext();
+                        if (coroutine.Current == CrtState.Finished) {
+                            conflictManager.LeaveConflict(_actor);
+                        }
                         yield return coroutine.Current;
                         if (coroutine.Current == CrtState.Finished) {
                             break;
@@ -120,6 +125,8 @@ namespace Gruntz.UnitController.Instructions
             {
                 var unitController = _actor.GetComponent<UnitController>();
                 unitController.UnitControllerState.FightingWith = null;
+                var conflictManager = ConflictManager.ConflictManager.GetConflictManagerFromContext();
+                conflictManager.LeaveConflict(_actor);
 
                 _stopped = true;
             }

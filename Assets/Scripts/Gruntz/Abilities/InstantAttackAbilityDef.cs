@@ -4,6 +4,7 @@ using Gruntz.Gameplay;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static Gruntz.ConflictManager.ConflictManager;
 
 namespace Gruntz.Abilities
 {
@@ -16,6 +17,8 @@ namespace Gruntz.Abilities
         {
             var actor = ctx.Actor;
             var targetActor = ctx.Target as Actor;
+            var conflictManager = ConflictManager.ConflictManager.GetConflictManagerFromContext();
+            ILock l = null;
             IEnumerator<AbilityProgress> crt()
             {
                 var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
@@ -26,14 +29,15 @@ namespace Gruntz.Abilities
                     messages = messages.Where(x => x.Sender == actor);
                     return messages.Select(x => x.Data as AnimationEvent);
                 }
+
+                while (l == null)
+                {
+                    l = conflictManager.TryGetLock(actor, targetActor);
+                    yield return AbilityProgress.InProgress;
+                }
+
                 while (true)
                 {
-                    if (!actor.IsInPlay)
-                    {
-                        yield return AbilityProgress.Finished;
-                        yield break;
-                    }
-
                     if (eventsForMe().Any(x => x.stringParameter == "ActionEnd"))
                     {
                         yield return AbilityProgress.Finished;
@@ -49,12 +53,21 @@ namespace Gruntz.Abilities
                             SourceActor = actor,
                             TargetActor = targetActor
                         });
+                        conflictManager.ReturnLock(l);
                     }
                     yield return AbilityProgress.PlayingAnimation;
                 }
             }
 
-            return new AbilityExecution { Coroutine = crt(), OnFinishedCallback = ctx.OnFinished };
+            return new AbilityExecution {
+                Coroutine = crt(),
+                OnFinishedCallback = () => {
+                    ctx.OnFinished();
+                    if (l != null) {
+                        conflictManager.ReturnLock(l);
+                    }
+                }
+            };
         }
     }
 }
