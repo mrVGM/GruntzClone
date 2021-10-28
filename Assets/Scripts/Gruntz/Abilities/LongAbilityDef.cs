@@ -2,6 +2,7 @@ using Base.Actors;
 using Gruntz.Gameplay;
 using System.Collections.Generic;
 using UnityEngine;
+using static Gruntz.Abilities.AbilityPlayer;
 
 namespace Gruntz.Abilities
 {
@@ -14,13 +15,16 @@ namespace Gruntz.Abilities
             var actor = ctx.Actor;
             var targetActor = ctx.Target as Actor;
 
-            IEnumerator<AbilityProgress> crt()
+            IEnumerator<ExecutionState> crt()
             {
                 var abilitiesComponent = actor.GetComponent<AbilitiesComponent>();
                 float startTime = Time.time;
                 while (Time.time - startTime < ExecutionTime)
                 {
-                    yield return AbilityProgress.PlayingAnimation;
+                    yield return new ExecutionState {
+                        GeneralState = GeneralExecutionState.Playing,
+                        AnimationState = AnimationExecutionState.AnimationPlaying,
+                    };
                 }
                 var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
                 gameplayManager.HandleGameplayEvent(new HoleDugGameplayEvent
@@ -29,7 +33,10 @@ namespace Gruntz.Abilities
                     SourceActor = actor,
                     TargetActor = targetActor
                 });
-                yield return AbilityProgress.Finished;
+                yield return new ExecutionState {
+                    GeneralState = GeneralExecutionState.Finished,
+                    AnimationState = AnimationExecutionState.AnimationNotPlaying,
+                };
             }
 
             return new AbilityExecution { Coroutine = crt(), OnFinishedCallback = ctx.OnFinished };

@@ -4,6 +4,7 @@ using Gruntz.Gameplay;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static Gruntz.Abilities.AbilityPlayer;
 
 namespace Gruntz.Abilities
 {
@@ -13,7 +14,7 @@ namespace Gruntz.Abilities
         {
             var actor = ctx.Actor;
             var targetActor = ctx.Target as Actor;
-            IEnumerator<AbilityProgress> crt()
+            IEnumerator<ExecutionState> crt()
             {
                 var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
                 IEnumerable<AnimationEvent> eventsForMe()
@@ -27,13 +28,19 @@ namespace Gruntz.Abilities
                 {
                     if (!actor.IsInPlay)
                     {
-                        yield return AbilityProgress.Finished;
+                        yield return new ExecutionState {
+                            GeneralState = GeneralExecutionState.Finished,
+                            AnimationState = AnimationExecutionState.AnimationNotPlaying,
+                        };
                         yield break;
                     }
 
                     if (eventsForMe().Any(x => x.stringParameter == "ActionEnd"))
                     {
-                        yield return AbilityProgress.Finished;
+                        yield return new ExecutionState {
+                            GeneralState = GeneralExecutionState.Finished,
+                            AnimationState = AnimationExecutionState.AnimationNotPlaying,
+                        };
                         yield break;
                     }
 
@@ -47,7 +54,10 @@ namespace Gruntz.Abilities
                             TargetActor = targetActor
                         });
                     }
-                    yield return AbilityProgress.PlayingAnimation;
+                    yield return new ExecutionState {
+                        GeneralState = GeneralExecutionState.Playing,
+                        AnimationState = AnimationExecutionState.AnimationPlaying,
+                    };
                 }
             }
 

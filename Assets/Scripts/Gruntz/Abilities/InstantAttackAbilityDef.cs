@@ -4,6 +4,7 @@ using Gruntz.Gameplay;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static Gruntz.Abilities.AbilityPlayer;
 using static Gruntz.ConflictManager.ConflictManager;
 
 namespace Gruntz.Abilities
@@ -19,7 +20,7 @@ namespace Gruntz.Abilities
             var targetActor = ctx.Target as Actor;
             var conflictManager = ConflictManager.ConflictManager.GetConflictManagerFromContext();
             ILock l = null;
-            IEnumerator<AbilityProgress> crt()
+            IEnumerator<ExecutionState> crt()
             {
                 var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
                 IEnumerable<AnimationEvent> eventsForMe()
@@ -33,29 +34,36 @@ namespace Gruntz.Abilities
                 while (l == null)
                 {
                     l = conflictManager.TryGetLock(actor, targetActor);
-                    yield return AbilityProgress.InProgress;
+                    yield return new ExecutionState {
+                        GeneralState = GeneralExecutionState.Playing,
+                        AnimationState = AnimationExecutionState.AnimationNotPlaying,
+                        CooldownState = CooldownState.NoCooldown,
+                    };
                 }
 
                 while (true)
                 {
-                    if (eventsForMe().Any(x => x.stringParameter == "ActionEnd"))
-                    {
-                        yield return AbilityProgress.Finished;
+                    if (eventsForMe().Any(x => x.stringParameter == "ActionEnd")) {
+                        yield return new ExecutionState {
+                            GeneralState = GeneralExecutionState.Finished,
+                            AnimationState = AnimationExecutionState.AnimationNotPlaying,
+                        };
                         yield break;
                     }
 
-                    if (eventsForMe().Any(x => x.stringParameter == "Hit"))
-                    {
+                    if (eventsForMe().Any(x => x.stringParameter == "Hit")) {
                         var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
-                        gameplayManager.HandleGameplayEvent(new DamageActorGameplayEvent
-                        {
+                        gameplayManager.HandleGameplayEvent(new DamageActorGameplayEvent {
                             Ability = this,
                             SourceActor = actor,
                             TargetActor = targetActor
                         });
                         conflictManager.ReturnLock(l);
                     }
-                    yield return AbilityProgress.PlayingAnimation;
+                    yield return new ExecutionState {
+                        GeneralState = GeneralExecutionState.Playing,
+                        AnimationState = AnimationExecutionState.AnimationPlaying,
+                    };
                 }
             }
 

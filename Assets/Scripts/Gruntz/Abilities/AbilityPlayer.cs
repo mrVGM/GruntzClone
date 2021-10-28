@@ -19,14 +19,22 @@ namespace Gruntz.Abilities
             AnimationNotPlaying,
             AnimationPlaying,
         }
+        public enum CooldownState
+        {
+            NeedsCooldown,
+            NoCooldown
+        }
+
         public struct ExecutionState
         {
             public GeneralExecutionState GeneralState;
             public AnimationExecutionState AnimationState;
+            public CooldownState CooldownState;
 
             public static ExecutionState DefaultState = new ExecutionState {
                 GeneralState = GeneralExecutionState.Playing,
-                AnimationState = AnimationExecutionState.AnimationNotPlaying
+                AnimationState = AnimationExecutionState.AnimationNotPlaying,
+                CooldownState = CooldownState.NeedsCooldown,
             };
         }
         public AbilityDef AbilityDef { get; }
@@ -46,28 +54,30 @@ namespace Gruntz.Abilities
             IEnumerator<ExecutionState> playAbility()
             {
                 var crt = abilityExecution.Coroutine;
-                crt.MoveNext();
-                while (crt.Current != AbilityDef.AbilityProgress.Finished)
-                {
-                    yield return crt.Current == AbilityDef.AbilityProgress.PlayingAnimation ?
-                        new ExecutionState { GeneralState = GeneralExecutionState.Playing, AnimationState = AnimationExecutionState.AnimationPlaying } :
-                        new ExecutionState { GeneralState = GeneralExecutionState.Playing, AnimationState = AnimationExecutionState.AnimationNotPlaying };
+                while (true) {
                     crt.MoveNext();
+                    var cur = crt.Current;
+                    yield return cur;
+                    if (cur.GeneralState != GeneralExecutionState.Playing) {
+                        break;
+                    }
                 }
-                yield return new ExecutionState { GeneralState = GeneralExecutionState.Finished, AnimationState = AnimationExecutionState.AnimationNotPlaying };
             }
 
             IEnumerator<ExecutionState> playAndInterrupt()
             {
                 var crt = playAbility();
                 while (true) {
-                    if (Interrupted) {
-                        yield return new ExecutionState { GeneralState = GeneralExecutionState.Interrupted, AnimationState = AnimationExecutionState.AnimationNotPlaying };
-                        break;
-                    }
                     crt.MoveNext();
-                    yield return crt.Current;
-                    if (crt.Current.GeneralState == GeneralExecutionState.Finished) {
+                    var cur = crt.Current;
+
+                    if (Interrupted) {
+                        cur.GeneralState = GeneralExecutionState.Interrupted;
+                        cur.AnimationState = AnimationExecutionState.AnimationNotPlaying;
+                    }
+
+                    yield return cur;
+                    if (cur.GeneralState != GeneralExecutionState.Playing) {
                         break;
                     }
                 }

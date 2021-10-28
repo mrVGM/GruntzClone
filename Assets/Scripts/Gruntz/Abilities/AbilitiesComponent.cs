@@ -119,11 +119,12 @@ namespace Gruntz.Abilities
                 Actor = Actor,
                 Target = target,
                 OnFinished = () => {
+                    if (Current.State.CooldownState == AbilityPlayer.CooldownState.NoCooldown) {
+                        return;
+                    }
                     var record = _abilitiesComponentData.AbilitiesUsage.FirstOrDefault(x => x.Ability == ability);
-                    if (record == null)
-                    {
-                        record = new AbilitiesComponentData.AbilityUsageRecord
-                        {
+                    if (record == null) {
+                        record = new AbilitiesComponentData.AbilityUsageRecord {
                             Ability = ability.ToDefRef<AbilityDef>()
                         };
                         _abilitiesComponentData.AbilitiesUsage.Add(record);

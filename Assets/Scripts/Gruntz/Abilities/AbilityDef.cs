@@ -5,6 +5,7 @@ using Base.Status;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Gruntz.Abilities.AbilityPlayer;
 
 namespace Gruntz.Abilities
 {
@@ -25,7 +26,7 @@ namespace Gruntz.Abilities
 
         public class AbilityExecution
         {
-            public IEnumerator<AbilityProgress> Coroutine;
+            public IEnumerator<ExecutionState> Coroutine;
             public Action OnFinishedCallback;
         }
 
