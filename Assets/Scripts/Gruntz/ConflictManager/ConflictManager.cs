@@ -8,75 +8,48 @@ namespace Gruntz.ConflictManager
     public class ConflictManager : IContextObject
     {
         public interface ILock { }
-        private class Lock : ILock
+        private struct Lock : ILock
         {
-            public Conflict Conflict { get; }
-            public Lock(Conflict conflict)
+            private ConflictManager _conflictManager;
+            private Conflict _conflict;
+            public Lock(ConflictManager conflictManager, Actor attacker, Actor target)
             {
-                Conflict = conflict;
-            }
-        }
-        public class Conflict
-        {
-            public HashSet<Actor> Participants = new HashSet<Actor>();
-            private Lock _lock;
-            public ILock ConflictLock
-            {
-                get
-                {
-                    if (_lock == null) {
-                        return null;
-                    }
-
-                    var tmp = _lock;
-                    _lock = null;
-                    return tmp;
-                }
-                set
-                {
-                    _lock = value as Lock;
-                }
+                _conflictManager = conflictManager;
+                _conflict = new Conflict { Attacker = attacker, Target = target };
+                _conflictManager._openConflicts.Add(_conflict);
             }
 
-            public Conflict()
+            public void Unlock()
             {
-                _lock = new Lock(this);
+                _conflictManager._openConflicts.Remove(_conflict);
             }
         }
 
-        private List<Conflict> OpenConflicts = new List<Conflict>();
+        private class Conflict
+        {
+            public Actor Attacker;
+            public Actor Target;
+
+            public bool IsInTheConflict(Actor actor)
+            {
+                return Attacker == actor || Target == actor;
+            }
+        }
+        private List<Conflict> _openConflicts = new List<Conflict>();
 
         public ILock TryGetLock(Actor attacker, Actor target)
         {
-            var existingConflict = OpenConflicts
-                .FirstOrDefault(x => x.Participants.Contains(target));
-
-            if (existingConflict == null) {
-                existingConflict = new Conflict();
-                OpenConflicts.Add(existingConflict);
-                existingConflict.Participants.Add(target);
+            if (_openConflicts.Any(x => x.IsInTheConflict(attacker) || x.IsInTheConflict(target))) {
+                return null;
             }
 
-            existingConflict.Participants.Add(attacker);
-
-            return existingConflict.ConflictLock;
+            return new Lock(this, attacker, target);
         }
 
         public void ReturnLock(ILock lockToReturn)
         {
-            var l = lockToReturn as Lock;
-            l.Conflict.ConflictLock = lockToReturn;
-        }
-
-        public void LeaveConflict(Actor actor)
-        {
-            var cache = OpenConflicts.ToList();
-            foreach (var conflict in cache) {
-                conflict.Participants.Remove(actor);
-                if (conflict.Participants.Count() <= 1) {
-                    OpenConflicts.Remove(conflict);
-                }
-            }
+            var l = (Lock)lockToReturn;
+            l.Unlock();
         }
 
         public void DisposeObject()

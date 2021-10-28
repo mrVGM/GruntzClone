@@ -109,14 +109,10 @@ namespace Gruntz.UnitController.Instructions
                     var coroutine = crt();
                     while (true) {
                         if (_stopped) {
-                            conflictManager.LeaveConflict(actor);
                             yield return CrtState.Interrupted;
                             break;
                         }
                         coroutine.MoveNext();
-                        if (coroutine.Current == CrtState.Finished) {
-                            conflictManager.LeaveConflict(actor);
-                        }
                         yield return coroutine.Current;
                         if (coroutine.Current == CrtState.Finished) {
                             break;
@@ -132,8 +128,6 @@ namespace Gruntz.UnitController.Instructions
                         if (coroutine.Current != CrtState.Active) {
                             var unitController = actor.GetComponent<UnitController>();
                             unitController.UnitControllerState.FightingWith = null;
-                            var conflictManager = ConflictManager.ConflictManager.GetConflictManagerFromContext();
-                            conflictManager.LeaveConflict(actor);
 
                             if (coroutine.Current == CrtState.Interrupted && abilitiesComponent.Current != null) {
                                 abilitiesComponent.Current.Interrupt();
