@@ -136,7 +136,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1208721304552655344, guid: 40bd5b26829b4724ba66a553e9985821, type: 3}
       propertyPath: m_Name
-      value: TrophyHolder
+      value: ItemHolder
       objectReference: {fileID: 0}
     - target: {fileID: 1208721304552655347, guid: 40bd5b26829b4724ba66a553e9985821, type: 3}
       propertyPath: m_RootOrder

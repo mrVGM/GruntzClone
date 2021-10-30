@@ -153,6 +153,55 @@ MonoBehaviour:
   FixedDistance: {fileID: 0}
   Threshold: 0.001
   LaggingEnabled: 1
+--- !u!1 &1304274965279972535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9114432597188737073}
+  - component: {fileID: 8886643715796012953}
+  m_Layer: 0
+  m_Name: BroomHandle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9114432597188737073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304274965279972535}
+  m_LocalRotation: {x: 0, y: 0.9349218, z: -0, w: -0.3548539}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8745687362942116516}
+  m_Father: {fileID: 7565804037083412346}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 221.569, z: 0}
+--- !u!114 &8886643715796012953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304274965279972535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a181081d88b92439425eb2e5c89933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TagDef: {fileID: 11400000, guid: 39454f70b388e9c4983123278de0cd10, type: 2}
+  Lag: 8
+  FixedDistance: {fileID: 0}
+  Threshold: 0.001
+  LaggingEnabled: 1
 --- !u!1 &1348360085054013311
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +492,7 @@ Transform:
   - {fileID: 5205416375441311617}
   - {fileID: 4478370489486475126}
   - {fileID: 2228188753713028685}
+  - {fileID: 9114432597188737073}
   m_Father: {fileID: 1208721304552655347}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -591,6 +641,54 @@ MonoBehaviour:
   TagDef: {fileID: 11400000, guid: c577d1f3f9a50f549a702395333115f9, type: 2}
   Lag: 8
   FixedDistance: {fileID: 6358778169330286023}
+  Threshold: 0.001
+  LaggingEnabled: 1
+--- !u!1 &6655900951451305068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8745687362942116516}
+  - component: {fileID: 4659614459820697908}
+  m_Layer: 0
+  m_Name: BroomHead
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8745687362942116516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6655900951451305068}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.33}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9114432597188737073}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4659614459820697908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6655900951451305068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a181081d88b92439425eb2e5c89933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TagDef: {fileID: 11400000, guid: da5d88fbeb80e274c8a585effe96a1f1, type: 2}
+  Lag: 8
+  FixedDistance: {fileID: 9114432597188737073}
   Threshold: 0.001
   LaggingEnabled: 1
 --- !u!1 &7082829512280099066
