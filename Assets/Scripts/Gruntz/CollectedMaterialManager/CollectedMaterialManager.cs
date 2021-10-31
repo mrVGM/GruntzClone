@@ -19,6 +19,8 @@ namespace Gruntz.CollectedMaterialManager
             }
         }
 
+        public int MaterialPiecesCollected => _collectedMaterialManagerData.NumberOfMaterialPiecesCollected;
+
         public void MaterialCollected()
         {
             ++_collectedMaterialManagerData.NumberOfMaterialPiecesCollected;
