@@ -23,4 +23,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f799f76cdfc653f41b46937f22ae9b03, type: 2}
   - {fileID: 11400000, guid: e442ebd37518c524ab43be506f2322fb, type: 2}
   - {fileID: 11400000, guid: 2ee49fa6d3d627a42aaca5cfc1a97913, type: 2}
+  - {fileID: 11400000, guid: 1c1859dfa6e38914eaeb43f01dc9eba5, type: 2}
   gameplayActionsProcessorDef: {fileID: 11400000, guid: 4d5edc76dc15e244d9232c61d3e7c81b, type: 2}

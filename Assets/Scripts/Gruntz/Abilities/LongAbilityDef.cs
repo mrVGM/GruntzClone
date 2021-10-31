@@ -8,7 +8,13 @@ namespace Gruntz.Abilities
 {
     public class LongAbilityDef : AbilityDef
     {
+        public enum AbilityEffect
+        {
+            HoleDug,
+            MaterialSweeped
+        }
         public float ExecutionTime = 2.0f;
+        public AbilityEffect Effect = AbilityEffect.HoleDug;
 
         public override AbilityExecution Execute(AbilityExecutionContext ctx)
         {
@@ -27,12 +33,23 @@ namespace Gruntz.Abilities
                     };
                 }
                 var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
-                gameplayManager.HandleGameplayEvent(new HoleDugGameplayEvent
-                {
-                    Ability = this,
-                    SourceActor = actor,
-                    TargetActor = targetActor
-                });
+                switch (Effect) {
+                    case AbilityEffect.HoleDug:
+                        gameplayManager.HandleGameplayEvent(new HoleDugGameplayEvent {
+                            Ability = this,
+                            SourceActor = actor,
+                            TargetActor = targetActor
+                        });
+                        break;
+                    case AbilityEffect.MaterialSweeped:
+                        gameplayManager.HandleGameplayEvent(new MaterialSweepedGameplayEvent { 
+                            Ability = this,
+                            SourceActor = actor,
+                            TargetActor = targetActor
+                        });
+                        break;
+                }
+                
                 yield return new ExecutionState {
                     GeneralState = GeneralExecutionState.Finished,
                     AnimationState = AnimationExecutionState.AnimationNotPlaying,

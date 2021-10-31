@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fb7c03e14ea4c6a8bb506fbdc39085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActorTempleteDef: {fileID: 11400000, guid: 0622c321b1e0a4f499e44e0ebda4ea36, type: 2}
+  ActorTempleteDef: {fileID: 11400000, guid: dc4029e519f862e40a4014f24d0d926b, type: 2}
 --- !u!1001 &8848299941198586304
 PrefabInstance:
   m_ObjectHideFlags: 0
