@@ -45,6 +45,7 @@ namespace Gruntz.Gameplay
                     ProcessRedirectBallActorAction,
                     ProcessSetInitialDestinationAction,
                     ProcessSwitchStateAction,
+                    ProcessCollectMaterialAction,
                 };
             }
             var unprocessed = actions;
@@ -376,6 +377,29 @@ namespace Gruntz.Gameplay
 
                     allStates.MoveNext();
                     switchStateComponent.SetCurrentState(allStates.Current);
+                }
+            }
+            return new ProcessResultt { ProcessedActions = processActions().ToList(), Dirty = dirty };
+        }
+
+        private ProcessResultt ProcessCollectMaterialAction(IEnumerable<IGameplayAction> actions)
+        {
+            bool dirty = false;
+            IEnumerable<IGameplayAction> processActions()
+            {
+                foreach (var action in actions)
+                {
+                    var collectMaterialAction = action as CollectMaterialAction;
+                    if (collectMaterialAction == null)
+                    {
+                        yield return action;
+                        continue;
+                    }
+
+                    var collectedMaterialManager = CollectedMaterialManager.CollectedMaterialManager.GetCollectedMaterialManager();
+                    collectedMaterialManager.MaterialCollected();
+
+                    dirty = true;
                 }
             }
             return new ProcessResultt { ProcessedActions = processActions().ToList(), Dirty = dirty };

@@ -15,6 +15,9 @@ namespace Gruntz.Gameplay.ActionGenarators
                     Actor = materialSweepedEvent.TargetActor,
                     Reason = KillActorAction.DeathReason.Destruction,
                 };
+                yield return new CollectMaterialAction {
+                    Actor = materialSweepedEvent.SourceActor
+                };
             }
         }
     }
