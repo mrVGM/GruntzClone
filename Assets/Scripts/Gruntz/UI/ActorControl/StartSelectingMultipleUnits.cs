@@ -33,27 +33,44 @@ namespace Gruntz.UI.ActorControl
 
             var game = Game.Instance;
             Vector3 initialFloorHit = Vector3.zero;
+
+            IEnumerator<bool> validInitialClick()
+            {
+                while (true) {
+                    while (Input.GetAxis("Select") > 0) {
+                        yield return false;
+                    }
+
+                    while (Input.GetAxis("Select") <= 0) {
+                        yield return false;
+                    }
+
+                    if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) {
+                        yield return true;
+                    }
+                }
+            }
+
             IEnumerator<State> detectCrt()
             {
-                while (Input.GetAxis("Select") <= 0)  
-                {
+                var validClick = validInitialClick();
+                validClick.MoveNext();
+                while (!validClick.Current) {
                     yield return State.Undetermined;
+                    validClick.MoveNext();
                 }
 
                 Vector3 screenPos = Input.mousePosition;
                 initialFloorHit = getFloorPoint();
 
-                while (true)
-                {
-                    if (Input.GetAxis("Select") <= 0)
-                    {
+                while (true) {
+                    if (Input.GetAxis("Select") <= 0) {
                         yield return State.MouseReleased;
                         continue;
                     }
 
                     Vector2 offset = Input.mousePosition - screenPos;
-                    if (offset.sqrMagnitude > 25)
-                    {
+                    if (offset.sqrMagnitude > 25) {
                         yield return State.MouseMovedAway;
                         continue;
                     }
@@ -62,19 +79,16 @@ namespace Gruntz.UI.ActorControl
                 }
             }
 
-            while (true)
-            {
+            while (true) {
                 context.PutItem(SelectionInitialPositionTag, null);
                 var detect = detectCrt();
                 detect.MoveNext();
-                while (detect.Current == State.Undetermined)
-                {
+                while (detect.Current == State.Undetermined) {
                     yield return null;
                     detect.MoveNext();
                 }
 
-                if (detect.Current == State.MouseMovedAway)
-                {
+                if (detect.Current == State.MouseMovedAway) {
                     context.PutItem(SelectionInitialPositionTag, initialFloorHit);
                     yield break;
                 }
