@@ -9,7 +9,5 @@ namespace Gruntz.Items
         public Sprite Icon;
         public GameObject Prefab;
         public AbilityDef[] Abilities;
-        [TextArea]
-        public string Description;
     }
 }

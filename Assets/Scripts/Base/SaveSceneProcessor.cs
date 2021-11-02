@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -23,3 +24,4 @@ namespace Base
         }
     }
 }
+#endif

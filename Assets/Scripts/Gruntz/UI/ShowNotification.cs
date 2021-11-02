@@ -1,20 +1,17 @@
 using System.Collections.Generic;
 using Base.UI;
-using UnityEngine;
-using UnityEngine.UI;
+using Gruntz.TriggerBox;
 
 namespace Gruntz.UI
 {
     public class ShowNotification : CoroutineProcess
     {
         public ProcessContextTagDef NotificationMessagesTagDef;
-        public GameObject ObjectToShow;
-        public Text NotificationText;
+        public Notification Notification;
         protected override IEnumerator<object> Crt()
         {
-            string notificationText = context.GetItem(NotificationMessagesTagDef) as string;
-            NotificationText.text = notificationText;
-            ObjectToShow.SetActive(true);
+            var notificationText = context.GetItem(NotificationMessagesTagDef) as TriggerShowNotificationActionDef.Notification;
+            Notification.Show(notificationText.NotificationText, notificationText.Video);
             while (true) {
                 yield return true;
             }
@@ -22,7 +19,7 @@ namespace Gruntz.UI
 
         protected override IEnumerator<object> FinishCrt()
         {
-            ObjectToShow.SetActive(false);
+            Notification.Hide();
             yield break;
         }
     }

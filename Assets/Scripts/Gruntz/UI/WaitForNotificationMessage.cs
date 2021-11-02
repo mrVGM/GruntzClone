@@ -18,7 +18,7 @@ namespace Gruntz.UI
             }
 
             var notification = messagesSystem.GetMessages(NotificationMessagesBox).First().Data as TriggerShowNotificationActionDef.Notification;
-            context.PutItem(NotificationTagDef, notification.NotificationText);
+            context.PutItem(NotificationTagDef, notification);
         }
 
         protected override IEnumerator<object> FinishCrt()

@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Linq;
 using UnityEditor;
 
@@ -16,3 +17,4 @@ namespace Base
         }
     }
 }
+#endif

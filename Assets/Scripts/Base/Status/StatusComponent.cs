@@ -93,19 +93,5 @@ namespace Base.Status
         {
             return _statuses.Where(predicate);
         }
-
-        [MenuItem("Asd/asd")]
-        public static void asd()
-        {
-            var allDefPaths = AssetDatabase.FindAssets("t:Def").Select(x => AssetDatabase.GUIDToAssetPath(x));
-            var allDefs = allDefPaths.Select(x => AssetDatabase.LoadAssetAtPath<Def>(x));
-            var allTemplates = allDefs.OfType<ActorTemplateDef>();
-
-            foreach (var template in allTemplates) {
-                if (!template.Components.OfType<StatusComponentDef>().Any()) {
-                    Debug.Log($"{template}", template);
-                }
-            }
-        }
     }
 }
