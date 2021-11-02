@@ -7,6 +7,7 @@ using Gruntz.Actors;
 using Gruntz.Gameplay.Actions;
 using Gruntz.Statuses;
 using Gruntz.SwitchState;
+using Gruntz.Team;
 using Gruntz.UnitController;
 using Gruntz.UnitController.Instructions;
 using System.Collections.Generic;
@@ -46,6 +47,7 @@ namespace Gruntz.Gameplay
                     ProcessSetInitialDestinationAction,
                     ProcessSwitchStateAction,
                     ProcessCollectMaterialAction,
+                    ProcessSpawnActorAction,
                 };
             }
             var unprocessed = actions;
@@ -399,6 +401,28 @@ namespace Gruntz.Gameplay
                     var collectedMaterialManager = CollectedMaterialManager.CollectedMaterialManager.GetCollectedMaterialManager();
                     collectedMaterialManager.MaterialCollected();
 
+                    dirty = true;
+                }
+            }
+            return new ProcessResultt { ProcessedActions = processActions().ToList(), Dirty = dirty };
+        }
+
+        private ProcessResultt ProcessSpawnActorAction(IEnumerable<IGameplayAction> actions)
+        {
+            bool dirty = false;
+            IEnumerable<IGameplayAction> processActions()
+            {
+                foreach (var action in actions)
+                {
+                    var spawnActorAction = action as SpawnActorAction;
+                    if (spawnActorAction == null) {
+                        yield return action;
+                        continue;
+                    }
+
+                    var actor = ActorDeployment.DeployActorFromTemplate(spawnActorAction.Template, spawnActorAction.Pos);
+                    var teamComponent = actor.GetComponent<TeamComponent>();
+                    teamComponent.UnitTeam = TeamComponent.Team.Player;
                     dirty = true;
                 }
             }

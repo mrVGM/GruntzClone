@@ -38,6 +38,8 @@ namespace Gruntz.Abilities
             }
         }
 
+        public AbilitiesComponentData AbilitiesComponentData => Data as AbilitiesComponentData;
+
         public AbilitiesComponent(Actor actor, AbilitiesComponentDef abilitiesComponentDef)
         {
             Actor = actor;
@@ -122,12 +124,12 @@ namespace Gruntz.Abilities
                     if (Current.State.CooldownState == AbilityPlayer.CooldownState.NoCooldown) {
                         return;
                     }
-                    var record = _abilitiesComponentData.AbilitiesUsage.FirstOrDefault(x => x.Ability == ability);
+                    var record = AbilitiesComponentData.AbilitiesUsage.FirstOrDefault(x => x.Ability == ability);
                     if (record == null) {
                         record = new AbilitiesComponentData.AbilityUsageRecord {
                             Ability = ability.ToDefRef<AbilityDef>()
                         };
-                        _abilitiesComponentData.AbilitiesUsage.Add(record);
+                        AbilitiesComponentData.AbilitiesUsage.Add(record);
                     }
                     record.Downtime = 0;
                     record.LastUsage = Time.time;
@@ -155,7 +157,7 @@ namespace Gruntz.Abilities
         public float GetAbilityDownTime(AbilityDef ability)
         {
             var abilityItem = GetSourceItem(ability);
-            var records = _abilitiesComponentData.AbilitiesUsage.Where(x => GetSourceItem(x.Ability) == abilityItem);
+            var records = AbilitiesComponentData.AbilitiesUsage.Where(x => GetSourceItem(x.Ability) == abilityItem);
 
             if (!records.Any()) {
                 return float.PositiveInfinity;
