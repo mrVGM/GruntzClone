@@ -30,6 +30,11 @@ namespace Gruntz.CollectedMaterialManager
         {
         }
 
+        public void ActorSpawn()
+        {
+            _collectedMaterialManagerData.NumberOfMaterialPiecesCollected -= CollectedMaterialManagerDef.MaterialNeededForFullUnit;
+        }
+
         public static CollectedMaterialManager GetCollectedMaterialManager()
         {
             var game = Game.Instance;

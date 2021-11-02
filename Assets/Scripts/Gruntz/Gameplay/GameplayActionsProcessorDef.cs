@@ -423,6 +423,8 @@ namespace Gruntz.Gameplay
                     var actor = ActorDeployment.DeployActorFromTemplate(spawnActorAction.Template, spawnActorAction.Pos);
                     var teamComponent = actor.GetComponent<TeamComponent>();
                     teamComponent.UnitTeam = TeamComponent.Team.Player;
+                    var materialManager = CollectedMaterialManager.CollectedMaterialManager.GetCollectedMaterialManager();
+                    materialManager.ActorSpawn();
                     dirty = true;
                 }
             }
