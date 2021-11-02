@@ -6007,6 +6007,7 @@ MonoBehaviour:
   ActorTemplate: {fileID: 11400000, guid: cddc5fb0bd0731a478a1898aa405657d, type: 2}
   StartedDragging: {fileID: 11400000, guid: 539deaa1f1d175d4d8763f5d5403c2c8, type: 2}
   HitResultsTag: {fileID: 11400000, guid: d41060e2515a58b87afb171318b9611a, type: 2}
+  SpawnPointStatusDef: {fileID: 11400000, guid: 0d0700d0558f64041808dc4ecdfa0cd0, type: 2}
 --- !u!1 &1857785944
 GameObject:
   m_ObjectHideFlags: 0

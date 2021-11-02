@@ -7,6 +7,8 @@ using System.Linq;
 using Base.Navigation;
 using Gruntz.Actors;
 using Gruntz.Gameplay;
+using Base.Actors;
+using Base.Status;
 
 namespace Gruntz.UI
 {
@@ -15,6 +17,7 @@ namespace Gruntz.UI
         public ActorTemplateDef ActorTemplate;
         public ProcessContextTagDef StartedDragging;
         public ProcessContextTagDef HitResultsTag;
+        public StatusDef SpawnPointStatusDef;
 
         protected override IEnumerator<object> Crt()
         {
@@ -34,13 +37,17 @@ namespace Gruntz.UI
             }
 
             var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
-            var floorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == LayerMask.NameToLayer(Utils.UnityLayers.Floor));
-            var navigation = Navigation.GetNavigationFromContext();
-            var map = navigation.Map;
-            Vector3 pos = map.SnapPosition(floorHit.point);
-
+            var spawnPoint = hits.FirstOrDefault(x => x.collider.gameObject.layer == LayerMask.NameToLayer(Utils.UnityLayers.ActorGeneral));
+            if (spawnPoint.Equals(default(RaycastHit))) {
+                yield break;
+            }
+            var spawnPointActor = spawnPoint.collider.GetComponent<ActorProxy>().Actor;
+            var statusComponent = spawnPointActor.GetComponent<StatusComponent>();
+            if (statusComponent.GetStatus(SpawnPointStatusDef) == null) {
+                yield break;
+            }
             var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
-            gameplayManager.HandleGameplayEvent(new SpawnActorGameplayEvent { Template = ActorTemplate, Pos = pos });
+            gameplayManager.HandleGameplayEvent(new SpawnActorGameplayEvent { Template = ActorTemplate, Pos = spawnPointActor.Pos });
         }
 
         protected override IEnumerator<object> FinishCrt()
