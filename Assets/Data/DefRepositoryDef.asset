@@ -401,3 +401,5 @@ MonoBehaviour:
     Guid: 06161938-dc4b-48eb-bc30-16b2ab3421ff
   - Def: {fileID: 11400000, guid: da5c767b1d8c5aa4f8c5f49ff2a71c77, type: 2}
     Guid: 5402ba6a-e308-4920-87b2-9895eebb71ed
+  - Def: {fileID: 11400000, guid: 4549a108d3c98c54abff3a9d72c2c373, type: 2}
+    Guid: 62547c94-639e-47ab-83b8-d7e073aa09f9
