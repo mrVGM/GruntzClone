@@ -1052,6 +1052,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1667507940}
     m_Modifications:
+    - target: {fileID: 449901049191280290, guid: fa7208a01b7f9fa49bc8ea203ce16413, type: 3}
+      propertyPath: ActorTempleteDef
+      value: 
+      objectReference: {fileID: 11400000, guid: a7f4b918f19566c4d80f99c0e750556b, type: 2}
     - target: {fileID: 449901049191280292, guid: fa7208a01b7f9fa49bc8ea203ce16413, type: 3}
       propertyPath: m_Name
       value: DeployPointMarker
