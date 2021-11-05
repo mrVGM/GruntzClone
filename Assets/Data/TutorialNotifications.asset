@@ -26,7 +26,7 @@ MonoBehaviour:
 
 
       NOW, GO GET THE TROPHY'
-    Video: {fileID: 32900000, guid: 8f57b2bec2caf9546936cb189b7d0b88, type: 3}
+    Video: {fileID: 32900000, guid: 9f7d4ba60451a904a8cbabc224653ffc, type: 3}
   - Item: {fileID: 11400000, guid: c7fcf87d27a99064eba98da9afb90fae, type: 2}
     Description: 'WATCH OUT FOR
 
@@ -42,4 +42,14 @@ MonoBehaviour:
 
       IF YOU HAVE
       IT'
-    Video: {fileID: 0}
+    Video: {fileID: 32900000, guid: 3785ab4703331494ca48956e1de11d3f, type: 3}
+  - Item: {fileID: 11400000, guid: 7918f038c47e3dc4385f0548c1f2e660, type: 2}
+    Description: 'YOU CAN SPAWN NEW UNITS
+
+      WITH DRAGGING THEM TO THE SPAWN
+      POINT
+
+      PROVIDED TAHT YOU HAVE
+
+      ENOUGH MATERIAL COLLECTED'
+    Video: {fileID: 32900000, guid: 87c3de654bcdb5b498411e9886f4ce35, type: 3}
