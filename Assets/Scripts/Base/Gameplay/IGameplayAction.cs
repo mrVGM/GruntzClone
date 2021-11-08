@@ -1,6 +1,6 @@
 using Base.Actors;
 
-namespace Gruntz.Gameplay
+namespace Base.Gameplay
 {
     public interface IGameplayAction
     {

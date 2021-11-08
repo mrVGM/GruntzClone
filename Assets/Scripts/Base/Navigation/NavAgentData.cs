@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Utils;
 
 namespace Base.Navigation
 {
@@ -27,7 +26,7 @@ namespace Base.Navigation
         public INavigationTarget Target;
         public SerializedVector3 TravelSegmentStart;
         public SerializedVector3 TravelSegmentEnd;
-        public bool CheckForSegmentInfoClashes => ObstacleNames.Contains(UnityLayers.UnitObstacle);
+        public bool CheckForSegmentInfoClashes => ObstacleNames.Contains(Utils.UnityLayers.UnitObstacle);
         public float Speed;
     }
 }

@@ -1,8 +1,7 @@
-using Base;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Gruntz.Gameplay
+namespace Base.Gameplay
 {
     public class GameplayManagerExecutionOrderTag : ExecutionOrderTagDef
     {

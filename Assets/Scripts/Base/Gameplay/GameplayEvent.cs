@@ -1,4 +1,4 @@
-namespace Gruntz.Gameplay
+namespace Base.Gameplay
 {
     public class GameplayEvent
     {

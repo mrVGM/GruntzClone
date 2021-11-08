@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Utils
+namespace Base
 {
     [Serializable]
     public class SerializedVector3

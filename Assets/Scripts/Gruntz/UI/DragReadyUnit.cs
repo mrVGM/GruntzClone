@@ -9,6 +9,7 @@ using Gruntz.Actors;
 using Gruntz.Gameplay;
 using Base.Actors;
 using Base.Status;
+using Base.Gameplay;
 
 namespace Gruntz.UI
 {

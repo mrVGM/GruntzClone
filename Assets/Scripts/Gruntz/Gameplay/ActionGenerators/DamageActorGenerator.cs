@@ -4,6 +4,7 @@ using System.Linq;
 using Gruntz.Actors;
 using Gruntz.Statuses;
 using Base.Status;
+using Base.Gameplay;
 
 namespace Gruntz.Gameplay.ActionGenarators
 {

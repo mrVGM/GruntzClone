@@ -1,6 +1,6 @@
 using System;
+using Base;
 using Base.Status;
-using Utils;
 
 namespace Gruntz.Statuses
 {

@@ -5,6 +5,7 @@ using Base.Status;
 using System.Collections.Generic;
 using System.Linq;
 using static Base.Status.StatusComponent;
+using Base.Gameplay;
 
 namespace Gruntz.Gameplay.ActionGenarators
 {

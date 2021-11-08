@@ -2,7 +2,6 @@ using Base.Actors;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static Gruntz.Abilities.AbilityManager;
 
 namespace Base.Animations
 {
@@ -14,6 +13,13 @@ namespace Base.Animations
             Running = 1,
             Ability = 2,
         }
+
+        public struct AbilityAnimationInfo
+        {
+            public Actor Actor;
+            public AnimationClip Animation;
+        }
+
         public AnimationsComponentDef AnimationsComponentDef { get; }
         public Actor Actor { get; }
         private Animator Animator { get; }
@@ -73,10 +79,8 @@ namespace Base.Animations
 
             var abilitiesMessagesForMe = abilityMessages.Select(x => (AbilityAnimationInfo)x.Data).Where(x => x.Actor == Actor);
             foreach (var message in abilitiesMessagesForMe) {
-                if (message.ExecutionState.AnimationState == Gruntz.Abilities.AbilityPlayer.AnimationExecutionState.AnimationPlaying) {
-                    OverrideAbilityAnimation(message.AbilityDef.Animation);
-                    Animator.SetInteger("State", (int)AnimatorState.Ability);
-                }
+                OverrideAbilityAnimation(message.Animation);
+                Animator.SetInteger("State", (int)AnimatorState.Ability);
             }
         }
     }

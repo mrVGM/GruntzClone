@@ -1,5 +1,5 @@
 using Base.Actors;
-using Gruntz.Actors;
+using Base.Gameplay;
 
 namespace Gruntz.Gameplay
 {

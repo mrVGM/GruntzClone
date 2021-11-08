@@ -1,0 +1,18 @@
+{
+    "name": "Gruntz",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7d043363402653343a8b7e4867470142",
+        "GUID:36910eb64f65cd24581b25702820b776",
+        "GUID:4307f53044263cf4b835bd812fc161a4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

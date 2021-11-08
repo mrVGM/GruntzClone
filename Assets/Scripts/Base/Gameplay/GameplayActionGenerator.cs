@@ -1,7 +1,7 @@
 using Base;
 using System.Collections.Generic;
 
-namespace Gruntz.Gameplay
+namespace Base.Gameplay
 {
     public abstract class GameplayActionGenerator : Def
     {

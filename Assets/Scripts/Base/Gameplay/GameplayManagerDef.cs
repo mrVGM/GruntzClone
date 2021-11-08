@@ -1,6 +1,6 @@
 using Base;
 
-namespace Gruntz.Gameplay
+namespace Base.Gameplay
 {
     public class GameplayManagerDef : Def, IRuntimeInstance
     {

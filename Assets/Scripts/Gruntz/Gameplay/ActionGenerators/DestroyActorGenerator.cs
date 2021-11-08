@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Gruntz.Actors;
 using Gruntz.Statuses;
+using Base.Gameplay;
 
 namespace Gruntz.Gameplay.ActionGenarators
 {

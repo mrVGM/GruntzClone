@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using static Base.Navigation.NavAgent;
 using Gruntz.Statuses;
+using Base.Gameplay;
 
 namespace Gruntz.Gameplay.ActionGenarators
 {

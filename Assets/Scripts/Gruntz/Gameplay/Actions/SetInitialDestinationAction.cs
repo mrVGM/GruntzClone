@@ -1,8 +1,7 @@
 using Base.Actors;
-using Base.Navigation;
+using Base.Gameplay;
 using Base.Status;
 using UnityEngine;
-using static Base.Navigation.NavAgent;
 
 namespace Gruntz.Gameplay.Actions
 {

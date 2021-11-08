@@ -1,5 +1,6 @@
 using Base;
 using Base.Actors;
+using Base.Gameplay;
 using Base.MessagesSystem;
 using Base.Navigation;
 using Base.Status;
@@ -17,49 +18,34 @@ using static Base.Navigation.NavAgent;
 
 namespace Gruntz.Gameplay
 {
-    public class GameplayActionsProcessorDef : Def
+    public class GruntzGameplayActionsProcessorDef : GameplayActionsProcessorDef
     {
-        private class ProcessResultt
-        {
-            public List<IGameplayAction> ProcessedActions;
-            public bool Dirty;
-        }
-
         public ActorTemplateDef GraveDef;
         public ActorInstanceHolderStatusDef ActorHolderStatusDef;
         public ActorTemplateDef MaterialActor;
         public MessagesBoxTagDef UnitControllerMessagesBox;
 
-        private delegate ProcessResultt ProcessAction(IEnumerable<IGameplayAction> actions);
-        private ProcessAction[] _processActions { get; set; } = null;
-
-        public void ProcessActions(IEnumerable<IGameplayAction> actions)
+        ProcessAction[] _processActions = null;
+        protected override ProcessAction[] ProccessActions
         {
-            if (_processActions == null) {
-                _processActions = new ProcessAction[] {
-                    ProcessKillActions,
-                    ProcessDamageActions,
-                    ProcessActorArrivedAtArrowDestinationAction,
-                    ProcessChangeActorNavObstaclesAction,
-                    ProcessOverrideActorControllerAction,
-                    ProcessRedirectActorAction,
-                    ProcessRedirectBallActorAction,
-                    ProcessSetInitialDestinationAction,
-                    ProcessSwitchStateAction,
-                    ProcessCollectMaterialAction,
-                    ProcessSpawnActorAction,
-                };
-            }
-            var unprocessed = actions;
-            int index = 0;
-            while (index < _processActions.Length) {
-                var cur = _processActions[index];
-                var res = cur(unprocessed);
-                unprocessed = res.ProcessedActions;
-                ++index;
-                if (res.Dirty) {
-                    index = 0;
+            get
+            {
+                if (_processActions == null) {
+                    _processActions = new ProcessAction[] {
+                        ProcessKillActions,
+                        ProcessDamageActions,
+                        ProcessActorArrivedAtArrowDestinationAction,
+                        ProcessChangeActorNavObstaclesAction,
+                        ProcessOverrideActorControllerAction,
+                        ProcessRedirectActorAction,
+                        ProcessRedirectBallActorAction,
+                        ProcessSetInitialDestinationAction,
+                        ProcessSwitchStateAction,
+                        ProcessCollectMaterialAction,
+                        ProcessSpawnActorAction,
+                    };
                 }
+                return _processActions;
             }
         }
 

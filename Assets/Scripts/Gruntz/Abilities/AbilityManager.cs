@@ -1,19 +1,13 @@
 using Base;
-using Base.Actors;
 using Base.MessagesSystem;
 using System.Collections.Generic;
 using System.Linq;
+using static Base.Animations.AnimationsComponent;
 
 namespace Gruntz.Abilities
 {
     public class AbilityManager : IContextObject, IOrderedUpdate
     {
-        public struct AbilityAnimationInfo
-        {
-            public Actor Actor;
-            public AbilityDef AbilityDef;
-            public AbilityPlayer.ExecutionState ExecutionState;
-        }
         public ExecutionOrderTagDef OrderTagDef => Game.Instance.DefRepositoryDef.AllDefs.OfType<AbilityManagerOrderTagDef>().FirstOrDefault();
 
         public List<AbilityPlayer> AbilityPlayers = new List<AbilityPlayer>();
@@ -51,14 +45,15 @@ namespace Gruntz.Abilities
             foreach (var ability in cache) {
                 ability.Update();
 
-                messagesSystem.SendMessage(AbilityManagerDef.AbilityMessages,
-                    MainUpdaterUpdateTime.FixedCrt,
-                    this,
-                    new AbilityAnimationInfo {
-                        Actor = ability.Actor,
-                        AbilityDef = ability.AbilityDef,
-                        ExecutionState = ability.State,
-                    });
+                if (ability.State.AnimationState == AbilityPlayer.AnimationExecutionState.AnimationPlaying) {
+                    messagesSystem.SendMessage(AbilityManagerDef.AbilityMessages,
+                        MainUpdaterUpdateTime.FixedCrt,
+                        this,
+                        new AbilityAnimationInfo {
+                            Actor = ability.Actor,
+                            Animation = ability.AbilityDef.Animation,
+                        });
+                }
             }
         }
     }

@@ -1,3 +1,4 @@
+using Base;
 using Base.Actors;
 using Base.Navigation;
 using Gruntz.Abilities;
@@ -6,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Utils;
 
 namespace Gruntz.UnitController.Instructions
 {

@@ -1,9 +1,8 @@
 using System;
 using System.Linq;
 using Base.Actors;
-using Gruntz.Gameplay;
+using Base.Gameplay;
 using UnityEngine;
-using Utils;
 
 namespace Base.Navigation
 {
