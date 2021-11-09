@@ -6,9 +6,6 @@ using Base.UI;
 using Gruntz.Items;
 using System.Linq;
 using Gruntz.Equipment;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
-using Gruntz.LevelProgress;
 
 namespace Gruntz.UI
 {

@@ -1,5 +1,5 @@
 using Base;
-using Gruntz.LevelProgress;
+using LevelResults;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -22,7 +22,7 @@ namespace Gruntz
                 savedGameHolder.RestoreContext();
             }
 
-            var levelProgressInfo = game.Context.GetRuntimeObject(LevelProgressInfoDef) as LevelProgressInfo;
+            var levelProgressInfo = LevelProgressInfo.GetLevelProgressInfoFromContext();
             var levelProgressInfoData = levelProgressInfo.Data as LevelProgressInfoData;
 
             var levelResult = LevelResultHolder.GetLevelResultHolderFromContext();

@@ -1,11 +1,8 @@
 {
-    "name": "Gruntz",
+    "name": "LevelResults",
     "rootNamespace": "",
     "references": [
-        "GUID:7d043363402653343a8b7e4867470142",
-        "GUID:36910eb64f65cd24581b25702820b776",
-        "GUID:4307f53044263cf4b835bd812fc161a4",
-        "GUID:0634ac567b9d5da4cbb43872c7005d80"
+        "GUID:7d043363402653343a8b7e4867470142"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

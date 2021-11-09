@@ -1,0 +1,43 @@
+using Base;
+using Base.UI;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace LevelSelection.UserInteraction
+{
+    public class ShowTooltip : CoroutineProcess
+    {
+        public Text LevelName;
+        public Button StartLevel;
+        public TagDef FinishedLevelsSaveTagDef;
+
+        protected override IEnumerator<object> Crt()
+        {
+            var levelSelectionMap = LevelSelectionMap.GetLevelSelectionMapFromContext();
+            var unit = levelSelectionMap.Unit;
+
+            while (unit.IsWalking) {
+                yield return null;
+            }
+
+            var site = unit.CurrentSite;
+            StartLevel.onClick.RemoveAllListeners();
+            StartLevel.onClick.AddListener(() => {
+                var game = Game.Instance;
+                game.SavesManager.CreateSave(FinishedLevelsSaveTagDef);
+                game.LoadLevel(level, () => { });
+            });
+
+            while (!unit.IsWalking) {
+                yield return null;
+            }
+            Debug.Log("Hidden");
+        }
+
+        protected override IEnumerator<object> FinishCrt()
+        {
+            yield break;
+        }
+    }
+}

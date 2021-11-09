@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PuzzleLevelUI.unity
     guid: 7ff893f06a3aba419a99d4e2d4354ea4
   - enabled: 1
-    path: Assets/Scenes/LevelSelectionLevel.unity
+    path: Assets/Scenes/LevelSelectionLevelUI.unity
     guid: 0761c8331b8d4c844bba539213a11abe
   - enabled: 1
     path: Assets/Scenes/IntroductionLevel.unity
@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MaterialsLevel.unity
     guid: 4d7c3ec57b6887f41a4e3dd51070445d
+  - enabled: 1
+    path: Assets/Scenes/LevelSelectionLevel.unity
+    guid: 83f469f6d20443e4b8f7be8c20c2346b
   m_configObjects: {}

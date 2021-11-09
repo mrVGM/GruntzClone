@@ -1,0 +1,22 @@
+using Base;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace LevelResults
+{
+    public class LevelSelectionMap : IContextObject
+    {
+        public void DisposeObject()
+        {
+        }
+
+        public static LevelSelectionMap GetLevelSelectionMapFromContext()
+        {
+            var game = Game.Instance;
+            var levelSelectionMapDef = game.DefRepositoryDef.AllDefs.OfType<LevelSelectionMapDef>().First();
+            return game.Context.GetRuntimeObject(levelSelectionMapDef) as LevelSelectionMap;
+        }
+
+        public void InitMap(IEnumerable<Site> sites, IEnumerable<Bezier>)
+    }
+}

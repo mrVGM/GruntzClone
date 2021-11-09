@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e97f859afb0abd48a32de0dddb6f6cd, type: 3}
   m_Name: LevelProgressInfoDef
   m_EditorClassIdentifier: 
+  InitalLevel: {fileID: 11400000, guid: 4b50ae2fe86ca02408f2c64b6c8becd4, type: 2}
   AllLevels:
   - {fileID: 11400000, guid: 4b50ae2fe86ca02408f2c64b6c8becd4, type: 2}
   - {fileID: 11400000, guid: a0fe6bf0081ca4544adcb04f73285a21, type: 2}
