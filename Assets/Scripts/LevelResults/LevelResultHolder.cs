@@ -1,6 +1,7 @@
+using Base;
 using System.Linq;
 
-namespace Base
+namespace LevelResults
 {
     public class LevelResultHolder : IContextObject
     {

@@ -40,6 +40,11 @@ namespace LevelResults
             }
         }
 
+        public bool IsLevelUnlocked(LevelDef level)
+        {
+            return LevelProgressInfoDef.UnlockConditions.Where(x => x.Level == level).All(x => x.Satified(FinishedLevels));
+        }
+
         public void DisposeObject()
         {
         }

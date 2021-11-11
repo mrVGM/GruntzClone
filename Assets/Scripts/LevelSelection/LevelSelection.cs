@@ -12,6 +12,7 @@ namespace LevelSelection
         public Transform BridgesContainer;
         public Transform SitesContainer;
         public LevelSelectionMapUnit Unit;
+        public TagDef FinishedLevelsSaveTagDef;
 
         public IEnumerable<BezierLine> Bridges => BridgesContainer.GetComponentsInChildren<BezierLine>();
         public IEnumerable<Site> Sites => SitesContainer.GetComponentsInChildren<Site>();
@@ -51,6 +52,20 @@ namespace LevelSelection
             var levelProgressInfoData = levelProgress.Data as LevelProgressInfoData;
 
             var levelSelectionMap = LevelSelectionMap.GetLevelSelectionMapFromContext();
+
+            var levelResult = LevelResultHolder.GetLevelResultHolderFromContext();
+            if (levelResult.LevelResult != null) {
+                var result = (PuzzleLevelResult.Result)levelResult.LevelResult;
+                var game = Game.Instance;
+                if (result == PuzzleLevelResult.Result.Completed) {
+                    var completedSoFar = levelProgressInfoData.FinishedLevels.Select(x => (LevelDef)x);
+                    if (!completedSoFar.Contains(levelResult.Level)) {
+                        levelProgressInfoData.FinishedLevels = completedSoFar.Append(levelResult.Level)
+                            .Select(x => x.ToDefRef<LevelDef>()).ToList();
+                        game.SavesManager.CreateSave(FinishedLevelsSaveTagDef);
+                    }
+                }
+            }
 
             var initialSite = Sites.FirstOrDefault(x => x.LevelDef == levelProgress.CurrentLevel);
             levelSelectionMap.InitMap(Sites, Bridges, Unit, initialSite);

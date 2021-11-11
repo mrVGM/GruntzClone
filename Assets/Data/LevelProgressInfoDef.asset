@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: LevelProgressInfoDef
   m_EditorClassIdentifier: 
   InitalLevel: {fileID: 11400000, guid: 4b50ae2fe86ca02408f2c64b6c8becd4, type: 2}
-  AllLevels:
-  - {fileID: 11400000, guid: 4b50ae2fe86ca02408f2c64b6c8becd4, type: 2}
-  - {fileID: 11400000, guid: a0fe6bf0081ca4544adcb04f73285a21, type: 2}
-  - {fileID: 11400000, guid: 7625bd117a23e8a438e5bebd7707d6ca, type: 2}
-  - {fileID: 11400000, guid: 0c2d61499a7855d4fa55c49e05dc09d2, type: 2}
-  - {fileID: 11400000, guid: 4549a108d3c98c54abff3a9d72c2c373, type: 2}
+  UnlockConditions:
+  - Level: {fileID: 11400000, guid: a0fe6bf0081ca4544adcb04f73285a21, type: 2}
+    CompletedLevels:
+    - {fileID: 11400000, guid: 4b50ae2fe86ca02408f2c64b6c8becd4, type: 2}
+  - Level: {fileID: 11400000, guid: 7625bd117a23e8a438e5bebd7707d6ca, type: 2}
+    CompletedLevels:
+    - {fileID: 11400000, guid: a0fe6bf0081ca4544adcb04f73285a21, type: 2}

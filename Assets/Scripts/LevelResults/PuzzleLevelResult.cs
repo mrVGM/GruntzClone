@@ -1,4 +1,4 @@
-namespace Gruntz
+namespace LevelResults
 {
     public class PuzzleLevelResult
     {

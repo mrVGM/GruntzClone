@@ -1,4 +1,5 @@
 using Base;
+using LevelResults;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -54,11 +55,17 @@ namespace LevelSelection
             Unit.CurrentSite = currentSite;
             Unit.transform.position = currentSite.transform.position;
 
+            var levelProgres = LevelProgressInfo.GetLevelProgressInfoFromContext();
             foreach (var bridge in bridges) {
                 var leftSite = sites.FirstOrDefault(x => (x.transform.position - bridge.BezierLinePoints.FirstOrDefault().transform.position).sqrMagnitude < 0.1f);
                 var rightSite = sites.FirstOrDefault(x => (x.transform.position - bridge.BezierLinePoints.LastOrDefault().transform.position).sqrMagnitude < 0.1f);
                 var edge = new Edge { Site1 = leftSite, Site2 = rightSite, Bridge = bridge };
                 Edges.Add(edge);
+
+                bridge.Lock.SetActive(true);
+                if (levelProgres.IsLevelUnlocked(leftSite.LevelDef) && levelProgres.IsLevelUnlocked(rightSite.LevelDef)) {
+                    bridge.Lock.SetActive(false);
+                }
             }
         }
 
@@ -66,6 +73,9 @@ namespace LevelSelection
         {
             foreach (var edge in Edges) {
                 if (!edge.SitesInvolved.Contains(site)) {
+                    continue;
+                }
+                if (edge.Bridge.Lock.activeSelf) {
                     continue;
                 }
 

@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace LevelSelection
@@ -12,15 +13,18 @@ namespace LevelSelection
             base.OnInspectorGUI();
             if (GUILayout.Button("Generate Points")) {
                 bezierLine.GeneratePoints();
+                EditorSceneManager.MarkAllScenesDirty();
             }
             if (GUILayout.Button("Create Line")) {
                 bezierLine.CreateLine();
+                EditorSceneManager.MarkAllScenesDirty();
             }
             if (GUILayout.Button("Toggle Handles")) {
                 var renderers = bezierLine.GetComponentsInChildren<Renderer>();
                 foreach (var rend in renderers) {
                     rend.enabled = !rend.enabled;
                 }
+                EditorSceneManager.MarkAllScenesDirty();
             }
         }
     }

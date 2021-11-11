@@ -6,6 +6,7 @@ using Base.UI;
 using Gruntz.Items;
 using System.Linq;
 using Gruntz.Equipment;
+using LevelResults;
 
 namespace Gruntz.UI
 {

@@ -1,4 +1,6 @@
-namespace Base
+using Base;
+
+namespace LevelResults
 {
     public class LevelResultHolderDef : Def, IRuntimeInstance
     {

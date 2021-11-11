@@ -16,6 +16,8 @@ namespace LevelSelection
 
         public LineRenderer LineRenderer => GetComponentInChildren<LineRenderer>();
 
+        public GameObject Lock;
+
         public Vector3 GetMiddlePoint(BezierLinePoint left, BezierLinePoint right, float progress)
         {
             List<Vector3> points = new List<Vector3>();
@@ -40,14 +42,10 @@ namespace LevelSelection
 
         public void GeneratePoints()
         {
-            if (GeneratedPoints != null) {
-                DestroyImmediate(GeneratedPoints.gameObject);
+            while (GeneratedPoints.transform.childCount > 0) {
+                DestroyImmediate(GeneratedPoints.transform.GetChild(0).gameObject);
             }
 
-            GeneratedPoints = new GameObject("GeneratedPoints").transform;
-            GeneratedPoints.SetParent(transform);
-
-            float startTime = Time.time;
             IEnumerable<Vector3> positions(BezierLinePoint left, BezierLinePoint right)
             {
                 float cur = 0;
