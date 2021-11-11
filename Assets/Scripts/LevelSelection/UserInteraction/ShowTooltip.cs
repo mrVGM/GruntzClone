@@ -18,16 +18,16 @@ namespace LevelSelection.UserInteraction
             }
 
             Site = unit.CurrentSite;
-            Tooltip.ShowStartLevelTooltip(Site, true);
+            Tooltip.ShowOnSiteTooltip(Site, true);
             while (!unit.IsWalking) {
                 yield return null;
             }
-            Tooltip.ShowStartLevelTooltip(Site, false);
+            Tooltip.ShowOnSiteTooltip(Site, false);
         }
 
         protected override IEnumerator<object> FinishCrt()
         {
-            Tooltip.ShowStartLevelTooltip(Site, false);
+            Tooltip.ShowOnSiteTooltip(Site, false);
             yield break;
         }
     }

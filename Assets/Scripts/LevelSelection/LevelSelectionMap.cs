@@ -63,7 +63,11 @@ namespace LevelSelection
                 Edges.Add(edge);
 
                 bridge.Lock.SetActive(true);
-                if (levelProgres.IsLevelUnlocked(leftSite.LevelDef) && levelProgres.IsLevelUnlocked(rightSite.LevelDef)) {
+                var leftLevelProvider = leftSite as ILevelProvider;
+                var rightLevelProvider = rightSite as ILevelProvider;
+
+                if ((leftLevelProvider == null || levelProgres.IsLevelUnlocked(leftLevelProvider.LevelDef)) 
+                    && (rightLevelProvider == null || levelProgres.IsLevelUnlocked(rightLevelProvider.LevelDef))) {
                     bridge.Lock.SetActive(false);
                 }
             }

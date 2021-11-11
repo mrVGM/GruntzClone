@@ -67,7 +67,13 @@ namespace LevelSelection
                 }
             }
 
-            var initialSite = Sites.FirstOrDefault(x => x.LevelDef == levelProgress.CurrentLevel);
+            var initialSite = Sites.FirstOrDefault(x => {
+                var levelProvider = x as ILevelProvider;
+                if (levelProvider == null) {
+                    return false;
+                }
+                return levelProvider.LevelDef == levelProgress.CurrentLevel;
+            });
             levelSelectionMap.InitMap(Sites, Bridges, Unit, initialSite);
         }
 

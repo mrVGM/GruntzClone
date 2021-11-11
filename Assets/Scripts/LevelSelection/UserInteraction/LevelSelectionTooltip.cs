@@ -40,6 +40,9 @@ namespace LevelSelection.UserInteraction
         {
             StopAllCoroutines();
             if (!visible) {
+                if (!gameObject.activeSelf) {
+                    return;
+                }
                 IEnumerator disableCrt()
                 {
                     yield return null;
@@ -51,16 +54,25 @@ namespace LevelSelection.UserInteraction
                 return;
             }
 
+            var levelProvider = site as ILevelProvider;
+            if (levelProvider == null) {
+                return;
+            }
+
+            var level = levelProvider.LevelDef;
             gameObject.SetActive(true);
-            LevelName.text = site.LevelDef.Name;
+            LevelName.text = level.Name;
             StartLevel.gameObject.SetActive(false);
             PlaceTooltip(site);
         }
 
-        public void ShowStartLevelTooltip(Site site, bool visible)
+        public void ShowOnSiteTooltip(Site site, bool visible)
         {
             StopAllCoroutines();
             if (!visible) {
+                if (!gameObject.activeSelf) {
+                    return;
+                }
                 IEnumerator disableCrt()
                 {
                     yield return null;
@@ -72,18 +84,24 @@ namespace LevelSelection.UserInteraction
                 return;
             }
 
+            var levelProvider = site as ILevelProvider;
+            if (levelProvider == null) {
+                return;
+            }
+            var level = levelProvider.LevelDef;
+
             gameObject.SetActive(true);
 
             var levelProgress = LevelProgressInfo.GetLevelProgressInfoFromContext();
-            levelProgress.CurrentLevel = site.LevelDef;
-            LevelName.text = site.LevelDef.Name;
+            levelProgress.CurrentLevel = level;
+            LevelName.text = level.Name;
             StartLevel.gameObject.SetActive(true);
             StartLevel.onClick.RemoveAllListeners();
 
             var game = Game.Instance;
             StartLevel.onClick.AddListener(() => {
                 game.SavesManager.CreateSave(FinishedLevelsSaveTagDef);
-                game.LoadLevel(site.LevelDef, () => { });
+                game.LoadLevel(level, () => { });
             });
 
             PlaceTooltip(site);

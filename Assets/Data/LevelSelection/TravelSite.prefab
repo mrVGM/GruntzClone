@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 5291085158196895463}
   - component: {fileID: -6488612593509476521}
   m_Layer: 0
-  m_Name: Site
+  m_Name: TravelSite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,12 +73,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6909605683976382342}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11bb2b33df10f744693582a909cc55ce, type: 3}
+  m_Script: {fileID: 11500000, guid: fc00af1ad73f5a4438696faaec69443d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipWorldPosition: {fileID: 2952258485361094128}
   TooltipRelativePos: 0
-  LevelDef: {fileID: 0}
 --- !u!95 &-6488612593509476521
 Animator:
   serializedVersion: 3

@@ -13,7 +13,6 @@ namespace LevelSelection
             BottomLeft
         }
 
-        public LevelDef LevelDef;
         public Transform TooltipWorldPosition;
         public TooltipPos TooltipRelativePos;
 
