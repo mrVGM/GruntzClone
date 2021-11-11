@@ -9,13 +9,12 @@ namespace LevelSelection
 {
     public class LevelSelection : MonoBehaviour
     {
-        public Transform BridgesContainer;
-        public Transform SitesContainer;
         public LevelSelectionMapUnit Unit;
         public TagDef FinishedLevelsSaveTagDef;
-
-        public IEnumerable<BezierLine> Bridges => BridgesContainer.GetComponentsInChildren<BezierLine>();
-        public IEnumerable<Site> Sites => SitesContainer.GetComponentsInChildren<Site>();
+        public Transform AreasContainer;
+        public IEnumerable<Area> Areas => AreasContainer.GetComponentsInChildren<Area>();
+        public IEnumerable<BezierLine> Bridges => Areas.SelectMany(x => x.Bridges);
+        public IEnumerable<Site> Sites => Areas.SelectMany(x => x.Sites);
 
         private List<ILock> _locks;
         public void LevelLoaded()
@@ -74,7 +73,7 @@ namespace LevelSelection
                 }
                 return levelProvider.LevelDef == levelProgress.CurrentLevel;
             });
-            levelSelectionMap.InitMap(Sites, Bridges, Unit, initialSite);
+            levelSelectionMap.InitMap(Areas, Unit, initialSite);
         }
 
         private void InitBridges()

@@ -37,7 +37,6 @@ namespace LevelSelection
 
         public List<Edge> Edges = new List<Edge>();
         public LevelSelectionMapUnit Unit;
-        public List<Area> Areas;
 
         public void DisposeObject()
         {
@@ -50,16 +49,13 @@ namespace LevelSelection
             return game.Context.GetRuntimeObject(levelSelectionMapDef) as LevelSelectionMap;
         }
 
-        public void InitMap(IEnumerable<Area> areas, LevelSelectionMapUnit unit, Site currentSite)
+        public void InitMap(IEnumerable<Site> sites, IEnumerable<BezierLine> bridges, LevelSelectionMapUnit unit, Site currentSite)
         {
-            Areas = areas.ToList();
             Unit = unit;
             Unit.CurrentSite = currentSite;
             Unit.transform.position = currentSite.transform.position;
 
             var levelProgres = LevelProgressInfo.GetLevelProgressInfoFromContext();
-            var bridges = areas.SelectMany(x => x.Bridges);
-            var sites = areas.SelectMany(x => x.Sites);
             foreach (var bridge in bridges) {
                 var leftSite = sites.FirstOrDefault(x => (x.transform.position - bridge.BezierLinePoints.FirstOrDefault().transform.position).sqrMagnitude < 0.1f);
                 var rightSite = sites.FirstOrDefault(x => (x.transform.position - bridge.BezierLinePoints.LastOrDefault().transform.position).sqrMagnitude < 0.1f);
@@ -67,25 +63,12 @@ namespace LevelSelection
                 Edges.Add(edge);
 
                 bridge.Lock.SetActive(true);
+                var leftLevelProvider = leftSite as ILevelProvider;
+                var rightLevelProvider = rightSite as ILevelProvider;
 
-                IEnumerable<Site> bridgeEnds()
-                {
-                    yield return leftSite;
-                    yield return rightSite;
-                }
-
-                if (bridgeEnds().All(x => x is ILevelProvider)) {
-                    var levelProviders = bridgeEnds().Select(x => x as ILevelProvider);
-                    if (levelProviders.All(x => levelProgres.IsLevelUnlocked(x.LevelDef))) {
-                        bridge.Lock.SetActive(false);
-                    }
-                }
-
-                if (bridgeEnds().Any(x => x is ITravelPoint)) {
-                    var levelProvider = bridgeEnds().OfType<ILevelProvider>().FirstOrDefault();
-                    if (levelProvider != null && levelProgres.FinishedLevels.Contains(levelProvider.LevelDef)) {
-                        bridge.Lock.SetActive(false);
-                    }
+                if ((leftLevelProvider == null || levelProgres.IsLevelUnlocked(leftLevelProvider.LevelDef)) 
+                    && (rightLevelProvider == null || levelProgres.IsLevelUnlocked(rightLevelProvider.LevelDef))) {
+                    bridge.Lock.SetActive(false);
                 }
             }
         }

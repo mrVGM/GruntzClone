@@ -1,6 +1,7 @@
 using Base;
 using LevelResults;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,8 @@ namespace LevelSelection.UserInteraction
         public Text LevelName;
         public Button StartLevel;
         public TagDef FinishedLevelsSaveTagDef;
+        public GameObject AreaButtonsContainer;
+        public Button AreaButtonTemplate;
 
         private void PlaceTooltip(Site site)
         {
@@ -38,6 +41,7 @@ namespace LevelSelection.UserInteraction
 
         public void ShowHoverTooltip(Site site, bool visible)
         {
+            AreaButtonsContainer.SetActive(false);
             StopAllCoroutines();
             if (!visible) {
                 if (!gameObject.activeSelf) {
@@ -58,6 +62,9 @@ namespace LevelSelection.UserInteraction
             if (levelProvider == null) {
                 return;
             }
+
+            LevelName.gameObject.SetActive(true);
+            StartLevel.gameObject.SetActive(true);
 
             var level = levelProvider.LevelDef;
             gameObject.SetActive(true);
@@ -68,6 +75,7 @@ namespace LevelSelection.UserInteraction
 
         public void ShowOnSiteTooltip(Site site, bool visible)
         {
+            AreaButtonsContainer.SetActive(false);
             StopAllCoroutines();
             if (!visible) {
                 if (!gameObject.activeSelf) {
@@ -84,13 +92,15 @@ namespace LevelSelection.UserInteraction
                 return;
             }
 
+            gameObject.SetActive(true);
+            LevelName.gameObject.SetActive(true);
             var levelProvider = site as ILevelProvider;
             if (levelProvider == null) {
+                ShowAreas();
+                PlaceTooltip(site);
                 return;
             }
             var level = levelProvider.LevelDef;
-
-            gameObject.SetActive(true);
 
             var levelProgress = LevelProgressInfo.GetLevelProgressInfoFromContext();
             levelProgress.CurrentLevel = level;
@@ -105,6 +115,37 @@ namespace LevelSelection.UserInteraction
             });
 
             PlaceTooltip(site);
+        }
+
+        public void ShowAreas()
+        {
+            var levelSelectionMap = LevelSelectionMap.GetLevelSelectionMapFromContext();
+            var levelProgress = LevelProgressInfo.GetLevelProgressInfoFromContext();
+
+            var activeAreas = levelSelectionMap.Areas.Where(x => {
+                var levelProviderSites = x.Sites.OfType<ILevelProvider>();
+                return levelProviderSites.Any(y => levelProgress.IsLevelUnlocked(y.LevelDef));
+            });
+
+            StartLevel.gameObject.SetActive(false);
+            LevelName.gameObject.SetActive(false);
+
+            AreaButtonsContainer.SetActive(true);
+            int index = 0;
+            foreach (var area in activeAreas) {
+                while (index >= AreaButtonsContainer.transform.childCount) {
+                    Instantiate(AreaButtonTemplate, AreaButtonsContainer.transform);
+                }
+
+                var button = AreaButtonsContainer.transform.GetChild(index++).GetComponent<Button>();
+                var text = button.GetComponentInChildren<Text>();
+                text.text = area.Label;
+                button.gameObject.SetActive(true);
+            }
+
+            for (int i = index; i < AreaButtonsContainer.transform.childCount; ++i) {
+                AreaButtonsContainer.transform.GetChild(i).gameObject.SetActive(false);
+            }
         }
     }
 }

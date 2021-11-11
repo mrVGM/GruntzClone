@@ -32,14 +32,14 @@ namespace LevelSelection.UserInteraction
             context.PutItem(HoveredSite, null);
 
             var site = getPointedSite();
-            while (site == null) {
+            while (site == null || site == unit.CurrentSite) {
                 yield return null;
                 site = getPointedSite();
             }
 
             float startTime = Time.time;
             while (Time.time - startTime < Delay) {
-                if (site != getPointedSite()) {
+                if (site != getPointedSite() || site == unit.CurrentSite) {
                     yield break;
                 }
                 yield return null;

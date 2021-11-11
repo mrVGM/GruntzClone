@@ -28,13 +28,16 @@ namespace LevelSelection.UserInteraction
                 return site;
             }
 
+            var levelSelectionMap = LevelSelectionMap.GetLevelSelectionMapFromContext();
+            var unit = levelSelectionMap.Unit;
+
             var site = context.GetItem(HoveredSite) as Site;
             if (site == null) {
                 yield break;
             }
 
             Tooltip.ShowHoverTooltip(site, true);
-            while (site == getPointedSite()) {
+            while (site == getPointedSite() && unit.CurrentSite != site) {
                 yield return null;
             }
             Tooltip.ShowHoverTooltip(site, false);
