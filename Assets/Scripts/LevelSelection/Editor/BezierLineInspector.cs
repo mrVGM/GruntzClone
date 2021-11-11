@@ -22,6 +22,10 @@ namespace LevelSelection
             if (GUILayout.Button("Toggle Handles")) {
                 var renderers = bezierLine.GetComponentsInChildren<Renderer>();
                 foreach (var rend in renderers) {
+                    var bezierPoint = rend.GetComponentInParent<BezierLinePoint>();
+                    if (bezierPoint == null) {
+                        continue;
+                    }
                     rend.enabled = !rend.enabled;
                 }
                 EditorSceneManager.MarkAllScenesDirty();
