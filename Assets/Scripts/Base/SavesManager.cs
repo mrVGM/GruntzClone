@@ -10,7 +10,7 @@ namespace Base
     [Serializable]
     public class SavesManager : MonoBehaviour
     {
-#if UNITY_WEBGL
+#if UNITY_WEBGL && !UNITY_EDITOR
         [System.Runtime.InteropServices.DllImport("__Internal")]
         private static extern void SyncDB();
 #endif
@@ -97,7 +97,7 @@ namespace Base
                         binaryFormatter.Serialize(fileStream, save);
                     }
                 }
-#if UNITY_WEBGL
+#if UNITY_WEBGL && !UNITY_EDITOR
                 SyncDB();
 #endif
             }
