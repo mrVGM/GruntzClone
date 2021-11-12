@@ -72,7 +72,6 @@ namespace Base
         {
             var files = Directory.GetFiles(Application.persistentDataPath).Where(x => x.EndsWith(".gruntzsave"));
             foreach (var path in files) {
-                Debug.Log(path);
                 using (var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read)) {
                     var binaryFormatter = new BinaryFormatter();
                     var save = binaryFormatter.Deserialize(fileStream) as Save;

@@ -6,16 +6,16 @@ namespace Gruntz
 {
     public class MenuLevel : MonoBehaviour
     {
-        public LevelDef PuzzleLevelDef;
+        public LevelDef LevelSelectionDef;
         public TagDef LevelProgress;
 
-        public void LoadPuzzleLevel()
+        public void LoadLevelSelection()
         {
             var game = Game.Instance;
             var save = game.SavesManager.Saves.FirstOrDefault(x => x.Tag == LevelProgress);
 
             if (save == null) {
-                game.LoadLevel(PuzzleLevelDef, () => { });
+                game.LoadLevel(LevelSelectionDef, () => { });
                 return;
             }
 
