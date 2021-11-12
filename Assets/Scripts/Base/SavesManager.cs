@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Base
@@ -10,15 +11,18 @@ namespace Base
     [Serializable]
     public class SavesManager : MonoBehaviour
     {
+        [Serializable]
         public class Save
         {
             public string SaveName;
-            public TagDef SaveTag;
+            public DefRef<TagDef> Tag;
+            public TagDef SaveTag => Tag;
             public byte[] SavedGame;
         }
 
         private List<Save> _saves = new List<Save>();
         public IEnumerable<Save> Saves => _saves;
+        private bool _flushRequested = false;
 
         public void CreateSave(TagDef tag)
         {
@@ -35,12 +39,13 @@ namespace Base
                 binaryFormatter.Serialize(memSteam, savedGame);
                 var save = new Save
                 {
-                    SaveName = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"),
-                    SaveTag = tag,
+                    SaveName = DateTime.Now.ToString($"{tag.name}.gruntzsave"),
+                    Tag = tag.ToDefRef<TagDef>(),
                     SavedGame = memSteam.GetBuffer(),
                 };
                 _saves.Add(save);
             }
+            _flushRequested = true;
         }
 
         public void LoadSave(Save save, Action onLoaded)
@@ -57,6 +62,49 @@ namespace Base
                     onLoaded();
                 });
             }
+        }
+
+        public void RetrieveSaves()
+        {
+            var files = Directory.GetFiles(Application.persistentDataPath).Where(x => x.EndsWith(".gruntzsave"));
+            foreach (var path in files) {
+                Debug.Log(path);
+                using (var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read)) {
+                    var binaryFormatter = new BinaryFormatter();
+                    var save = binaryFormatter.Deserialize(fileStream) as Save;
+                    _saves.Add(save);
+                }
+            }
+        }
+
+        private IEnumerator<object> FlushSavesCrt()
+        {
+            string persistentDataPath = Application.persistentDataPath;
+            while (true) {
+                while (!_flushRequested) {
+                    yield return null;
+                }
+                _flushRequested = false;
+
+                var task = Task.Run(() => {
+                    int index = 0;
+                    foreach (var save in Saves) {
+                        var path = Path.Combine(persistentDataPath, $"{index++}.gruntzsave");
+                        using (var fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write)) {
+                            var binaryFormatter = new BinaryFormatter();
+                            binaryFormatter.Serialize(fileStream, save);
+                        }
+                    }
+                });
+                
+                while (!task.IsCompleted) {
+                    yield return false;
+                }
+            }
+        }
+        private void Awake()
+        {
+            StartCoroutine(FlushSavesCrt());
         }
     }
 }

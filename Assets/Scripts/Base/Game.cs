@@ -22,6 +22,7 @@ namespace Base
         void Awake()
         {
             Instance = this;
+            SavesManager.RetrieveSaves();
             var initialLevel = DefRepositoryDef.AllDefs.OfType<InitialLevelDef>().FirstOrDefault();
             LoadLevel(initialLevel, () => { });
         }

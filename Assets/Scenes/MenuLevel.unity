@@ -346,6 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleLevelDef: {fileID: 11400000, guid: 42b366b763f06a448aed4f467de8ff58, type: 2}
+  LevelProgress: {fileID: 11400000, guid: 9d427a5a623ab2345b5cf65fc1685ea7, type: 2}
 --- !u!1 &1875546965
 GameObject:
   m_ObjectHideFlags: 0
