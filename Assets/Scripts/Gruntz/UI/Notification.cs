@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -105,9 +106,9 @@ namespace Gruntz.UI
             Next.gameObject.SetActive(true);
             selected.onClick.Invoke();
         }
-        IEnumerator PlayVideo(VideoClip clip)
+        IEnumerator PlayVideo(string videoName)
         {
-            VideoPlayer.clip = clip;
+            VideoPlayer.url = Path.Combine(Application.streamingAssetsPath, videoName);
             VideoPlayer.Prepare();
             while (!VideoPlayer.isPrepared) {
                 yield return null;
@@ -116,16 +117,16 @@ namespace Gruntz.UI
             VideoPlayer.Play();
         }
 
-        public void Show(string text, VideoClip video)
+        public void Show(string text, string videoName)
         {
             StopAllCoroutines();
             Text.text = text;
             VideoScreen.SetActive(false);
             gameObject.SetActive(true);
 
-            if (video != null) {
+            if (!string.IsNullOrEmpty(videoName)) {
                 VideoScreen.SetActive(true);
-                StartCoroutine(PlayVideo(video));
+                StartCoroutine(PlayVideo(videoName));
             }
             DoPaging();
         }

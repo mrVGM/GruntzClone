@@ -14,7 +14,7 @@ namespace Gruntz.TriggerBox
         public class Notification
         {
             public string NotificationText;
-            public VideoClip Video;
+            public string VideoName;
         }
 
         public MessagesBoxTagDef MessagesBox;
@@ -52,7 +52,7 @@ namespace Gruntz.TriggerBox
                 ownActor,
                 new Notification { 
                     NotificationText = notification.Description,
-                    Video = notification.Video
+                    VideoName = notification.VideoName
                 });
 
             var switchComponent = ownActor.GetComponent<SwitchState.SwitchStateComponent>();

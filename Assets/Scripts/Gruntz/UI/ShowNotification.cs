@@ -11,7 +11,7 @@ namespace Gruntz.UI
         protected override IEnumerator<object> Crt()
         {
             var notificationText = context.GetItem(NotificationMessagesTagDef) as TriggerShowNotificationActionDef.Notification;
-            Notification.Show(notificationText.NotificationText, notificationText.Video);
+            Notification.Show(notificationText.NotificationText, notificationText.VideoName);
             while (true) {
                 yield return true;
             }

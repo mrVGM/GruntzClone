@@ -16,7 +16,7 @@ namespace Gruntz.UI
             public ItemDef Item;
             [TextArea]
             public string Description;
-            public VideoClip Video;
+            public string VideoName;
         }
 
         public Notification[] Notifications;
