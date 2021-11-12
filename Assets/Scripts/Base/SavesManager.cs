@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Base
@@ -11,6 +10,11 @@ namespace Base
     [Serializable]
     public class SavesManager : MonoBehaviour
     {
+#if UNITY_WEBGL
+        [System.Runtime.InteropServices.DllImport("__Internal")]
+        private static extern void SyncDB();
+#endif
+
         [Serializable]
         public class Save
         {
@@ -86,20 +90,17 @@ namespace Base
                 }
                 _flushRequested = false;
 
-                var task = Task.Run(() => {
-                    int index = 0;
-                    foreach (var save in Saves) {
-                        var path = Path.Combine(persistentDataPath, $"{index++}.gruntzsave");
-                        using (var fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write)) {
-                            var binaryFormatter = new BinaryFormatter();
-                            binaryFormatter.Serialize(fileStream, save);
-                        }
+                int index = 0;
+                foreach (var save in Saves) {
+                    var path = Path.Combine(persistentDataPath, $"{index++}.gruntzsave");
+                    using (var fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write)) {
+                        var binaryFormatter = new BinaryFormatter();
+                        binaryFormatter.Serialize(fileStream, save);
                     }
-                });
-                
-                while (!task.IsCompleted) {
-                    yield return false;
                 }
+#if UNITY_WEBGL
+                SyncDB();
+#endif
             }
         }
         private void Awake()
