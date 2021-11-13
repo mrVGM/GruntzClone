@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HitWithBroomDef
   m_EditorClassIdentifier: 
   Cooldown: 3
-  Animation: {fileID: 7400000, guid: b31e2f1c674e56f4c9d997f787862ebc, type: 2}
+  Animation: {fileID: 7400000, guid: e62d87a8324ccf941b79edf480efcc88, type: 2}
   AnimationEventMessages: {fileID: 11400000, guid: ebcb4d3cc41eeec4d9bc05ee2537cc6f, type: 2}
   TargetActorStatuses: []
   Damage: 20
