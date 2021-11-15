@@ -15,6 +15,13 @@ namespace Utils
             var allOfInterest = allDefs.OfType<T>();
             return allOfInterest;
         }
+
+        public static IEnumerable<GameObject> GetAllPrefabs()
+        {
+            var allPrefabPaths = AssetDatabase.FindAssets("t:Prefab").Select(x => AssetDatabase.GUIDToAssetPath(x));
+            var allPrefabs = allPrefabPaths.Select(x => AssetDatabase.LoadAssetAtPath<GameObject>(x));
+            return allPrefabs;
+        }
     }
 }
 #endif

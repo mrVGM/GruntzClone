@@ -214,12 +214,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3f604273e8d6b468e643a08b209dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Def: {fileID: 11400000, guid: 77d1fcc5f9793ba4e94ab836a3252e68, type: 2}
   Animator: {fileID: 1384994260417553694}
   StatusMaterialMap:
   - Status: {fileID: 11400000, guid: 2d41d93c329fb4a4788a91ec1db5e535, type: 2}
     State: 0
+    Clip: {fileID: 7400000, guid: c8f67a884d844a749b7612c5a5bf2783, type: 2}
   - Status: {fileID: 11400000, guid: 0d95ff48b95258046be3185fc3333684, type: 2}
     State: 1
+    Clip: {fileID: 7400000, guid: cf44d9630065b2540ae92fd934bd9975, type: 2}
 --- !u!95 &1384994260417553694
 Animator:
   serializedVersion: 3
@@ -230,7 +233,7 @@ Animator:
   m_GameObject: {fileID: 1208721304552655344}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 057f816b82031b74182a91649d4856ac, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
