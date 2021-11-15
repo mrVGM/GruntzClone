@@ -19,7 +19,8 @@ namespace LevelSelection.UserInteraction
 
             Site = unit.CurrentSite;
             Tooltip.ShowOnSiteTooltip(Site, true);
-            while (!unit.IsWalking) {
+
+            while (!unit.IsWalking && unit.CurrentSite == Site) {
                 yield return null;
             }
             Tooltip.ShowOnSiteTooltip(Site, false);

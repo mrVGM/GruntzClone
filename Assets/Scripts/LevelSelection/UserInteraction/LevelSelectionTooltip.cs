@@ -126,6 +126,10 @@ namespace LevelSelection.UserInteraction
                 var levelProviderSites = x.Sites.OfType<ILevelProvider>();
                 return levelProviderSites.Any(y => levelProgress.IsLevelUnlocked(y.LevelDef));
             });
+            var currentArea = levelSelectionMap.Areas.FirstOrDefault(x => {
+                var currentSite = levelSelectionMap.Unit.CurrentSite;
+                return x.Sites.Contains(currentSite);
+            });
 
             StartLevel.gameObject.SetActive(false);
             LevelName.gameObject.SetActive(false);
@@ -133,6 +137,10 @@ namespace LevelSelection.UserInteraction
             AreaButtonsContainer.SetActive(true);
             int index = 0;
             foreach (var area in activeAreas) {
+                if (area == currentArea) {
+                    continue;
+                }
+
                 while (index >= AreaButtonsContainer.transform.childCount) {
                     Instantiate(AreaButtonTemplate, AreaButtonsContainer.transform);
                 }
@@ -140,6 +148,10 @@ namespace LevelSelection.UserInteraction
                 var button = AreaButtonsContainer.transform.GetChild(index++).GetComponent<Button>();
                 var text = button.GetComponentInChildren<Text>();
                 text.text = area.Label;
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(() => {
+                    levelSelectionMap.TeleportToArea(area);
+                });
                 button.gameObject.SetActive(true);
             }
 

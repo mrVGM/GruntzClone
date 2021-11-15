@@ -16,9 +16,16 @@ namespace LevelSelection
         }
 
         public float Speed = 1;
-        public Site CurrentSite;
 
         private Site _targetSite;
+        private Neighbour _currentCrossing = null;
+        private Queue<Neighbour> _currentPath = new Queue<Neighbour>();
+        IEnumerator<WalkInfo> _walk = null;
+        private WalkInfo _curWalkInfo;
+
+        public bool IsWalking => _curWalkInfo.Walking;
+        public Site CurrentSite { get; private set; }
+
         public Site TargetSite
         {
             set
@@ -89,13 +96,6 @@ namespace LevelSelection
             }
         }
 
-        private Neighbour _currentCrossing = null;
-        private Queue<Neighbour> _currentPath = new Queue<Neighbour>();
-        public bool IsWalking => _curWalkInfo.Walking;
-
-        IEnumerator<WalkInfo> _walk = null;
-
-        private WalkInfo _curWalkInfo;
         private void UpdatePos()
         {
             if (_walk == null) {
@@ -145,8 +145,16 @@ namespace LevelSelection
             else {
                 animator.SetInteger("State", 0);
             }
+        }
 
-            var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
+        public void TeleportTo(Site site)
+        {
+            transform.position = site.transform.position;
+            CurrentSite = site;
+            TargetSite = site;
+            _currentCrossing = null;
+            _currentPath.Clear();
+            _currentCrossing = null;
         }
     }
 }

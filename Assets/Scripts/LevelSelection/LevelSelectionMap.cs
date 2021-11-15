@@ -38,6 +38,7 @@ namespace LevelSelection
         public List<Edge> Edges = new List<Edge>();
         public LevelSelectionMapUnit Unit;
         public List<Area> Areas;
+        public Area CurArea { get; set; }
 
         public void DisposeObject()
         {
@@ -54,12 +55,13 @@ namespace LevelSelection
         {
             Areas = areas.ToList();
             Unit = unit;
-            Unit.CurrentSite = currentSite;
-            Unit.transform.position = currentSite.transform.position;
+            var curArea = Areas.FirstOrDefault(x => x.Sites.Contains(currentSite));
+            TeleportToArea(curArea);
+            Unit.TeleportTo(currentSite);
 
             var levelProgres = LevelProgressInfo.GetLevelProgressInfoFromContext();
-            var bridges = areas.SelectMany(x => x.Bridges);
-            var sites = areas.SelectMany(x => x.Sites);
+            var bridges = Areas.SelectMany(x => x.Bridges);
+            var sites = Areas.SelectMany(x => x.Sites);
             foreach (var bridge in bridges) {
                 var leftSite = sites.FirstOrDefault(x => (x.transform.position - bridge.BezierLinePoints.FirstOrDefault().transform.position).sqrMagnitude < 0.1f);
                 var rightSite = sites.FirstOrDefault(x => (x.transform.position - bridge.BezierLinePoints.LastOrDefault().transform.position).sqrMagnitude < 0.1f);
@@ -81,10 +83,17 @@ namespace LevelSelection
                     }
                 }
 
-                if (bridgeEnds().Any(x => x is ITravelPoint)) {
-                    var levelProvider = bridgeEnds().OfType<ILevelProvider>().FirstOrDefault();
-                    if (levelProvider != null && levelProgres.FinishedLevels.Contains(levelProvider.LevelDef)) {
+                var travelPoint = bridgeEnds().FirstOrDefault(x => x is ITravelPoint);
+                if (travelPoint != null) {
+                    var area = Areas.FirstOrDefault(x => x.Sites.Contains(travelPoint));
+                    if (area.InitialSite == travelPoint) {
                         bridge.Lock.SetActive(false);
+                    }
+                    else {
+                        var levelProvider = bridgeEnds().OfType<ILevelProvider>().FirstOrDefault();
+                        if (levelProvider != null && levelProgres.FinishedLevels.Contains(levelProvider.LevelDef)) {
+                            bridge.Lock.SetActive(false);
+                        }
                     }
                 }
             }
@@ -150,6 +159,19 @@ namespace LevelSelection
                 }
             }
             return Enumerable.Empty<Neighbour>();
+        }
+
+        public void TeleportToArea(Area area)
+        {
+            foreach (var cur in Areas) {
+                var cam = cur.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>();
+                cam.Priority = 1;
+            }
+            var curCam = area.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>();
+            curCam.Priority = 10;
+
+            Unit.TeleportTo(area.InitialSite);
+            CurArea = area;
         }
     }
 }
