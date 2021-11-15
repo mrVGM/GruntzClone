@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 469478a6da8a5f44d9b8c17983ef50ee, type: 3}
-  m_Name: BridgeSwitchTriggerBoxComponentDef
+  m_Script: {fileID: 11500000, guid: 8a9588a205dec2948b96656ccd4535af, type: 3}
+  m_Name: BridgeTileStatusComponentDef
   m_EditorClassIdentifier: 
-  TriggerBoxActionDef: {fileID: 11400000, guid: a2a90f9c44311944bb91f5cfbe1c35c2, type: 2}
+  InitialStatuses: []

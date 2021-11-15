@@ -435,3 +435,17 @@ MonoBehaviour:
     Guid: 6755fbfc-c74f-4ad2-84d1-d9da3f473b55
   - Def: {fileID: 11400000, guid: 1534219e826455c4f981fcbd8b8eace3, type: 2}
     Guid: 7790d092-dff8-4cf1-a0b2-c6d44e30f737
+  - Def: {fileID: 11400000, guid: 37006cfebb73c9648982e3fac28bb517, type: 2}
+    Guid: 5b8fb453-5416-491c-9132-cd20cd1e3e52
+  - Def: {fileID: 11400000, guid: b14e352ea6d448d48809ce5a631da9e5, type: 2}
+    Guid: 84b6cff7-ac59-4341-9eec-a29954b9ffab
+  - Def: {fileID: 11400000, guid: 3e18c243024ed2c46b25e6b8661e1775, type: 2}
+    Guid: 81c587ef-8a17-4094-adc8-67418b709273
+  - Def: {fileID: 11400000, guid: 7310888013aee7144b07945af1b2a518, type: 2}
+    Guid: c1997da1-f926-4082-84d5-17051c8b1103
+  - Def: {fileID: 11400000, guid: 21d084e1c7867d046824506a7f0e9530, type: 2}
+    Guid: eebab258-9458-4b76-8321-437c1ce29901
+  - Def: {fileID: 11400000, guid: db0bbd5810ec87e4fbeb517c2c1058e2, type: 2}
+    Guid: 0a583398-f113-444d-8e3f-048ae93eeb27
+  - Def: {fileID: 11400000, guid: ac3656617ba15ee469c41d0dffcdbd1b, type: 2}
+    Guid: 4b68fd68-60cf-4cf0-81a1-6818f0756cf3

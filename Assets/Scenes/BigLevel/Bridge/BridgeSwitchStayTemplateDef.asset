@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c648027e19b0c3f42b708482fbb9ca0a, type: 3}
-  m_Name: BridgeSwitchTemplateDef
+  m_Name: BridgeSwitchStayTemplateDef
   m_EditorClassIdentifier: 
   ParentTemplate: {fileID: 0}
   ActorDef: {fileID: 0}
