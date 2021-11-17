@@ -34,18 +34,18 @@ namespace Gruntz.UI
             }
 
             while (true) {
-                var viewportPosition = cam.ScreenToViewportPoint(Input.mousePosition);
+                var screenPos = Input.mousePosition;
                 Vector3 dir = Vector3.zero;
-                if (viewportPosition.x < 0) {
+                if (screenPos.x < 1) {
                     dir += Vector3.left;
                 }
-                if (viewportPosition.x > 1) {
+                if (screenPos.x > Screen.width - 2) {
                     dir += Vector3.right;
                 }
-                if (viewportPosition.y < 0) {
+                if (screenPos.y < 1) {
                     dir += Vector3.back;
                 }
-                if (viewportPosition.y > 1) {
+                if (screenPos.y > Screen.height - 2) {
                     dir += Vector3.forward;
                 }
 
