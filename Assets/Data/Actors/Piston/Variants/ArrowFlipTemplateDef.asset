@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c648027e19b0c3f42b708482fbb9ca0a, type: 3}
-  m_Name: ArrowTemplateDef
+  m_Name: ArrowFlipTemplateDef
   m_EditorClassIdentifier: 
-  ParentTemplate: {fileID: 0}
+  ParentTemplate: {fileID: 11400000, guid: 71abc06190ab2fe409b95dd289fdeb97, type: 2}
   ActorDef: {fileID: 0}
   ActorComponents:
-  - {fileID: 11400000, guid: 51d9263308099864ca0350efa650ada4, type: 2}
-  - {fileID: 11400000, guid: 1c7599c81566495c9b31f9ffba008b12, type: 2}
+  - {fileID: 11400000, guid: ee54d62a3e7e8a04ba3ae168c833f403, type: 2}
   Statuses: []
   Weapon: {fileID: 0}
   SpecialItem: {fileID: 0}
