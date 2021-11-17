@@ -21,8 +21,7 @@ namespace Gruntz.UI.ActorControl
         protected override IEnumerator<object> Crt()
         {
             var selected = context.GetItem(SelectedActorsTag) as IEnumerable<Actor>;
-            if (selected == null || selected.Count() != 1)
-            {
+            if (selected == null || selected.Count() != 1) {
                 yield break;
             }
 
@@ -38,6 +37,10 @@ namespace Gruntz.UI.ActorControl
 
             var game = Game.Instance;
 
+            while (Input.GetAxis("Ability") > 0) {
+                yield return null;
+            }
+
             while (Input.GetAxis("Ability") <= 0) {
                 yield return null;
             }
@@ -47,11 +50,15 @@ namespace Gruntz.UI.ActorControl
 
             var ability = abilitiesComponent.GetMainAbility();
             var targetActor = getTargetActor();
+            
+            while (Input.GetAxis("Ability") > 0) {
+                yield return null;
+            }
+            if (targetActor != getTargetActor()) {
+                yield break;
+            }
 
             if (targetActor == null || !abilitiesComponent.CanExecuteOn(ability, targetActor)) {
-                while (Input.GetAxis("Ability") > 0) {
-                    yield return null;
-                }
                 yield break;
             }
 
@@ -65,10 +72,6 @@ namespace Gruntz.UI.ActorControl
                     Unit = selectedActor,
                     Executable = instruction 
                 });
-
-            while (Input.GetAxis("Ability") > 0) {
-                yield return null;
-            }
         }
 
         protected override IEnumerator<object> FinishCrt()
