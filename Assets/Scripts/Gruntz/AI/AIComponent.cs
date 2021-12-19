@@ -2,6 +2,7 @@ using Base;
 using Base.Actors;
 using Base.MessagesSystem;
 using Base.Status;
+using Gruntz.Statuses;
 using Gruntz.UnitController;
 using Gruntz.UnitController.Instructions;
 using System.Collections.Generic;
@@ -14,6 +15,42 @@ namespace Gruntz.AI
     {
         public AIComponentDef AIComponentDef { get; }
         public Actor Actor { get; }
+        public AIScriptsBehaviour AIScriptsBehaviour;
+        public ActorProxy AIController;
+        public Actor OwnerAIController
+        {
+            get
+            {
+                var statusComponent = Actor.GetComponent<StatusComponent>();
+                var sceneIDStatus = statusComponent.GetStatus(AIComponentDef.AIControllerSceneIDStatusDef);
+                if (sceneIDStatus == null) {
+                    if (AIController != null) {
+                        var owner = AIController.Actor;
+                        var ownerID = owner.GetComponent<SceneIDComponent>();
+
+                        var statusDef = AIComponentDef.AIControllerSceneIDStatusDef;
+                        var statusData = statusDef.Data as SceneIDStatusData;
+                        statusData.SceneID = ownerID.ID;
+                        statusComponent.AddStatus(statusData.CreateStatus());
+                    }
+                    sceneIDStatus = statusComponent.GetStatus(AIComponentDef.AIControllerSceneIDStatusDef);
+                }
+
+                if (sceneIDStatus == null) {
+                    return null;
+                }
+
+                var actorManager = ActorManager.GetActorManagerFromContext();
+                return actorManager.Actors.FirstOrDefault(x => {
+                    var sceneIDComponent = x.GetComponent<SceneIDComponent>();
+                    if (sceneIDComponent == null) {
+                        return false;
+                    }
+
+                    return sceneIDComponent.ID == (sceneIDStatus.StatusData as SceneIDStatusData).SceneID;
+                });
+            }
+        }
 
         private IEnumerator<object> _crt { get; }
 
@@ -33,7 +70,7 @@ namespace Gruntz.AI
         {
             AIComponentDef = aiComponentDef;
             Actor = actor;
-            _crt = UpdateCrt();
+            _crt = UpdateCrtBasic();
         }
         public void DeInit()
         {
@@ -54,7 +91,7 @@ namespace Gruntz.AI
             _crt.MoveNext();
         }
 
-        private IEnumerator<object> UpdateCrt()
+        private IEnumerator<object> UpdateCrtBasic()
         {
             var game = Game.Instance;
             var random = game.Random;
@@ -105,6 +142,11 @@ namespace Gruntz.AI
 
             IEnumerator<object> intervalUpdate()
             {
+                if (OwnerAIController != null) {
+                    var scriptsAIComponent = OwnerAIController.GetComponent<AIScriptsComponent>();
+                    scriptsAIComponent.ExecuteScriptsInitFunction();
+                }
+
                 while (true) {
                     if (Time.time - lastUpdate < AIComponentDef.UpdateInterval) {
                         yield return null;
@@ -118,8 +160,13 @@ namespace Gruntz.AI
                         continue;
                     }
 
-
-                    update();
+                    if (OwnerAIController != null) {
+                        var scriptsAIComponent = OwnerAIController.GetComponent<AIScriptsComponent>();
+                        scriptsAIComponent.ExecuteScriptsUpdateFunction(Actor);
+                    }
+                    else {
+                        update();
+                    }
                     lastUpdate = Time.time;
                     yield return null;
                 }

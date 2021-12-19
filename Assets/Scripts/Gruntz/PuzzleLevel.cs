@@ -2,6 +2,7 @@ using Base;
 using Base.Actors;
 using Base.Navigation;
 using Gruntz.Actors;
+using Gruntz.AI;
 using Gruntz.Team;
 using System.Collections.Generic;
 using System.IO;
@@ -90,6 +91,13 @@ namespace Gruntz
                 if (team != null) {
                     var teamComponent = actor.GetComponent<TeamComponent>();
                     teamComponent.UnitTeam = team.Team;
+                }
+                var aiController = deployPoint.GetComponent<DeployPointAIController>();
+                if (aiController != null) {
+                    var aiComponent = actor.GetComponent<AIComponent>();
+                    if (aiComponent != null) {
+                        aiComponent.AIController = aiController.AIControllerActorProxy;
+                    }
                 }
                 return actor;
             };

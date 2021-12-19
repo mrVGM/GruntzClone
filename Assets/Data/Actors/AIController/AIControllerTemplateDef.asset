@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c648027e19b0c3f42b708482fbb9ca0a, type: 3}
+  m_Name: AIControllerTemplateDef
+  m_EditorClassIdentifier: 
+  ParentTemplate: {fileID: 0}
+  ActorDef: {fileID: 0}
+  ActorComponents:
+  - {fileID: 11400000, guid: 3003de3abb6ea1641928243f178bbd8e, type: 2}
+  - {fileID: 11400000, guid: a9b06166f35a36d42957f6505e669d40, type: 2}
+  Statuses: []
+  Weapon: {fileID: 0}
+  SpecialItem: {fileID: 0}

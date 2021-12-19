@@ -8,6 +8,8 @@ namespace Base.Actors
         {
         }
 
+        public string ID => _sceneIDdata.ID;
+
         public ISerializedObjectData Data
         {
             get => _sceneIDdata;

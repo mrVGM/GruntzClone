@@ -11,7 +11,7 @@ namespace Base.Actors
             if (sceneIDs != null)
             {
                 var sceneID = sceneIDs.SceneObjectIDs.FirstOrDefault(x => x.GameObject == actor.ActorComponent.gameObject);
-                comp.Data = new SceneIDComponentData { ID= sceneID.ID };
+                comp.Data = new SceneIDComponentData { ID = sceneID.ID };
             }
             return comp;
         }

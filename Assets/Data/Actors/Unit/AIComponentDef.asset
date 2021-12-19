@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c847a44f3c60bc14daa7a98593cb4b75, type: 3}
   m_Name: AIComponentDef
   m_EditorClassIdentifier: 
+  AIControllerSceneIDStatusDef: {fileID: 11400000, guid: ccd23f3d2e7ec2c449ce981bfa377857, type: 2}
   RegularActorStatusDef: {fileID: 11400000, guid: ef6970aceacb01e458f6d9697d1190df, type: 2}
   MessagesBox: {fileID: 11400000, guid: 2345e1da218ac4c4f8843a775122f559, type: 2}
   UpdateInterval: 0.5
