@@ -5,6 +5,7 @@ using Base.Status;
 using Gruntz.Statuses;
 using Gruntz.UnitController;
 using Gruntz.UnitController.Instructions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace Gruntz.AI
     {
         public AIComponentDef AIComponentDef { get; }
         public Actor Actor { get; }
-        public AIScriptsBehaviour AIScriptsBehaviour;
+        public AIBehaviourRoot AIScriptsBehaviour;
         public ActorProxy AIController;
         public Actor OwnerAIController
         {
@@ -143,8 +144,7 @@ namespace Gruntz.AI
             IEnumerator<object> intervalUpdate()
             {
                 if (OwnerAIController != null) {
-                    var scriptsAIComponent = OwnerAIController.GetComponent<AIScriptsComponent>();
-                    scriptsAIComponent.ExecuteScriptsInitFunction();
+                    throw new NotImplementedException();
                 }
 
                 while (true) {
@@ -161,8 +161,7 @@ namespace Gruntz.AI
                     }
 
                     if (OwnerAIController != null) {
-                        var scriptsAIComponent = OwnerAIController.GetComponent<AIScriptsComponent>();
-                        scriptsAIComponent.ExecuteScriptsUpdateFunction(Actor);
+                        throw new NotImplementedException();
                     }
                     else {
                         update();

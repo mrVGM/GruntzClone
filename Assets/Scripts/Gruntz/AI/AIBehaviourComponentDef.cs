@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Gruntz.AI
 {
-    public class AIScriptsComponentDef : ActorComponentDef
+    public class AIBehaviourComponentDef : ActorComponentDef
     {
         public TextAsset ParserTable;
         public override IActorComponent CreateActorComponent(Actor actor)
         {
-            return new AIScriptsComponent(actor, this);
+            return new AIBehaviourComponent(actor, this);
         }
     }
 }

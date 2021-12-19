@@ -570,6 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialProcessGO: {fileID: 1963307400}
+  BrainDef: {fileID: 11400000, guid: 76b95885b7733280db57d6de83429eb9, type: 2}
 --- !u!4 &472203373
 Transform:
   m_ObjectHideFlags: 0

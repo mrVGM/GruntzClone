@@ -56,8 +56,8 @@ namespace Base.UI
             childProcess.StartProcess(context);
 
             var game = Game.Instance;
-            var brainDef = game.DefRepositoryDef.AllDefs.OfType<BrainDef>().FirstOrDefault();
-            var brain = game.Context.GetRuntimeObject(brainDef) as Brain;
+            var brainProcessTagDef = game.DefRepositoryDef.AllDefs.OfType<BrainProcessContextTagDef>().FirstOrDefault();
+            var brain = processContext.GetItem(brainProcessTagDef) as Brain;
             brain.AddProcess(this);
         }
 

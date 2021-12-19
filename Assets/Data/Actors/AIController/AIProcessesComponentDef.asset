@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1d4cc6eb3d624e46b68a5bf1abb6638, type: 3}
-  m_Name: AIScriptsComponentDef
+  m_Name: AIProcessesComponentDef
   m_EditorClassIdentifier: 
   ParserTable: {fileID: 4900000, guid: 629da4afca339b74aac05d38aa1fd4fb, type: 3}
