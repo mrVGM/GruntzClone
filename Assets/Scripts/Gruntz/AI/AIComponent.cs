@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace Gruntz.AI
 {
-    public class AIComponent : IActorComponent, IOrderedUpdate
+    public class AIComponent : IActorComponent
     {
         public AIComponentDef AIComponentDef { get; }
         public Actor Actor { get; }
@@ -75,21 +75,10 @@ namespace Gruntz.AI
         }
         public void DeInit()
         {
-            var game = Game.Instance;
-            var mainUpdater = game.MainUpdater;
-            mainUpdater.UnRegisterUpdatable(this);
         }
 
         public void Init()
         {
-            var game = Game.Instance;
-            var mainUpdater = game.MainUpdater;;
-            mainUpdater.RegisterUpdatable(this);
-        }
-
-        public void DoUpdate(MainUpdaterUpdateTime updateTime)
-        {
-            _crt.MoveNext();
         }
 
         private IEnumerator<object> UpdateCrtBasic()

@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d4cc6eb3d624e46b68a5bf1abb6638, type: 3}
   m_Name: AIProcessesComponentDef
   m_EditorClassIdentifier: 
-  ParserTable: {fileID: 4900000, guid: 629da4afca339b74aac05d38aa1fd4fb, type: 3}
+  BrainDef: {fileID: 11400000, guid: 9456a50b6bd3f544e9a74cc6db3c362e, type: 2}
+  AIActor: {fileID: 11400000, guid: 67070b8b2064e6b42a432f5f9f388ea2, type: 2}
+  PosessedActor: {fileID: 11400000, guid: 05f782a015c433b4898f9b6287f18990, type: 2}

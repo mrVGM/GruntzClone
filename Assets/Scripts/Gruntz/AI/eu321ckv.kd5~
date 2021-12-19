@@ -2,9 +2,7 @@ using Base;
 using Base.Actors;
 using Base.Status;
 using Base.UI;
-using Gruntz.Statuses;
 using System.Linq;
-using UnityEngine;
 
 namespace Gruntz.AI
 {
@@ -29,12 +27,16 @@ namespace Gruntz.AI
             var gameContext = game.Context;
             var brain = gameContext.GetRuntimeObject(AIBehaviourComponentDef.BrainDef);
             var brainTag = game.DefRepositoryDef.AllDefs.OfType<BrainProcessContextTagDef>().FirstOrDefault();
-            var actorIDStatusDef = game.DefRepositoryDef.AllDefs.OfType<ActorIDStatusDef>().FirstOrDefault();
-            Debug.Log(actorIDStatusDef);
 
             var context = new ProcessContext();
             context.PutItem(brainTag, brain);
-            context.PutItem(AIBehaviourComponentDef.AIActor, Actor);
+
+            var actorManager = ActorManager.GetActorManagerFromContext();
+            var idStatusDef = 
+            var actor = actorManager.Actors.FirstOrDefault(x => {
+                var statusComponent = x.GetComponent<StatusComponent>();
+                var idStatus = 
+            });
 
             var behaviourRoot = Actor.ActorComponent.GetComponent<AIBehaviourRoot>();
             var processToStart = behaviourRoot.ProcessToStart.GetComponent<IProcess>();

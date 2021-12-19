@@ -555,6 +555,14 @@ PrefabInstance:
         = function(possessed_actor) {\n\tlet update = load_script(\"update\");\n\tupdate(possessed_actor);\n};\n\npost_object(\"funcs\",
         obj);\n"
       objectReference: {fileID: 0}
+    - target: {fileID: 3760151778812672923, guid: 0c99d3d23cad5c247be77b0e01c45c3b, type: 3}
+      propertyPath: ProcessToStart
+      value: 
+      objectReference: {fileID: 555841563}
+    - target: {fileID: 3760151778812672923, guid: 0c99d3d23cad5c247be77b0e01c45c3b, type: 3}
+      propertyPath: InitiallyPosessedActorID
+      value: 97d7c417-3e0f-48a2-b025-668c046bfe60
+      objectReference: {fileID: 0}
     - target: {fileID: 7457161442322156388, guid: 0c99d3d23cad5c247be77b0e01c45c3b, type: 3}
       propertyPath: Script
       value: "let bounds = script_props.alert_bounds;\nbounds = bounds.GetComponent|\"UnityEngine.BoxCollider\"|();\nbounds
@@ -4643,6 +4651,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AIControllerActorProxy: {fileID: 67696646}
+--- !u!114 &520401474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520401472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e587e9677a79459448128f5257cb8132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 97d7c417-3e0f-48a2-b025-668c046bfe60
 --- !u!1 &520733310
 GameObject:
   m_ObjectHideFlags: 0
@@ -4777,6 +4798,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3435215353039938779, guid: 83b3be5a2aaabeb4b9f0f9fabf7c85a5, type: 3}
   m_PrefabInstance: {fileID: 948694215}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &555841563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 555841564}
+  - component: {fileID: 555841565}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &555841564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555841563}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 67696647}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &555841565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555841563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcdb842cc8ceb6248afcd1283474355f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Priority: 0
+  PosessedActor: {fileID: 11400000, guid: 05f782a015c433b4898f9b6287f18990, type: 2}
+  AIActor: {fileID: 11400000, guid: 67070b8b2064e6b42a432f5f9f388ea2, type: 2}
 --- !u!1 &607253908
 GameObject:
   m_ObjectHideFlags: 0
@@ -10701,7 +10768,7 @@ Transform:
   - {fileID: 1598648882}
   - {fileID: 1693231409}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1437193228
 Animator:
@@ -12940,7 +13007,7 @@ Transform:
   - {fileID: 520401471}
   - {fileID: 67696644}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1690699893 stripped
 Transform:
@@ -14508,7 +14575,7 @@ Transform:
   m_Children:
   - {fileID: 1340078700}
   m_Father: {fileID: 67696647}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1859380416
 PrefabInstance:

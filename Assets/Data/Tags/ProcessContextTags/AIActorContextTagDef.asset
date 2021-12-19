@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a9588a205dec2948b96656ccd4535af, type: 3}
-  m_Name: AIControllerStatusComponentDef
+  m_Script: {fileID: 11500000, guid: b0a449ce2d00b8747b6a57e29acb6223, type: 3}
+  m_Name: AIActorContextTagDef
   m_EditorClassIdentifier: 
-  InitialStatuses: []

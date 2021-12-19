@@ -5,16 +5,10 @@ namespace Base.UI
 {
     public class Brain : IOrderedUpdate, IContextObject
     {
+        public BrainDef BrainDef { get; }
         private List<IProcess> activeProcesses = new List<IProcess>();
 
-        public ExecutionOrderTagDef OrderTagDef 
-        {
-            get
-            {
-                var game = Game.Instance;
-                return game.DefRepositoryDef.AllDefs.OfType<UserInteractionExecutionOrderTagDef>().FirstOrDefault();
-            }
-        }
+        public ExecutionOrderTagDef OrderTagDef => BrainDef.ExecutionOrderTagDef;
 
         public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {
@@ -42,8 +36,9 @@ namespace Base.UI
             Game.Instance.MainUpdater.UnRegisterUpdatable(this);
         }
 
-        public Brain()
+        public Brain(BrainDef brainDef)
         {
+            BrainDef = brainDef;
             Game.Instance.MainUpdater.RegisterUpdatable(this);
         }
     }

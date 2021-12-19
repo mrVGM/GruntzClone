@@ -1,8 +1,10 @@
 using Base;
 using Base.Actors;
 using Base.Navigation;
+using Base.Status;
 using Gruntz.Actors;
 using Gruntz.AI;
+using Gruntz.Statuses;
 using Gruntz.Team;
 using System.Collections.Generic;
 using System.IO;
@@ -83,6 +85,8 @@ namespace Gruntz
             }
             var actorManagerData = new ActorManagerData { ActorDatas = deployDatas.Keys.ToList() };
 
+            var actorIDStatusDef = game.DefRepositoryDef.AllDefs.OfType<ActorIDStatusDef>().FirstOrDefault();
+
             actorManager.DeployActor = x => {
                 var actor = ActorDeployment.DeployActor(x);
                 var deployPoint = deployDatas[actor.Data as ActorData];
@@ -98,6 +102,14 @@ namespace Gruntz
                     if (aiComponent != null) {
                         aiComponent.AIController = aiController.AIControllerActorProxy;
                     }
+                }
+                var statusComponent = actor.GetComponent<StatusComponent>();
+                var statusData = actorIDStatusDef.Data as ActorIDStatusData;
+                var status = statusData.CreateStatus();
+                statusComponent.AddStatus(status);
+                var deployPointID = deployPoint.GetComponent<ActorDeployPointID>();
+                if (deployPointID != null) {
+                    statusData.ID = deployPointID.ID;
                 }
                 return actor;
             };

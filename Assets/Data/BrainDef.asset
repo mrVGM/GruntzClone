@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b543636a319899e07ae412808dadb592, type: 3}
   m_Name: BrainDef
   m_EditorClassIdentifier: 
+  ExecutionOrderTagDef: {fileID: 11400000, guid: 10c8bc65ce9f6a63695a044f6e35163a, type: 2}
