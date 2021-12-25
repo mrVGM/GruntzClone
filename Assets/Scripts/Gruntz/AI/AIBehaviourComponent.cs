@@ -30,7 +30,6 @@ namespace Gruntz.AI
             var brain = gameContext.GetRuntimeObject(AIBehaviourComponentDef.BrainDef);
             var brainTag = game.DefRepositoryDef.AllDefs.OfType<BrainProcessContextTagDef>().FirstOrDefault();
             var actorIDStatusDef = game.DefRepositoryDef.AllDefs.OfType<ActorIDStatusDef>().FirstOrDefault();
-            Debug.Log(actorIDStatusDef);
 
             var context = new ProcessContext();
             context.PutItem(brainTag, brain);

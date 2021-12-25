@@ -96,13 +96,6 @@ namespace Gruntz
                     var teamComponent = actor.GetComponent<TeamComponent>();
                     teamComponent.UnitTeam = team.Team;
                 }
-                var aiController = deployPoint.GetComponent<DeployPointAIController>();
-                if (aiController != null) {
-                    var aiComponent = actor.GetComponent<AIComponent>();
-                    if (aiComponent != null) {
-                        aiComponent.AIController = aiController.AIControllerActorProxy;
-                    }
-                }
                 var statusComponent = actor.GetComponent<StatusComponent>();
                 var statusData = actorIDStatusDef.Data as ActorIDStatusData;
                 var status = statusData.CreateStatus();
