@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a480ba9f382a88aa8985aee2edcc88b, type: 3}
   m_Name: CommonAIBehaviourTagsDef
   m_EditorClassIdentifier: 
+  PosessedActor: {fileID: 11400000, guid: 05f782a015c433b4898f9b6287f18990, type: 2}
+  AIActor: {fileID: 11400000, guid: 67070b8b2064e6b42a432f5f9f388ea2, type: 2}
