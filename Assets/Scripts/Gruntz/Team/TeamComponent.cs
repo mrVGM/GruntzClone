@@ -15,7 +15,7 @@ namespace Gruntz.Team
         public TeamComponentDef TeamComponentDef { get; }
         public Actor Actor { get; }
 
-        public Team _team;
+        private Team _team;
         public Team UnitTeam
         {
             get
