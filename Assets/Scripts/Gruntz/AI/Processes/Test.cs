@@ -11,12 +11,14 @@ namespace Gruntz.AI.Processes
 {
     public class Test : CoroutineProcess
     {
-        public ProcessContextTagDef PosessedActor;
-        public ProcessContextTagDef AIActor;
         protected override IEnumerator<object> Crt()
         {
+            var behaviourTags = CommonAIBehaviourTagsDef.BehaviourTagsDef;
+            var aiActor = behaviourTags.AIActor;
+            var posessedActor = behaviourTags.PosessedActor;
+            
             var game = Game.Instance;
-            var actor = context.GetItem(AIActor) as Actor;
+            var actor = context.GetItem(aiActor) as Actor;
 
             var behaviourRoot = actor.ActorComponent.GetComponent<AIBehaviourRoot>();
             var actorManager = ActorManager.GetActorManagerFromContext();
@@ -28,7 +30,7 @@ namespace Gruntz.AI.Processes
                 return data.ID == behaviourRoot.InitiallyPosessedActorID;
             });
 
-            context.PutItem(PosessedActor, posessed);
+            context.PutItem(posessedActor, posessed);
 
             Debug.Log(posessed.ActorComponent);
             yield break;
