@@ -1,6 +1,7 @@
 using System.Linq;
 using Base;
 using Base.UI;
+using UnityEngine.Serialization;
 
 namespace Gruntz.AI
 {
@@ -15,8 +16,7 @@ namespace Gruntz.AI
                 return repo.AllDefs.OfType<CommonAIBehaviourTagsDef>().FirstOrDefault();
             }
         }
-        
-        public ProcessContextTagDef PosessedActor;
+        public ProcessContextTagDef PossessedActor;
         public ProcessContextTagDef AIActor;
     }
 }
