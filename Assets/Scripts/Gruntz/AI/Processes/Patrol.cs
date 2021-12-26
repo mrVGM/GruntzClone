@@ -23,11 +23,11 @@ namespace Gruntz.AI.Processes
             var possessedActorTag = behaviourTags.PossessedActor;
             var possessedActor = context.GetItem(possessedActorTag) as Actor;
             
-            IEnumerator<Vector3> patrolPointsEnumerator()
+            IEnumerator<Transform> patrolPointsEnumerator()
             {
                 int index = 0;
                 while (true) {
-                    yield return PatrolPoints[index].position;
+                    yield return PatrolPoints[index];
                     ++index;
                     while (index >= PatrolPoints.Length) {
                         index -= PatrolPoints.Length;
@@ -52,22 +52,25 @@ namespace Gruntz.AI.Processes
             }
 
             var points = patrolPointsEnumerator();
-            
-            while (true) {
+            var closest = PatrolPoints.OrderBy(x => (possessedActor.Pos - x.position).sqrMagnitude).First();
+            points.MoveNext();
+            while (points.Current != closest) {
                 points.MoveNext();
+            }
+
+            while (true) {
                 var cur = points.Current;
                 
                 var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
-                var moveToPositionIntruction = new MoveToPosition { Target = new NavAgent.SimpleNavTarget { Target = cur } };
+                var moveToPositionInstruction = new MoveToPosition { Target = new NavAgent.SimpleNavTarget { Target = cur.position } };
                 
                 messagesSystem.SendMessage(
                     MessagesBoxTag,
                     MainUpdaterUpdateTime.Update,
                     this,
-                    new UnitControllerInstruction
-                    {
+                    new UnitControllerInstruction {
                         Unit = possessedActor,
-                        Executable = moveToPositionIntruction,
+                        Executable = moveToPositionInstruction,
                     });
 
                 var staying = timeStaying();
@@ -76,6 +79,8 @@ namespace Gruntz.AI.Processes
                     yield return null;
                     staying.MoveNext();
                 } while (staying.Current < StayBeforeMovingOn);
+                
+                points.MoveNext();
             }
         }
 

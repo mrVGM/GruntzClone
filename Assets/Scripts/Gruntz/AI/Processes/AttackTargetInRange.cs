@@ -4,17 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using Base;
 using Base.MessagesSystem;
-using Base.Navigation;
 using Gruntz.Team;
 using Gruntz.UnitController;
 using Gruntz.UnitController.Instructions;
-using UnityEngine;
 
 namespace Gruntz.AI.Processes
 {
     public class AttackTargetInRange : CoroutineProcess
     {
-        public float Range;
+        public ProcessContextTagDef AttackRangeTag;
         public MessagesBoxTagDef MessagesBoxTag;
         
         protected override IEnumerator<object> Crt()
@@ -35,7 +33,9 @@ namespace Gruntz.AI.Processes
 
                     return team.UnitTeam == TeamComponent.Team.Player;
                 });
-                var targetActor = actors.FirstOrDefault(x => (possessedActor.Pos - x.Pos).magnitude < Range);
+
+                float range = (float)context.GetItem(AttackRangeTag);
+                var targetActor = actors.FirstOrDefault(x => (possessedActor.Pos - x.Pos).magnitude < range);
                 if (targetActor != null) {
                     var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
                     messagesSystem.SendMessage(
