@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="29191b72-e5ae-475c-8f45-7451cdffc376" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/LevelSelection/BezierLine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/LevelSelection/BezierLine.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelSelection/LevelSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelSelection/LevelSelection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelSelection/LevelSelectionMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelSelection/LevelSelectionMap.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,43 +123,30 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/LevelSelection/LevelSelection.cs</url>
-          <line>80</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/LevelSelection/LevelSelection.cs" initialLine="80" containingFunctionPresentation="method 'Init'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/LevelSelection/UserInteraction/ShowTooltip.cs</url>
+          <line>12</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/LevelSelection/UserInteraction/ShowTooltip.cs" initialLine="12" containingFunctionPresentation="method 'Crt'">
             <startOffsets>
-              <option value="3173" />
+              <option value="295" />
             </startOffsets>
             <endOffsets>
-              <option value="3252" />
+              <option value="371" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/LevelSelection/LevelSelection.cs</url>
-          <line>66</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/LevelSelection/LevelSelection.cs" initialLine="58" containingFunctionPresentation="method 'Init'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/LevelSelection/UserInteraction/LevelSelectionTooltip.cs</url>
+          <line>77</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/LevelSelection/UserInteraction/LevelSelectionTooltip.cs" initialLine="77" containingFunctionPresentation="method 'ShowOnSiteTooltip'">
             <startOffsets>
-              <option value="2367" />
+              <option value="2489" />
             </startOffsets>
             <endOffsets>
-              <option value="2403" />
+              <option value="2527" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/LevelSelection/LevelSelection.cs</url>
-          <line>78</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/LevelSelection/LevelSelection.cs" initialLine="78" containingFunctionPresentation="method 'Init'">
-            <startOffsets>
-              <option value="3084" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3084" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
