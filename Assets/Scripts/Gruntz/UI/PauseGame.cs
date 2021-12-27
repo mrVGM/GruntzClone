@@ -8,32 +8,38 @@ namespace Gruntz.UI
 {
     public class PauseGame : CoroutineProcess
     {
+        public bool Pause = true;
         public ExecutionOrderTagDef OrderTagDef;
-        public List<ILock> Locks = new List<ILock>();
+        public ProcessContextTagDef CreatedLocksTagDef;
         protected override IEnumerator<object> Crt()
         {
             var game = Game.Instance;
-            Locks.Clear();
-            foreach (var tag in game.MainUpdater.ExecutionOrder)
+            List<ILock> locks;
+            if (Pause)
             {
-                if (tag == OrderTagDef)
-                {
-                    continue;
+                locks = new List<ILock>();
+                foreach (var tag in game.MainUpdater.ExecutionOrder) {
+                    if (tag == OrderTagDef) {
+                        continue;
+                    }
+                    var l = game.MainUpdater.MainUpdaterLock.TryLock(tag);
+                    locks.Add(l);
                 }
-                var l = game.MainUpdater.MainUpdaterLock.TryLock(tag);
-                Locks.Add(l);
+
+                context.PutItem(CreatedLocksTagDef, locks);
+                yield break;
             }
-            while (true) {
-                yield return true;
+
+            locks = context.GetItem(CreatedLocksTagDef) as List<ILock>;
+            context.PutItem(CreatedLocksTagDef, null);
+
+            foreach (var l in locks) {
+                game.MainUpdater.MainUpdaterLock.Unlock(l);
             }
         }
 
         protected override IEnumerator<object> FinishCrt()
         {
-            var game = Game.Instance;
-            foreach (var l in Locks) {
-                game.MainUpdater.MainUpdaterLock.Unlock(l);
-            }
             yield break;
         }
     }
