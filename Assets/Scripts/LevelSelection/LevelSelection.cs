@@ -53,6 +53,17 @@ namespace LevelSelection
             var levelSelectionMap = LevelSelectionMap.GetLevelSelectionMapFromContext();
 
             var levelResult = LevelResultHolder.GetLevelResultHolderFromContext();
+
+            var initialSite = Sites.FirstOrDefault(x => {
+                var levelProvider = x as ILevelProvider;
+                if (levelProvider == null) {
+                    return false;
+                }
+                return levelProvider.LevelDef == levelProgress.CurrentLevel;
+            });
+            levelSelectionMap.InitMap(Areas, Unit, initialSite);
+            var unlockedBridgesByNow = levelSelectionMap.GetUnlockedBridges().ToList();
+            
             if (levelResult.LevelResult != null) {
                 var result = (PuzzleLevelResult.Result)levelResult.LevelResult;
                 var game = Game.Instance;
@@ -66,14 +77,8 @@ namespace LevelSelection
                 }
             }
 
-            var initialSite = Sites.FirstOrDefault(x => {
-                var levelProvider = x as ILevelProvider;
-                if (levelProvider == null) {
-                    return false;
-                }
-                return levelProvider.LevelDef == levelProgress.CurrentLevel;
-            });
-            levelSelectionMap.InitMap(Areas, Unit, initialSite);
+            var unlocked = levelSelectionMap.GetUnlockedBridges().ToList();
+            levelSelectionMap.UpdateLocks(unlocked, unlocked.Except(unlockedBridgesByNow));
         }
 
         private void InitBridges()
