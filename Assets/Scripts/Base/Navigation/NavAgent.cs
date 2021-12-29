@@ -15,11 +15,6 @@ namespace Base.Navigation
             BeingPushed
         }
 
-        private class Push
-        {
-            public Vector3 Destination;
-        }
-
         [Serializable]
         public class SimpleNavTarget : INavigationTarget
         {
@@ -66,7 +61,7 @@ namespace Base.Navigation
         private NavAgentBehaviour _navAgentBehaviour;
 
         private TravelSegmentInfo _travelSegmentInfo;
-        private TravelSegmentInfo travelSegmentInfo
+        public ITravelSegmentInfo TravelSegment
         {
             get
             {
@@ -122,6 +117,18 @@ namespace Base.Navigation
             }
         }
 
+        public INavAgentController _controller;
+        public INavAgentController Controller
+        {
+            get
+            {
+                if (_controller == null) {
+                    _controller = new RegularMoveNavAgentController(this);
+                }
+                return _controller;
+            }
+        }
+
         public NavAgent(NavAgentComponentDef navAgentComponentDef, Actor actor, NavAgentData navAgentData, NavAgentBehaviour navAgentBehaviour)
         {
             NavAgentComponentDef = navAgentComponentDef;
@@ -132,71 +139,9 @@ namespace Base.Navigation
         public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {
             var navigation = Navigation.GetNavigationFromContext();
-
-            var request = new MoveRequest {
-                Obstacles = _navAgentData.Obstacles,
-                CurrentPos = _navAgentBehaviour.ActorVisuals.position,
-                TargetPos = _navAgentData.Target,
-                MoveSpeed = _navAgentData.Speed,
-                TravelSegmentInfo = new TravelSegmentInfo(this),
-                CheckForSegmentInfoClashes = _navAgentData.CheckForSegmentInfoClashes,
-                MoveResultCallback = Move
-            };
-
-            if (CurrentPush != null)
-            {
-                ITravelSegmentInfo segmentInfo = new TravelSegmentInfo(this);
-                if (!_pushPrecessed) {
-                    segmentInfo = new Base.Navigation.TravelSegmentInfo { StartPos = Pos, EndPos = Pos };
-                }
-                request = new MoveRequest {
-                    Obstacles = _navAgentData.Obstacles,
-                    CurrentPos = _navAgentBehaviour.ActorVisuals.position,
-                    TargetPos = new SimpleNavTarget { Target = CurrentPush.Destination },
-                    MoveSpeed = _navAgentData.Speed,
-                    TravelSegmentInfo = segmentInfo,
-                    CheckForSegmentInfoClashes = _navAgentData.CheckForSegmentInfoClashes,
-                    MoveResultCallback = HandlePush
-                };
-            }
-
-            navigation.MakeMoveRequest(request);
+            navigation.MakeMoveRequest(Controller.MoveRequest);
         }
 
-        private Push CurrentPush = null;
-
-        private void HandlePush(MoveRequestResult moveRequestResult)
-        {
-            if (!_pushPrecessed && Navigation.AreVectorsTheSame(moveRequestResult.PositionToMove, Pos)) {
-                _pushPrecessed = true;
-                var travelSegmentInfo = new TravelSegmentInfo(this);
-                Target = new SimpleNavTarget {Target = travelSegmentInfo.EndPos};
-                CurrentPush = null;
-                return;
-            }
-            _pushPrecessed = true;
-            
-            var messagesSystem = MessagesSystem.MessagesSystem.GetMessagesSystemFromContext();
-            messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, NavAgentState.Statying);
-            
-
-            _navAgentBehaviour.ActorVisuals.position = moveRequestResult.PositionToMove;
-            _navAgentBehaviour.NavObstacle.transform.position = moveRequestResult.TravelSegmentInfo.EndPos;
-            _navAgentBehaviour.LocalTravelStartPoint.position = moveRequestResult.TravelSegmentInfo.StartPos;
-            
-            var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
-            gameplayManager.HandleGameplayEvent(new ActorTouchedPositionGameplayEvent {
-                Actor = Actor,
-                Positions = moveRequestResult.TouchedPositions
-            });
-            
-            if (Navigation.AreVectorsTheSame(CurrentPush.Destination, moveRequestResult.PositionToMove)) {
-                Target = new SimpleNavTarget {Target = CurrentPush.Destination};
-                CurrentPush = null;
-            }
-        }
-
-        private bool _pushPrecessed = true;
         public void RandomPush()
         {
             var navigation = Navigation.GetNavigationFromContext();
@@ -206,8 +151,17 @@ namespace Base.Navigation
             int randomIndex = Game.Instance.Random.Next() % neighbours.Count;
 
             Vector3 randomNeighbour = neighbours[randomIndex];
-            CurrentPush = new Push {Destination = randomNeighbour};
-            _pushPrecessed = false;
+            Push(randomNeighbour);
+        }
+
+        public void Push(Vector3 destination)
+        {
+            _controller = new BeingPushedNavAgentController(this, destination);
+        }
+
+        public void StopThePush()
+        {
+            _controller = null;
         }
 
         public void Init()
@@ -224,30 +178,15 @@ namespace Base.Navigation
             _navAgentBehaviour.LocalTravelStartPoint.position = _navAgentData.TravelSegmentStart;
         }
 
-        private void Move(MoveRequestResult moveRequestResult) 
+        public void SetTravelSegmentAndLocation(Vector3 pos, Vector3 dir, ITravelSegmentInfo travelSegment)
         {
-            var messagesSystem = MessagesSystem.MessagesSystem.GetMessagesSystemFromContext();
-            if ((_navAgentBehaviour.ActorVisuals.position - moveRequestResult.PositionToMove).sqrMagnitude > 0.001) {
-                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, NavAgentState.Moving);
-            }
-            else {
-                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, NavAgentState.Statying);
-            }
+            _navAgentBehaviour.ActorVisuals.position = pos;
+            _navAgentBehaviour.NavObstacle.transform.position = travelSegment.EndPos;
+            _navAgentBehaviour.LocalTravelStartPoint.position = travelSegment.StartPos;
 
-            _navAgentBehaviour.ActorVisuals.position = moveRequestResult.PositionToMove;
-            _navAgentBehaviour.NavObstacle.transform.position = moveRequestResult.TravelSegmentInfo.EndPos;
-            _navAgentBehaviour.LocalTravelStartPoint.position = moveRequestResult.TravelSegmentInfo.StartPos;
-
-            if (!Navigation.AreVectorsTheSame(moveRequestResult.Direction, Vector3.zero))
-            {
-                _navAgentBehaviour.ActorVisuals.rotation = Quaternion.LookRotation(moveRequestResult.Direction);
+            if (!Navigation.AreVectorsTheSame(dir, Vector3.zero)) {
+                _navAgentBehaviour.ActorVisuals.rotation = Quaternion.LookRotation(dir);
             }
-
-            var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
-            gameplayManager.HandleGameplayEvent(new ActorTouchedPositionGameplayEvent {
-                Actor = Actor,
-                Positions = moveRequestResult.TouchedPositions
-            });
         }
 
         public void DeInit()
