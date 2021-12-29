@@ -8,6 +8,13 @@ namespace Base.Navigation
 {
     public class NavAgent : IActorComponent, IOrderedUpdate, ISerializedObject
     {
+        public enum NavAgentState
+        {
+            Moving,
+            Statying,
+            BeingPushed
+        }
+
         private class Push
         {
             public Vector3 Destination;
@@ -167,10 +174,10 @@ namespace Base.Navigation
             
             var messagesSystem = MessagesSystem.MessagesSystem.GetMessagesSystemFromContext();
             if ((_navAgentBehaviour.ActorVisuals.position - moveRequestResult.PositionToMove).sqrMagnitude > 0.001) {
-                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, "moving");
+                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, NavAgentState.Moving);
             }
             else {
-                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, "staying");
+                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, NavAgentState.Statying);
             }
 
             _navAgentBehaviour.ActorVisuals.position = moveRequestResult.PositionToMove;
@@ -221,10 +228,10 @@ namespace Base.Navigation
         {
             var messagesSystem = MessagesSystem.MessagesSystem.GetMessagesSystemFromContext();
             if ((_navAgentBehaviour.ActorVisuals.position - moveRequestResult.PositionToMove).sqrMagnitude > 0.001) {
-                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, "moving");
+                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, NavAgentState.Moving);
             }
             else {
-                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, "staying");
+                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, NavAgentState.Statying);
             }
 
             _navAgentBehaviour.ActorVisuals.position = moveRequestResult.PositionToMove;

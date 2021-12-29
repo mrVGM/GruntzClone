@@ -1,4 +1,5 @@
 using Base.Actors;
+using Base.Navigation;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -70,10 +71,10 @@ namespace Base.Animations
             var abilityMessages = messagesSystem.GetMessages(AnimationsComponentDef.AbilityMessages);
             
             messages = messages.Where(x => x.Sender == Actor).ToList();
-            if (messages.Any(x => (x.Data as string) == "moving")) {
+            if (messages.Any(x => (NavAgent.NavAgentState)x.Data == NavAgent.NavAgentState.Moving)) {
                 Animator.SetInteger("State", (int)AnimatorState.Running);
             }
-            if (messages.Any(x => (x.Data as string) == "staying")) {
+            if (messages.Any(x => (NavAgent.NavAgentState)x.Data == NavAgent.NavAgentState.Statying)) {
                 Animator.SetInteger("State", (int)AnimatorState.Idle);
             }
 
