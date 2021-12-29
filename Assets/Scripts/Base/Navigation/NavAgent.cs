@@ -145,12 +145,16 @@ namespace Base.Navigation
 
             if (CurrentPush != null)
             {
+                ITravelSegmentInfo segmentInfo = new TravelSegmentInfo(this);
+                if (!_pushPrecessed) {
+                    segmentInfo = new Base.Navigation.TravelSegmentInfo { StartPos = Pos, EndPos = Pos };
+                }
                 request = new MoveRequest {
                     Obstacles = _navAgentData.Obstacles,
                     CurrentPos = _navAgentBehaviour.ActorVisuals.position,
                     TargetPos = new SimpleNavTarget { Target = CurrentPush.Destination },
                     MoveSpeed = _navAgentData.Speed,
-                    TravelSegmentInfo = new Base.Navigation.TravelSegmentInfo { StartPos = Pos, EndPos = Pos },
+                    TravelSegmentInfo = segmentInfo,
                     CheckForSegmentInfoClashes = _navAgentData.CheckForSegmentInfoClashes,
                     MoveResultCallback = HandlePush
                 };
@@ -173,12 +177,8 @@ namespace Base.Navigation
             _pushPrecessed = true;
             
             var messagesSystem = MessagesSystem.MessagesSystem.GetMessagesSystemFromContext();
-            if ((_navAgentBehaviour.ActorVisuals.position - moveRequestResult.PositionToMove).sqrMagnitude > 0.001) {
-                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, NavAgentState.Moving);
-            }
-            else {
-                messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, NavAgentState.Statying);
-            }
+            messagesSystem.SendMessage(NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, Actor, NavAgentState.Statying);
+            
 
             _navAgentBehaviour.ActorVisuals.position = moveRequestResult.PositionToMove;
             _navAgentBehaviour.NavObstacle.transform.position = moveRequestResult.TravelSegmentInfo.EndPos;
