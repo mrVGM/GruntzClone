@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9588a205dec2948b96656ccd4535af, type: 3}
   m_Name: ArrowStatusComponentDef
   m_EditorClassIdentifier: 
-  InitialStatuses: []
+  InitialStatuses:
+  - {fileID: 11400000, guid: f0ae4cd6f7f40854886e591705bb2cea, type: 2}

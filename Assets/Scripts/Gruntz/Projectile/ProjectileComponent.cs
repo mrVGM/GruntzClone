@@ -2,6 +2,7 @@
 using Base.Actors;
 using Base.Gameplay;
 using Gruntz.Gameplay;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -34,7 +35,7 @@ namespace Gruntz.Projectile
                 Vector3 horizontalVelocity = ProjectileComponentDef.Speed * slopeVector;
                 horizontalVelocity.y = 0;
                 _speed = horizontalVelocity.magnitude;
-                PlaceProjectile();
+                PlaceProjectile(out _, out _);
             }
         }
 
@@ -70,12 +71,12 @@ namespace Gruntz.Projectile
             mainUpdater.RegisterUpdatable(this);
         }
 
-        private void PlaceProjectile()
+        private void PlaceProjectile(out int prevPoint, out int nextPoint)
         {
-            Actor.ActorComponent.transform.position = GetProjectilePos();
+            Actor.ActorComponent.transform.position = GetProjectilePos(out prevPoint, out nextPoint);
         }
 
-        private Vector3 GetProjectilePos()
+        private Vector3 GetProjectilePos(out int prevPoint, out int nextPoint)
         {
             float dist = _speed * _projectileComponentData.LifeTime;
             for (int i = 0; i < _parabolaPoints.Length - 1; ++i)
@@ -88,21 +89,57 @@ namespace Gruntz.Projectile
                 float d = offset.magnitude;
                 if (d > dist) {
                     float c = dist / d;
+                    prevPoint = i;
+                    nextPoint = i + 1;
                     return (1 - c) * p1 + c * p2;
                 }
 
                 dist -= d;
             }
 
+            prevPoint = _parabolaPoints.Length - 1;
+            nextPoint = _parabolaPoints.Length - 1;
             return _parabolaPoints[_parabolaPoints.Length - 1];
+        }
+
+        private IEnumerable<RaycastHit> GetHits(IEnumerable<Vector3> points)
+        {
+            var pts = points.ToArray();
+            for (int i = 0; i < pts.Length - 1; ++i) {
+                Vector3 offset = pts[i + 1] - pts[i];
+                var ray = new Ray(pts[i], offset);
+
+                var hits = Physics.RaycastAll(pts[i], pts[i + 1] - pts[i]);
+                foreach (var hit in hits) {
+                    yield return hit;
+                }
+            }
         }
 
         public void DoUpdate(MainUpdaterUpdateTime updateTime)
         {
+            int p2, p3;
+            var pos1 = GetProjectilePos(out _, out p2);
             _projectileComponentData.LifeTime += Time.fixedDeltaTime;
-            PlaceProjectile();
-            Vector3 pos = GetProjectilePos();
-            if ((pos - _parabolaPoints[_parabolaPoints.Length - 1]).magnitude < 0.00001f) {
+            var pos2 = GetProjectilePos(out p3, out _);
+
+            IEnumerable<Vector3> points()
+            {
+                yield return pos1;
+                for (int i = p2; i <= p3; ++i) {
+                    yield return _parabolaPoints[i];
+                }
+                yield return pos2;
+            }
+
+            var hits = GetHits(points());
+
+            int prev, next;
+            PlaceProjectile(out prev, out next);
+
+            var actorsHit = hits.Select(x => x.collider.GetComponent<ActorProxy>()).Where(x => x != null).Select(x => x.Actor);
+
+            if (prev == _parabolaPoints.Length - 1) {
                 var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
                 gameplayManager.HandleGameplayEvent(new DestroyProjectileGameplayEvent { ProjectileActor = Actor });
             }

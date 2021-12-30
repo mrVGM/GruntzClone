@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: HoleStatusComponentDef
   m_EditorClassIdentifier: 
   InitialStatuses:
+  - {fileID: 11400000, guid: f0ae4cd6f7f40854886e591705bb2cea, type: 2}
   - {fileID: 11400000, guid: 14cec5cbae8eefa44919221645115e41, type: 2}

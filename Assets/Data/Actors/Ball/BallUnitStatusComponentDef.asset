@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: BallUnitStatusComponentDef
   m_EditorClassIdentifier: 
   InitialStatuses:
+  - {fileID: 11400000, guid: f0ae4cd6f7f40854886e591705bb2cea, type: 2}
   - {fileID: 11400000, guid: b369f0a9db5183044a3530336c95ccbd, type: 2}
   - {fileID: 11400000, guid: 9e7d67ce9a3cc0347b1e5842c81f6f45, type: 2}

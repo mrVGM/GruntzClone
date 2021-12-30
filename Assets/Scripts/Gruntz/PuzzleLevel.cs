@@ -85,8 +85,6 @@ namespace Gruntz
             }
             var actorManagerData = new ActorManagerData { ActorDatas = deployDatas.Keys.ToList() };
 
-            var actorIDStatusDef = game.DefRepositoryDef.AllDefs.OfType<ActorIDStatusDef>().FirstOrDefault();
-
             actorManager.DeployActor = x => {
                 var actor = ActorDeployment.DeployActor(x);
                 var deployPoint = deployDatas[actor.Data as ActorData];
@@ -96,12 +94,12 @@ namespace Gruntz
                     var teamComponent = actor.GetComponent<TeamComponent>();
                     teamComponent.UnitTeam = team.Team;
                 }
-                var statusComponent = actor.GetComponent<StatusComponent>();
-                var statusData = actorIDStatusDef.Data as ActorIDStatusData;
-                var status = statusData.CreateStatus();
-                statusComponent.AddStatus(status);
                 var deployPointID = deployPoint.GetComponent<ActorDeployPointID>();
                 if (deployPointID != null) {
+                    var actorIDStatusDef = game.DefRepositoryDef.AllDefs.OfType<ActorIDStatusDef>().FirstOrDefault();
+                    var statusComponent = actor.GetComponent<StatusComponent>();
+                    var idStatus = statusComponent.GetStatus(actorIDStatusDef);
+                    var statusData = idStatus.Data as ActorIDStatusData;
                     statusData.ID = deployPointID.ID;
                 }
                 return actor;

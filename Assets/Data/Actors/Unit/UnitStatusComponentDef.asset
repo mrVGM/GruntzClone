@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: UnitStatusComponentDef
   m_EditorClassIdentifier: 
   InitialStatuses:
+  - {fileID: 11400000, guid: f0ae4cd6f7f40854886e591705bb2cea, type: 2}
   - {fileID: 11400000, guid: ef6970aceacb01e458f6d9697d1190df, type: 2}
   - {fileID: 11400000, guid: f66cbe1667767b840aa0b0d97834e132, type: 2}

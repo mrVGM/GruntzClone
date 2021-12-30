@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: ProjectileStatusComponentDef
   m_EditorClassIdentifier: 
   InitialStatuses:
+  - {fileID: 11400000, guid: f0ae4cd6f7f40854886e591705bb2cea, type: 2}
   - {fileID: 11400000, guid: 9c63b7a5dfc0c2c4f96e8b8ec4fbe5f5, type: 2}

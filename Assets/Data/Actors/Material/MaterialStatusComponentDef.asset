@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: MaterialStatusComponentDef
   m_EditorClassIdentifier: 
   InitialStatuses:
+  - {fileID: 11400000, guid: f0ae4cd6f7f40854886e591705bb2cea, type: 2}
   - {fileID: 11400000, guid: 681152fc311d5fd41b8727ef21e1373c, type: 2}
