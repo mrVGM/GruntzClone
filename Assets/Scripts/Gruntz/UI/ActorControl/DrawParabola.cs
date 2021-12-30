@@ -4,36 +4,29 @@ using Base.Actors;
 using Base.UI;
 using Gruntz.Abilities;
 using Gruntz.Equipment;
-using Gruntz.Items;
 using Gruntz.Projectile;
 using UnityEngine;
-using UnityEngine.UI;
 using Utils;
 
 namespace Gruntz.UI.ActorControl
 {
     public class DrawParabola : CoroutineProcess
     {
-        private enum CrtState
-        {
-            Running,
-            EquipmentChanged,
-        }
-
         public ProcessContextTagDef HitResultsTag;
         public ProcessContextTagDef SelectedActorsTag;
-        public float Height;
-        public int NumberOfPoints = 30;
+        public ProcessContextTagDef ParabolaActive;
         public LineRenderer Parabola;
-        public Button WeaponButton;
 
         protected override IEnumerator<object> Crt()
         {
-            var selectedActors = context.GetItem(SelectedActorsTag) as IEnumerable<Actor>;
-            if (selectedActors == null || selectedActors.Count() != 1) {
+            ProjectileAttackAbilityDef ability = context.GetItem(ParabolaActive) as ProjectileAttackAbilityDef;
+
+            if (ability == null) {
                 yield break;
             }
-            var actor = selectedActors.FirstOrDefault();
+
+            var selected = context.GetItem(SelectedActorsTag) as IEnumerable<Actor>;
+            var actor = selected.First();
 
             ProjectileAttackAbilityDef getProjectileAbility()
             {
@@ -46,21 +39,12 @@ namespace Gruntz.UI.ActorControl
                 return equipment.Weapon.Abilities.OfType<ProjectileAttackAbilityDef>().FirstOrDefault();
             }
 
-            ProjectileAttackAbilityDef ability = null;
-            WeaponButton.onClick.AddListener(() => {
-                ability = getProjectileAbility();
-            });
-
-            while (ability == null) {
-                yield return null;
-            }
-
-            Vector3 tmp = Vector3.zero;
             void drawParabola()
             {
                 var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
                 var floorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == LayerMask.NameToLayer(UnityLayers.Floor));
-                if (floorHit.collider == null) {
+                if (floorHit.collider == null)
+                {
                     return;
                 }
 
@@ -73,32 +57,25 @@ namespace Gruntz.UI.ActorControl
 
                 d = Mathf.Clamp(d, parabola.MinDist, parabola.MaxDist);
 
-                tmp = actor.Pos + d * x;
-                var points = parabola.GetParabolaPoints(actor.Pos, tmp);
+                var points = parabola.GetParabolaPoints(actor.Pos, actor.Pos + d * x);
                 var positions = points.ToArray();
                 Parabola.positionCount = positions.Length;
                 Parabola.SetPositions(positions);
             }
 
-            bool spawned = false;
-            do {
-                drawParabola();
-                if (!spawned && Input.GetAxis("Ability") > .1f) {
-                    spawned = true;
-                    var projectile = Actors.ActorDeployment.DeployActorFromTemplate(ability.Projectile, -1000 * Vector3.down);
-                    var projectileComponent = projectile.GetComponent<ProjectileComponent>();
-                    var projectileData = projectileComponent.Data as ProjectileComponentData;
-                    projectileData.StartPoint = actor.Pos;
-                    projectileData.EndPoint = tmp;
-                    projectileComponent.Data = projectileData;
+            while (true) {
+                if (ability != getProjectileAbility()) {
+                    yield break;
                 }
+                drawParabola();
                 yield return null;
-            } while (ability == getProjectileAbility());
+            }
         }
 
         protected override IEnumerator<object> FinishCrt()
         {
-            WeaponButton.onClick.RemoveAllListeners();
+            Parabola.positionCount = 2;
+            Parabola.SetPositions(new Vector3[] { 1000 * Vector3.down, 1000 * Vector3.down + Vector3.right });
             yield break;
         }
     }

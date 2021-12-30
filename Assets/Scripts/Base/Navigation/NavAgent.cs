@@ -36,6 +36,8 @@ namespace Base.Navigation
             }
         }
 
+        public INavigationTarget StopASAPNavTarget => new SimpleNavTarget { Target = TravelSegment.EndPos };
+
         public class ActorTouchedPositionGameplayEvent : GameplayEvent
         {
             public Actor Actor;
