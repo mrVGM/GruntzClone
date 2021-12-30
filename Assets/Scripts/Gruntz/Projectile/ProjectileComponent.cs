@@ -1,7 +1,9 @@
 ﻿using Base;
 using Base.Actors;
 using Base.Gameplay;
+using Base.Status;
 using Gruntz.Gameplay;
+using Gruntz.Statuses;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,6 +17,28 @@ namespace Gruntz.Projectile
 
         private ProjectileComponentData _projectileComponentData;
         private float _speed = 0;
+
+        private Actor __ownerActor;
+        public Actor OwnerActor
+        {
+            get
+            {
+                if (__ownerActor == null) {
+                    var game = Game.Instance;
+                    var repo = game.DefRepositoryDef;
+                    var actorIDStatusDef = repo.AllDefs.OfType<ActorIDStatusDef>().FirstOrDefault();
+
+                    var actorManager = ActorManager.GetActorManagerFromContext();
+                    __ownerActor = actorManager.Actors.FirstOrDefault(actor => {
+                        var statusComponent = actor.GetComponent<StatusComponent>();
+                        var idStatus = statusComponent.GetStatus(actorIDStatusDef);
+                        var statusData = idStatus.StatusData as ActorIDStatusData;
+                        return statusData.ID == _projectileComponentData.OwnerActorId;
+                    });
+                }
+                return __ownerActor;
+            }
+        }
 
         public ISerializedObjectData Data
         {
@@ -137,10 +161,26 @@ namespace Gruntz.Projectile
             int prev, next;
             PlaceProjectile(out prev, out next);
 
-            var actorsHit = hits.Select(x => x.collider.GetComponent<ActorProxy>()).Where(x => x != null).Select(x => x.Actor);
+            var actorsHit = hits
+                .Select(x => x.collider.GetComponent<ActorProxy>())
+                .Where(x => x != null)
+                .Select(x => x.Actor)
+                .Where(x => x != OwnerActor);
 
+            var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
+            foreach (var actor in actorsHit) {
+                gameplayManager.HandleGameplayEvent(new ProjectileHitActorGameplayEvent { ProjectileActor = Actor, ActorHit = actor });
+            }
+
+            bool shouldDestroy = false;
+            if (actorsHit.Any()) {
+                shouldDestroy = true;
+            }
             if (prev == _parabolaPoints.Length - 1) {
-                var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
+                shouldDestroy = true;
+            }
+
+            if (shouldDestroy) {
                 gameplayManager.HandleGameplayEvent(new DestroyProjectileGameplayEvent { ProjectileActor = Actor });
             }
         }
