@@ -1,5 +1,7 @@
 ﻿using Base;
 using Base.Actors;
+using Base.Gameplay;
+using Gruntz.Gameplay;
 using System.Linq;
 using UnityEngine;
 
@@ -74,7 +76,9 @@ namespace Gruntz.Projectile
                 Vector3 p1 = _parabolaPoints[i];
                 Vector3 p2 = _parabolaPoints[i + 1];
 
-                float d = (p2 - p1).magnitude;
+                Vector3 offset = p2 - p1;
+                offset.y = 0;
+                float d = offset.magnitude;
                 if (d > dist) {
                     float c = dist / d;
                     return (1 - c) * p1 + c * p2;
@@ -90,6 +94,11 @@ namespace Gruntz.Projectile
         {
             _projectileComponentData.LifeTime += Time.fixedDeltaTime;
             PlaceProjectile();
+            Vector3 pos = GetProjectilePos();
+            if ((pos - _parabolaPoints[_parabolaPoints.Length - 1]).magnitude < 0.00001f) {
+                var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
+                gameplayManager.HandleGameplayEvent(new DestroyProjectileGameplayEvent { ProjectileActor = Actor });
+            }
         }
     }
 }

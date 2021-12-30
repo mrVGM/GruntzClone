@@ -21,6 +21,14 @@ namespace Gruntz.Gameplay.ActionGenarators
                     Reason = KillActorAction.DeathReason.Destruction,
                 };
             }
+
+            var destroyProjectileEvents = gameplayEvents.OfType<DestroyProjectileGameplayEvent>();
+            foreach (var projectile in destroyProjectileEvents) {
+                yield return new KillActorAction {
+                    Actor = projectile.ProjectileActor,
+                    Reason = KillActorAction.DeathReason.ProjectileDestruction,
+                };
+            }
         }
     }
 }

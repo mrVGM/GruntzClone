@@ -17,4 +17,4 @@ MonoBehaviour:
     NumberOfPoints: 30
     MinDist: 1
     MaxDist: 7
-  Speed: 3
+  Speed: 5

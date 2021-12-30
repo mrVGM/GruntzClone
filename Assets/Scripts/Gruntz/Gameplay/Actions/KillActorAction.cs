@@ -9,7 +9,8 @@ namespace Gruntz.Gameplay.Actions
         {
             Clash,
             Damage,
-            Destruction
+            Destruction,
+            ProjectileDestruction
         }
         public Actor Actor { get; set; }
         public DeathReason Reason = DeathReason.Destruction;

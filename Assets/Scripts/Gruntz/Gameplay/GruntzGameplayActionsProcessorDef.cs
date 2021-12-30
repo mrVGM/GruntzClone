@@ -80,12 +80,15 @@ namespace Gruntz.Gameplay
                     Vector3 pos = killAction.Actor.Pos;
                     var deadActorData = killAction.Actor.Data as ActorData;
                     action.Actor.Deinit();
-                    var graveActor = ActorDeployment.DeployActorFromTemplate(GraveDef, pos);
-                    GraveDef.ProcessActor(graveActor);
-                    statusComponent = graveActor.GetComponent<StatusComponent>();
-                    var actorInstanceStatusData = ActorHolderStatusDef.Data as ActorInstanceHolderStatusData;
-                    actorInstanceStatusData.ActorData = deadActorData;
-                    statusComponent.AddStatus(actorInstanceStatusData.CreateStatus());
+
+                    if (killAction.Reason != KillActorAction.DeathReason.ProjectileDestruction) {
+                        var graveActor = ActorDeployment.DeployActorFromTemplate(GraveDef, pos);
+                        GraveDef.ProcessActor(graveActor);
+                        statusComponent = graveActor.GetComponent<StatusComponent>();
+                        var actorInstanceStatusData = ActorHolderStatusDef.Data as ActorInstanceHolderStatusData;
+                        actorInstanceStatusData.ActorData = deadActorData;
+                        statusComponent.AddStatus(actorInstanceStatusData.CreateStatus());
+                    }
 
                     dead.Add(action.Actor);
 
