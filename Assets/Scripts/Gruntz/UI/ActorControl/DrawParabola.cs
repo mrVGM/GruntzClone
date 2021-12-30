@@ -5,6 +5,7 @@ using Base.UI;
 using Gruntz.Abilities;
 using Gruntz.Equipment;
 using Gruntz.Items;
+using Gruntz.Projectile;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
@@ -54,6 +55,7 @@ namespace Gruntz.UI.ActorControl
                 yield return null;
             }
 
+            Vector3 tmp = Vector3.zero;
             void drawParabola()
             {
                 var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
@@ -65,16 +67,31 @@ namespace Gruntz.UI.ActorControl
                 Vector3 offset = floorHit.point - actor.Pos;
                 var x = offset.normalized;
                 float d = offset.magnitude;
-                d = Mathf.Clamp(d, ability.ParabolaSettings.MinDist, ability.ParabolaSettings.MaxDist);
 
-                var points = ability.ParabolaSettings.GetParabolaPoints(actor.Pos, actor.Pos + d * x);
+                var projectile = ability.Projectile;
+                var parabola = projectile.Components.OfType<ProjectileComponentDef>().FirstOrDefault().ParabolaSettings;
+
+                d = Mathf.Clamp(d, parabola.MinDist, parabola.MaxDist);
+
+                tmp = actor.Pos + d * x;
+                var points = parabola.GetParabolaPoints(actor.Pos, tmp);
                 var positions = points.ToArray();
                 Parabola.positionCount = positions.Length;
                 Parabola.SetPositions(positions);
             }
 
+            bool spawned = false;
             do {
                 drawParabola();
+                if (!spawned && Input.GetAxis("Ability") > .1f) {
+                    spawned = true;
+                    var projectile = Actors.ActorDeployment.DeployActorFromTemplate(ability.Projectile, -1000 * Vector3.down);
+                    var projectileComponent = projectile.GetComponent<ProjectileComponent>();
+                    var projectileData = projectileComponent.Data as ProjectileComponentData;
+                    projectileData.StartPoint = actor.Pos;
+                    projectileData.EndPoint = tmp;
+                    projectileComponent.Data = projectileData;
+                }
                 yield return null;
             } while (ability == getProjectileAbility());
         }

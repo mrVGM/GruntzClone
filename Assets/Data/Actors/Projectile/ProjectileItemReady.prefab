@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3671375207738961575}
   m_Layer: 0
-  m_Name: BallReady
+  m_Name: ProjectileItemReady
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
