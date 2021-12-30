@@ -11,7 +11,7 @@ using Utils;
 
 namespace Gruntz.UI.ActorControl
 {
-    public class DrawParable : CoroutineProcess
+    public class DrawParabola : CoroutineProcess
     {
         private enum CrtState
         {
@@ -23,7 +23,7 @@ namespace Gruntz.UI.ActorControl
         public ProcessContextTagDef SelectedActorsTag;
         public float Height;
         public int NumberOfPoints = 30;
-        public LineRenderer Parable;
+        public LineRenderer Parabola;
         public Button WeaponButton;
 
         protected override IEnumerator<object> Crt()
@@ -54,7 +54,7 @@ namespace Gruntz.UI.ActorControl
                 yield return null;
             }
 
-            void drawParable()
+            void drawParabola()
             {
                 var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
                 var floorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == LayerMask.NameToLayer(UnityLayers.Floor));
@@ -65,16 +65,16 @@ namespace Gruntz.UI.ActorControl
                 Vector3 offset = floorHit.point - actor.Pos;
                 var x = offset.normalized;
                 float d = offset.magnitude;
-                d = Mathf.Clamp(d, ability.ParableSettings.MinDist, ability.ParableSettings.MaxDist);
+                d = Mathf.Clamp(d, ability.ParabolaSettings.MinDist, ability.ParabolaSettings.MaxDist);
 
-                var points = ability.ParableSettings.GetParablePoints(actor.Pos, actor.Pos + d * x);
+                var points = ability.ParabolaSettings.GetParabolaPoints(actor.Pos, actor.Pos + d * x);
                 var positions = points.ToArray();
-                Parable.positionCount = positions.Length;
-                Parable.SetPositions(positions);
+                Parabola.positionCount = positions.Length;
+                Parabola.SetPositions(positions);
             }
 
             do {
-                drawParable();
+                drawParabola();
                 yield return null;
             } while (ability == getProjectileAbility());
         }

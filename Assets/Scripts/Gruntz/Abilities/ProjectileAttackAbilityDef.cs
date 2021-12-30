@@ -15,13 +15,13 @@ namespace Gruntz.Abilities
     public class ProjectileAttackAbilityDef : AbilityDef, IAttackAbility
     {
         [Serializable]
-        public class Parable
+        public class Parabola
         {
             public float Height = 2.0f;
             public int NumberOfPoints = 30;
             public float MinDist = 1.0f;
             public float MaxDist = 7.0f;
-            public IEnumerable<Vector3> GetParablePoints(Vector3 startPoint, Vector3 endPoint)
+            public IEnumerable<Vector3> GetParabolaPoints(Vector3 startPoint, Vector3 endPoint)
             {
                 float d = (endPoint - startPoint).magnitude;
                 float c = -4.0f * Height / (d * d);
@@ -42,7 +42,7 @@ namespace Gruntz.Abilities
 
         public float Damage = 10;
 
-        public Parable ParableSettings;
+        public Parabola ParabolaSettings;
         public float DamageAmount => Damage;
 
         public override AbilityExecution Execute(AbilityExecutionContext ctx)

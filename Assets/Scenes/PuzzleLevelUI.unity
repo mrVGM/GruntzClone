@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 97285572}
   - component: {fileID: 97285573}
   m_Layer: 0
-  m_Name: DrawParable
+  m_Name: DrawParabola
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -768,7 +768,7 @@ MonoBehaviour:
   SelectedActorsTag: {fileID: 11400000, guid: a9b2daba292157448bcd837138c348cc, type: 2}
   Height: 5
   NumberOfPoints: 30
-  Parable: {fileID: 383170042}
+  Parabola: {fileID: 383170042}
   WeaponButton: {fileID: 256695367}
 --- !u!1 &117972268
 GameObject:
@@ -6214,7 +6214,7 @@ GameObject:
   - component: {fileID: 1241475999}
   - component: {fileID: 1241476000}
   m_Layer: 0
-  m_Name: LoopDrawParable
+  m_Name: LoopDrawParabola
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9865,8 +9865,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2090677770}
+  - component: {fileID: 2090677771}
   m_Layer: 0
-  m_Name: Parable
+  m_Name: Parabola
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9887,6 +9888,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2090677771
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090677769}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 315af2bc80395c84f9934d4911ef9258, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2100659925
 GameObject:
   m_ObjectHideFlags: 0
