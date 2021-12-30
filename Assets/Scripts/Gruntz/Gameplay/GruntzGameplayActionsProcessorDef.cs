@@ -34,6 +34,7 @@ namespace Gruntz.Gameplay
                     _processActions = new ProcessAction[] {
                         ProcessKillActions,
                         ProcessDamageActions,
+                        ProcessActorPushedAction,
                         ProcessActorArrivedAtArrowDestinationAction,
                         ProcessChangeActorNavObstaclesAction,
                         ProcessOverrideActorControllerAction,
@@ -414,6 +415,28 @@ namespace Gruntz.Gameplay
                     teamComponent.UnitTeam = TeamComponent.Team.Player;
                     var materialManager = CollectedMaterialManager.CollectedMaterialManager.GetCollectedMaterialManager();
                     materialManager.ActorSpawn();
+                    dirty = true;
+                }
+            }
+            return new ProcessResultt { ProcessedActions = processActions().ToList(), Dirty = dirty };
+        }
+
+        private ProcessResultt ProcessActorPushedAction(IEnumerable<IGameplayAction> actions)
+        {
+            bool dirty = false;
+            IEnumerable<IGameplayAction> processActions()
+            {
+                foreach (var action in actions)
+                {
+                    var pushActorAction = action as PushActorAction;
+                    if (pushActorAction == null)
+                    {
+                        yield return action;
+                        continue;
+                    }
+
+                    var navAgent = pushActorAction.Actor.GetComponent<NavAgent>();
+                    navAgent.RandomPush();
                     dirty = true;
                 }
             }

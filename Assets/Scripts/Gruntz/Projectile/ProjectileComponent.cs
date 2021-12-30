@@ -128,6 +128,9 @@ namespace Gruntz.Projectile
 
         private IEnumerable<RaycastHit> GetHits(IEnumerable<Vector3> points)
         {
+            if (!points.Any()) {
+                yield break;
+            }
             var pts = points.ToArray();
             for (int i = 0; i < pts.Length - 1; ++i) {
                 Vector3 offset = pts[i + 1] - pts[i];
@@ -149,6 +152,9 @@ namespace Gruntz.Projectile
 
             IEnumerable<Vector3> points()
             {
+                if (p3 <= _parabolaPoints.Length / 2) {
+                    yield break;
+                }
                 yield return pos1;
                 for (int i = p2; i <= p3; ++i) {
                     yield return _parabolaPoints[i];
@@ -164,8 +170,7 @@ namespace Gruntz.Projectile
             var actorsHit = hits
                 .Select(x => x.collider.GetComponent<ActorProxy>())
                 .Where(x => x != null)
-                .Select(x => x.Actor)
-                .Where(x => x != OwnerActor);
+                .Select(x => x.Actor);
 
             var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
             foreach (var actor in actorsHit) {
