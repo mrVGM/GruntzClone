@@ -17,3 +17,8 @@ MonoBehaviour:
   AnimationEventMessages: {fileID: 11400000, guid: ebcb4d3cc41eeec4d9bc05ee2537cc6f, type: 2}
   TargetActorStatuses: []
   Damage: 10
+  ParableSettings:
+    Height: 5
+    NumberOfPoints: 30
+    MinDist: 1
+    MaxDist: 7
