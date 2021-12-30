@@ -14,10 +14,17 @@ namespace Gruntz.Projectile
             public int NumberOfPoints = 30;
             public float MinDist = 1.0f;
             public float MaxDist = 7.0f;
+
+            private void GetCoefficients(Vector3 startPoint, Vector3 endPoint, out float c, out float d)
+            {
+                d = (endPoint - startPoint).magnitude;
+                c = -4.0f * Height / (d * d);
+            }
+
             public IEnumerable<Vector3> GetParabolaPoints(Vector3 startPoint, Vector3 endPoint)
             {
-                float d = (endPoint - startPoint).magnitude;
-                float c = -4.0f * Height / (d * d);
+                float c, d;
+                GetCoefficients(startPoint, endPoint, out c, out d);
 
                 Vector3 x = (endPoint - startPoint).normalized;
                 Vector3 y = Vector3.up;
@@ -30,6 +37,13 @@ namespace Gruntz.Projectile
 
                     yield return startPoint + cur * x + h * y;
                 }
+            }
+
+            public Vector3 GetSlopeVector(Vector3 startPoint, Vector3 endPoint)
+            {
+                float c, d;
+                GetCoefficients(startPoint, endPoint, out c, out d);
+                return (Vector3.right - c * d * Vector3.up).normalized;
             }
         }
 

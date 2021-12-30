@@ -13,6 +13,8 @@ namespace Gruntz.Projectile
         public Actor Actor { get; }
 
         private ProjectileComponentData _projectileComponentData;
+        private float _speed = 0;
+
         public ISerializedObjectData Data
         {
             get
@@ -27,6 +29,11 @@ namespace Gruntz.Projectile
                 _projectileComponentData = value as ProjectileComponentData;
                 _parabolaPoints = ProjectileComponentDef.ParabolaSettings
                     .GetParabolaPoints(_projectileComponentData.StartPoint, _projectileComponentData.EndPoint).ToArray();
+
+                Vector3 slopeVector = ProjectileComponentDef.ParabolaSettings.GetSlopeVector(_projectileComponentData.StartPoint, _projectileComponentData.EndPoint);
+                Vector3 horizontalVelocity = ProjectileComponentDef.Speed * slopeVector;
+                horizontalVelocity.y = 0;
+                _speed = horizontalVelocity.magnitude;
                 PlaceProjectile();
             }
         }
@@ -70,7 +77,7 @@ namespace Gruntz.Projectile
 
         private Vector3 GetProjectilePos()
         {
-            float dist = _projectileComponentData.LifeTime * ProjectileComponentDef.Speed;
+            float dist = _speed * _projectileComponentData.LifeTime;
             for (int i = 0; i < _parabolaPoints.Length - 1; ++i)
             {
                 Vector3 p1 = _parabolaPoints[i];
