@@ -18,3 +18,7 @@ MonoBehaviour:
     MinDist: 1
     MaxDist: 7
   Speed: 7
+  HitActorStatus: {fileID: 11400000, guid: ef6970aceacb01e458f6d9697d1190df, type: 2}
+  Collision:
+    serializedVersion: 2
+    m_Bits: 32768

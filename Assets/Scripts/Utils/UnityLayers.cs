@@ -8,5 +8,6 @@ namespace Utils
         public static string ActorGeneral = "ActorGeneral";
         public static string Ignored = "Ignored";
         public static string EnvironmentObstacle = "EnvironmentObstacle";
+        public static string ProjectileTarget = "ProjectileTarget";
     }
 }

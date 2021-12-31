@@ -131,12 +131,11 @@ namespace Gruntz.Projectile
             if (!points.Any()) {
                 yield break;
             }
+
             var pts = points.ToArray();
             for (int i = 0; i < pts.Length - 1; ++i) {
                 Vector3 offset = pts[i + 1] - pts[i];
-                var ray = new Ray(pts[i], offset);
-
-                var hits = Physics.RaycastAll(pts[i], pts[i + 1] - pts[i]);
+                var hits = Physics.RaycastAll(pts[i], offset, offset.magnitude, ProjectileComponentDef.Collision);
                 foreach (var hit in hits) {
                     yield return hit;
                 }
@@ -170,7 +169,11 @@ namespace Gruntz.Projectile
             var actorsHit = hits
                 .Select(x => x.collider.GetComponent<ActorProxy>())
                 .Where(x => x != null)
-                .Select(x => x.Actor);
+                .Select(x => x.Actor)
+                .Where(x => {
+                    var statusComponent = x.GetComponent<StatusComponent>();
+                    return statusComponent.GetStatus(ProjectileComponentDef.HitActorStatus) != null;
+                });
 
             var gameplayManager = GameplayManager.GetGameplayManagerFromContext();
             foreach (var actor in actorsHit) {

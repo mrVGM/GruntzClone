@@ -1,4 +1,5 @@
 using Base.Actors;
+using Base.Status;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,6 +50,8 @@ namespace Gruntz.Projectile
 
         public Parabola ParabolaSettings;
         public float Speed = 3.0f;
+        public StatusDef HitActorStatus;
+        public LayerMask Collision;
 
         public override IActorComponent CreateActorComponent(Actor actor)
         {
