@@ -13,6 +13,7 @@ using Gruntz.UnitController;
 using Gruntz.UnitController.Instructions;
 using System.Collections.Generic;
 using System.Linq;
+using Gruntz.Projectile;
 using UnityEngine;
 using static Base.Navigation.NavAgent;
 
@@ -436,7 +437,9 @@ namespace Gruntz.Gameplay
                     }
 
                     var navAgent = pushActorAction.Actor.GetComponent<NavAgent>();
-                    navAgent.RandomPush();
+                    var projectile = pushActorAction.ProjectileActor.GetComponent<ProjectileComponent>();
+                    var projectileComponentData = projectile.Data as ProjectileComponentData;
+                    navAgent.Push(((Vector3)projectileComponentData.EndPoint - (Vector3)projectileComponentData.StartPoint).normalized);
                     dirty = true;
                 }
             }

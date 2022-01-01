@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Base.Actors;
 using Base.Gameplay;
@@ -143,22 +144,19 @@ namespace Base.Navigation
             var navigation = Navigation.GetNavigationFromContext();
             navigation.MakeMoveRequest(Controller.MoveRequest);
         }
-
-        public void RandomPush()
+        
+        public void Push(Vector3 direction)
         {
             var navigation = Navigation.GetNavigationFromContext();
             var map = navigation.Map;
             var snapped = map.SnapPosition(Pos);
-            var neighbours = map.GetNeighbours(snapped).ToList();
-            int randomIndex = Game.Instance.Random.Next() % neighbours.Count;
+            var neighbours = map.GetNeighbours(snapped);
+            neighbours = neighbours.OrderByDescending(x => {
+                Vector3 neighbourDir = (x - snapped).normalized;
+                return Vector3.Dot(neighbourDir, direction);
 
-            Vector3 randomNeighbour = neighbours[randomIndex];
-            Push(randomNeighbour);
-        }
-
-        public void Push(Vector3 destination)
-        {
-            _controller = new BeingPushedNavAgentController(this, destination);
+            });
+            _controller = new BeingPushedNavAgentController(this, neighbours.FirstOrDefault());
         }
 
         public void StopThePush()

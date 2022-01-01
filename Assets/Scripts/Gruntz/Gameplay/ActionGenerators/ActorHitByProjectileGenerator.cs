@@ -12,7 +12,7 @@ namespace Gruntz.Gameplay.ActionGenarators
             var actorHitEvents = gameplayEvents.OfType<ProjectileHitActorGameplayEvent>();
             foreach (var actorHitEvent in actorHitEvents) {
                 var actor = actorHitEvent.ActorHit;
-                yield return new PushActorAction { Actor = actor };
+                yield return new PushActorAction { Actor = actor, ProjectileActor = actorHitEvent.ProjectileActor };
             }
         }
     }
