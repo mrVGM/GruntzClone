@@ -29,5 +29,7 @@ namespace Base.Navigation
         public SerializedVector3 TravelSegmentEnd;
         public bool CheckForSegmentInfoClashes => ObstacleNames.Contains(Utils.UnityLayers.UnitObstacle);
         public float Speed;
+
+        public INavAgentController NavAgentController;
     }
 }

@@ -1,12 +1,22 @@
+using System;
 using Base.Gameplay;
 using static Base.Navigation.NavAgent;
 
 namespace Base.Navigation
 {
+    [Serializable]
     public class RegularMoveNavAgentController : INavAgentController
     {
+        [NonSerialized]
         private NavAgent _navAgent;
 
+        public NavAgent NavAgent
+        {
+            set
+            {
+                _navAgent = value;
+            }
+        }
         public RegularMoveNavAgentController(NavAgent navAgent)
         {
             _navAgent = navAgent;

@@ -1,15 +1,26 @@
+using System;
 using Base.Gameplay;
 using UnityEngine;
 using static Base.Navigation.NavAgent;
 
 namespace Base.Navigation
 {
+    [Serializable]
     public class BeingPushedNavAgentController : INavAgentController
     {
+        [NonSerialized]
         private NavAgent _navAgent;
         private Vector3 _pushSnappedOrigin;
         private Vector3 _pushDestination;
         private bool _pushProcessed;
+
+        public NavAgent NavAgent
+        {
+            set
+            {
+                _navAgent = value;
+            }
+        }
 
         public BeingPushedNavAgentController(NavAgent navAgent, Vector3 pushDestination, Vector3 pushSnappedOrigin)
         {

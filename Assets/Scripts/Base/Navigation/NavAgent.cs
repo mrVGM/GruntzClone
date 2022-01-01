@@ -119,16 +119,17 @@ namespace Base.Navigation
                 SetObstacle();
             }
         }
-
-        public INavAgentController _controller;
+        
         public INavAgentController Controller
         {
             get
             {
-                if (_controller == null) {
-                    _controller = new RegularMoveNavAgentController(this);
+                if (_navAgentData.NavAgentController == null) {
+                    _navAgentData.NavAgentController = new RegularMoveNavAgentController(this);
                 }
-                return _controller;
+
+                _navAgentData.NavAgentController.NavAgent = this;
+                return _navAgentData.NavAgentController;
             }
         }
 
@@ -156,12 +157,12 @@ namespace Base.Navigation
                 return Vector3.Dot(neighbourDir, direction);
 
             });
-            _controller = new BeingPushedNavAgentController(this, neighbours.FirstOrDefault(), snapped);
+            _navAgentData.NavAgentController = new BeingPushedNavAgentController(this, neighbours.FirstOrDefault(), snapped);
         }
 
         public void StopThePush()
         {
-            _controller = null;
+            _navAgentData.NavAgentController = null;
         }
 
         public void Init()
