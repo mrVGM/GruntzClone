@@ -6,6 +6,21 @@ namespace Base.Gameplay
 {
     public class GameplayManager : IContextObject, IOrderedUpdate
     {
+        private List<GameplayActionGenerator> __actionGenerators;
+
+        private IEnumerable<GameplayActionGenerator> _actionGenerators
+        {
+            get
+            {
+                if (__actionGenerators == null) {
+                    var game = Game.Instance;
+                    var repo = game.DefRepositoryDef;
+                    __actionGenerators = repo.AllDefs.OfType<GameplayActionGenerator>().ToList();
+                }
+                return __actionGenerators;
+            }
+        }
+
         public ExecutionOrderTagDef OrderTagDef
         {
             get
@@ -48,7 +63,7 @@ namespace Base.Gameplay
 
         IEnumerable<IGameplayAction> GenerateActions(IEnumerable<GameplayEvent> gameplayEvents)
         {
-            foreach (var actionGenerator in _gameplayManagerDef.GameplayActionGenerators) {
+            foreach (var actionGenerator in _actionGenerators) {
                 var actions = actionGenerator.GenerateActions(gameplayEvents);
                 foreach (var action in actions) {
                     yield return action;
