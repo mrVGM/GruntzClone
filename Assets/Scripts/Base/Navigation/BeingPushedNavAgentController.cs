@@ -29,7 +29,7 @@ namespace Base.Navigation
                 var _navAgentData = _navAgent.Data as NavAgentData;
                 var request = new MoveRequest
                 {
-                    Obstacles = _navAgentData.Obstacles,
+                    Obstacles = _navAgentData.OriginalObstacles,
                     CurrentPos = _navAgent.Pos,
                     TargetPos = new SimpleNavTarget { Target = _pushDestination },
                     MoveSpeed = _navAgentData.Speed,
