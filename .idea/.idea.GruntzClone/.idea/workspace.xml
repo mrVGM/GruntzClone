@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29191b72-e5ae-475c-8f45-7451cdffc376" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Navigation/NavAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Navigation/NavAgent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/Gameplay/ActionGenerators/ActorHitByProjectileGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/Gameplay/ActionGenerators/ActorHitByProjectileGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/Gameplay/Actions/PushActorAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/Gameplay/Actions/PushActorAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Tags/ProcessContextTags/DoingSelectionTagdef.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Tags/ProcessContextTags/DoingSelectionTagdef.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GymLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GymLevel.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/Gameplay/GruntzGameplayActionsProcessorDef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/Gameplay/GruntzGameplayActionsProcessorDef.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UnitController/UnitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UnitController/UnitController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

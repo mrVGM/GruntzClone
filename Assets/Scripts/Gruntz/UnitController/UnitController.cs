@@ -76,7 +76,7 @@ namespace Gruntz.UnitController
             MessageBoxTagStack.Remove(messagesBoxTagDef);
         }
 
-        private void CancelInstructions()
+        public void CancelInstructions()
         {
             if (_updatingExecutable != null) {
                 _updatingExecutable.StopExecution();

@@ -436,10 +436,14 @@ namespace Gruntz.Gameplay
                         continue;
                     }
 
+                    var unitController = pushActorAction.Actor.GetComponent<UnitController.UnitController>();
+                    unitController.CancelInstructions();
+                    
                     var navAgent = pushActorAction.Actor.GetComponent<NavAgent>();
                     var projectile = pushActorAction.ProjectileActor.GetComponent<ProjectileComponent>();
                     var projectileComponentData = projectile.Data as ProjectileComponentData;
                     navAgent.Push(((Vector3)projectileComponentData.EndPoint - (Vector3)projectileComponentData.StartPoint).normalized);
+                    
                     dirty = true;
                 }
             }
