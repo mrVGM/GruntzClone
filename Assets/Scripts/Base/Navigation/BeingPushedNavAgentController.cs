@@ -7,13 +7,15 @@ namespace Base.Navigation
     public class BeingPushedNavAgentController : INavAgentController
     {
         private NavAgent _navAgent;
+        private Vector3 _pushSnappedOrigin;
         private Vector3 _pushDestination;
         private bool _pushProcessed;
 
-        public BeingPushedNavAgentController(NavAgent navAgent, Vector3 pushDestination)
+        public BeingPushedNavAgentController(NavAgent navAgent, Vector3 pushDestination, Vector3 pushSnappedOrigin)
         {
             _navAgent = navAgent;
             _pushDestination = pushDestination;
+            _pushSnappedOrigin = pushSnappedOrigin;
             _pushProcessed = false;
         }
         public MoveRequest MoveRequest
@@ -22,7 +24,7 @@ namespace Base.Navigation
             {
                 ITravelSegmentInfo segmentInfo = _navAgent.TravelSegment;
                 if (!_pushProcessed) {
-                    segmentInfo = new TravelSegmentInfo { StartPos = _navAgent.Pos, EndPos = _navAgent.Pos };
+                    segmentInfo = new TravelSegmentInfo { StartPos = _pushSnappedOrigin, EndPos = _pushSnappedOrigin };
                 }
                 var _navAgentData = _navAgent.Data as NavAgentData;
                 var request = new MoveRequest
