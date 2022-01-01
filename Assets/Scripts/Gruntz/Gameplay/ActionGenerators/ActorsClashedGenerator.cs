@@ -11,8 +11,6 @@ namespace Gruntz.Gameplay.ActionGenarators
 {
     public class ActorsClashedGenerator : GameplayActionGenerator
     {
-        public ActorTemplateDef GraveDeployDef;
-        public ActorInstanceHolderStatusDef ActorInstanceHolderStatusDef;
         public StatusDef[] Hardness;
         public override IEnumerable<IGameplayAction> GenerateActions(IEnumerable<GameplayEvent> gameplayEvents)
         {
@@ -50,7 +48,8 @@ namespace Gruntz.Gameplay.ActionGenarators
                     return 100000;
                 }
 
-                var actorToKill = actorsCollection(clash).OrderBy(hardness).FirstOrDefault();
+                var actorsSortedByHardness = actorsCollection(clash).OrderBy(hardness);
+                var actorToKill = actorsSortedByHardness.FirstOrDefault();
                 yield return new KillActorAction {
                     Actor = actorToKill,
                     Reason = KillActorAction.DeathReason.Clash

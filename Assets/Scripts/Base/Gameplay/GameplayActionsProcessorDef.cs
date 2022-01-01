@@ -4,13 +4,13 @@ namespace Base.Gameplay
 {
     public abstract class GameplayActionsProcessorDef : Def
     {
-        protected class ProcessResultt
+        protected class ProcessResult
         {
             public List<IGameplayAction> ProcessedActions;
             public bool Dirty;
         }
 
-        protected delegate ProcessResultt ProcessAction(IEnumerable<IGameplayAction> actions);
+        protected delegate ProcessResult ProcessAction(IEnumerable<IGameplayAction> actions);
         protected abstract ProcessAction[] ProccessActions { get; }
 
         public void ProcessActions(IEnumerable<IGameplayAction> actions)

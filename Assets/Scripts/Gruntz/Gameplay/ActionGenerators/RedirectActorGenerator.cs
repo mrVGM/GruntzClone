@@ -37,7 +37,6 @@ namespace Gruntz.Gameplay.ActionGenarators
 
             foreach (var statusAppliedEvent in statusAppliedEvents) {
                 var actor = statusAppliedEvent.Actor;
-                var actorComponent = actor.ActorComponent;
                 var arrowStatusData = statusAppliedEvent.Status.Data as ArrowStatusData;
                 var changeActorControllerStatusData = OverrideActorControllerStatusDef.Data as OverrideActorControllerStatusData;
                 changeActorControllerStatusData.AssociatedStatusId = arrowStatusData.StatusId;
@@ -47,7 +46,14 @@ namespace Gruntz.Gameplay.ActionGenarators
                 yield return new RedirectActorAction {
                     Actor = actor,
                     Destination = arrowStatusData.Destination,
-                    StatusesToAdd = new[] { changeActorControllerStatusData.CreateStatus(), disableNavObstaclesStatusData.CreateStatus() }
+                };
+                yield return new AddStatusAction {
+                    Actor = actor,
+                    Status = changeActorControllerStatusData.CreateStatus(),
+                };
+                yield return new AddStatusAction {
+                    Actor = actor,
+                    Status = disableNavObstaclesStatusData.CreateStatus(),
                 };
             }
         }

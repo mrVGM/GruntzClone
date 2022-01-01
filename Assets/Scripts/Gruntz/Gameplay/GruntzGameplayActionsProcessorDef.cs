@@ -35,8 +35,10 @@ namespace Gruntz.Gameplay
                     _processActions = new ProcessAction[] {
                         ProcessKillActions,
                         ProcessDamageActions,
+                        ProcessAddStatusAction,
+                        ProcessRemoveStatusAction,
+                        ProcessRemoveArrowStatusAction,
                         ProcessActorPushedAction,
-                        ProcessActorArrivedAtArrowDestinationAction,
                         ProcessChangeActorNavObstaclesAction,
                         ProcessOverrideActorControllerAction,
                         ProcessRedirectActorAction,
@@ -51,7 +53,7 @@ namespace Gruntz.Gameplay
             }
         }
 
-        private ProcessResultt ProcessKillActions(IEnumerable<IGameplayAction> actions)
+        private ProcessResult ProcessKillActions(IEnumerable<IGameplayAction> actions)
         {
             bool dirty = false;
             IEnumerable<IGameplayAction> processActions()
@@ -102,13 +104,13 @@ namespace Gruntz.Gameplay
                 }
             }
 
-            return new ProcessResultt {
+            return new ProcessResult {
                 ProcessedActions = processActions().ToList(),
                 Dirty = dirty
             };
         }
 
-        private ProcessResultt ProcessDamageActions(IEnumerable<IGameplayAction> actions)
+        private ProcessResult ProcessDamageActions(IEnumerable<IGameplayAction> actions)
         {
             bool dirty = false;
             IEnumerable<IGameplayAction> processActions()
@@ -153,39 +155,14 @@ namespace Gruntz.Gameplay
                     yield return action;
                 }
             }
-            return new ProcessResultt
+            return new ProcessResult
             {
                 ProcessedActions = processActions().ToList(),
                 Dirty = dirty,
             };
         }
-
-        private ProcessResultt ProcessActorArrivedAtArrowDestinationAction(IEnumerable<IGameplayAction> actions)
-        {
-            bool dirty = false;
-            IEnumerable<IGameplayAction> processActions()
-            {
-                foreach (var action in actions)
-                {
-                    var arrivedAtDestinationAction = action as ActorArrivedAtArrowDestinationAction;
-                    if (arrivedAtDestinationAction == null)
-                    {
-                        yield return action;
-                        continue;
-                    }
-
-                    dirty = true;
-                    var statusComponent = arrivedAtDestinationAction.Actor.GetComponent<StatusComponent>();
-                    foreach (var status in arrivedAtDestinationAction.StatusesToRemove)
-                    {
-                        statusComponent.RemoveStatus(status);
-                    }
-                }
-            }
-            return new ProcessResultt { ProcessedActions = processActions().ToList(), Dirty = dirty };
-        }
-
-        private ProcessResultt ProcessChangeActorNavObstaclesAction(IEnumerable<IGameplayAction> actions)
+        
+        private ProcessResult ProcessChangeActorNavObstaclesAction(IEnumerable<IGameplayAction> actions)
         {
             bool dirty = false;
             IEnumerable<IGameplayAction> processActions()
@@ -217,10 +194,10 @@ namespace Gruntz.Gameplay
                 }
             }
 
-            return new ProcessResultt { ProcessedActions = processActions().ToList(), Dirty = dirty };
+            return new ProcessResult { ProcessedActions = processActions().ToList(), Dirty = dirty };
         }
 
-        private ProcessResultt ProcessOverrideActorControllerAction(IEnumerable<IGameplayAction> actions)
+        private ProcessResult ProcessOverrideActorControllerAction(IEnumerable<IGameplayAction> actions)
         {
             bool dirty = false;
             IEnumerable<IGameplayAction> processActions()
@@ -246,10 +223,10 @@ namespace Gruntz.Gameplay
                     }
                 }
             }
-            return new ProcessResultt { ProcessedActions = processActions().ToList(), Dirty = dirty };
+            return new ProcessResult { ProcessedActions = processActions().ToList(), Dirty = dirty };
         }
 
-        private ProcessResultt ProcessRedirectActorAction(IEnumerable<IGameplayAction> actions)
+        private ProcessResult ProcessRedirectActorAction(IEnumerable<IGameplayAction> actions)
         {
             bool dirty = false;
             IEnumerable<IGameplayAction> processActions()
@@ -267,18 +244,13 @@ namespace Gruntz.Gameplay
 
                     var navAgent = redirectActorAction.Actor.GetComponent<NavAgent>();
                     navAgent.Target = new SimpleNavTarget { Target = redirectActorAction.Destination };
-                    var statusComponent = redirectActorAction.Actor.GetComponent<StatusComponent>();
-                    foreach (var status in redirectActorAction.StatusesToAdd)
-                    {
-                        statusComponent.AddStatus(status);
-                    }
                 }
             }
 
-            return new ProcessResultt { ProcessedActions = processActions().ToList(), Dirty = dirty };
+            return new ProcessResult { ProcessedActions = processActions().ToList(), Dirty = dirty };
         }
 
-        private ProcessResultt ProcessRedirectBallActorAction(IEnumerable<IGameplayAction> actions)
+        private ProcessResult ProcessRedirectBallActorAction(IEnumerable<IGameplayAction> actions)
         {
             bool dirty = false;
             IEnumerable<IGameplayAction> processActions()
@@ -301,10 +273,10 @@ namespace Gruntz.Gameplay
                 }
             }
 
-            return new ProcessResultt { ProcessedActions = processActions().ToList(), Dirty = dirty };
+            return new ProcessResult { ProcessedActions = processActions().ToList(), Dirty = dirty };
         }
 
-        private ProcessResultt ProcessSetInitialDestinationAction(IEnumerable<IGameplayAction> actions)
+        private ProcessResult ProcessSetInitialDestinationAction(IEnumerable<IGameplayAction> actions)
         {
             bool dirty = false;
             IEnumerable<IGameplayAction> processActions()
@@ -327,10 +299,10 @@ namespace Gruntz.Gameplay
                 }
             }
 
-            return new ProcessResultt { ProcessedActions = processActions().ToList(), Dirty = dirty };
+            return new ProcessResult { ProcessedActions = processActions().ToList(), Dirty = dirty };
         }
 
-        private ProcessResultt ProcessSwitchStateAction(IEnumerable<IGameplayAction> actions)
+        private ProcessResult ProcessSwitchStateAction(IEnumerable<IGameplayAction> actions)
         {
             bool dirty = false;
             IEnumerable<IGameplayAction> processActions()
@@ -372,10 +344,10 @@ namespace Gruntz.Gameplay
                     switchStateComponent.SetCurrentState(allStates.Current);
                 }
             }
-            return new ProcessResultt { ProcessedActions = processActions().ToList(), Dirty = dirty };
+            return new ProcessResult { ProcessedActions = processActions().ToList(), Dirty = dirty };
         }
 
-        private ProcessResultt ProcessCollectMaterialAction(IEnumerable<IGameplayAction> actions)
+        private ProcessResult ProcessCollectMaterialAction(IEnumerable<IGameplayAction> actions)
         {
             bool dirty = false;
             IEnumerable<IGameplayAction> processActions()
@@ -395,10 +367,10 @@ namespace Gruntz.Gameplay
                     dirty = true;
                 }
             }
-            return new ProcessResultt { ProcessedActions = processActions().ToList(), Dirty = dirty };
+            return new ProcessResult { ProcessedActions = processActions().ToList(), Dirty = dirty };
         }
 
-        private ProcessResultt ProcessSpawnActorAction(IEnumerable<IGameplayAction> actions)
+        private ProcessResult ProcessSpawnActorAction(IEnumerable<IGameplayAction> actions)
         {
             bool dirty = false;
             IEnumerable<IGameplayAction> processActions()
@@ -419,10 +391,10 @@ namespace Gruntz.Gameplay
                     dirty = true;
                 }
             }
-            return new ProcessResultt { ProcessedActions = processActions().ToList(), Dirty = dirty };
+            return new ProcessResult { ProcessedActions = processActions().ToList(), Dirty = dirty };
         }
 
-        private ProcessResultt ProcessActorPushedAction(IEnumerable<IGameplayAction> actions)
+        private ProcessResult ProcessActorPushedAction(IEnumerable<IGameplayAction> actions)
         {
             bool dirty = false;
             IEnumerable<IGameplayAction> processActions()
@@ -447,7 +419,98 @@ namespace Gruntz.Gameplay
                     dirty = true;
                 }
             }
-            return new ProcessResultt { ProcessedActions = processActions().ToList(), Dirty = dirty };
+            return new ProcessResult { ProcessedActions = processActions().ToList(), Dirty = dirty };
+        }
+        
+        private ProcessResult ProcessAddStatusAction(IEnumerable<IGameplayAction> actions)
+        {
+            bool dirty = false;
+            IEnumerable<IGameplayAction> processActions() {
+                foreach (var action in actions) {
+                    var addStatusAction = action as AddStatusAction;
+                    if (addStatusAction == null) {
+                        yield return action;
+                        continue;
+                    }
+
+                    var statusComponent = addStatusAction.Actor.GetComponent<StatusComponent>();
+                    statusComponent.AddStatus(addStatusAction.Status);
+                    
+                    dirty = true;
+                }
+            }
+            return new ProcessResult { ProcessedActions = processActions().ToList(), Dirty = dirty };
+        }
+        
+        private ProcessResult ProcessRemoveStatusAction(IEnumerable<IGameplayAction> actions)
+        {
+            bool dirty = false;
+            IEnumerable<IGameplayAction> processActions() {
+                foreach (var action in actions) {
+                    var removeStatusAction = action as RemoveStatusAction;
+                    if (removeStatusAction == null) {
+                        yield return action;
+                        continue;
+                    }
+
+                    var statusComponent = removeStatusAction.Actor.GetComponent<StatusComponent>();
+                    statusComponent.RemoveStatus(removeStatusAction.Status);
+                    
+                    dirty = true;
+                }
+            }
+            return new ProcessResult { ProcessedActions = processActions().ToList(), Dirty = dirty };
+        }
+        private ProcessResult ProcessRemoveArrowStatusAction(IEnumerable<IGameplayAction> actions)
+        {
+            bool dirty = false;
+            IEnumerable<IGameplayAction> processActions() {
+                foreach (var action in actions) {
+                    var removeArrowStatusAction = action as RemoveArrowStatusAction;
+                    if (removeArrowStatusAction == null) {
+                        yield return action;
+                        continue;
+                    }
+
+                    var arrowStatus = removeArrowStatusAction.ArrowStatus;
+                    var statusComponent = removeArrowStatusAction.Actor.GetComponent<StatusComponent>();
+                    
+                    var disableNavObstaclesStatuses = statusComponent
+                        .GetStatuses(x => x.StatusData is DisableNavObstaclesStatusData)
+                        .Where(x => {
+                            var data = x.StatusData as DisableNavObstaclesStatusData;
+                            return data.AssociatedStatusId == arrowStatus.StatusData.StatusId;
+                        });
+
+                    var overrideActorControllerStatuses = statusComponent
+                        .GetStatuses(x => x.StatusData is OverrideActorControllerStatusData)
+                        .Where(x => {
+                            var data = x.StatusData as OverrideActorControllerStatusData;
+                            return data.AssociatedStatusId == arrowStatus.StatusData.StatusId;
+                        });
+
+                    foreach (var status in disableNavObstaclesStatuses) {
+                        yield return new RemoveStatusAction {
+                            Actor = removeArrowStatusAction.Actor,
+                            Status = status,
+                        };
+                    }
+                    foreach (var status in overrideActorControllerStatuses) {
+                        yield return new RemoveStatusAction {
+                            Actor = removeArrowStatusAction.Actor,
+                            Status = status,
+                        };
+                    }
+                    yield return new RemoveStatusAction {
+                        Actor = removeArrowStatusAction.Actor,
+                        Status = arrowStatus,
+                    };
+                    
+                    
+                    dirty = true;
+                }
+            }
+            return new ProcessResult { ProcessedActions = processActions().ToList(), Dirty = dirty };
         }
     }
 }

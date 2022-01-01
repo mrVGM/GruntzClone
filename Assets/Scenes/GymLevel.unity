@@ -990,6 +990,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 6909605683976382342, guid: d85b1512535628b419719168b9fc3b4e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d85b1512535628b419719168b9fc3b4e, type: 3}
 --- !u!4 &1232242670 stripped

@@ -10,7 +10,6 @@ namespace Gruntz.Gameplay.ActionGenarators
 {
     public class ActorArrivedAtArrowDestinationGenerator : GameplayActionGenerator
     {
-        public StatusDef ActorStatus;
         public ArrowStatusDef ArrowStatus;
 
         public override IEnumerable<IGameplayAction> GenerateActions(IEnumerable<GameplayEvent> gameplayEvents)
@@ -36,25 +35,9 @@ namespace Gruntz.Gameplay.ActionGenarators
                     continue;
                 }
 
-                var disableNavObstaclesStatuses = statusComponent
-                    .GetStatuses(x => x.StatusData is DisableNavObstaclesStatusData)
-                    .Where(x => {
-                        var data = x.StatusData as DisableNavObstaclesStatusData;
-                        return data.AssociatedStatusId == arrowStatus.StatusData.StatusId;
-                    });
-
-                var overrideActorControllerStatuses = statusComponent
-                    .GetStatuses(x => x.StatusData is OverrideActorControllerStatusData)
-                    .Where(x => {
-                        var data = x.StatusData as OverrideActorControllerStatusData;
-                        return data.AssociatedStatusId == arrowStatus.StatusData.StatusId;
-                    });
-
-                yield return new ActorArrivedAtArrowDestinationAction {
+                yield return new RemoveArrowStatusAction {
                     Actor = touchedPositionEvent.Actor,
-                    StatusesToRemove = disableNavObstaclesStatuses
-                    .Concat(overrideActorControllerStatuses)
-                    .Append(arrowStatus).ToArray()
+                    ArrowStatus = arrowStatus,
                 };
             }
         }
