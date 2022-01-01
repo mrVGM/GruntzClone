@@ -156,7 +156,7 @@ namespace Base.Navigation
                 return Vector3.Dot(neighbourDir, direction);
 
             });
-            _controller = new BeingPushedNavAgentController(this, neighbours.FirstOrDefault());
+            _controller = new BeingPushedNavAgentController(this, neighbours.FirstOrDefault(), snapped);
         }
 
         public void StopThePush()
