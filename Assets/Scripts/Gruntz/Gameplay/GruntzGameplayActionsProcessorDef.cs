@@ -26,6 +26,7 @@ namespace Gruntz.Gameplay
         public ActorInstanceHolderStatusDef ActorHolderStatusDef;
         public ActorTemplateDef MaterialActor;
         public MessagesBoxTagDef UnitControllerMessagesBox;
+        public BeingPushedNavAgentControllerDef BeingPushedNavAgentControllerDef;
 
         ProcessAction[] _processActions = null;
         protected override ProcessAction[] ProccessActions
@@ -408,7 +409,7 @@ namespace Gruntz.Gameplay
                     return Vector3.Dot(neighbourDir, direction);
 
                 });
-                navAgent.Controller = new BeingPushedNavAgentController(navAgent, neighbours.FirstOrDefault(), snapped);
+                navAgent.Controller = BeingPushedNavAgentControllerDef.CreateController(navAgent, neighbours.FirstOrDefault(), snapped);
             }
             
             bool dirty = false;

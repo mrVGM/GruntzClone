@@ -13,9 +13,13 @@ namespace Gruntz.Pushback
     {
         [NonSerialized]
         private NavAgent _navAgent;
+        
+        private DefRef<BeingPushedNavAgentControllerDef> _def;
         private SerializedVector3 _pushSnappedOrigin;
         private SerializedVector3 _pushDestination;
         private bool _pushProcessed;
+
+        public BeingPushedNavAgentControllerDef BeingPushedNavAgentControllerDef => _def;
 
         public NavAgent NavAgent
         {
@@ -25,12 +29,13 @@ namespace Gruntz.Pushback
             }
         }
 
-        public BeingPushedNavAgentController(NavAgent navAgent, Vector3 pushDestination, Vector3 pushSnappedOrigin)
+        public BeingPushedNavAgentController(BeingPushedNavAgentControllerDef def, NavAgent navAgent, Vector3 pushDestination, Vector3 pushSnappedOrigin)
         {
             _navAgent = navAgent;
             _pushDestination = pushDestination;
             _pushSnappedOrigin = pushSnappedOrigin;
             _pushProcessed = false;
+            _def = def.ToDefRef<BeingPushedNavAgentControllerDef>();
         }
         public MoveRequest MoveRequest
         {

@@ -16,3 +16,4 @@ MonoBehaviour:
   ActorHolderStatusDef: {fileID: 11400000, guid: c2a65b685ac5e0a49a378bd91bdb1eef, type: 2}
   MaterialActor: {fileID: 11400000, guid: dc4029e519f862e40a4014f24d0d926b, type: 2}
   UnitControllerMessagesBox: {fileID: 11400000, guid: 2345e1da218ac4c4f8843a775122f559, type: 2}
+  BeingPushedNavAgentControllerDef: {fileID: 11400000, guid: f39ee6c52954a1727b492955777838db, type: 2}
