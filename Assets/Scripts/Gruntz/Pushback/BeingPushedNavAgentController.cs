@@ -1,9 +1,12 @@
 using System;
+using Base;
 using Base.Gameplay;
+using Base.MessagesSystem;
+using Base.Navigation;
 using UnityEngine;
 using static Base.Navigation.NavAgent;
 
-namespace Base.Navigation
+namespace Gruntz.Pushback
 {
     [Serializable]
     public class BeingPushedNavAgentController : INavAgentController
@@ -55,7 +58,7 @@ namespace Base.Navigation
 
         private void Move(MoveRequestResult moveRequestResult)
         {
-            if (!_pushProcessed && !Navigation.AreVectorsTheSame(_pushDestination, moveRequestResult.TravelSegmentInfo.EndPos)) {
+            if (!_pushProcessed && !Base.Navigation.Navigation.AreVectorsTheSame(_pushDestination, moveRequestResult.TravelSegmentInfo.EndPos)) {
                 _navAgent.StopThePush();
                 return;
             }
@@ -63,11 +66,11 @@ namespace Base.Navigation
                 _navAgent.Target = new SimpleNavTarget { Target = _pushDestination };
             }
             _pushProcessed = true;
-            if (Navigation.AreVectorsTheSame(moveRequestResult.PositionToMove, _pushDestination)) {
+            if (Base.Navigation.Navigation.AreVectorsTheSame(moveRequestResult.PositionToMove, _pushDestination)) {
                 _navAgent.StopThePush();
             }
             
-            var messagesSystem = MessagesSystem.MessagesSystem.GetMessagesSystemFromContext();
+            var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
             messagesSystem.SendMessage(_navAgent.NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, _navAgent.Actor, NavAgent.NavAgentState.Statying);
             
             _navAgent.SetTravelSegmentAndLocation(moveRequestResult.PositionToMove, Vector3.zero, moveRequestResult.TravelSegmentInfo);

@@ -14,6 +14,7 @@ using Gruntz.UnitController.Instructions;
 using System.Collections.Generic;
 using System.Linq;
 using Gruntz.Projectile;
+using Gruntz.Pushback;
 using UnityEngine;
 using static Base.Navigation.NavAgent;
 
@@ -396,6 +397,20 @@ namespace Gruntz.Gameplay
 
         private ProcessResult ProcessActorPushedAction(IEnumerable<IGameplayAction> actions)
         {
+            void push(Vector3 direction, NavAgent navAgent)
+            {
+                var navigation = Navigation.GetNavigationFromContext();
+                var map = navigation.Map;
+                var snapped = map.SnapPosition(navAgent.Pos);
+                var neighbours = map.GetNeighbours(snapped);
+                neighbours = neighbours.OrderByDescending(x => {
+                    Vector3 neighbourDir = (x - snapped).normalized;
+                    return Vector3.Dot(neighbourDir, direction);
+
+                });
+                navAgent.Controller = new BeingPushedNavAgentController(navAgent, neighbours.FirstOrDefault(), snapped);
+            }
+            
             bool dirty = false;
             IEnumerable<IGameplayAction> processActions()
             {
@@ -414,7 +429,7 @@ namespace Gruntz.Gameplay
                     var navAgent = pushActorAction.Actor.GetComponent<NavAgent>();
                     var projectile = pushActorAction.ProjectileActor.GetComponent<ProjectileComponent>();
                     var projectileComponentData = projectile.Data as ProjectileComponentData;
-                    navAgent.Push(((Vector3)projectileComponentData.EndPoint - (Vector3)projectileComponentData.StartPoint).normalized);
+                    push(((Vector3)projectileComponentData.EndPoint - (Vector3)projectileComponentData.StartPoint).normalized, navAgent);
                     
                     dirty = true;
                 }

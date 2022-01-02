@@ -131,6 +131,10 @@ namespace Base.Navigation
                 _navAgentData.NavAgentController.NavAgent = this;
                 return _navAgentData.NavAgentController;
             }
+            set
+            {
+                _navAgentData.NavAgentController = value;
+            }
         }
 
         public NavAgent(NavAgentComponentDef navAgentComponentDef, Actor actor, NavAgentData navAgentData, NavAgentBehaviour navAgentBehaviour)
@@ -146,20 +150,6 @@ namespace Base.Navigation
             navigation.MakeMoveRequest(Controller.MoveRequest);
         }
         
-        public void Push(Vector3 direction)
-        {
-            var navigation = Navigation.GetNavigationFromContext();
-            var map = navigation.Map;
-            var snapped = map.SnapPosition(Pos);
-            var neighbours = map.GetNeighbours(snapped);
-            neighbours = neighbours.OrderByDescending(x => {
-                Vector3 neighbourDir = (x - snapped).normalized;
-                return Vector3.Dot(neighbourDir, direction);
-
-            });
-            _navAgentData.NavAgentController = new BeingPushedNavAgentController(this, neighbours.FirstOrDefault(), snapped);
-        }
-
         public void StopThePush()
         {
             _navAgentData.NavAgentController = null;
