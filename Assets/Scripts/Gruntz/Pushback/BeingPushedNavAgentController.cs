@@ -13,8 +13,8 @@ namespace Gruntz.Pushback
     {
         [NonSerialized]
         private NavAgent _navAgent;
-        private Vector3 _pushSnappedOrigin;
-        private Vector3 _pushDestination;
+        private SerializedVector3 _pushSnappedOrigin;
+        private SerializedVector3 _pushDestination;
         private bool _pushProcessed;
 
         public NavAgent NavAgent
