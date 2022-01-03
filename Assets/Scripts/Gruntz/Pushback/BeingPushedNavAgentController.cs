@@ -93,7 +93,7 @@ namespace Gruntz.Pushback
             {
                 ITravelSegmentInfo segmentInfo = _navAgent.TravelSegment;
                 if (!_pushProcessed) {
-                    segmentInfo = new TravelSegmentInfo { StartPos = _pushSnappedOrigin, EndPos = _pushSnappedOrigin };
+                    segmentInfo = new TravelSegmentInfo { StartPos = _navAgent.Pos, EndPos = _navAgent.Pos };
                 }
                 var _navAgentData = _navAgent.Data as NavAgentData;
                 var request = new MoveRequest
@@ -104,7 +104,8 @@ namespace Gruntz.Pushback
                     MoveSpeed = _navAgentData.Speed,
                     TravelSegmentInfo = segmentInfo,
                     CheckForSegmentInfoClashes = _navAgentData.CheckForSegmentInfoClashes,
-                    MoveResultCallback = Move
+                    MoveResultCallback = Move,
+                    NavMoves = new NavMoves(this),
                 };
 
                 return request;
