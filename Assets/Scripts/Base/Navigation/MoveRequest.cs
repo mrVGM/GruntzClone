@@ -1,8 +1,13 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Base.Navigation
 {
+    public interface INavMoves
+    {
+        IEnumerable<Vector3> GetPossibleMoves(Vector3 pos);
+    }
     public struct MoveRequest
     {
         public LayerMask Obstacles;
@@ -12,6 +17,7 @@ namespace Base.Navigation
         public bool CheckForSegmentInfoClashes;
         public ITravelSegmentInfo TravelSegmentInfo;
         public Action<MoveRequestResult> MoveResultCallback;
+        public INavMoves NavMoves;
     }
 
     public struct MoveRequestResult

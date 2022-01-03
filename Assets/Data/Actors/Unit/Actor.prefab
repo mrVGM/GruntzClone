@@ -650,6 +650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4090737427556176592}
   - component: {fileID: 8186922678100550562}
+  - component: {fileID: 7351800065851389032}
   - component: {fileID: 4490628991298603342}
   m_Layer: 8
   m_Name: ObstacleCollider
@@ -680,6 +681,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825580571825881596}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &7351800065851389032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825580571825881596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea738ef35f8ed33478d7c617b442a65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActorComponent: {fileID: 4948506617712170278}
 --- !u!65 &4490628991298603342
 BoxCollider:
   m_ObjectHideFlags: 0

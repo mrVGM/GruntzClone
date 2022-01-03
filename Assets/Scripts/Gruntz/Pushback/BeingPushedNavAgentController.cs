@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Base;
+using Base.Actors;
 using Base.Gameplay;
 using Base.MessagesSystem;
 using Base.Navigation;
@@ -11,6 +14,53 @@ namespace Gruntz.Pushback
     [Serializable]
     public class BeingPushedNavAgentController : INavAgentController
     {
+        private struct NavMoves : INavMoves
+        {
+            public BeingPushedNavAgentController Controller { get; }
+            private IEnumerable<Vector3> Steps()
+            {
+                yield return Controller._pushSnappedOrigin + Vector3.back;
+                yield return Controller._pushSnappedOrigin + Vector3.right;
+                yield return Controller._pushSnappedOrigin + Vector3.right + Vector3.forward;
+                yield return Controller._pushSnappedOrigin + Vector3.forward;
+                yield return Controller._pushSnappedOrigin + Vector3.forward + Vector3.left;
+                yield return Controller._pushSnappedOrigin + Vector3.left;
+                yield return Controller._pushSnappedOrigin + Vector3.left + Vector3.back;
+                yield return Controller._pushSnappedOrigin + Vector3.back + Vector3.right;
+            }
+            public IEnumerable<Vector3> GetPossibleMoves(Vector3 pos)
+            {
+                yield return pos;
+
+                var potentialMoves = Steps();
+
+                foreach (var potentialMove in potentialMoves)
+                {
+                    var offset = potentialMove - pos;
+                    var ray = new Ray(pos, offset);
+                    IEnumerable<RaycastHit> hits = Physics.SphereCastAll(ray, .2f, offset.magnitude, (Controller._navAgent.Data as NavAgentData).Obstacles);
+
+                    var actor = Controller._navAgent.Actor;
+                    hits = hits.Where(x => {
+                        var actorProxy = x.collider.GetComponent<ActorProxy>();
+                        if (actorProxy == null) {
+                            return true;
+                        }
+                        return actorProxy.Actor != actor;
+                    });
+                    if (hits.Any()) {
+                        continue;
+                    }
+                    yield return potentialMove;
+                }
+            }
+
+            public NavMoves(BeingPushedNavAgentController controller)
+            {
+                Controller = controller;
+            }
+        }
+
         [NonSerialized]
         private NavAgent _navAgent;
         

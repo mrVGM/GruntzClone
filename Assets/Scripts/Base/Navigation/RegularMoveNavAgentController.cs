@@ -1,5 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Base.Actors;
 using Base.Gameplay;
+using UnityEngine;
 using static Base.Navigation.NavAgent;
 
 namespace Base.Navigation
@@ -7,6 +11,53 @@ namespace Base.Navigation
     [Serializable]
     public class RegularMoveNavAgentController : INavAgentController
     {
+        private struct NavMoves : INavMoves
+        {
+            public RegularMoveNavAgentController Controller { get; }
+            private IEnumerable<Vector3> Steps(Vector3 pos)
+            {
+                yield return pos + Vector3.back;
+                yield return pos + Vector3.right;
+                yield return pos + Vector3.right + Vector3.forward;
+                yield return pos + Vector3.forward;
+                yield return pos + Vector3.forward + Vector3.left;
+                yield return pos + Vector3.left;
+                yield return pos + Vector3.left + Vector3.back;
+                yield return pos + Vector3.back + Vector3.right;
+            }
+            public IEnumerable<Vector3> GetPossibleMoves(Vector3 pos)
+            {
+                yield return pos;
+
+                var potentialMoves = Steps(pos);
+
+                foreach (var potentialMove in potentialMoves)
+                {
+                    var offset = potentialMove - pos;
+                    var ray = new Ray(pos, offset);
+                    IEnumerable<RaycastHit> hits = Physics.SphereCastAll(ray, .2f, offset.magnitude, (Controller._navAgent.Data as NavAgentData).Obstacles);
+
+                    var actor = Controller._navAgent.Actor;
+                    hits = hits.Where(x => {
+                        var actorProxy = x.collider.GetComponent<ActorProxy>();
+                        if (actorProxy == null) {
+                            return true;
+                        }
+                        return actorProxy.Actor != actor;
+                    });
+                    if (hits.Any()) {
+                        continue;
+                    }
+                    yield return potentialMove;
+                }
+            }
+
+            public NavMoves(RegularMoveNavAgentController controller)
+            {
+                Controller = controller;
+            }
+        }
+
         [NonSerialized]
         private NavAgent _navAgent;
 
@@ -34,7 +85,8 @@ namespace Base.Navigation
                     MoveSpeed = navData.Speed,
                     TravelSegmentInfo = _navAgent.TravelSegment,
                     CheckForSegmentInfoClashes = navData.CheckForSegmentInfoClashes,
-                    MoveResultCallback = Move
+                    MoveResultCallback = Move,
+                    NavMoves = new NavMoves(this),
                 };
 
                 return request;

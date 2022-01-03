@@ -73,7 +73,7 @@ namespace Base.Navigation
             if (AreVectorsTheSame(moveRequest.CurrentPos, moveRequest.TravelSegmentInfo.EndPos))
             {
                 Vector3 currentPos = moveRequest.TravelSegmentInfo.EndPos;
-                var possibleSteps = Map.GetPossibleMoves(currentPos, moveRequest.Obstacles).ToArray();
+                var possibleSteps = moveRequest.NavMoves.GetPossibleMoves(currentPos).ToArray();
                 var bestStep = possibleSteps.OrderBy(x => {
                     if (moveRequest.CheckForSegmentInfoClashes)
                     {
@@ -112,6 +112,7 @@ namespace Base.Navigation
                         TravelSegmentInfo = new TravelSegmentInfo { StartPos = bestStep, EndPos = bestStep },
                         CheckForSegmentInfoClashes = moveRequest.CheckForSegmentInfoClashes,
                         MoveResultCallback = moveRequest.MoveResultCallback,
+                        NavMoves = moveRequest.NavMoves,
                     };
                     float dist = maxTravelDistance - (bestStep - currentPos).magnitude;
                     var res = CalculateMove(moveReq, travelSegments, dist);
@@ -148,6 +149,7 @@ namespace Base.Navigation
                         TravelSegmentInfo = new TravelSegmentInfo { StartPos = immediateTarget, EndPos = immediateTarget },
                         CheckForSegmentInfoClashes = moveRequest.CheckForSegmentInfoClashes,
                         MoveResultCallback = moveRequest.MoveResultCallback,
+                        NavMoves = moveRequest.NavMoves,
                     };
                     float dist = maxTravelDistance - (moveRequest.CurrentPos - immediateTarget).magnitude;
                     var res = CalculateMove(moveReq, travelSegments, dist);
