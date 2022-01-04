@@ -14,7 +14,7 @@ namespace Gruntz.UnitController.Instructions
     public class MoveInRangeAndShootProjectileAtActor : IUnitExecutable
     {
         [Serializable]
-        public struct InRangeTarget : INavigationTarget
+        public class InRangeTarget : INavigationTarget
         {
             public Map Map => Navigation.GetNavigationFromContext().Map;
             public SerializedVector3 Pos;

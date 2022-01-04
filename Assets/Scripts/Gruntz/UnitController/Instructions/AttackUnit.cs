@@ -12,7 +12,7 @@ namespace Gruntz.UnitController.Instructions
     public class AttackUnit : IUnitExecutable
     {
         [Serializable]
-        public struct NeighboursTarget : INavigationTarget
+        public class NeighboursTarget : INavigationTarget
         {
             public Map Map => Navigation.GetNavigationFromContext().Map;
             public SerializedVector3 Pos;

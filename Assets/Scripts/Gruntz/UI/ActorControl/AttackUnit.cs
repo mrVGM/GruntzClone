@@ -2,7 +2,10 @@ using Base;
 using Base.Actors;
 using Base.MessagesSystem;
 using Base.UI;
+using Gruntz.Abilities;
+using Gruntz.Equipment;
 using Gruntz.UnitController;
+using Gruntz.UnitController.Instructions;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -56,16 +59,34 @@ namespace Gruntz.UI.ActorControl
                 yield break;
             }
 
+            IUnitExecutable getInstruction(Actor actor)
+            {
+                var abilitiesComponent = actor.GetComponent<Abilities.AbilitiesComponent>();
+                var attackAbility = abilitiesComponent.GetAttackAbility();
+                if (attackAbility == null) {
+                    return null;
+                }
+
+                var projectileAttackAbility = attackAbility as ProjectileAttackAbilityDef;
+                if (projectileAttackAbility != null) {
+                    return new MoveInRangeAndShootProjectileAtActor(targetActor, projectileAttackAbility);
+                }
+
+                return new UnitController.Instructions.AttackUnit(targetActor);
+            }
+
             var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
             foreach (var actor in selected) {
-                var instruction = new UnitController.Instructions.AttackUnit(targetActor);
-                messagesSystem.SendMessage(MessagesBoxTag,
-                    MainUpdaterUpdateTime.Update,
-                    this,
-                    new UnitControllerInstruction {
-                        Unit = actor,
-                        Executable = instruction
-                    });
+                var instruction = getInstruction(actor);
+                if (instruction != null) {
+                    messagesSystem.SendMessage(MessagesBoxTag,
+                        MainUpdaterUpdateTime.Update,
+                        this,
+                        new UnitControllerInstruction {
+                            Unit = actor,
+                            Executable = instruction
+                        });
+                }
             }
 
             while (Input.GetAxis("Ability") > 0) {

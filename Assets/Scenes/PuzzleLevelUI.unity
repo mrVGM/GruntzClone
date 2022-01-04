@@ -6917,7 +6917,7 @@ GameObject:
   - component: {fileID: 1477832220}
   - component: {fileID: 1477832221}
   m_Layer: 0
-  m_Name: MoveAndExecuteAbility
+  m_Name: MoveAndAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

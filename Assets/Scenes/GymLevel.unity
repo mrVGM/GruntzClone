@@ -2170,6 +2170,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1667507940}
     m_Modifications:
+    - target: {fileID: 4483918430904754819, guid: 73a21854723b68343b18bd5a82050577, type: 3}
+      propertyPath: Team
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8315578219830851597, guid: 73a21854723b68343b18bd5a82050577, type: 3}
       propertyPath: m_Name
       value: DeployPoint
