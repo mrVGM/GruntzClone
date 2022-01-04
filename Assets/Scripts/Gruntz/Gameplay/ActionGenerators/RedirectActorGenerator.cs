@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using static Base.Status.StatusComponent;
 using Base.Gameplay;
+using UnityEngine;
 
 namespace Gruntz.Gameplay.ActionGenarators
 {
@@ -14,6 +15,7 @@ namespace Gruntz.Gameplay.ActionGenarators
         public ArrowStatusDef ArrowStatus;
         public OverrideActorControllerStatusDef OverrideActorControllerStatusDef;
         public DisableNavObstaclesStatusDef DisableNavObstaclesStatusDef;
+        public PushStatusDef PushStatusDef;
 
         public override IEnumerable<IGameplayAction> GenerateActions(IEnumerable<GameplayEvent> gameplayEvents)
         {
@@ -42,6 +44,20 @@ namespace Gruntz.Gameplay.ActionGenarators
                 changeActorControllerStatusData.AssociatedStatusId = arrowStatusData.StatusId;
                 var disableNavObstaclesStatusData = DisableNavObstaclesStatusDef.Data as DisableNavObstaclesStatusData;
                 disableNavObstaclesStatusData.AssociatedStatusId = arrowStatusData.StatusId;
+
+                var statusComponent = actor.GetComponent<StatusComponent>();
+                var pushStatus = statusComponent.GetStatus(PushStatusDef);
+                if (pushStatus != null) {
+                    var statusData = pushStatus.StatusData as PushStatusData;
+                    Vector3 offset = (Vector3)statusData.PushDestination - (Vector3)arrowStatusData.Anchor;
+                    if (offset.magnitude > 0.1)  {
+                        yield return new RemoveStatusAction() {
+                            Actor = actor,
+                            Status = statusAppliedEvent.Status,
+                        };
+                        continue;
+                    }
+                }
 
                 yield return new RedirectActorAction {
                     Actor = actor,

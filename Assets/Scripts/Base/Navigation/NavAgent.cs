@@ -149,11 +149,6 @@ namespace Base.Navigation
             var navigation = Navigation.GetNavigationFromContext();
             navigation.MakeMoveRequest(Controller.MoveRequest);
         }
-        
-        public void StopThePush()
-        {
-            _navAgentData.NavAgentController = null;
-        }
 
         public void Init()
         {

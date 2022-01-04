@@ -16,3 +16,4 @@ MonoBehaviour:
   ArrowStatus: {fileID: 11400000, guid: 319a7113f1ea182ac89c194b601a294d, type: 2}
   OverrideActorControllerStatusDef: {fileID: 11400000, guid: 0270ae103ef2f374c916e447d6dfaef8, type: 2}
   DisableNavObstaclesStatusDef: {fileID: 11400000, guid: 0b4fbfbd393c4f24ba185c9a6653c390, type: 2}
+  PushStatusDef: {fileID: 11400000, guid: 39390981121765147b3b136f2d5286c6, type: 2}

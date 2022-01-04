@@ -6,6 +6,8 @@ using Base.Actors;
 using Base.Gameplay;
 using Base.MessagesSystem;
 using Base.Navigation;
+using Base.Status;
+using Gruntz.Statuses;
 using UnityEngine;
 using static Base.Navigation.NavAgent;
 
@@ -112,18 +114,34 @@ namespace Gruntz.Pushback
             }
         }
 
+        private void StopThePush()
+        {
+            _navAgent.Controller = null;
+            var statusComponent = _navAgent.Actor.GetComponent<StatusComponent>();
+            var status = statusComponent.GetStatus(BeingPushedNavAgentControllerDef.PushStatusDef);
+            if (status != null) {
+                statusComponent.RemoveStatus(status);
+            }
+        }
+
         private void Move(MoveRequestResult moveRequestResult)
         {
             if (!_pushProcessed && !Base.Navigation.Navigation.AreVectorsTheSame(_pushDestination, moveRequestResult.TravelSegmentInfo.EndPos)) {
-                _navAgent.StopThePush();
+                StopThePush();
                 return;
             }
             if (!_pushProcessed) {
                 _navAgent.Target = new SimpleNavTarget { Target = _pushDestination };
+                var statusComponent = _navAgent.Actor.GetComponent<StatusComponent>();
+                var statusDef = BeingPushedNavAgentControllerDef.PushStatusDef;
+                var statusData = statusDef.Data as PushStatusData;
+                statusData.PushDestination = _pushDestination;
+                var status = statusData.CreateStatus();
+                statusComponent.AddStatus(status);
             }
             _pushProcessed = true;
             if (Base.Navigation.Navigation.AreVectorsTheSame(moveRequestResult.PositionToMove, _pushDestination)) {
-                _navAgent.StopThePush();
+                StopThePush();
             }
             
             var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();

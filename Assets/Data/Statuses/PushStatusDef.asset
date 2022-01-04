@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ccd7c7f07a131c8fa4c03aaf2219d82, type: 3}
-  m_Name: BeingPushedNavAgentControllerDef
+  m_Script: {fileID: 11500000, guid: 5c336cbdf7a3691e6b62f1bd99cc9b8d, type: 3}
+  m_Name: PushStatusDef
   m_EditorClassIdentifier: 
-  PushStatusDef: {fileID: 11400000, guid: 39390981121765147b3b136f2d5286c6, type: 2}
