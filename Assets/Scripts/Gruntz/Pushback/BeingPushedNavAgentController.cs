@@ -134,6 +134,10 @@ namespace Gruntz.Pushback
                 _navAgent.Target = new SimpleNavTarget { Target = _pushDestination };
                 var statusComponent = _navAgent.Actor.GetComponent<StatusComponent>();
                 var statusDef = BeingPushedNavAgentControllerDef.PushStatusDef;
+                var pushStatus = statusComponent.GetStatus(statusDef);
+                if (pushStatus != null) {
+                    statusComponent.RemoveStatus(pushStatus);
+                }
                 var statusData = statusDef.Data as PushStatusData;
                 statusData.PushDestination = _pushDestination;
                 var status = statusData.CreateStatus();
