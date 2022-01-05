@@ -127,6 +127,7 @@ namespace Gruntz.Gameplay
                 {
                     dirty = true;
                     var actor = accum.Key;
+                    var myTeam = actor.GetComponent<TeamComponent>();
                     var statusComponent = actor.GetComponent<StatusComponent>();
                     var healthStatus = statusComponent.GetStatuses(x => x.StatusData is HealthStatusData).FirstOrDefault();
                     var healthStatusData = healthStatus.StatusData as HealthStatusData;
@@ -137,14 +138,26 @@ namespace Gruntz.Gameplay
                         yield return new KillActorAction { Actor = actor, Reason = KillActorAction.DeathReason.Damage };
                     }
                     else {
-                        var maxDamage = accum.OrderByDescending(x => x.DamageValue).FirstOrDefault();
-                        var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
-                        messagesSystem.SendMessage(UnitControllerMessagesBox, MainUpdaterUpdateTime.Update,
-                            this,
-                            new UnitControllerInstruction {
-                            Unit = actor,
-                            Executable = new AttackUnit(maxDamage.DamageDealer)
-                        });
+                        var maxDamage = accum.Where(x => {
+                            var team = x.DamageDealer.GetComponent<TeamComponent>();
+                            if (team == null) {
+                                return false;
+                            }
+                            if (team.UnitTeam == TeamComponent.Team.Unknown) {
+                                return false;
+                            }
+                            return myTeam.UnitTeam != team.UnitTeam;
+                        }).OrderByDescending(x => x.DamageValue).FirstOrDefault();
+
+                        if (maxDamage != null) {
+                            var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
+                            messagesSystem.SendMessage(UnitControllerMessagesBox, MainUpdaterUpdateTime.Update,
+                                this,
+                                new UnitControllerInstruction {
+                                    Unit = actor,
+                                    Executable = UnitController.Utils.GetAttackInstruction(actor, maxDamage.DamageDealer)
+                                });
+                        }
                     }
                 }
 

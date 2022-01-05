@@ -59,25 +59,9 @@ namespace Gruntz.UI.ActorControl
                 yield break;
             }
 
-            IUnitExecutable getInstruction(Actor actor)
-            {
-                var abilitiesComponent = actor.GetComponent<Abilities.AbilitiesComponent>();
-                var attackAbility = abilitiesComponent.GetAttackAbility();
-                if (attackAbility == null) {
-                    return null;
-                }
-
-                var projectileAttackAbility = attackAbility as ProjectileAttackAbilityDef;
-                if (projectileAttackAbility != null) {
-                    return new MoveInRangeAndShootProjectileAtActor(targetActor, projectileAttackAbility);
-                }
-
-                return new UnitController.Instructions.AttackUnit(targetActor);
-            }
-
             var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
             foreach (var actor in selected) {
-                var instruction = getInstruction(actor);
+                var instruction = UnitController.Utils.GetAttackInstruction(actor, targetActor);
                 if (instruction != null) {
                     messagesSystem.SendMessage(MessagesBoxTag,
                         MainUpdaterUpdateTime.Update,

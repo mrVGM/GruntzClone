@@ -42,7 +42,7 @@ namespace Gruntz.Abilities
                 var idStatus = statusComponent.GetStatus(actorIDStatusDef);
                 var statusData = idStatus.StatusData as ActorIDStatusData;
 
-                projectileComponent.Data = new ProjectileComponentData { OwnerActorId = statusData.ID, LifeTime = 0, StartPoint = actor.Pos, EndPoint = targetPosition };
+                projectileComponent.Data = new ProjectileComponentData { OwnerActorId = statusData.ID, LifeTime = 0, StartPoint = actor.Pos, EndPoint = targetPosition, DamageAmount = DamageAmount };
                 yield return new ExecutionState {
                     GeneralState = GeneralExecutionState.Finished,
                     CooldownState = CooldownState.NeedsCooldown,

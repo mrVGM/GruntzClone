@@ -11,5 +11,6 @@ namespace Gruntz.Projectile
         public float LifeTime;
         public SerializedVector3 StartPoint;
         public SerializedVector3 EndPoint;
+        public float DamageAmount;
     }
 }
