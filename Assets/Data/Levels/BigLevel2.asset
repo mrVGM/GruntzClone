@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9266b30b0af0bf345bb772562c230ae4, type: 3}
   m_Name: BigLevel2
   m_EditorClassIdentifier: 
-  Name: BIG LEVEL
+  Name: FLYING BALLS
   SceneIds: 0c00000002000000

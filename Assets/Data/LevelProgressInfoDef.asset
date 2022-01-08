@@ -26,3 +26,6 @@ MonoBehaviour:
   - Level: {fileID: 11400000, guid: 5a936bc447dfab245a54af09bf8326cc, type: 2}
     CompletedLevels:
     - {fileID: 11400000, guid: 4549a108d3c98c54abff3a9d72c2c373, type: 2}
+  - Level: {fileID: 11400000, guid: 5a936bc447dfab245a54af09bf8326cc, type: 2}
+    CompletedLevels:
+    - {fileID: 11400000, guid: 98b9714a671768d4eb20338b58267a6d, type: 2}
