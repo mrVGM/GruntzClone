@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c648027e19b0c3f42b708482fbb9ca0a, type: 3}
-  m_Name: UnitWithBallTemplateDef
+  m_Name: BlueUnitTemplateDef
   m_EditorClassIdentifier: 
   ParentTemplate: {fileID: 11400000, guid: cddc5fb0bd0731a478a1898aa405657d, type: 2}
   ActorDef: {fileID: 11400000, guid: 3f5270ae6b1e014469d77dfb63aa128f, type: 2}
   ActorComponents: []
   Statuses: []
-  Weapon: {fileID: 11400000, guid: 4e3a757b60220f84eb58a0a0c59b323b, type: 2}
+  Weapon: {fileID: 0}
   SpecialItem: {fileID: 0}
