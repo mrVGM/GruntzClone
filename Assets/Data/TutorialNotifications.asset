@@ -54,10 +54,32 @@ MonoBehaviour:
       ENOUGH MATERIAL COLLECTED'
     VideoName: Spawning.mp4
   - Item: {fileID: 11400000, guid: df60eba3848a3f74ba1ec8e024531c1e, type: 2}
-    Description: 'A HOSTILE UNIT IS GUARDING THAT HAMMER. IT''S TIME TO FIGHT!
+    Description: 'A HOSTILE UNIT IS GUARDING THAT HAMMER
+
+      IT''S TIME TO FIGHT!
 
       
 
       TO
-      DO SO, LEFT-CLICK ON THE ENEMY.'
+      DO SO, LEFT-CLICK ON THE ENEMY
+
+'
+    VideoName: 
+  - Item: {fileID: 11400000, guid: e3c36876f0d3c5545af902bd7b294cef, type: 2}
+    Description: 'THIS BALL IS A RANGED WEAPON
+
+      CLICK ON ITS ICON, THEN LEFT-CLICK
+      SOMEWHERE ON THE GOUND TO SHOOT
+
+      
+
+      THE BALL WILL PUSH YOU BACK,
+
+      IF
+      IT HITS YOU
+
+      BE CAREFUL!'
+    VideoName: 
+  - Item: {fileID: 11400000, guid: 6db3f2d33552d7541ad632e957dbdda6, type: 2}
+    Description: DON'T FORGET ABOUT THE PUSHBACK
     VideoName: 

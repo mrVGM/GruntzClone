@@ -42,6 +42,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GymLevel.unity
     guid: 7dfeb5212e32eee4ab30a51e7f71099f
   - enabled: 1
-    path: Assets/Scenes/BigLevel2.unity
+    path: Assets/Scenes/FlyingBallsLevel.unity
     guid: 57f42ae82ded102428fca1f95eb0ce46
   m_configObjects: {}
