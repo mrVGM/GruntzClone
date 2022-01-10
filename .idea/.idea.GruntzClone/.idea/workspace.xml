@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29191b72-e5ae-475c-8f45-7451cdffc376" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Navigation/NavAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Navigation/NavAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DefRepositoryDef.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DefRepositoryDef.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BigLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/AI/Processes/AttackTargetInRange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/AI/Processes/AttackTargetInRange.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/AI/Processes/Patrol.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/AI/Processes/Patrol.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,22 +26,26 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.10/Runtime/Impulse/CinemachineImpulseManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Packages/com.vgm.interpreter/Runtime/ScriptingLanguage/Interpreter/Interpreter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/ConsolePrelude.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.vgm.interpreter/Runtime/ScriptingLanguage/BaseFunctions/CreateObjectFunction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/ISerializedObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/AI/Processes/InstructionsTransmitter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/IContextObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/Def.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.10/Runtime/Impulse/CinemachineImpulseManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/ISerializedObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/Context.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.15.4/Tests/Editor/Collaborate/UITestHelpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/ConsolePrelude.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Packages/com.vgm.interpreter/Runtime/ScriptingLanguage/Interpreter/Interpreter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.10/Runtime/Timeline/CinemachineMixer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.15.4/Tests/Editor/Collaborate/UITestHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/Def.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -56,6 +64,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
@@ -83,10 +93,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17300">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="17300" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -108,6 +118,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
@@ -119,6 +130,45 @@
           <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/AI/Processes/FightCheck.cs</url>
+          <line>11</line>
+          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\AI\Processes\FightCheck.cs" initialLine="11" containingFunctionPresentation="method 'Crt'">
+            <startOffsets>
+              <option value="259" />
+            </startOffsets>
+            <endOffsets>
+              <option value="321" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/AI/Processes/AttackTargetInRange.cs</url>
+          <line>51</line>
+          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\AI\Processes\AttackTargetInRange.cs" initialLine="57" containingFunctionPresentation="method 'FinishCrt'">
+            <startOffsets>
+              <option value="1965" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1977" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UnitController/UnitController.cs</url>
+          <line>30</line>
+          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\UnitController\UnitController.cs" initialLine="30" containingFunctionPresentation="method 'DoUpdate'">
+            <startOffsets>
+              <option value="1275" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1345" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

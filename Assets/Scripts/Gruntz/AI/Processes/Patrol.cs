@@ -14,8 +14,8 @@ namespace Gruntz.AI.Processes
     public class Patrol : CoroutineProcess
     {
         public Transform[] PatrolPoints;
-        public MessagesBoxTagDef MessagesBoxTag;
         public float StayBeforeMovingOn;
+        public ProcessContextTagDef InstructionsAccumulatedDef;
 
         protected override IEnumerator<object> Crt()
         {
@@ -63,16 +63,14 @@ namespace Gruntz.AI.Processes
                 
                 var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
                 var moveToPositionInstruction = new MoveToPosition { Target = new NavAgent.SimpleNavTarget { Target = cur.position } };
-                
-                messagesSystem.SendMessage(
-                    MessagesBoxTag,
-                    MainUpdaterUpdateTime.Update,
-                    this,
-                    new UnitControllerInstruction {
-                        Unit = possessedActor,
-                        Executable = moveToPositionInstruction,
-                    });
 
+                List<IUnitExecutable> instructionList =
+                    context.GetItem(InstructionsAccumulatedDef) as List<IUnitExecutable>;
+                if (instructionList == null) {
+                    instructionList = new List<IUnitExecutable>();
+                    context.PutItem(InstructionsAccumulatedDef, instructionList);
+                }
+                instructionList.Add(moveToPositionInstruction);
                 var staying = timeStaying();
 
                 do {

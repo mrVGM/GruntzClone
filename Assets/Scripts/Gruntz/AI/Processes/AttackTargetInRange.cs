@@ -2,10 +2,7 @@ using Base.Actors;
 using Base.UI;
 using System.Collections.Generic;
 using System.Linq;
-using Base;
-using Base.MessagesSystem;
 using Gruntz.Team;
-using Gruntz.UnitController;
 using Gruntz.UnitController.Instructions;
 
 namespace Gruntz.AI.Processes
@@ -13,7 +10,7 @@ namespace Gruntz.AI.Processes
     public class AttackTargetInRange : CoroutineProcess
     {
         public ProcessContextTagDef AttackRangeTag;
-        public MessagesBoxTagDef MessagesBoxTag;
+        public ProcessContextTagDef InstructionsAccumulatedDef;
         
         protected override IEnumerator<object> Crt()
         {
@@ -37,15 +34,12 @@ namespace Gruntz.AI.Processes
                 float range = (float)context.GetItem(AttackRangeTag);
                 var targetActor = actors.FirstOrDefault(x => (possessedActor.Pos - x.Pos).magnitude < range);
                 if (targetActor != null) {
-                    var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
-                    messagesSystem.SendMessage(
-                        MessagesBoxTag,
-                        MainUpdaterUpdateTime.Update,
-                        this,
-                        new UnitControllerInstruction {
-                            Unit = possessedActor,
-                            Executable = new AttackUnit(targetActor),
-                        });
+                    List<IUnitExecutable> instructionList = context.GetItem(InstructionsAccumulatedDef) as List<IUnitExecutable>;
+                    if (instructionList == null) {
+                        instructionList = new List<IUnitExecutable>();
+                        context.PutItem(InstructionsAccumulatedDef, instructionList);
+                    }
+                    instructionList.Add(new AttackUnit(targetActor));
                     yield break;
                 }
 
