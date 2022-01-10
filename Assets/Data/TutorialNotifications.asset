@@ -58,7 +58,7 @@ MonoBehaviour:
 
       IT''S TIME TO FIGHT!
 
-      
+
 
       TO
       DO SO, LEFT-CLICK ON THE ENEMY
@@ -71,7 +71,7 @@ MonoBehaviour:
       CLICK ON ITS ICON, THEN LEFT-CLICK
       SOMEWHERE ON THE GOUND TO SHOOT
 
-      
+
 
       THE BALL WILL PUSH YOU BACK,
 
@@ -79,7 +79,7 @@ MonoBehaviour:
       IT HITS YOU
 
       BE CAREFUL!'
-    VideoName: 
+    VideoName: ThrowingBalls.mp4
   - Item: {fileID: 11400000, guid: 6db3f2d33552d7541ad632e957dbdda6, type: 2}
     Description: DON'T FORGET ABOUT THE PUSHBACK
     VideoName: 
