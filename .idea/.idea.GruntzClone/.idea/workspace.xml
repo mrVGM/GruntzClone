@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="29191b72-e5ae-475c-8f45-7451cdffc376" name="Default Changelist" comment="" />
+    <list default="true" id="29191b72-e5ae-475c-8f45-7451cdffc376" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/PulseCanvasGroup.playable" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/PulseCanvasGroup.playable.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GymLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GymLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PuzzleLevelUI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PuzzleLevelUI.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Notification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Notification.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

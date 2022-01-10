@@ -19,6 +19,7 @@ namespace Gruntz.UI
         public Transform KnobsContainer;
         public Button Knob;
         public Transform PagesContainer;
+        public GameObject Throbber;
 
         public void DoPaging()
         {
@@ -110,9 +111,11 @@ namespace Gruntz.UI
         {
             VideoPlayer.url = Path.Combine(Application.streamingAssetsPath, videoName);
             VideoPlayer.Prepare();
+            Throbber.SetActive(true);
             while (!VideoPlayer.isPrepared) {
                 yield return null;
             }
+            Throbber.SetActive(false);
             VideoPlayer.isLooping = true;
             VideoPlayer.Play();
         }
