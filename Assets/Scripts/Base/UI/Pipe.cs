@@ -48,6 +48,10 @@ namespace Base.UI
 
         public void DoUpdate()
         {
+            if (terminated) {
+                return;
+            }
+
             if (GetChildProcess(curProcess).IsFinished)
             {
                 if (curProcess < childProcessesCount - 1)
@@ -74,6 +78,7 @@ namespace Base.UI
 
         public void TerminateProcess()
         {
+            terminated = true;
             var cur = GetChildProcess(curProcess);
             cur.TerminateProcess();
         }
