@@ -1,6 +1,7 @@
 using Base.Actors;
 using Gruntz.Equipment;
 using Gruntz.Items;
+using Gruntz.Team;
 using UnityEngine;
 
 namespace Gruntz.TriggerBox
@@ -19,6 +20,16 @@ namespace Gruntz.TriggerBox
                 return;
             }
             var actor = actorProxy.Actor;
+
+            var teamComponent = actor.GetComponent<TeamComponent>();
+            if (teamComponent == null) {
+                return;
+            }
+
+            if (teamComponent.UnitTeam != TeamComponent.Team.Player) {
+                return;
+            }
+
             var equipmentComponent = actor.GetComponent<EquipmentComponent>();
             if (equipmentComponent == null) {
                 return;
