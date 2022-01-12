@@ -96,11 +96,11 @@ namespace Base.Navigation
         private void Move(MoveRequestResult moveRequestResult)
         {
             var messagesSystem = MessagesSystem.MessagesSystem.GetMessagesSystemFromContext();
-            if ((_navAgent.Pos - moveRequestResult.PositionToMove).sqrMagnitude > 0.001) {
+            if ((_navAgent.Pos - moveRequestResult.PositionToMove).sqrMagnitude > 0.000001) {
                 messagesSystem.SendMessage(_navAgent.NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, _navAgent.Actor, NavAgent.NavAgentState.Moving);
             }
             else {
-                messagesSystem.SendMessage(_navAgent.NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, _navAgent.Actor, NavAgent.NavAgentState.Statying);
+                messagesSystem.SendMessage(_navAgent.NavAgentComponentDef.NavigationMessages, MainUpdaterUpdateTime.FixedCrt, _navAgent.Actor, NavAgent.NavAgentState.Staying);
             }
 
             _navAgent.SetTravelSegmentAndLocation(moveRequestResult.PositionToMove, moveRequestResult.Direction, moveRequestResult.TravelSegmentInfo);

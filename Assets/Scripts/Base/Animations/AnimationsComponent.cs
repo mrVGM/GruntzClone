@@ -74,7 +74,7 @@ namespace Base.Animations
             if (messages.Any(x => (NavAgent.NavAgentState)x.Data == NavAgent.NavAgentState.Moving)) {
                 Animator.SetInteger("State", (int)AnimatorState.Running);
             }
-            if (messages.Any(x => (NavAgent.NavAgentState)x.Data == NavAgent.NavAgentState.Statying)) {
+            if (messages.Any(x => (NavAgent.NavAgentState)x.Data == NavAgent.NavAgentState.Staying)) {
                 Animator.SetInteger("State", (int)AnimatorState.Idle);
             }
 

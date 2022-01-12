@@ -1049,7 +1049,7 @@ GameObject:
   - component: {fileID: 121015430}
   - component: {fileID: 121015431}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: Video
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1074,7 +1074,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 737.7778, y: 0}
+  m_SizeDelta: {x: 536.8889, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &121015431
 MonoBehaviour:
@@ -2729,7 +2729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: {fileID: 1289108997}
   VideoPlayer: {fileID: 1676334892}
-  VideoScreen: {fileID: 763538316}
+  VideoScreen: {fileID: 121015429}
   Prev: {fileID: 2055678317}
   Next: {fileID: 377611610}
   KnobsContainer: {fileID: 1720467159}
@@ -3234,7 +3234,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.4}
   m_AnchorMax: {x: 0.5, y: 0.6}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 83.000015, y: 0}
+  m_SizeDelta: {x: 60.40001, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!320 &383468365
 PlayableDirector:

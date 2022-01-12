@@ -12,7 +12,7 @@ namespace Base.Navigation
         public enum NavAgentState
         {
             Moving,
-            Statying,
+            Staying,
             BeingPushed
         }
 
