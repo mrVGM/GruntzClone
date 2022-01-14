@@ -21,6 +21,8 @@ namespace Gruntz.UI
         public Transform PagesContainer;
         public GameObject Throbber;
 
+        public Animator Animator;
+        
         public void DoPaging()
         {
             IEnumerable<Transform> activePages()
@@ -132,6 +134,8 @@ namespace Gruntz.UI
                 StartCoroutine(PlayVideo(videoName));
             }
             DoPaging();
+            
+            Animator.SetInteger("Shown", 1);
         }
 
         public void Hide()
@@ -140,6 +144,8 @@ namespace Gruntz.UI
             gameObject.SetActive(false);
             VideoPlayer.Stop();
             VideoPlayer.clip = null;
+            
+            Animator.SetInteger("Shown", 0);
         }
     }
 }

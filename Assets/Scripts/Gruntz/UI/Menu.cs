@@ -13,6 +13,7 @@ namespace Gruntz.UI
 
         private bool _open = false;
         private List<MainUpdaterLock.ILock> _locks = new List<MainUpdaterLock.ILock>();
+        public Animator SavedNotification;
 
         private void RefreshLoadButton()
         {
@@ -72,7 +73,8 @@ namespace Gruntz.UI
             var game = Game.Instance;
             var savesManager = game.SavesManager;
             savesManager.CreateSave(QuickSave);
-            RefreshLoadButton();
+            CloseMenu();
+            SavedNotification.SetTrigger("Shown");
         }
         public void LoadLast()
         {
