@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Base.Actors;
 using Base.MessagesSystem;
 using Base.Status;
@@ -12,6 +13,7 @@ namespace Gruntz.TriggerBox
     {
         public class Notification
         {
+            public List<Sprite> ImagesToDisplay = new List<Sprite>();
             public string NotificationText;
             public string VideoName;
         }

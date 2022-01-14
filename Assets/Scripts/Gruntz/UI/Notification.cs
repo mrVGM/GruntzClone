@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +23,8 @@ namespace Gruntz.UI
 
         public Animator Animator;
         public Button WatchVideoButton;
-        
+
+        public RectTransform ImagesContainer;
 
         private State _state = State.Hidden;
 
@@ -39,7 +41,7 @@ namespace Gruntz.UI
             VideoPlayer.Play();
         }
 
-        public void Show(string text, string videoName)
+        public void Show(string text, string videoName, IEnumerable<Sprite> imagesToDisplay)
         {
             MenuButton.SetActive(false);
             StopAllCoroutines();
@@ -49,6 +51,20 @@ namespace Gruntz.UI
             if (!string.IsNullOrEmpty(videoName)) {
                 WatchVideoButton.gameObject.SetActive(true);
                 StartCoroutine(PlayVideo(videoName));
+            }
+
+            ImagesContainer.gameObject.SetActive(false);
+            for (int i = 0; i < ImagesContainer.childCount; ++i) {
+                var child = ImagesContainer.GetChild(i);
+                child.gameObject.SetActive(false);
+            }
+            int index = 0;
+            foreach (var img in imagesToDisplay) {
+                var notificationImage = ImagesContainer.GetChild(index).GetComponent<NotificationImage>();
+                notificationImage.Image.sprite = img;
+                notificationImage.gameObject.SetActive(true);
+                ImagesContainer.gameObject.SetActive(true);
+                ++index;
             }
 
             _state = State.Shown;

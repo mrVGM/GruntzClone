@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="29191b72-e5ae-475c-8f45-7451cdffc376" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PuzzleLevelUI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PuzzleLevelUI.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Navigation/NavAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Navigation/NavAgent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/TriggerBox/TriggerShowNotificationActionDef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/TriggerBox/TriggerShowNotificationActionDef.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/WaitForNotificationMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/WaitForNotificationMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Notification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Notification.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +36,7 @@
     <setting file="file://$PROJECT_DIR$/Packages/com.vgm.interpreter/Runtime/ScriptingLanguage/Interpreter/Interpreter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.10/Runtime/Timeline/CinemachineMixer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.15.4/Tests/Editor/Collaborate/UITestHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/NotificationImage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/Def.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
