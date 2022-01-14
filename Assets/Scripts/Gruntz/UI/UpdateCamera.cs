@@ -8,8 +8,6 @@ namespace Gruntz.UI
 {
     public class UpdateCamera : CoroutineProcess
     {
-        public BoxCollider MapBounds;
-        public Transform CameraLookAt;
         public float MovementSpeed = 0.02f;
         protected override IEnumerator<object> Crt()
         {
