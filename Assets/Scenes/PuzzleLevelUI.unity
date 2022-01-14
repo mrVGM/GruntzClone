@@ -3787,6 +3787,7 @@ MonoBehaviour:
   m_Priority: 0
   NotificationMessagesBox: {fileID: 11400000, guid: 61ae4839afda0814cb7ef9ad9ef6a404, type: 2}
   NotificationTagDef: {fileID: 11400000, guid: a976259d74a68614084812dbef332004, type: 2}
+  SelectedActorsTagDef: {fileID: 11400000, guid: a9b2daba292157448bcd837138c348cc, type: 2}
 --- !u!1 &410247539
 GameObject:
   m_ObjectHideFlags: 0
@@ -3799,7 +3800,7 @@ GameObject:
   - component: {fileID: 410247541}
   - component: {fileID: 410247542}
   m_Layer: 0
-  m_Name: WaitForInput
+  m_Name: WaitForNotificationClosed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5978,8 +5979,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Priority: 100
-  MapBounds: {fileID: 0}
-  CameraLookAt: {fileID: 0}
   MovementSpeed: 10
 --- !u!1 &895992406
 GameObject:
@@ -7318,7 +7317,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Priority: 0
   SelectedActorsTag: {fileID: 11400000, guid: a9b2daba292157448bcd837138c348cc, type: 2}
-  CameraTarget: {fileID: 0}
 --- !u!1 &1094589622
 GameObject:
   m_ObjectHideFlags: 0

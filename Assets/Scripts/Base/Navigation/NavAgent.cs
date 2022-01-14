@@ -90,6 +90,10 @@ namespace Base.Navigation
 
         public INavigationTarget Target
         {
+            get
+            {
+                return _navAgentData.Target;
+            }
             set
             {
                 _navAgentData.Target = value;
