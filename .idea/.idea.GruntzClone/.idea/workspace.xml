@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29191b72-e5ae-475c-8f45-7451cdffc376" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Notification.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Notification.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Notification.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Notification.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DefRepositoryDef.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DefRepositoryDef.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UIScenes/PuzzleLevelUI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UIScenes/PuzzleLevelUI.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/TriggerBox/TriggerShowNotificationActionDef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/TriggerBox/TriggerShowNotificationActionDef.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Notification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Notification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/ShowNotification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/ShowNotification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/WaitForNotificationMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/WaitForNotificationMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/IntroductionLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/IntroductionLevel.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,19 +200,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/WaitForNotificationMessage.cs</url>
-          <line>18</line>
-          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\UI\WaitForNotificationMessage.cs" initialLine="18" containingFunctionPresentation="method 'Crt'">
-            <startOffsets>
-              <option value="564" />
-            </startOffsets>
-            <endOffsets>
-              <option value="704" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -123,6 +123,107 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &82103568
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1667507940}
+    m_Modifications:
+    - target: {fileID: 449901049191280290, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: ActorTempleteDef
+      value: 
+      objectReference: {fileID: 11400000, guid: 07d3b66cd296769489a2cdc072f5e6de, type: 2}
+    - target: {fileID: 449901049191280292, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_Name
+      value: DeployPointNotification (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].VideoName
+      value: SelectingCharacters.mp4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].NotificationText
+      value: TO SELECT A CHARACTER YOU CAN EITHER LEFT CLICK ONTO IT OR DRAG WITH
+        YOU MOUSE.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[1].NotificationText
+      value: MAKE SURE TO ALWAYS CHECK ON THE MYSTERY BOXES, TOO. THEY CAN GIVE YOU
+        HINTS AND GIVE YOU NEW CHALLENGES.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].ImagesToDisplay.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].ImagesToDisplay.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[1].ImagesToDisplay.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 08c6c7df9f2fe3345aac1a69da7a5ffb, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+--- !u!4 &82103569 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+  m_PrefabInstance: {fileID: 82103568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &82103570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1186261886343798684, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+  m_PrefabInstance: {fileID: 82103568}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &412990058
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +545,99 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1315162199}
+--- !u!1001 &666676593
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1667507940}
+    m_Modifications:
+    - target: {fileID: 449901049191280290, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: ActorTempleteDef
+      value: 
+      objectReference: {fileID: 11400000, guid: 07d3b66cd296769489a2cdc072f5e6de, type: 2}
+    - target: {fileID: 449901049191280292, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_Name
+      value: DeployPointNotification (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].NotificationText
+      value: YOU CAN OPEN THE MENU FROM THE WAFFLE BUTTON IN THE TOP LEFT CORNER.
+        FROM THERE YOU CAN SAVE/LOAD YOUR PROGRESS WITHIN THE CURRENT LEVEL.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[1].NotificationText
+      value: MAKE SURE TO ALWAYS CHECK ON THE MYSTERY BOXES, TOO. THEY CAN GIVE YOU
+        HINTS AND GIVE YOU NEW CHALLENGES.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].ImagesToDisplay.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: c095e3c18fa44ab49a3cde9168506366, type: 3}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[1].ImagesToDisplay.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 08c6c7df9f2fe3345aac1a69da7a5ffb, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+--- !u!4 &666676594 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+  m_PrefabInstance: {fileID: 666676593}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &666676595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1186261886343798684, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+  m_PrefabInstance: {fileID: 666676593}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &699060940 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5570911027225758646, guid: 79451cda6ac34944d87029d9e73a4032, type: 3}
@@ -483,6 +677,12 @@ MonoBehaviour:
     ID: d293acd5-de13-44f9-b107-b170e35d5aca
   - GameObject: {fileID: 1715738053}
     ID: ffe359d0-8a7e-4ab3-870b-fa8cc803df4e
+  - GameObject: {fileID: 666676595}
+    ID: a35a70ef-095e-42f1-907f-27929b7e9930
+  - GameObject: {fileID: 82103570}
+    ID: 85eb017b-0b6f-48dc-96e9-39d79c7163e9
+  - GameObject: {fileID: 960860804}
+    ID: e0f92aa0-36ea-4105-8f61-1ec1da3d0374
 --- !u!4 &702261621
 Transform:
   m_ObjectHideFlags: 0
@@ -563,6 +763,102 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6740172920414602523, guid: 79451cda6ac34944d87029d9e73a4032, type: 3}
   m_PrefabInstance: {fileID: 5570911026816473466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &960860802
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1667507940}
+    m_Modifications:
+    - target: {fileID: 449901049191280290, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: ActorTempleteDef
+      value: 
+      objectReference: {fileID: 11400000, guid: 07d3b66cd296769489a2cdc072f5e6de, type: 2}
+    - target: {fileID: 449901049191280292, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_Name
+      value: DeployPointNotification (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].NotificationText
+      value: GOOD LUCK WITH YOUR JOURNEY! NOW GO GET THE TROPHY!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[1].NotificationText
+      value: MAKE SURE TO ALWAYS CHECK ON THE MYSTERY BOXES, TOO. THEY CAN GIVE YOU
+        HINTS AND GIVE YOU NEW CHALLENGES.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].ImagesToDisplay.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].ImagesToDisplay.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 677de0383680d9b44afda545db77dccc, type: 3}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[1].ImagesToDisplay.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 08c6c7df9f2fe3345aac1a69da7a5ffb, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+--- !u!4 &960860803 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+  m_PrefabInstance: {fileID: 960860802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &960860804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1186261886343798684, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+  m_PrefabInstance: {fileID: 960860802}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1122398933
 GameObject:
@@ -1040,6 +1336,9 @@ Transform:
   - {fileID: 1537291398}
   - {fileID: 699060940}
   - {fileID: 1715738052}
+  - {fileID: 666676594}
+  - {fileID: 82103569}
+  - {fileID: 960860803}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1102,6 +1401,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].NotificationText
+      value: THIS GAME IS ALL ABOUT GETTING TO THAT TROPHY. TO MOVE YOUR CHARACTER
+        JUST RIGHT-CLICK SOMEWHERE ON THE GROUND.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[1].NotificationText
+      value: MAKE SURE TO ALWAYS CHECK ON THE MYSTERY BOXES, TOO. THEY CAN GIVE YOU
+        HINTS AND GIVE YOU NEW CHALLENGES.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].ImagesToDisplay.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: f87a1bb3f57c69042b9a701168a64f40, type: 3}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[1].ImagesToDisplay.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 08c6c7df9f2fe3345aac1a69da7a5ffb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
 --- !u!4 &1715738052 stripped
