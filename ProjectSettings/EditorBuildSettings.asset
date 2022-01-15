@@ -12,42 +12,42 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuLevel.unity
     guid: 7d42e9a8ebd7677fb937bd666fb10142
   - enabled: 1
-    path: Assets/Scenes/PuzzleLevelUI.unity
+    path: Assets/Scenes/UIScenes/PuzzleLevelUI.unity
     guid: 7ff893f06a3aba419a99d4e2d4354ea4
   - enabled: 1
-    path: Assets/Scenes/LevelSelectionLevelUI.unity
+    path: Assets/Scenes/UIScenes/LevelSelectionLevelUI.unity
     guid: 0761c8331b8d4c844bba539213a11abe
   - enabled: 1
-    path: Assets/Scenes/IntroductionLevel.unity
+    path: Assets/Scenes/InGameLevels/IntroductionLevel.unity
     guid: 8deaf77ad8b3198489f7973d3ebac87a
   - enabled: 1
-    path: Assets/Scenes/BallLevel.unity
+    path: Assets/Scenes/InGameLevels/BallLevel.unity
     guid: 22a97c23a2bff4544b4a06417f0f4993
   - enabled: 1
-    path: Assets/Scenes/HolesLevel.unity
+    path: Assets/Scenes/InGameLevels/HolesLevel.unity
     guid: 6f3087c7c71b1e546a0dbac2443c0a6e
   - enabled: 1
-    path: Assets/Scenes/PistonsLevel.unity
+    path: Assets/Scenes/Unused/PistonsLevel.unity
     guid: 8ba82ee5c8ad58c43befac920e5cf270
   - enabled: 1
-    path: Assets/Scenes/MaterialsLevel.unity
+    path: Assets/Scenes/InGameLevels/MaterialsLevel.unity
     guid: 4d7c3ec57b6887f41a4e3dd51070445d
   - enabled: 1
-    path: Assets/Scenes/LevelSelectionLevel.unity
+    path: Assets/Scenes/Unused/LevelSelectionLevel.unity
     guid: 83f469f6d20443e4b8f7be8c20c2346b
   - enabled: 1
-    path: Assets/Scenes/BigLevel.unity
+    path: Assets/Scenes/InGameLevels/BigLevel.unity
     guid: 7c55020fb83e9424db445c418c2ca41e
   - enabled: 1
-    path: Assets/Scenes/GymLevel.unity
+    path: Assets/Scenes/Gyms/GymLevel.unity
     guid: 7dfeb5212e32eee4ab30a51e7f71099f
   - enabled: 1
-    path: Assets/Scenes/FlyingBallsLevel.unity
+    path: Assets/Scenes/InGameLevels/FlyingBallsLevel.unity
     guid: 57f42ae82ded102428fca1f95eb0ce46
   - enabled: 1
     path: Assets/Scenes/NewLevelSelectionLevel.unity
     guid: 087412734bdc37842a5938bdd0f65c33
   - enabled: 1
-    path: Assets/Scenes/NewLevelSelectionLevelUI.unity
+    path: Assets/Scenes/UIScenes/NewLevelSelectionLevelUI.unity
     guid: e89e59b8c81f04d4582277f878b80d6a
   m_configObjects: {}

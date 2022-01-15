@@ -1,25 +1,15 @@
-using System.Collections.Generic;
 using Base.Actors;
 using Base.MessagesSystem;
 using Base.Status;
 using Gruntz.Equipment;
 using Gruntz.UI;
 using System.Linq;
-using Base;
 using UnityEngine;
 
 namespace Gruntz.TriggerBox
 {
     public class TriggerShowNotificationActionDef : TriggerBoxActionDef
     {
-        public class Notification
-        {
-            public List<Sprite> ImagesToDisplay = new List<Sprite>();
-            public string NotificationText;
-            public string VideoName;
-            public LevelDef LevelToStart;
-        }
-
         public MessagesBoxTagDef MessagesBox;
         public StatusDef RegularActorStatus;
         public StatusDef NotificationShownStatus;
@@ -45,19 +35,14 @@ namespace Gruntz.TriggerBox
             }
             statusComponent.AddStatus(NotificationShownStatus.Data.CreateStatus());
 
-            var equipmentComponent = ownActor.GetComponent<EquipmentComponent>();
-            var notificationItem = equipmentComponent.Weapon;
-
-            var notification = notificationsDef.Notifications.FirstOrDefault(x => x.Item == notificationItem);
+            var notification = ownActor.ActorComponent.GetComponent<NotificationDataBehaviour>().Notifications
+                .FirstOrDefault();
+            
             var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
             messagesSystem.SendMessage(MessagesBox,
                 Base.MainUpdaterUpdateTime.Update,
                 ownActor,
-                new Notification { 
-                    NotificationText = notification.Description,
-                    VideoName = notification.VideoName,
-                    LevelToStart = notification.LevelDef
-                });
+                notification);
 
             var switchComponent = ownActor.GetComponent<SwitchState.SwitchStateComponent>();
             var stateStatus = switchComponent.SwitchStateComponentDef.StateStatuses.Skip(1).FirstOrDefault();

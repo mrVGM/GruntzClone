@@ -20,5 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3cbfa8686b7444d4e921071bb92d6ca0, type: 2}
   - {fileID: 11400000, guid: c0deb72c17dffb04baf168d9770eceab, type: 2}
   Statuses: []
-  Weapon: {fileID: 0}
+  Weapon: {fileID: 11400000, guid: df60eba3848a3f74ba1ec8e024531c1e, type: 2}
   SpecialItem: {fileID: 0}

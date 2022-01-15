@@ -40,7 +40,7 @@ namespace Gruntz.UI
 
                 var notification =
                     notificationMessage.Data as
-                        TriggerShowNotificationActionDef.Notification;
+                        NotificationDataBehaviour.Notification;
                 
                 context.PutItem(NotificationTagDef, notification);
                 break;

@@ -10,7 +10,7 @@ namespace Gruntz.UI
         public Notification Notification;
         protected override IEnumerator<object> Crt()
         {
-            var notificationData = context.GetItem(NotificationMessagesTagDef) as TriggerShowNotificationActionDef.Notification;
+            var notificationData = context.GetItem(NotificationMessagesTagDef) as NotificationDataBehaviour.Notification;
             Notification.Show(notificationData);
             while (true) {
                 yield return true;

@@ -44,7 +44,7 @@ namespace Gruntz.UI
             VideoPlayer.Play();
         }
 
-        public void Show(TriggerShowNotificationActionDef.Notification notification)
+        public void Show(NotificationDataBehaviour.Notification notification)
         {
             MenuButton.SetActive(false);
             StopAllCoroutines();
