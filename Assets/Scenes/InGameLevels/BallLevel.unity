@@ -1032,7 +1032,7 @@ PrefabInstance:
     - target: {fileID: 449901049191280290, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: ActorTempleteDef
       value: 
-      objectReference: {fileID: 11400000, guid: ad60febb643e60641933a6af7cfc1e0e, type: 2}
+      objectReference: {fileID: 11400000, guid: 07d3b66cd296769489a2cdc072f5e6de, type: 2}
     - target: {fileID: 449901049191280292, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: m_Name
       value: DeployPointNotification
@@ -1079,6 +1079,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].VideoName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].NotificationText
+      value: WATCH OUT FOR THE BALL!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].ImagesToDisplay.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

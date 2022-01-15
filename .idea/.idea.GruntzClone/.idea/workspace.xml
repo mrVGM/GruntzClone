@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29191b72-e5ae-475c-8f45-7451cdffc376" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Notification.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Notification.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/IntroductionLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/IntroductionLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Notification.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Notification.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/WatchOutForBallNotificationTemplateDef.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/WatchOutForBallNotificationTemplateDef.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DefRepositoryDef.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DefRepositoryDef.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/BallLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/BallLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/HolesLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/HolesLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/MaterialsLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/MaterialsLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLevelSelectionLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLevelSelectionLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Unused/PistonsLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Unused/PistonsLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/LevelSelection/PuzzleLevelSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/LevelSelection/PuzzleLevelSelection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/TriggerBox/TriggerShowNotificationActionDef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/TriggerBox/TriggerShowNotificationActionDef.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,11 +33,13 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ee480759f3d481d82ada245dc74f9fd13be00/90/c14fe3d2/Renderer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/LoadLevelSelectionLevel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/LevelSelection/PuzzleLevelSelection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.10/Runtime/Impulse/CinemachineImpulseManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/WaitForNotificationClosed.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/ConsolePrelude.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.vgm.interpreter/Runtime/ScriptingLanguage/BaseFunctions/CreateObjectFunction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/ISerializedObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/AI/Processes/InstructionsTransmitter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/SelectActorAndFocusWithCamera.cs" root0="FORCE_HIGHLIGHTING" />
@@ -37,6 +49,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.10/Runtime/Timeline/CinemachineMixer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.15.4/Tests/Editor/Collaborate/UITestHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/NotificationImage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/Def.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -118,89 +131,12 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
-          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
-          <option name="timeStamp" value="1" />
+        <breakpoint enabled="true" type="DotNet Exception Breakpoints">
+          <properties exception="System.NullReferenceException" isInternal="false" displayValue="NullReferenceException" namespaceName="System">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="28" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/AI/Processes/FightCheck.cs</url>
-          <line>11</line>
-          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\AI\Processes\FightCheck.cs" initialLine="11" containingFunctionPresentation="method 'Crt'">
-            <startOffsets>
-              <option value="259" />
-            </startOffsets>
-            <endOffsets>
-              <option value="321" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/AI/Processes/AttackTargetInRange.cs</url>
-          <line>51</line>
-          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\AI\Processes\AttackTargetInRange.cs" initialLine="57" containingFunctionPresentation="method 'FinishCrt'">
-            <startOffsets>
-              <option value="1965" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1977" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UnitController/UnitController.cs</url>
-          <line>30</line>
-          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\UnitController\UnitController.cs" initialLine="30" containingFunctionPresentation="method 'DoUpdate'">
-            <startOffsets>
-              <option value="1275" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1345" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/AI/Processes/InstructionsTransmitter.cs</url>
-          <line>51</line>
-          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\AI\Processes\InstructionsTransmitter.cs" initialLine="51" containingFunctionPresentation="method 'Crt'">
-            <startOffsets>
-              <option value="1614" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1662" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/AI/Processes/InstructionsTransmitter.cs</url>
-          <line>52</line>
-          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\AI\Processes\InstructionsTransmitter.cs" initialLine="52" containingFunctionPresentation="method 'Crt'">
-            <startOffsets>
-              <option value="1679" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1766" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Menu.cs</url>
-          <line>62</line>
-          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\UI\Menu.cs" initialLine="61" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab836cb640d9f14a9e5501f376f3892, type: 3}
+  m_Name: ShowNotificationMessageAlwaysActionDef
+  m_EditorClassIdentifier: 
+  MessagesBox: {fileID: 11400000, guid: 61ae4839afda0814cb7ef9ad9ef6a404, type: 2}
+  RegularActorStatus: {fileID: 11400000, guid: ef6970aceacb01e458f6d9697d1190df, type: 2}
+  NotificationShownStatus: {fileID: 0}

@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c648027e19b0c3f42b708482fbb9ca0a, type: 3}
-  m_Name: WatchOutForBallNotificationTemplateDef
+  m_Name: BridgeTemplateDef
   m_EditorClassIdentifier: 
-  ParentTemplate: {fileID: 11400000, guid: 07d3b66cd296769489a2cdc072f5e6de, type: 2}
+  ParentTemplate: {fileID: 0}
   ActorDef: {fileID: 0}
-  ActorComponents: []
+  ActorComponents:
+  - {fileID: 11400000, guid: 27aabbf7b09809948864c2d59e0e0f19, type: 2}
+  - {fileID: 11400000, guid: 86f055ba1b39580449a4937ff12374dd, type: 2}
   Statuses: []
-  Weapon: {fileID: 11400000, guid: c7fcf87d27a99064eba98da9afb90fae, type: 2}
+  Weapon: {fileID: 0}
   SpecialItem: {fileID: 0}

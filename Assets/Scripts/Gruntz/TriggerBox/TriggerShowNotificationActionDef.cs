@@ -2,8 +2,6 @@ using System.Collections.Generic;
 using Base.Actors;
 using Base.MessagesSystem;
 using Base.Status;
-using Gruntz.Equipment;
-using Gruntz.UI;
 using System.Linq;
 using UnityEngine;
 
@@ -14,7 +12,6 @@ namespace Gruntz.TriggerBox
         public MessagesBoxTagDef MessagesBox;
         public StatusDef RegularActorStatus;
         public StatusDef NotificationShownStatus;
-        public NotificationsDef notificationsDef;
 
         public override void TriggerEnter(Collider ownCollider, Collider otherCollider)
         {
@@ -31,10 +28,13 @@ namespace Gruntz.TriggerBox
                 return;
             }
 
-            if (statusComponent.GetStatus(NotificationShownStatus) != null) {
+            if (NotificationShownStatus != null && statusComponent.GetStatus(NotificationShownStatus) != null) {
                 return;
             }
-            statusComponent.AddStatus(NotificationShownStatus.Data.CreateStatus());
+
+            if (NotificationShownStatus != null) {
+                statusComponent.AddStatus(NotificationShownStatus.Data.CreateStatus());
+            }
 
             IEnumerable<NotificationDataBehaviour.Notification> notifications = ownActor.ActorComponent.GetComponent<NotificationDataBehaviour>().Notifications;
             
@@ -63,6 +63,7 @@ namespace Gruntz.TriggerBox
             if (statusComponent.GetStatus(RegularActorStatus) == null) {
                 return;
             }
+            
             var statuses = statusComponent.GetStatuses(x => x.StatusDef == NotificationShownStatus).ToList();
             foreach (var status in statuses) {
                 statusComponent.RemoveStatus(status);
