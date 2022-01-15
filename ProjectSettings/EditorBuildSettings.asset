@@ -44,4 +44,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FlyingBallsLevel.unity
     guid: 57f42ae82ded102428fca1f95eb0ce46
+  - enabled: 1
+    path: Assets/Scenes/NewLevelSelectionLevel.unity
+    guid: 087412734bdc37842a5938bdd0f65c33
+  - enabled: 1
+    path: Assets/Scenes/NewLevelSelectionLevelUI.unity
+    guid: e89e59b8c81f04d4582277f878b80d6a
   m_configObjects: {}

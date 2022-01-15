@@ -15,4 +15,4 @@ MonoBehaviour:
   MessagesBox: {fileID: 11400000, guid: 61ae4839afda0814cb7ef9ad9ef6a404, type: 2}
   RegularActorStatus: {fileID: 11400000, guid: ef6970aceacb01e458f6d9697d1190df, type: 2}
   NotificationShownStatus: {fileID: 11400000, guid: 8023ae18d54c8ae43bc5facf53cf5761, type: 2}
-  TutorialNotificationsDef: {fileID: 11400000, guid: f48f962a3417b4d48804e973314721a0, type: 2}
+  notificationsDef: {fileID: 11400000, guid: f48f962a3417b4d48804e973314721a0, type: 2}

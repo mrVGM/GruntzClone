@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9dd24df06ec91748867d12e02d56f5c, type: 3}
-  m_Name: TutorialNotifications
+  m_Name: NotificationsDef
   m_EditorClassIdentifier: 
   Notifications:
   - Item: {fileID: 11400000, guid: 025ff64dec23e3b4f94458ea2272598d, type: 2}
@@ -27,14 +27,17 @@ MonoBehaviour:
 
       NOW, GO GET THE TROPHY'
     VideoName: Movement.mp4
+    LevelDef: {fileID: 0}
   - Item: {fileID: 11400000, guid: c7fcf87d27a99064eba98da9afb90fae, type: 2}
     Description: 'WATCH OUT FOR
 
       THE BALL'
     VideoName: 
+    LevelDef: {fileID: 0}
   - Item: {fileID: 11400000, guid: 17e48d08b3d168e4faf533778840f715, type: 2}
     Description: HAMMER MIGHT BE HELPFUL
     VideoName: 
+    LevelDef: {fileID: 0}
   - Item: {fileID: 11400000, guid: ba51386108da10844a827de508ef6cfa, type: 2}
     Description: 'HAMMER BREAKS ROCKS
 
@@ -43,6 +46,7 @@ MonoBehaviour:
       IF YOU HAVE
       IT'
     VideoName: Abilities.mp4
+    LevelDef: {fileID: 0}
   - Item: {fileID: 11400000, guid: 7918f038c47e3dc4385f0548c1f2e660, type: 2}
     Description: 'YOU CAN SPAWN NEW UNITS
 
@@ -53,6 +57,7 @@ MonoBehaviour:
 
       ENOUGH MATERIAL COLLECTED'
     VideoName: Spawning.mp4
+    LevelDef: {fileID: 0}
   - Item: {fileID: 11400000, guid: df60eba3848a3f74ba1ec8e024531c1e, type: 2}
     Description: 'A HOSTILE UNIT IS GUARDING THAT HAMMER
 
@@ -65,6 +70,7 @@ MonoBehaviour:
 
 '
     VideoName: 
+    LevelDef: {fileID: 0}
   - Item: {fileID: 11400000, guid: e3c36876f0d3c5545af902bd7b294cef, type: 2}
     Description: 'THIS BALL IS A RANGED WEAPON
 
@@ -80,6 +86,12 @@ MonoBehaviour:
 
       BE CAREFUL!'
     VideoName: ThrowingBalls.mp4
+    LevelDef: {fileID: 0}
   - Item: {fileID: 11400000, guid: 6db3f2d33552d7541ad632e957dbdda6, type: 2}
     Description: DON'T FORGET ABOUT THE PUSHBACK
     VideoName: 
+    LevelDef: {fileID: 0}
+  - Item: {fileID: 11400000, guid: 1f7acce9847120e4b9cd794dc22c3b91, type: 2}
+    Description: DON'T FORGET ABOUT THE PUSHBACK
+    VideoName: 
+    LevelDef: {fileID: 11400000, guid: 0c2d61499a7855d4fa55c49e05dc09d2, type: 2}

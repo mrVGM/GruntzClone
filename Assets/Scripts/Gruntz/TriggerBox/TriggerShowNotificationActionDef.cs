@@ -5,6 +5,7 @@ using Base.Status;
 using Gruntz.Equipment;
 using Gruntz.UI;
 using System.Linq;
+using Base;
 using UnityEngine;
 
 namespace Gruntz.TriggerBox
@@ -16,12 +17,13 @@ namespace Gruntz.TriggerBox
             public List<Sprite> ImagesToDisplay = new List<Sprite>();
             public string NotificationText;
             public string VideoName;
+            public LevelDef LevelToStart;
         }
 
         public MessagesBoxTagDef MessagesBox;
         public StatusDef RegularActorStatus;
         public StatusDef NotificationShownStatus;
-        public TutorialNotificationsDef TutorialNotificationsDef;
+        public NotificationsDef notificationsDef;
 
         public override void TriggerEnter(Collider ownCollider, Collider otherCollider)
         {
@@ -46,14 +48,15 @@ namespace Gruntz.TriggerBox
             var equipmentComponent = ownActor.GetComponent<EquipmentComponent>();
             var notificationItem = equipmentComponent.Weapon;
 
-            var notification = TutorialNotificationsDef.Notifications.FirstOrDefault(x => x.Item == notificationItem);
+            var notification = notificationsDef.Notifications.FirstOrDefault(x => x.Item == notificationItem);
             var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
             messagesSystem.SendMessage(MessagesBox,
                 Base.MainUpdaterUpdateTime.Update,
                 ownActor,
                 new Notification { 
                     NotificationText = notification.Description,
-                    VideoName = notification.VideoName
+                    VideoName = notification.VideoName,
+                    LevelToStart = notification.LevelDef
                 });
 
             var switchComponent = ownActor.GetComponent<SwitchState.SwitchStateComponent>();

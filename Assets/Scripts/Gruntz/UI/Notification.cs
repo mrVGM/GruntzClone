@@ -1,6 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
+using Base;
+using Gruntz.TriggerBox;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -16,6 +17,7 @@ namespace Gruntz.UI
             VideoShown
         }
 
+        public TagDef LevelProgressTagDef;
         public GameObject MenuButton;
         public Text Text;
         public VideoPlayer VideoPlayer;
@@ -23,6 +25,7 @@ namespace Gruntz.UI
 
         public Animator Animator;
         public Button WatchVideoButton;
+        public Button StartLevelButton;
 
         public RectTransform ImagesContainer;
 
@@ -41,16 +44,27 @@ namespace Gruntz.UI
             VideoPlayer.Play();
         }
 
-        public void Show(string text, string videoName, IEnumerable<Sprite> imagesToDisplay)
+        public void Show(TriggerShowNotificationActionDef.Notification notification)
         {
             MenuButton.SetActive(false);
             StopAllCoroutines();
-            Text.text = text;
+            Text.text = notification.NotificationText;
 
             WatchVideoButton.gameObject.SetActive(false);
-            if (!string.IsNullOrEmpty(videoName)) {
+            if (!string.IsNullOrEmpty(notification.VideoName)) {
                 WatchVideoButton.gameObject.SetActive(true);
-                StartCoroutine(PlayVideo(videoName));
+                StartCoroutine(PlayVideo(notification.VideoName));
+            }
+            
+            StartLevelButton.gameObject.SetActive(false);
+            StartLevelButton.onClick.RemoveAllListeners();
+            if (notification.LevelToStart != null) {
+                StartLevelButton.onClick.AddListener(() => {
+                    var game = Game.Instance;
+                    game.SavesManager.CreateSave(LevelProgressTagDef);
+                    game.LoadLevel(notification.LevelToStart, () => { });
+                });
+                StartLevelButton.gameObject.SetActive(true);
             }
 
             ImagesContainer.gameObject.SetActive(false);
@@ -59,7 +73,7 @@ namespace Gruntz.UI
                 child.gameObject.SetActive(false);
             }
             int index = 0;
-            foreach (var img in imagesToDisplay) {
+            foreach (var img in notification.ImagesToDisplay) {
                 var notificationImage = ImagesContainer.GetChild(index).GetComponent<NotificationImage>();
                 notificationImage.Image.sprite = img;
                 notificationImage.gameObject.SetActive(true);

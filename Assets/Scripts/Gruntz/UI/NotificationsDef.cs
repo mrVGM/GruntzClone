@@ -8,7 +8,7 @@ using UnityEngine.Video;
 
 namespace Gruntz.UI
 {
-    public class TutorialNotificationsDef : Def
+    public class NotificationsDef : Def
     {
         [Serializable]
         public class Notification
@@ -17,6 +17,7 @@ namespace Gruntz.UI
             [TextArea]
             public string Description;
             public string VideoName;
+            public LevelDef LevelDef;
         }
 
         public Notification[] Notifications;
