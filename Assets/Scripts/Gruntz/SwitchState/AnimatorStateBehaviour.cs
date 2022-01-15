@@ -46,6 +46,7 @@ namespace Gruntz.SwitchState
         {
             if (_dirty) {
                 Animator.SetInteger("State", _state);
+                _dirty = false;
             }
         }
     }

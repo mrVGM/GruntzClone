@@ -41,7 +41,7 @@ namespace Gruntz
 
             var finishedLevelDefs = finished.Select(x => (LevelDef)x);
             var bridgeActor = Bridge.Actor;
-            var bridge2Actor = Bridge.Actor;
+            var bridge2Actor = Bridge2.Actor;
             var pistonsSwitchActor = PistonsSwitch.Actor;
 
             var bridgeSwitchComponent = bridgeActor.GetComponent<SwitchStateComponent>();
@@ -68,7 +68,7 @@ namespace Gruntz
             else {
                 bridge2SwitchComponent.SetCurrentState(BridgeDown);
             }
-
+            
             var game = Game.Instance;
             var savesManager = game.SavesManager;
             savesManager.CreateSave(ProgressSaveTagDef);
