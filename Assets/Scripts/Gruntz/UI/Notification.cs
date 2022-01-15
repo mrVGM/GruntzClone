@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Base;
 using Gruntz.TriggerBox;
 using UnityEngine;
@@ -18,7 +20,7 @@ namespace Gruntz.UI
         }
 
         public TagDef LevelProgressTagDef;
-        public GameObject MenuButton;
+        public Button MenuButton;
         public Text Text;
         public VideoPlayer VideoPlayer;
         public GameObject Throbber;
@@ -27,6 +29,9 @@ namespace Gruntz.UI
         public Button WatchVideoButton;
         public Button StartLevelButton;
 
+        public Button Dismiss;
+        public Button Previous;
+        public Button Next;
         public RectTransform ImagesContainer;
 
         private State _state = State.Hidden;
@@ -44,9 +49,16 @@ namespace Gruntz.UI
             VideoPlayer.Play();
         }
 
-        public void Show(NotificationDataBehaviour.Notification notification)
+        public void Show(IEnumerable<NotificationDataBehaviour.Notification> notifications)
         {
-            MenuButton.SetActive(false);
+            Show(notifications.ToList(), 0);
+        }
+
+        private void Show(List<NotificationDataBehaviour.Notification> notifications, int current)
+        {
+            var notification = notifications[current];
+
+            MenuButton.enabled = false;
             StopAllCoroutines();
             Text.text = notification.NotificationText;
 
@@ -80,6 +92,26 @@ namespace Gruntz.UI
                 ImagesContainer.gameObject.SetActive(true);
                 ++index;
             }
+            
+            Dismiss.gameObject.SetActive(false);
+            Previous.gameObject.SetActive(false);
+            Next.gameObject.SetActive(false);
+            
+            Previous.onClick.RemoveAllListeners();
+            Next.onClick.RemoveAllListeners();
+
+            if (current == notifications.Count - 1) {
+                Dismiss.gameObject.SetActive(true);
+            }
+            if (current < notifications.Count - 1) {
+                Next.onClick.AddListener(() => Show(notifications, current + 1));
+                Next.gameObject.SetActive(true);
+            }
+
+            if (current > 0) {
+                Previous.onClick.AddListener(() => Show(notifications, current - 1));
+                Previous.gameObject.SetActive(true);
+            }
 
             _state = State.Shown;
             Animator.SetInteger("Shown", 1);
@@ -87,7 +119,7 @@ namespace Gruntz.UI
 
         public void Hide()
         {
-            MenuButton.SetActive(true);
+            MenuButton.enabled = true;
             StopAllCoroutines();
             VideoPlayer.Stop();
             VideoPlayer.clip = null;

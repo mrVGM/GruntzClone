@@ -13,8 +13,18 @@ namespace Gruntz.UI
         public MessagesBoxTagDef NotificationMessagesBox;
         public ProcessContextTagDef NotificationTagDef;
         public ProcessContextTagDef SelectedActorsTagDef;
+        public ProcessContextTagDef InitialNotificationTagDef;
         protected override IEnumerator<object> Crt()
         {
+            var initialNotification =
+                context.GetItem(InitialNotificationTagDef) as IEnumerable<NotificationDataBehaviour.Notification>;
+            context.PutItem(InitialNotificationTagDef, null);
+            
+            if (initialNotification != null) {
+                context.PutItem(NotificationTagDef, initialNotification);
+                yield break;
+            }
+
             while (true) {
                 var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
                 while (!messagesSystem.GetMessages(NotificationMessagesBox).Any()) {
@@ -40,7 +50,7 @@ namespace Gruntz.UI
 
                 var notification =
                     notificationMessage.Data as
-                        NotificationDataBehaviour.Notification;
+                        IEnumerable<NotificationDataBehaviour.Notification>;
                 
                 context.PutItem(NotificationTagDef, notification);
                 break;

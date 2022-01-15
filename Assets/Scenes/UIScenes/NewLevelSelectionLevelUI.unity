@@ -479,6 +479,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 164774875}
   - {fileID: 1089503621}
   - {fileID: 895992408}
   - {fileID: 1885497180}
@@ -486,6 +487,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &164774874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 164774875}
+  - component: {fileID: 164774876}
+  m_Layer: 0
+  m_Name: StoreInitialNotification
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &164774875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164774874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 131922679}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &164774876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164774874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cd617a3d617cfc4aba5bf2ef9675c63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Priority: 0
+  NotificationMessagesBox: {fileID: 11400000, guid: 61ae4839afda0814cb7ef9ad9ef6a404, type: 2}
+  InitialNotificationTagDef: {fileID: 11400000, guid: 035a253a33e441042976914373025d20, type: 2}
 --- !u!1 &171872924
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,7 +820,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 131922679}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &363800978
 MonoBehaviour:
@@ -838,6 +885,7 @@ MonoBehaviour:
   NotificationMessagesBox: {fileID: 11400000, guid: 61ae4839afda0814cb7ef9ad9ef6a404, type: 2}
   NotificationTagDef: {fileID: 11400000, guid: a976259d74a68614084812dbef332004, type: 2}
   SelectedActorsTagDef: {fileID: 11400000, guid: a9b2daba292157448bcd837138c348cc, type: 2}
+  InitialNotificationTagDef: {fileID: 11400000, guid: 035a253a33e441042976914373025d20, type: 2}
 --- !u!114 &404442275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1219,7 +1267,7 @@ Transform:
   - {fileID: 823339896}
   - {fileID: 348440599}
   m_Father: {fileID: 131922679}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &999573902
 PrefabInstance:
@@ -1412,6 +1460,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4716104778531390270, guid: df16f1010d5314543865843a857d1a40, type: 3}
+      propertyPath: MenuButton
+      value: 
+      objectReference: {fileID: 7045907264882659012}
     - target: {fileID: 4716104778601100733, guid: df16f1010d5314543865843a857d1a40, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1993,7 +2045,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 131922679}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1089503622
 MonoBehaviour:
@@ -3253,7 +3305,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 131922679}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1885497181
 MonoBehaviour:

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Base.Actors;
 using Base.MessagesSystem;
 using Base.Status;
@@ -35,14 +36,13 @@ namespace Gruntz.TriggerBox
             }
             statusComponent.AddStatus(NotificationShownStatus.Data.CreateStatus());
 
-            var notification = ownActor.ActorComponent.GetComponent<NotificationDataBehaviour>().Notifications
-                .FirstOrDefault();
+            IEnumerable<NotificationDataBehaviour.Notification> notifications = ownActor.ActorComponent.GetComponent<NotificationDataBehaviour>().Notifications;
             
             var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
             messagesSystem.SendMessage(MessagesBox,
                 Base.MainUpdaterUpdateTime.Update,
                 ownActor,
-                notification);
+                notifications);
 
             var switchComponent = ownActor.GetComponent<SwitchState.SwitchStateComponent>();
             var stateStatus = switchComponent.SwitchStateComponentDef.StateStatuses.Skip(1).FirstOrDefault();

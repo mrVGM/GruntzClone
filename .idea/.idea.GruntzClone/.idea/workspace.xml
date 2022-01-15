@@ -3,105 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="29191b72-e5ae-475c-8f45-7451cdffc376" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Notification.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Notification.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Notification.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Notification.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/NotificationTemplateDef.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/Actors/Notification/NotificationTemplateDef.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/EnemyOnTheMapNotificationTremplateDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/EnemyOnTheMapNotificationTremplateDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/FlyingBallNotificationTremplateDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/FlyingBallNotificationTremplateDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/GoGetTheTrophyNotificationTemplateDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/GoGetTheTrophyNotificationTemplateDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/HammerCanBreakRocksNotificationTemplateDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/HammerCanBreakRocksNotificationTemplateDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/HammerMightBeHelpfulNotificationTemplateDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/HammerMightBeHelpfulNotificationTemplateDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/PushbackAndArrowsNotificationTremplateDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/PushbackAndArrowsNotificationTremplateDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/SpawningNewCharactersNotificationTemplateDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/SpawningNewCharactersNotificationTemplateDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/StartLevelNotificationTemplateDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Actors/Notification/Variants/StartLevelNotificationTemplateDef.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Data/DefRepositoryDef.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DefRepositoryDef.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/EnemyOnTheMapNotificationItemDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/EnemyOnTheMapNotificationItemDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/FlyingBallNotificationItemDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/FlyingBallNotificationItemDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/HammerBreaksRocksNotificationItemDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/HammerBreaksRocksNotificationItemDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/HammerMightBeHelpfulNotificationItemDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/HammerMightBeHelpfulNotificationItemDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/MovementNotificationItemDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/MovementNotificationItemDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/PushbackAndArrowsNotificationItemDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/PushbackAndArrowsNotificationItemDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/SpawningNewCharactersNotificationItemDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/SpawningNewCharactersNotificationItemDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/StartLevelNotificationItemDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/StartLevelNotificationItemDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/WatchOutForTheBallNotificationItemDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems/WatchOutForTheBallNotificationItemDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BallLevel.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BallLevel.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeOff.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeOff.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeOn.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeOn.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeSwitchComponentDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeSwitchComponentDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeSwitchStatusComponentDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeSwitchStatusComponentDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeSwitchStayTemplateDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeSwitchStayTemplateDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeSwitchStayTriggerBoxComponentDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeSwitchStayTriggerBoxComponentDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeSwitchStepTemplateDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeSwitchStepTemplateDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeSwitchStepTriggerBoxComponentDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/BridgeSwitchStepTriggerBoxComponentDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/SwitchBridgeStayActionDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/SwitchBridgeStayActionDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/SwitchBridgeStepActionDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge/SwitchBridgeStepActionDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge3Animation.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/Bridge3Animation.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/BridgeAnimator.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/BridgeAnimator.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/BridgeTileStatusComponentDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/BridgeTileStatusComponentDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/BridgeTileSwitchComponentDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/BridgeTileSwitchComponentDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/BridgeTileTemplateDef.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BigLevel/BridgeTileTemplateDef.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FlyingBallsLevel.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FlyingBallsLevel.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GymLevel.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GymLevel.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/HolesLevel.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/HolesLevel.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/IntroductionLevel.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/IntroductionLevel.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LevelSelectionLevel.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LevelSelectionLevel.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LevelSelectionLevelUI.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LevelSelectionLevelUI.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MaterialsLevel.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MaterialsLevel.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLevelSelectionLevelUI.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLevelSelectionLevelUI.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PistonsLevel.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PistonsLevel.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PuzzleLevelUI.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PuzzleLevelUI.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/Items/NotificationItems.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UIScenes/PuzzleLevelUI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UIScenes/PuzzleLevelUI.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/TriggerBox/TriggerShowNotificationActionDef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/TriggerBox/TriggerShowNotificationActionDef.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Notification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Notification.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/ShowNotification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/ShowNotification.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/WaitForNotificationMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/WaitForNotificationMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,10 +93,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="22640">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="22640" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -298,6 +208,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/WaitForNotificationMessage.cs</url>
+          <line>18</line>
+          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\UI\WaitForNotificationMessage.cs" initialLine="18" containingFunctionPresentation="method 'Crt'">
+            <startOffsets>
+              <option value="564" />
+            </startOffsets>
+            <endOffsets>
+              <option value="704" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
