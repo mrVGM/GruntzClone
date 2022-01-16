@@ -187,6 +187,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].Title
+      value: CHALLENGE
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[0].LevelToStart
       value: 
       objectReference: {fileID: 11400000, guid: 5a936bc447dfab245a54af09bf8326cc, type: 2}
@@ -828,6 +832,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].Title
+      value: RULES
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[0].LevelToStart
       value: 
       objectReference: {fileID: 0}
@@ -1076,6 +1084,10 @@ PrefabInstance:
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].Title
+      value: CHALLENGE
       objectReference: {fileID: 0}
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[0].LevelToStart
@@ -1948,6 +1960,10 @@ PrefabInstance:
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].Title
+      value: CHALLENGE
       objectReference: {fileID: 0}
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[0].LevelToStart
@@ -5855,7 +5871,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 89d90197f3710d34cad85869a4f50073, type: 2}
     - target: {fileID: 449901049191280292, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: m_Name
-      value: DeployPointNotification (1)
+      value: DeployPointNotification
       objectReference: {fileID: 0}
     - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: m_RootOrder
@@ -5904,6 +5920,10 @@ PrefabInstance:
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].Title
+      value: CHALLENGE
       objectReference: {fileID: 0}
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[0].LevelToStart
@@ -6041,6 +6061,10 @@ PrefabInstance:
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].Title
+      value: CHALLENGE
       objectReference: {fileID: 0}
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[0].LevelToStart
@@ -8159,6 +8183,10 @@ PrefabInstance:
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].Title
+      value: CHALLENGE
       objectReference: {fileID: 0}
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[0].LevelToStart

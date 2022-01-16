@@ -4,15 +4,6 @@
     <list default="true" id="29191b72-e5ae-475c-8f45-7451cdffc376" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Notification.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Notification.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Data/DefRepositoryDef.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DefRepositoryDef.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/BallLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/BallLevel.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/BigLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/BigLevel.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/FlyingBallsLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/FlyingBallsLevel.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/HolesLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/HolesLevel.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/MaterialsLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/MaterialsLevel.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UIScenes/NewLevelSelectionLevelUI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UIScenes/NewLevelSelectionLevelUI.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Unused/PistonsLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Unused/PistonsLevel.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/TriggerBox/NotificationDataBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/TriggerBox/NotificationDataBehaviour.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Notification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Notification.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,10 +159,10 @@
           <line>41</line>
           <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\UI\WaitForGameCompleted.cs" initialLine="41" containingFunctionPresentation="method 'Crt'">
             <startOffsets>
-              <option value="1292" />
+              <option value="1291" />
             </startOffsets>
             <endOffsets>
-              <option value="1336" />
+              <option value="1295" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="51" />

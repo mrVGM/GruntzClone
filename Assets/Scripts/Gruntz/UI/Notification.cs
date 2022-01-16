@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Base;
 using Gruntz.TriggerBox;
+using LevelResults;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -29,6 +30,7 @@ namespace Gruntz.UI
         public Animator Animator;
         public Button WatchVideoButton;
         public Button StartLevelButton;
+        public Button TryLevelAgainButton;
 
         public Button Dismiss;
         public Button Previous;
@@ -71,14 +73,24 @@ namespace Gruntz.UI
             }
             
             StartLevelButton.gameObject.SetActive(false);
+            TryLevelAgainButton.gameObject.SetActive(false);
             StartLevelButton.onClick.RemoveAllListeners();
-            if (notification.LevelToStart != null) {
-                StartLevelButton.onClick.AddListener(() => {
+            TryLevelAgainButton.onClick.RemoveAllListeners();
+            if (notification.LevelToStart != null)
+            {
+                var button = StartLevelButton;
+                var levelProgress = LevelProgressInfo.GetLevelProgressInfoFromContext();
+                var levelProgressInfoData = levelProgress.Data as LevelProgressInfoData;
+                if (levelProgressInfoData.FinishedLevels.Select(x => (LevelDef)x).Contains(notification.LevelToStart)) {
+                    button = TryLevelAgainButton;
+                }
+
+                button.onClick.AddListener(() => {
                     var game = Game.Instance;
                     game.SavesManager.CreateSave(LevelProgressTagDef);
                     game.LoadLevel(notification.LevelToStart, () => { });
                 });
-                StartLevelButton.gameObject.SetActive(true);
+                button.gameObject.SetActive(true);
             }
 
             ImagesContainer.gameObject.SetActive(false);
