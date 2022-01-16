@@ -10,6 +10,7 @@ namespace Gruntz.TriggerBox
         [Serializable]
         public class Notification
         {
+            public string Title;
             public List<Sprite> ImagesToDisplay = new List<Sprite>();
             public string NotificationText;
             public string VideoName;

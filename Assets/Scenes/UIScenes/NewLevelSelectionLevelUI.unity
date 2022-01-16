@@ -771,11 +771,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 348440598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d075508071e86b4daf055ef36d554a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4299601e947a8cf45bc0efa7b6b37a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Priority: 200
-  TrophyItem: {fileID: 11400000, guid: 53df750c871865446a414ca3860cf214, type: 2}
+  m_Priority: 0
   RegularActor: {fileID: 11400000, guid: ef6970aceacb01e458f6d9697d1190df, type: 2}
   LevelResultTagDef: {fileID: 11400000, guid: 532fb86b81cb6874ab01754da9cfd9c1, type: 2}
 --- !u!114 &348440601
@@ -1538,6 +1537,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4716104778706982772, guid: df16f1010d5314543865843a857d1a40, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716104778706982772, guid: df16f1010d5314543865843a857d1a40, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4716104778706982772, guid: df16f1010d5314543865843a857d1a40, type: 3}
@@ -3059,6 +3062,7 @@ Transform:
   m_Children:
   - {fileID: 1653366941}
   - {fileID: 404442273}
+  - {fileID: 1756564385}
   m_Father: {fileID: 1162120779}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3077,6 +3081,77 @@ MonoBehaviour:
   m_Priority: 102
   WatchForTermination:
   - {fileID: 11400000, guid: 8b362d32da5cbb543a22d86627e090bd, type: 2}
+  - {fileID: 11400000, guid: ad2ccc752dd631e419e3c87c323657de, type: 2}
+--- !u!1 &1756564384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1756564385}
+  - component: {fileID: 1756564388}
+  - component: {fileID: 1756564386}
+  m_Layer: 0
+  m_Name: WaitForGameCompleted
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1756564385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756564384}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1718906749}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1756564386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756564384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 412a90a8f617cd845800a53f8cd0b59f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tag: {fileID: 11400000, guid: ad2ccc752dd631e419e3c87c323657de, type: 2}
+--- !u!114 &1756564388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756564384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52559d3758b41704391aa1b5b7bf6df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Priority: 0
+  RegularActorStatusDef: {fileID: 11400000, guid: ef6970aceacb01e458f6d9697d1190df, type: 2}
+  GameCompletedStatusDef: {fileID: 11400000, guid: ab15014201c27984eb1db0363717b45f, type: 2}
+  ThrophyItem: {fileID: 11400000, guid: 53df750c871865446a414ca3860cf214, type: 2}
+  NotificationTagDef: {fileID: 11400000, guid: a976259d74a68614084812dbef332004, type: 2}
+  ProgressSaveTagDef: {fileID: 11400000, guid: 9d427a5a623ab2345b5cf65fc1685ea7, type: 2}
+  Notification:
+    Title: CONGRATULATIONS
+    ImagesToDisplay: []
+    NotificationText: YOU COMPLETED THE GAME. NOW, YOU'LL WALK AROUND WITH A THROPHY.
+      YAAY
+    VideoName: 
+    LevelToStart: {fileID: 0}
 --- !u!1 &1783528498
 GameObject:
   m_ObjectHideFlags: 0

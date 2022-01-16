@@ -6854,6 +6854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelProgressTagDef: {fileID: 11400000, guid: 9d427a5a623ab2345b5cf65fc1685ea7, type: 2}
   MenuButton: {fileID: 0}
+  Title: {fileID: 4716104779772622988}
   Text: {fileID: 4716104778706982773}
   VideoPlayer: {fileID: 4716104778531390271}
   Throbber: {fileID: 4716104779047992508}

@@ -21,6 +21,7 @@ namespace Gruntz.UI
 
         public TagDef LevelProgressTagDef;
         public Button MenuButton;
+        public Text Title;
         public Text Text;
         public VideoPlayer VideoPlayer;
         public GameObject Throbber;
@@ -60,6 +61,7 @@ namespace Gruntz.UI
 
             MenuButton.enabled = false;
             StopAllCoroutines();
+            Title.text = notification.Title;
             Text.text = notification.NotificationText;
 
             WatchVideoButton.gameObject.SetActive(false);

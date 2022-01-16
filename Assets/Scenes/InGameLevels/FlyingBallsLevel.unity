@@ -2670,8 +2670,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].Title
+      value: GOOD TO KNOW
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].VideoName
+      value: ThrowingBalls.mp4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[0].NotificationText
-      value: Throwing balls
+      value: THIS LITTLE BALL IS A RANGED WEAPON. YOU CAN THROW IT AT ENEMIES. JUST
+        CLICK ON ITS ICON AT THE BOTTOM OF THE SCREEN, THEN LIEFT-CLICK SOMEWHERE
+        ON THE FLOOR. KEEP IN MIND, THAT THE BALL PUSHES BACK THE WHATEVER IT HITS.
       objectReference: {fileID: 0}
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[0].ImagesToDisplay.Array.size
@@ -9694,7 +9704,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 07d3b66cd296769489a2cdc072f5e6de, type: 2}
     - target: {fileID: 449901049191280292, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: m_Name
-      value: DeployPointNotification (1)
+      value: DeployPointNotification
       objectReference: {fileID: 0}
     - target: {fileID: 449901049191280293, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: m_RootOrder
@@ -9745,8 +9755,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].Title
+      value: HINT
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[0].NotificationText
-      value: Arrows and pushback
+      value: MAYBE YOU CAN USE THE PUSHBACK TO GET YOURSELF THROUGH THESE ANOYING
+        ARROWS.
       objectReference: {fileID: 0}
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[0].ImagesToDisplay.Array.size

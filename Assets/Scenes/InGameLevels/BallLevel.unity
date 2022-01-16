@@ -123,6 +123,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &58623208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 58623210}
+  - component: {fileID: 58623209}
+  m_Layer: 0
+  m_Name: DevLevelStarter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &58623209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58623208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04491024ca244e89aa6f6e89ec40bf19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelDef: {fileID: 11400000, guid: a0fe6bf0081ca4544adcb04f73285a21, type: 2}
+--- !u!4 &58623210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58623208}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &100148118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -427,7 +471,7 @@ Transform:
   - {fileID: 1813665207}
   - {fileID: 283403417}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &647810687
 GameObject:
@@ -548,7 +592,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &733486260
 GameObject:
@@ -589,7 +633,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6909605683976382341, guid: 49f718ebeee10ac48836eec3bedf9d51, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6909605683976382341, guid: 49f718ebeee10ac48836eec3bedf9d51, type: 3}
       propertyPath: m_LocalPosition.x
@@ -667,7 +711,7 @@ Transform:
   - {fileID: 1787137016}
   - {fileID: 647810688}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &983131389 stripped
 GameObject:
@@ -765,7 +809,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
 --- !u!1001 &1122953104
 PrefabInstance:
@@ -950,7 +994,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1315162198
 GameObject:
@@ -1086,6 +1130,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
+      propertyPath: Notifications.Array.data[0].Title
+      value: GOOD TO KNOW
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[0].VideoName
       value: 
       objectReference: {fileID: 0}
@@ -1165,7 +1213,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1667507939
 GameObject:
@@ -1201,7 +1249,7 @@ Transform:
   - {fileID: 1973663096}
   - {fileID: 1583808342}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1787137015
 GameObject:
@@ -1839,5 +1887,5 @@ Transform:
   - {fileID: 3607167722995860460}
   - {fileID: 1231930184172233685}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

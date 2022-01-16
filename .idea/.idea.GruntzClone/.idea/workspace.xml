@@ -3,6 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="29191b72-e5ae-475c-8f45-7451cdffc376" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Notification.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Notification.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DefRepositoryDef.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DefRepositoryDef.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/BallLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/BallLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/BigLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/BigLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/FlyingBallsLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/FlyingBallsLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/HolesLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/HolesLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/MaterialsLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/MaterialsLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UIScenes/NewLevelSelectionLevelUI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UIScenes/NewLevelSelectionLevelUI.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Unused/PistonsLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Unused/PistonsLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/TriggerBox/NotificationDataBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/TriggerBox/NotificationDataBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Notification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Notification.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,28 +32,38 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ee480759f3d481d82ada245dc74f9fd13be00/90/c14fe3d2/Renderer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/LoadLevelSelectionLevel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/LevelSelection/PuzzleLevelSelection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.10/Runtime/Impulse/CinemachineImpulseManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/CheckForCharactersDeath.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/WaitForNotificationClosed.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/ConsolePrelude.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.vgm.interpreter/Runtime/ScriptingLanguage/BaseFunctions/CreateObjectFunction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/ISerializedObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/AI/Processes/InstructionsTransmitter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/SelectActorAndFocusWithCamera.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/IContextObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/Context.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.vgm.interpreter/Runtime/ScriptingLanguage/Interpreter/Interpreter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.10/Runtime/Timeline/CinemachineMixer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.15.4/Tests/Editor/Collaborate/UITestHelpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/NotificationImage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/Def.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ee480759f3d481d82ada245dc74f9fd13be00/90/c14fe3d2/Renderer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/LevelSelection/PuzzleLevelSelection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.10/Runtime/Impulse/CinemachineImpulseManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/ConsolePrelude.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Base/ISerializedObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/ca/ad3754b9/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/AI/Processes/InstructionsTransmitter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/SelectActorAndFocusWithCamera.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/NotificationImage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/WaitForGameCompleted.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -130,43 +151,30 @@
           <option name="timeStamp" value="28" />
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/LevelSelection/PuzzleLevelSelection.cs</url>
-          <line>29</line>
-          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\LevelSelection\PuzzleLevelSelection.cs" initialLine="29" containingFunctionPresentation="method 'LevelLoaded'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/WaitForGameCompleted.cs</url>
+          <line>24</line>
+          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\UI\WaitForGameCompleted.cs" initialLine="24" containingFunctionPresentation="method 'Crt'">
             <startOffsets>
-              <option value="753" />
+              <option value="649" />
             </startOffsets>
             <endOffsets>
-              <option value="779" />
+              <option value="710" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="30" />
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/LevelSelection/PuzzleLevelSelection.cs</url>
-          <line>54</line>
-          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\LevelSelection\PuzzleLevelSelection.cs" initialLine="54" containingFunctionPresentation="method 'LevelLoaded'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/WaitForGameCompleted.cs</url>
+          <line>41</line>
+          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\UI\WaitForGameCompleted.cs" initialLine="41" containingFunctionPresentation="method 'Crt'">
             <startOffsets>
-              <option value="2207" />
+              <option value="1292" />
             </startOffsets>
             <endOffsets>
-              <option value="2257" />
+              <option value="1336" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gruntz/SwitchState/AnimatorStateBehaviour.cs</url>
-          <line>28</line>
-          <properties documentPath="C:\Users\Vasil\dev\Unity\GruntzClone\Assets\Scripts\Gruntz\SwitchState\AnimatorStateBehaviour.cs" initialLine="28" containingFunctionPresentation="method 'SwitchState'">
-            <startOffsets>
-              <option value="720" />
-            </startOffsets>
-            <endOffsets>
-              <option value="767" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="32" />
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
