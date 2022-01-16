@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="29191b72-e5ae-475c-8f45-7451cdffc376" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BootScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BootScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/SavesManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/SavesManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/UIShaders/RoundCorner.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UIShaders/RoundCorner.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/UIShaders/RoundFrame.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UIShaders/RoundFrame.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/UIShaders/RoundFrame.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UIShaders/RoundFrame.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/DefRepositoryDef.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/DefRepositoryDef.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
