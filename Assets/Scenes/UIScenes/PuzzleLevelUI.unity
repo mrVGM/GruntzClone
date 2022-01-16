@@ -4622,6 +4622,7 @@ MonoBehaviour:
   QuickLoad: {fileID: 1113706565092615579}
   QuickSave: {fileID: 11400000, guid: 4cd4a5430a7fd2040a2f66b8d846ea42, type: 2}
   LevelProgressSaveTag: {fileID: 11400000, guid: 9d427a5a623ab2345b5cf65fc1685ea7, type: 2}
+  MenuLevelDef: {fileID: 11400000, guid: 99b5293dfe9c079a8ba23415b96bc9de, type: 2}
   SavedNotification: {fileID: 7884718426071581900}
 --- !u!95 &1250917064
 Animator:

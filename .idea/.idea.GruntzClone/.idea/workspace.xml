@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="29191b72-e5ae-475c-8f45-7451cdffc376" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GruntzClone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Notification.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Notification.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Notification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Notification.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/IntroductionLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InGameLevels/IntroductionLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MenuLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MenuLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UIScenes/IntroLevelUI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UIScenes/IntroLevelUI.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UIScenes/NewLevelSelectionLevelUI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UIScenes/NewLevelSelectionLevelUI.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/MenuLevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/MenuLevel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Menu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gruntz/UI/Menu.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -10,6 +10,7 @@ namespace Gruntz.UI
         public GameObject QuickLoad;
         public TagDef QuickSave;
         public TagDef LevelProgressSaveTag;
+        public LevelDef MenuLevelDef;
 
         private bool _open = false;
         private List<MainUpdaterLock.ILock> _locks = new List<MainUpdaterLock.ILock>();
@@ -111,11 +112,7 @@ namespace Gruntz.UI
             Unpause();
 
             var game = Game.Instance;
-            var savesManager = game.SavesManager;
-            var save = savesManager.Saves.LastOrDefault(x => x.SaveTag == LevelProgressSaveTag);
-            if (save != null) {
-                savesManager.LoadSave(save, () => { });
-            }
+            game.LoadLevel(MenuLevelDef, () => { });
         }
 
         public void OpenMenu()
