@@ -71,6 +71,7 @@ namespace Gruntz
             
             var game = Game.Instance;
             var savesManager = game.SavesManager;
+            savesManager.DeleteInMemorySaves();
             savesManager.CreateSave(ProgressSaveTagDef);
         }
     }

@@ -24,6 +24,7 @@ namespace Base
             public byte[] SavedGame;
         }
 
+        public TagDef[] InMemorySaves;
         private List<Save> _saves = new List<Save>();
         public IEnumerable<Save> Saves => _saves;
         private bool _flushRequested = false;
@@ -49,7 +50,15 @@ namespace Base
                 };
                 _saves.Add(save);
             }
-            _flushRequested = true;
+
+            if (!InMemorySaves.Contains(tag)) {
+                _flushRequested = true;
+            }
+        }
+
+        public void DeleteInMemorySaves()
+        {
+            _saves.RemoveAll(x => InMemorySaves.Contains(x.SaveTag));
         }
 
         public void LoadSave(Save save, Action onLoaded)
@@ -91,6 +100,10 @@ namespace Base
 
                 int index = 0;
                 foreach (var save in Saves) {
+                    if (InMemorySaves.Contains(save.SaveTag)) {
+                        continue;
+                    }
+
                     var path = Path.Combine(persistentDataPath, $"{index++}.gruntzsave");
                     using (var fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write)) {
                         var binaryFormatter = new BinaryFormatter();
