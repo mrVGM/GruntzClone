@@ -25,14 +25,7 @@ namespace Base.Animations
         public Actor Actor { get; }
         private Animator Animator { get; }
 
-        public ExecutionOrderTagDef OrderTagDef
-        {
-            get
-            {
-                var defRepository = Game.Instance.DefRepositoryDef;
-                return defRepository.AllDefs.OfType<AnimationsUpdateOrderTagDef>().FirstOrDefault();
-            }
-        }
+        public ExecutionOrderTagDef OrderTagDef => AnimationsComponentDef.AnimationsUpdateOrderTagDef;
 
         public AnimationsComponent(Actor actor, AnimationsComponentDef animationsComponentDef)
         {

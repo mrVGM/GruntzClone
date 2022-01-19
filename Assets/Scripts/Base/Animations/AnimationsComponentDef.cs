@@ -6,6 +6,7 @@ namespace Base.Animations
 {
     public class AnimationsComponentDef : ActorComponentDef
     {
+        public AnimationsUpdateOrderTagDef AnimationsUpdateOrderTagDef;
         public MessagesBoxTagDef NavigationMessages;
         public MessagesBoxTagDef AbilityMessages;
         public AnimationClip DefaultAbilityAnimation;
