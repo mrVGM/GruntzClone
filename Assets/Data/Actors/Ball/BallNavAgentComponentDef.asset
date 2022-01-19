@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84b7128d33110f4081d8d58f5a27bdf, type: 3}
   m_Name: BallNavAgentComponentDef
   m_EditorClassIdentifier: 
+  NavigationRequestOrderTagDef: {fileID: 11400000, guid: 0367c2086414e92a8b980df5610cfb89, type: 2}
   NavigationMessages: {fileID: 11400000, guid: 54b3f548e72751e4a885ce9b6d6ff857, type: 2}
   NavAgentData:
     ObstacleLayers: []
@@ -19,10 +20,6 @@ MonoBehaviour:
       x: 0
       y: 0
       z: 0
-    Target:
-      x: 0.5
-      y: 0
-      z: 0.5
     TravelSegmentStart:
       x: 0
       y: 0
