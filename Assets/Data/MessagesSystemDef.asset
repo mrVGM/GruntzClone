@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3983d987e73c0c811968c97b5511a38e, type: 3}
   m_Name: MessagesSystemDef
   m_EditorClassIdentifier: 
+  MessagesSystemExecutionOrderTagDef: {fileID: 11400000, guid: 07a5939de009cb492ae5eb1c606c08ab, type: 2}

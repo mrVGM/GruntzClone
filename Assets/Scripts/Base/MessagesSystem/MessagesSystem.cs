@@ -17,15 +17,9 @@ namespace Base.MessagesSystem
         }
 
         private Dictionary<MessagesBoxTagDef, List<Message>> messages { get; } = new Dictionary<MessagesBoxTagDef, List<Message>>();
+        private MessagesSystemDef _messagesSystemDef;
 
-        public ExecutionOrderTagDef OrderTagDef
-        {
-            get
-            {
-                var game = Game.Instance;
-                return game.DefRepositoryDef.AllDefs.OfType<MessagesSystemExecutionOrderTagDef>().FirstOrDefault();
-            }
-        }
+        public ExecutionOrderTagDef OrderTagDef => _messagesSystemDef.MessagesSystemExecutionOrderTagDef;
 
         public void DisposeObject()
         {
@@ -44,8 +38,9 @@ namespace Base.MessagesSystem
             }
         }
 
-        public MessagesSystem()
+        public MessagesSystem(MessagesSystemDef messagesSystemDef)
         {
+            _messagesSystemDef = messagesSystemDef;
             Game.Instance.MainUpdater.RegisterUpdatable(this);
         }
 
