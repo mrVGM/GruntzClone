@@ -12,18 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a1361c028b0ad43b61b1ec0d59d279, type: 3}
   m_Name: GameplayManagerDef
   m_EditorClassIdentifier: 
-  GameplayActionGenerators:
-  - {fileID: 11400000, guid: 73b86bab34f04c64aba2a57202b4788b, type: 2}
-  - {fileID: 11400000, guid: aa7722718c3051445af6a36749103017, type: 2}
-  - {fileID: 11400000, guid: aeb19ba1c03d1ce48911b957ac177f06, type: 2}
-  - {fileID: 11400000, guid: 4886e40f975a4f646b84f9acb889700e, type: 2}
-  - {fileID: 11400000, guid: 2af11fa018a7fc54abe78727fce244d8, type: 2}
-  - {fileID: 11400000, guid: f807a5466eb88524b813ed06991a7c9a, type: 2}
-  - {fileID: 11400000, guid: 59dbd4a204418eb4db8542ed99f2b086, type: 2}
-  - {fileID: 11400000, guid: f799f76cdfc653f41b46937f22ae9b03, type: 2}
-  - {fileID: 11400000, guid: e442ebd37518c524ab43be506f2322fb, type: 2}
-  - {fileID: 11400000, guid: 2ee49fa6d3d627a42aaca5cfc1a97913, type: 2}
-  - {fileID: 11400000, guid: 1c1859dfa6e38914eaeb43f01dc9eba5, type: 2}
-  - {fileID: 11400000, guid: 04fd995ea75e0724abf256069ff79010, type: 2}
-  - {fileID: 11400000, guid: fd9eda07f2ec82149a7b81d6552a96d9, type: 2}
+  GameplayManagerExecutionOrderTag: {fileID: 11400000, guid: f7cc9a354aa9bbc4f880f7e55e8dd5f0, type: 2}
   gameplayActionsProcessorDef: {fileID: 11400000, guid: 4d5edc76dc15e244d9232c61d3e7c81b, type: 2}

@@ -21,15 +21,7 @@ namespace Base.Gameplay
             }
         }
 
-        public ExecutionOrderTagDef OrderTagDef
-        {
-            get
-            {
-                var game = Game.Instance;
-                var defRepo = game.DefRepositoryDef;
-                return defRepo.AllDefs.OfType<GameplayManagerExecutionOrderTag>().FirstOrDefault();
-            }
-        }
+        public ExecutionOrderTagDef OrderTagDef => _gameplayManagerDef.GameplayManagerExecutionOrderTag;
 
         private GameplayManagerDef _gameplayManagerDef;
         private List<GameplayEvent> _eventsCollected = new List<GameplayEvent>();
