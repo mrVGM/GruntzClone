@@ -48,6 +48,8 @@ namespace Gruntz.Projectile
             }
         }
 
+        public ProjectileExecutionOrderTagDef ProjectileExecutionOrderTagDef;
+
         public Parabola ParabolaSettings;
         public float Speed = 3.0f;
         public StatusDef HitActorStatus;

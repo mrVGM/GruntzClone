@@ -63,15 +63,7 @@ namespace Gruntz.Projectile
             }
         }
 
-        public ExecutionOrderTagDef OrderTagDef
-        {
-            get
-            {
-                var game = Game.Instance;
-                var repo = game.DefRepositoryDef;
-                return repo.AllDefs.OfType<ProjectileExecutionOrderTagDef>().FirstOrDefault();
-            }
-        }
+        public ExecutionOrderTagDef OrderTagDef => ProjectileComponentDef.ProjectileExecutionOrderTagDef;
 
         Vector3[] _parabolaPoints;
 

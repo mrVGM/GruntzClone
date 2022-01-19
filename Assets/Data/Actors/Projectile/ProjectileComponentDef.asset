@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd428aeecb59d040a6070679fecd4db, type: 3}
   m_Name: ProjectileComponentDef
   m_EditorClassIdentifier: 
+  ProjectileExecutionOrderTagDef: {fileID: 11400000, guid: 8b9cf4c24185b2c4c9c1294ea639c214, type: 2}
   ParabolaSettings:
     Height: 5
     NumberOfPoints: 30
