@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d4e6420a399e2538b5aa33cadd1859, type: 3}
   m_Name: NavigationDef
   m_EditorClassIdentifier: 
+  NavigationExecutionOrderTagDef: {fileID: 11400000, guid: af78689ae52d998718ffa42f01f9a1b7, type: 2}

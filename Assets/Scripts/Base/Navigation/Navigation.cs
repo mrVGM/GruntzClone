@@ -23,15 +23,8 @@ namespace Base.Navigation
 
         public const float Eps = 0.000001f;
         private List<MoveRequest> moveRequests { get; } = new List<MoveRequest>();
-        public ExecutionOrderTagDef OrderTagDef
-        {
-            get
-            {
-                var game = Game.Instance;
-                var defRepo = game.DefRepositoryDef;
-                return defRepo.AllDefs.OfType<NavigationExecutionOrderTagDef>().FirstOrDefault();
-            }
-        }
+        private NavigationDef _navigationDef;
+        public ExecutionOrderTagDef OrderTagDef => _navigationDef.NavigationExecutionOrderTagDef;
         public void MakeMoveRequest(MoveRequest moveRequest)
         {
             moveRequests.Add(moveRequest);
@@ -183,8 +176,9 @@ namespace Base.Navigation
         {
         }
 
-        public Navigation()
+        public Navigation(NavigationDef navigationDef)
         {
+            _navigationDef = navigationDef;
             var mainUpdater = Game.Instance.MainUpdater;
             mainUpdater.RegisterUpdatable(this);
         }
