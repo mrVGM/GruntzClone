@@ -76,15 +76,7 @@ namespace Base.Navigation
             }
         }
 
-        public ExecutionOrderTagDef OrderTagDef
-        {
-            get
-            {
-                var game = Game.Instance;
-                var defRepo = game.DefRepositoryDef;
-                return defRepo.AllDefs.OfType<NavigationRequestOrderTagDef>().FirstOrDefault();
-            }
-        }
+        public ExecutionOrderTagDef OrderTagDef => NavAgentComponentDef.NavigationRequestOrderTagDef;
 
         public Vector3 Pos =>_navAgentBehaviour.ActorVisuals.position;
 

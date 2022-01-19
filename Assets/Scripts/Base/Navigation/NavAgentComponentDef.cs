@@ -5,6 +5,7 @@ namespace Base.Navigation
 {
     public class NavAgentComponentDef : ActorComponentDef
     {
+        public NavigationRequestOrderTagDef NavigationRequestOrderTagDef;
         public MessagesBoxTagDef NavigationMessages;
         public NavAgentData NavAgentData;
         public override IActorComponent CreateActorComponent(Actor actor)
