@@ -8,7 +8,7 @@ namespace Gruntz.Abilities
 {
     public class AbilityManager : IContextObject, IOrderedUpdate
     {
-        public ExecutionOrderTagDef OrderTagDef => Game.Instance.DefRepositoryDef.AllDefs.OfType<AbilityManagerOrderTagDef>().FirstOrDefault();
+        public ExecutionOrderTagDef OrderTagDef => AbilityManagerDef.AbilityManagerOrderTagDef;
 
         public List<AbilityPlayer> AbilityPlayers = new List<AbilityPlayer>();
 

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b98b5bc952c1954497e7ba0d086083c, type: 3}
   m_Name: AbilityManagerDef
   m_EditorClassIdentifier: 
+  AbilityManagerOrderTagDef: {fileID: 11400000, guid: 67837b3bc8fdb9b4ebd006025d5d4993, type: 2}
   AbilityMessages: {fileID: 11400000, guid: 3a7241163b8f80a479647e5e48a84ce0, type: 2}
-  NavigationMessages: {fileID: 11400000, guid: 54b3f548e72751e4a885ce9b6d6ff857, type: 2}
