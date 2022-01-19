@@ -19,15 +19,7 @@ namespace Gruntz.AI
         public AIBlackboardDef AIBlackboardDef;
         public List<ActorInfo> ActorInfos;
 
-        public ExecutionOrderTagDef OrderTagDef
-        {
-            get
-            {
-                var game = Game.Instance;
-                var def = game.DefRepositoryDef.AllDefs.OfType<AIBlackboardExecutionOrderTagDef>().FirstOrDefault();
-                return def;
-            }
-        }
+        public ExecutionOrderTagDef OrderTagDef => AIBlackboardDef.AIExecutionOrderTagDef;
 
         public void DisposeObject()
         {
