@@ -2,7 +2,10 @@ using System.Linq;
 using Base;
 using Base.Actors;
 using Base.Status;
+using Gruntz.Equipment;
+using Gruntz.Items;
 using Gruntz.SwitchState;
+using Gruntz.TriggerBox;
 using LevelResults;
 using UnityEngine;
 
@@ -24,6 +27,10 @@ namespace Gruntz
         
         public PuzzleLevel PuzzleLevel;
         public TagDef ProgressSaveTagDef;
+
+        public StatusDef ChallengeNotificationStatusDef;
+        public ItemDef ChallengeNotCompletedItemDef;
+        public ItemDef ChallengeCompletedItemDef;
 
         public void LevelLoaded()
         {
@@ -67,6 +74,28 @@ namespace Gruntz
             }
             else {
                 bridge2SwitchComponent.SetCurrentState(BridgeDown);
+            }
+
+            var actorManager = ActorManager.GetActorManagerFromContext();
+            var challengeNotifications = actorManager.Actors.Where(x => {
+                var statusComponent = x.GetComponent<StatusComponent>();
+                var challengeStatus = statusComponent.GetStatus(ChallengeNotificationStatusDef);
+                return challengeStatus != null;
+            });
+
+            foreach (var challenge in challengeNotifications)
+            {
+                var notification = challenge.ActorComponent.GetComponentInChildren<NotificationDataBehaviour>();
+                var level = notification.Notifications.FirstOrDefault().LevelToStart;
+                var equipment = challenge.GetComponent<EquipmentComponent>();
+                if (finishedLevelDefs.Contains(level))
+                {
+                    equipment.Weapon = ChallengeCompletedItemDef;
+                }
+                else
+                {
+                    equipment.Weapon = ChallengeNotCompletedItemDef;
+                }
             }
             
             var game = Game.Instance;
