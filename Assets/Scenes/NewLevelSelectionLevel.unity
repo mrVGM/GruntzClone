@@ -827,12 +827,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[0].ImagesToDisplay.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[0].ImagesToDisplay.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: e6fdf0b552dc025458012ed324ed231b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
 --- !u!4 &219917226 stripped
@@ -6169,8 +6169,8 @@ Transform:
   - {fileID: 1153651666}
   - {fileID: 2099454408}
   - {fileID: 83102088}
-  - {fileID: 105725641}
   - {fileID: 537264693}
+  - {fileID: 105725641}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
