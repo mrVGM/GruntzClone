@@ -5,6 +5,7 @@ using Base.MessagesSystem;
 using Base.UI;
 using Gruntz.Abilities;
 using Gruntz.Equipment;
+using Gruntz.Projectile;
 using Gruntz.UnitController;
 using Gruntz.UnitController.Instructions;
 using UnityEngine;
@@ -95,6 +96,13 @@ namespace Gruntz.UI.ActorControl
 
                 var hits = context.GetItem(HitResultsTag) as IEnumerable<RaycastHit>;
                 var floorHit = hits.FirstOrDefault(x => x.collider.gameObject.layer == LayerMask.NameToLayer(UnityLayers.Floor));
+                
+                Vector3 offset = floorHit.point - actor.Pos;
+                var x = offset.normalized;
+                float d = offset.magnitude;
+                var projectile = ability.Projectile;
+                var parabola = projectile.Components.OfType<ProjectileComponentDef>().FirstOrDefault().ParabolaSettings;
+                d = Mathf.Clamp(d, parabola.MinDist, parabola.MaxDist);
 
                 var messagesSystem = MessagesSystem.GetMessagesSystemFromContext();
                 messagesSystem.SendMessage(
@@ -103,7 +111,7 @@ namespace Gruntz.UI.ActorControl
                     this,
                     new UnitControllerInstruction {
                         Unit = actor,
-                        Executable = new StopAndShootProjectile(floorHit.point, ability),
+                        Executable = new StopAndShootProjectile(actor.Pos + d * x, ability),
                     });
 
                 yield return MainCrtState.Finished;

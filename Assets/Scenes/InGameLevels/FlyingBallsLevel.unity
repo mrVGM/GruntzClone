@@ -9697,7 +9697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Priority: 0
   MessagesBoxTag: {fileID: 11400000, guid: 2345e1da218ac4c4f8843a775122f559, type: 2}
-  Range: 7
+  Range: 9
 --- !u!1 &1910677029
 GameObject:
   m_ObjectHideFlags: 0
