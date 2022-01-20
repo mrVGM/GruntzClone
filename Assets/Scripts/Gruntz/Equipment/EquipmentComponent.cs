@@ -56,7 +56,7 @@ namespace Gruntz.Equipment
                 var itemHolder = status.StatusData as ItemHolderStatusData;
                 itemHolder.Item = value.ToDefRef<ItemDef>();
 
-                var equipmentRoot = Actor.ActorComponent.GetComponentInChildren<EquipmentRoot>();
+                var equipmentRoot = Actor.ActorComponent.GetComponentInChildren<EquipmentRoot>(true);
                 if (equipmentRoot == null) {
                     return;
                 }
@@ -67,8 +67,8 @@ namespace Gruntz.Equipment
                 }
                 if (value.Prefab != null) {
                     var go = GameObject.Instantiate(value.Prefab, equipmentRoot.transform);
-                    var laggingPoints = go.GetComponentsInChildren<LaggingPoint>();
-                    var laggingPointTargets = Actor.ActorComponent.GetComponentsInChildren<LaggingPointTarget>();
+                    var laggingPoints = go.GetComponentsInChildren<LaggingPoint>(true);
+                    var laggingPointTargets = Actor.ActorComponent.GetComponentsInChildren<LaggingPointTarget>(true);
                     foreach (var laggingPoint in laggingPoints) {
                         laggingPoint.Target = laggingPointTargets.FirstOrDefault(x => x.TagDef == laggingPoint.Tag);
                         laggingPoint.transform.position = laggingPoint.Target.transform.position;
@@ -98,7 +98,7 @@ namespace Gruntz.Equipment
         public void EnableLagging(bool enabled)
         {
             var equipmentRoot = Actor.ActorComponent.GetComponentInChildren<EquipmentRoot>();
-            var laggingPoints = equipmentRoot.GetComponentsInChildren<LaggingPoint>();
+            var laggingPoints = equipmentRoot.GetComponentsInChildren<LaggingPoint>(true);
 
             foreach (var point in laggingPoints) {
                 if (point.Target == null) {
