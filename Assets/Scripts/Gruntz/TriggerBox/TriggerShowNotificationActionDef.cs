@@ -28,13 +28,11 @@ namespace Gruntz.TriggerBox
                 return;
             }
 
-            if (NotificationShownStatus != null && statusComponent.GetStatus(NotificationShownStatus) != null) {
+            if (statusComponent.GetStatus(NotificationShownStatus) != null) {
                 return;
             }
 
-            if (NotificationShownStatus != null) {
-                statusComponent.AddStatus(NotificationShownStatus.Data.CreateStatus());
-            }
+            statusComponent.AddStatus(NotificationShownStatus.Data.CreateStatus());
 
             IEnumerable<NotificationDataBehaviour.Notification> notifications = ownActor.ActorComponent.GetComponent<NotificationDataBehaviour>().Notifications;
             

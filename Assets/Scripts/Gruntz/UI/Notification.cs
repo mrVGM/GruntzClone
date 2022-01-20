@@ -31,6 +31,8 @@ namespace Gruntz.UI
         public Button WatchVideoButton;
         public Button StartLevelButton;
         public Button TryLevelAgainButton;
+        public Button RetryButton;
+        public Button GiveUpButton;
 
         public Button Dismiss;
         public Button Previous;
@@ -74,6 +76,12 @@ namespace Gruntz.UI
             
             StartLevelButton.gameObject.SetActive(false);
             TryLevelAgainButton.gameObject.SetActive(false);
+            
+            RetryButton.gameObject.SetActive(false);
+            GiveUpButton.gameObject.SetActive(false);
+            
+            Dismiss.gameObject.SetActive(false);
+            
             StartLevelButton.onClick.RemoveAllListeners();
             TryLevelAgainButton.onClick.RemoveAllListeners();
             if (notification.LevelToStart != null)
@@ -92,6 +100,12 @@ namespace Gruntz.UI
                 });
                 button.gameObject.SetActive(true);
             }
+            
+            if (notification.RetryNotification) {
+                Dismiss.gameObject.SetActive(false);
+                RetryButton.gameObject.SetActive(true);
+                GiveUpButton.gameObject.SetActive(true);
+            }
 
             ImagesContainer.gameObject.SetActive(false);
             for (int i = 0; i < ImagesContainer.childCount; ++i) {
@@ -107,14 +121,13 @@ namespace Gruntz.UI
                 ++index;
             }
             
-            Dismiss.gameObject.SetActive(false);
             Previous.gameObject.SetActive(false);
             Next.gameObject.SetActive(false);
             
             Previous.onClick.RemoveAllListeners();
             Next.onClick.RemoveAllListeners();
 
-            if (current == notifications.Count - 1) {
+            if (!notification.RetryNotification && current == notifications.Count - 1) {
                 Dismiss.gameObject.SetActive(true);
             }
             if (current < notifications.Count - 1) {

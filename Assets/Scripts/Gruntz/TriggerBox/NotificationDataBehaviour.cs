@@ -15,6 +15,7 @@ namespace Gruntz.TriggerBox
             public string NotificationText;
             public string VideoName;
             public LevelDef LevelToStart;
+            public bool RetryNotification = false;
         }
         public Notification[] Notifications;
     }

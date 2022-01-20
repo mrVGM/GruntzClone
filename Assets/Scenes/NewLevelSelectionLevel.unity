@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 449901049191280290, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: ActorTempleteDef
       value: 
-      objectReference: {fileID: 11400000, guid: 89d90197f3710d34cad85869a4f50073, type: 2}
+      objectReference: {fileID: 11400000, guid: 07d3b66cd296769489a2cdc072f5e6de, type: 2}
     - target: {fileID: 449901049191280292, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: m_Name
       value: DeployPointNotification
@@ -1032,7 +1032,7 @@ PrefabInstance:
     - target: {fileID: 449901049191280290, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: ActorTempleteDef
       value: 
-      objectReference: {fileID: 11400000, guid: 89d90197f3710d34cad85869a4f50073, type: 2}
+      objectReference: {fileID: 11400000, guid: 07d3b66cd296769489a2cdc072f5e6de, type: 2}
     - target: {fileID: 449901049191280292, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: m_Name
       value: DeployPointNotification
@@ -1908,7 +1908,7 @@ PrefabInstance:
     - target: {fileID: 449901049191280290, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: ActorTempleteDef
       value: 
-      objectReference: {fileID: 11400000, guid: 89d90197f3710d34cad85869a4f50073, type: 2}
+      objectReference: {fileID: 11400000, guid: 07d3b66cd296769489a2cdc072f5e6de, type: 2}
     - target: {fileID: 449901049191280292, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: m_Name
       value: DeployPointNotification
@@ -5868,7 +5868,7 @@ PrefabInstance:
     - target: {fileID: 449901049191280290, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: ActorTempleteDef
       value: 
-      objectReference: {fileID: 11400000, guid: 89d90197f3710d34cad85869a4f50073, type: 2}
+      objectReference: {fileID: 11400000, guid: 07d3b66cd296769489a2cdc072f5e6de, type: 2}
     - target: {fileID: 449901049191280292, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: m_Name
       value: DeployPointNotification
@@ -6009,7 +6009,7 @@ PrefabInstance:
     - target: {fileID: 449901049191280290, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: ActorTempleteDef
       value: 
-      objectReference: {fileID: 11400000, guid: 89d90197f3710d34cad85869a4f50073, type: 2}
+      objectReference: {fileID: 11400000, guid: 07d3b66cd296769489a2cdc072f5e6de, type: 2}
     - target: {fileID: 449901049191280292, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: m_Name
       value: DeployPointNotification
@@ -8131,7 +8131,7 @@ PrefabInstance:
     - target: {fileID: 449901049191280290, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: ActorTempleteDef
       value: 
-      objectReference: {fileID: 11400000, guid: 89d90197f3710d34cad85869a4f50073, type: 2}
+      objectReference: {fileID: 11400000, guid: 07d3b66cd296769489a2cdc072f5e6de, type: 2}
     - target: {fileID: 449901049191280292, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: m_Name
       value: DeployPointNotification

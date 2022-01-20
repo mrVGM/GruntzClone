@@ -6,6 +6,7 @@ using Base.UI;
 using Gruntz.Items;
 using System.Linq;
 using Gruntz.Equipment;
+using Gruntz.Team;
 using LevelResults;
 
 namespace Gruntz.UI
@@ -22,7 +23,16 @@ namespace Gruntz.UI
             while (true) {
                 var activeActors = actorManager.Actors.Where(x => {
                     var statusComponent = x.GetComponent<StatusComponent>();
-                    return statusComponent.GetStatus(RegularActor) != null;
+                    if (statusComponent.GetStatus(RegularActor) == null) {
+                        return false;
+                    }
+
+                    var teamComponent = x.GetComponent<TeamComponent>();
+                    if (teamComponent == null) {
+                        return false;
+                    }
+
+                    return teamComponent.UnitTeam == TeamComponent.Team.Player;
                 });
 
                 if (!activeActors.Any()) {
