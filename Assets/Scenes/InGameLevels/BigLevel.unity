@@ -9600,6 +9600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1154680854}
   - component: {fileID: 1154680855}
+  - component: {fileID: 1154680856}
   m_Layer: 0
   m_Name: InFight
   m_TagString: Untagged
@@ -9635,6 +9636,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Priority: 0
   Fighting: 1
+--- !u!114 &1154680856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154680853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 412a90a8f617cd845800a53f8cd0b59f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tag: {fileID: 11400000, guid: 370549199994c9d468dfd57629c42d22, type: 2}
 --- !u!1 &1175615655
 GameObject:
   m_ObjectHideFlags: 0
@@ -14138,6 +14152,7 @@ MonoBehaviour:
   m_Priority: 1
   WatchForTermination:
   - {fileID: 11400000, guid: c4d605583cfb1706896be62ed8c77309, type: 2}
+  - {fileID: 11400000, guid: 370549199994c9d468dfd57629c42d22, type: 2}
 --- !u!1001 &1743793274
 PrefabInstance:
   m_ObjectHideFlags: 0
