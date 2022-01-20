@@ -3,7 +3,17 @@ guid: 5ab45fdb532fd37459753b88973a7330
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piston_body
+    second: {fileID: 2100000, guid: 639e1b0bd4ba5d749b8b8469e30bdc66, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: top_material
+    second: {fileID: 2100000, guid: 434bba43e5592cd4cb0671af748d31aa, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
