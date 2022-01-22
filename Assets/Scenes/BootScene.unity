@@ -917,7 +917,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PreludeCommands:
   - :change_font_color red
-  - :reset_session ./Interpreter/
   - let prelude = require("prelude.txt");
 --- !u!1 &1201087322
 GameObject:

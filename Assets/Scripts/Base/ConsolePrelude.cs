@@ -13,6 +13,10 @@ namespace Base
             {
                 return;
             }
+
+            console.InputField.text = $":reset_session {Application.streamingAssetsPath}/Interpreter/";
+            console.HandleCommand();
+            
             foreach (var command in PreludeCommands)
             {
                 console.InputField.text = command;
