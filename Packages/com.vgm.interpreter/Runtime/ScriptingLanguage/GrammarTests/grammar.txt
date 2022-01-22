@@ -1,0 +1,92 @@
+"Start" "Root""Terminal"
+
+"Root" "OperationGroup"
+
+"Expression" "ArithmethicExpression"
+
+"ArithmethicExpression" "ArithmethicExpression" "+" "Prod"
+"ArithmethicExpression" "ArithmethicExpression" "-" "Prod"
+"ArithmethicExpression" "Prod"
+"Prod" "Prod" "*" "SingleValue"
+"Prod" "Prod" "/" "SingleValue"
+"Prod" "SingleValue"
+"SingleValue" "(" "ArithmethicExpression" ")"
+"SingleValue" "Value"
+
+"BooleanExpression" "BooleanExpression" "||" "Conjunction"
+"BooleanExpression" "Conjunction"
+"Conjunction" "Conjunction" "&&" "Negation"
+"Conjunction" "Negation"
+"Negation" "!" "SingleBooleanExpression"
+"Negation" "SingleBooleanExpression"
+"SingleBooleanExpression" "(" "BooleanExpression" ")"
+"SingleBooleanExpression" "Comparison"
+
+"Comparison" "Expression" "==" "Expression"
+"Comparison" "Expression" "!=" "Expression"
+"Comparison" "Expression" "<=" "Expression"
+"Comparison" "Expression" ">=" "Expression"
+"Comparison" "Expression" "<" "Expression"
+"Comparison" "Expression" ">" "Expression"
+
+"Value" "Value" "." "Name"
+"Value" "Value" "[" "Expression" "]"
+"Value" "Value" "." "FunctionCall"
+"Value" "Name"
+"Value" "Number"
+"Value" "-" "Number"
+"Value" "String"
+"Value" "null"
+"Value" "true"
+"Value" "false"
+"Value" "FunctionCall"
+"Value" "FunctionDeclaration"
+"Value" "{" "}"
+"Value" "[" "]"
+
+"Assignable" "Assignable" "." "Name"
+"Assignable" "Assignable" "[" "Expression" "]"
+"Assignable" "Name"
+
+"FunctionCall" "Name" "(" ")"
+"FunctionCall" "Name" "Template" "(" ")"
+"FunctionCall" "Name" "(" "Arguments" ")"
+"FunctionCall" "Name" "Template" "(" "Arguments" ")"
+
+"Template" "|" "TemplateParams" "|"
+"TemplateParams" "Name"
+"TemplateParams" "String"
+"TemplateParams" "TemplateParams" "|" "Name"
+"TemplateParams" "TemplateParams" "|" "String"
+
+"Arguments" "Expression"
+"Arguments" "Arguments" "," "Expression"
+
+"Operation" "Value" ";"
+"Operation" "Assignment"
+"Operation" "Declaration"
+"Operation" "return" ";"
+"Operation" "return" "Expression" ";"
+"Operation" "return" "BooleanExpression" ";"
+"Operation" "break" ";"
+"Operation" "Block"
+"Operation" "IfStatement"
+"Operation" "WhileStatement"
+
+"Assignment" "Value" "=" "Expression" ";"
+"Assignment" "Value" "=" "BooleanExpression" ";"
+"Declaration" "let" "Name" "=" "Expression" ";"
+
+"OperationGroup" "OperationGroup" "Operation"
+"OperationGroup" "Operation"
+
+"Block" "{" "OperationGroup" "}"
+
+"IfStatement" "if" "(" "BooleanExpression" ")" "Block"
+"WhileStatement" "while" "(" "BooleanExpression" ")" "Block"
+
+"FunctionDeclaration" "function" "(" ")" "Block"
+"FunctionDeclaration" "function" "(" "Parameters" ")" "Block"
+
+"Parameters" "Name"
+"Parameters" "Parameters" "," "Name"

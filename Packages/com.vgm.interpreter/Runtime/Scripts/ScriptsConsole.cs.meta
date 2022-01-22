@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 79aaed1cf6a833e4fa42f62a394d8c63
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ParserTable: {fileID: 4900000, guid: 629da4afca339b74aac05d38aa1fd4fb, type: 3}
+  - GraphicElements: {instanceID: 0}
+  - InputField: {instanceID: 0}
+  - ConsoleOutput: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,7 @@
+{
+  "name": "com.vgm.interpreter",
+  "version": "0.0.1",
+  "displayName": "C# Interpreter",
+  "unity": "2018.4",
+  "description": "Interpreter for executing scripts at runtime."
+}
