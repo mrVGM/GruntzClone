@@ -1433,7 +1433,7 @@ PrefabInstance:
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[1].NotificationText
       value: MAKE SURE TO ALWAYS CHECK ON THE MYSTERY BOXES, TOO. THEY CAN GIVE YOU
-        HINTS AND GIVE YOU NEW CHALLENGES.
+        USEFUL HINTS.
       objectReference: {fileID: 0}
     - target: {fileID: 8071537922545199339, guid: 6a1a29b8c0bf7ee4485237f415c438ce, type: 3}
       propertyPath: Notifications.Array.data[0].ImagesToDisplay.Array.data[0]

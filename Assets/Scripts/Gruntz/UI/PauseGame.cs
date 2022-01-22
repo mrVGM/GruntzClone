@@ -1,7 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using Base;
 using Base.UI;
-using UnityEngine;
 using static Base.MainUpdaterLock;
 
 namespace Gruntz.UI
@@ -9,7 +9,7 @@ namespace Gruntz.UI
     public class PauseGame : CoroutineProcess
     {
         public bool Pause = true;
-        public ExecutionOrderTagDef OrderTagDef;
+        public ExecutionOrderTagDef[] OrderTagsToLeaveRunning;
         public ProcessContextTagDef CreatedLocksTagDef;
         protected override IEnumerator<object> Crt()
         {
@@ -19,7 +19,7 @@ namespace Gruntz.UI
             {
                 locks = new List<ILock>();
                 foreach (var tag in game.MainUpdater.ExecutionOrder) {
-                    if (tag == OrderTagDef) {
+                    if (OrderTagsToLeaveRunning.Contains(tag)) {
                         continue;
                     }
                     var l = game.MainUpdater.MainUpdaterLock.TryLock(tag);

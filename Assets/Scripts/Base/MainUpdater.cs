@@ -97,7 +97,7 @@ namespace Base
                 var l = MainUpdaterLock.TryLock(tag);
                 if (l == null)
                 {
-                    return;
+                    continue;
                 }
                 var updatables = sortedUpdatables[tag];
                 foreach (var updatable in updatables)

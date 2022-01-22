@@ -63,6 +63,8 @@ namespace Base.Animations
             var messages = messagesSystem.GetMessages(AnimationsComponentDef.NavigationMessages);
             var abilityMessages = messagesSystem.GetMessages(AnimationsComponentDef.AbilityMessages);
             
+            Animator.SetInteger("State", (int)AnimatorState.Idle);
+            
             messages = messages.Where(x => x.Sender == Actor).ToList();
             if (messages.Any(x => (NavAgent.NavAgentState)x.Data == NavAgent.NavAgentState.Moving)) {
                 Animator.SetInteger("State", (int)AnimatorState.Running);
