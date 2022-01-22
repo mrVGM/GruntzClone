@@ -33,7 +33,7 @@ namespace ScriptingLanguage.BaseFunctions
         public object Execute(Scope scope)
         {
             string scriptName = scope.GetVariable(filename) as string;
-            var fullPath = Session.WorkingDir + scriptName;
+            var fullPath = System.IO.Path.Combine(Session.WorkingDir, scriptName);
             if (!File.Exists(fullPath)) 
             {
                 throw new FileNotFoundException($"Cannot find script: {fullPath}!");

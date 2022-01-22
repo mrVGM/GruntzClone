@@ -14,7 +14,7 @@ namespace Base
                 return;
             }
 
-            console.InputField.text = $":reset_session {Application.streamingAssetsPath}/Interpreter/";
+            console.InputField.text = $":reset_session {System.IO.Path.Combine(Application.streamingAssetsPath, "Interpreter")}";
             console.HandleCommand();
             
             foreach (var command in PreludeCommands)
